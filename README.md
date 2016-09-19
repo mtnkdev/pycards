@@ -1,4 +1,4 @@
-PySol
+# PySol
 Group 2
 Aravi Premachandran, Nikhil Patel, Michael Lee
 This project is a reimplementation of PySol Fan Club Edition (PySolFC)
