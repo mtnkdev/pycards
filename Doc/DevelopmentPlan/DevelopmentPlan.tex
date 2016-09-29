@@ -1,13 +1,11 @@
 \documentclass{article}
 
-\usepackage[letterpaper, margin=1in]{geometry}
-\usepackage{setspace}
-
+\usepackage[letterpaper, margin=1in]{geometry} \usepackage{setspace}
 
 \title{SE 3XA3: Development Plan\\PyCards}
 
-\author{Team 2, Team Name \\ \\ Aravi Premachandran premaa \\ Michael Lee leemr2 \\
-Nikhil Patel patelna2 }
+\author{Team 2, Team Name \\ \\ Aravi Premachandran premaa \\ Michael Lee leemr2
+\\ Nikhil Patel patelna2 }
 
 \date{}
 
@@ -48,15 +46,9 @@ necessary for efficient communication and resolution.
 
 \section{Team member roles}
 
-\noindent Leader: Nikhil Patel \newline
-\noindent Experts:
-\vspace{-2mm}
-\begin{itemize}
-	\itemsep0em
-	\item Documentation: Aravi Premachandran
-	\item Git: Nikhil Patel
-	\item LaTeX: Michael Lee
-\end{itemize}
+\noindent Leader: Nikhil Patel \newline \noindent Experts: \vspace{-2mm}
+\begin{itemize} \itemsep0em \item Documentation: Aravi Premachandran \item Git:
+Nikhil Patel \item LaTeX: Michael Lee \end{itemize}
 
 \section{Git workflow plan} 
 
@@ -73,10 +65,30 @@ intact.
 
 \section{Proof of Concept Demonstration Plan}
 
-\noindent 
+\noindent Throughout the software development process there are risks that our
+team will face. Some of the risks that we may face are difficulty testing the
+application, the software product's dependence on the user having Python
+installed on the host system, and also adapting the product to use automated
+build and testing tools.\\The software product implements a graphical user
+interface which makes it difficult to test its functionality. It will not be
+practical or even feasible to use automated testing on the user interface. As
+such, we will be forced to use behavioural testing ie. running the application
+and validating its response to various inputs from the user. \\Another risk we
+may encounter is difficulty in packaging the product as a portable and
+standalone application. The existing implementation relies on the user having
+Python installed on the host system - to overcome this we will need to perform
+research as to if and how the Python environment can be bundled with the
+application, and if it is legal to do so.\\The next risk that we have to address
+is the desire for an automated building and testing environment. If different
+users or developers attempt to build and deploy the source in an unintended
+manner it may lead to unexpected behaviour or errors. To address this need we
+will look into using a build tool or writing a custom build script (ie.
+makefile). Having a defined build script and/or using a build tool makes the
+build and also deployment process consistent and also convenient for both users
+and developers.
 
-\section{Technology} 
-\noindent The software product shall be redeveloped in the
+
+\section{Technology} \noindent The software product shall be redeveloped in the
 same programming language as the existing implementation, Python 2.7.x . The IDE
 of choice will be the simplistic IDLE editor though any execution of the
 implementation shall be done using the command-line (shell). The pydoc
@@ -93,8 +105,7 @@ easy-to-miss errors such as type errors.
 
 \section{Project Schedule} 
 
-\noindent
-
-point to Gantt Project chart
+\noindent The Gantt Project schedule for this project can be found in the
+Project Schedule folder.
 
 \end{document}
