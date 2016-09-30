@@ -1,6 +1,12 @@
 \documentclass{article}
 
-\usepackage[letterpaper, margin=1in]{geometry} \usepackage{setspace}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{hyperref}
+
 
 \title{SE 3XA3: Development Plan\\PyCards}
 
@@ -13,6 +19,17 @@
 
 \maketitle
 
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)}& \textbf{Change}\\
+\midrule
+Sep 30, 2016 & Aravi Premachandran, Michael Lee, Nikhil Patel
+& Initial Revision\\ 
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \section{Team Meeting Plan}
 
@@ -43,6 +60,8 @@ issues, comments, and conversation shall be done using Facebook. Any personal or
 heavily involving issues or communications shall be done using Facebook if
 satisfactory to all parties or using Skype if teleconferencing is deemed
 necessary for efficient communication and resolution.
+
+\newpage
 
 \section{Team member roles}
 
@@ -101,7 +120,10 @@ pybuilder will tentatively be used both as a build tool and for testing.
 type, only the value(s) stored in it is. Python also poorly implements the
 principle of least privilege. As such, it is especially important to follow a
 consistent coding style in order to reduce the likelihood of making simple but
-easy-to-miss errors such as type errors.
+easy-to-miss errors such as type errors. We plan on adhering to the
+\href{https://google.github.io/styleguide/pyguide.html}
+{Google Python Style Guide} and will run the tool pylint over our code to help
+enforce it. Pylint is a tool that finds bugs and style issues in Python source.
 
 \section{Project Schedule} 
 
