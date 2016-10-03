@@ -2,12 +2,16 @@
 
 \usepackage[letterpaper, margin=1in]{geometry}
 \usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{hyperref}
 
 
 \title{SE 3XA3: Development Plan\\PyCards}
 
-\author{Team 2, Team Name \\ \\ Aravi Premachandran premaa \\ Michael Lee leemr2 \\
-Nikhil Patel patelna2 }
+\author{Team 2, Team Name \\ \\ Aravi Premachandran premaa \\ Michael Lee leemr2
+\\ Nikhil Patel patelna2 }
 
 \date{}
 
@@ -15,6 +19,17 @@ Nikhil Patel patelna2 }
 
 \maketitle
 
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)}& \textbf{Change}\\
+\midrule
+Sep 30, 2016 & Aravi Premachandran, Michael Lee, Nikhil Patel
+& Initial Revision\\ 
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \section{Team Meeting Plan}
 
@@ -46,17 +61,13 @@ heavily involving issues or communications shall be done using Facebook if
 satisfactory to all parties or using Skype if teleconferencing is deemed
 necessary for efficient communication and resolution.
 
+\newpage
+
 \section{Team member roles}
 
-\noindent Leader: Nikhil Patel \newline
-\noindent Experts:
-\vspace{-2mm}
-\begin{itemize}
-	\itemsep0em
-	\item Documentation: Aravi Premachandran
-	\item Git: Nikhil Patel
-	\item LaTeX: Michael Lee
-\end{itemize}
+\noindent Leader: Nikhil Patel \newline \noindent Experts: \vspace{-2mm}
+\begin{itemize} \itemsep0em \item Documentation: Aravi Premachandran \item Git:
+Nikhil Patel \item LaTeX: Michael Lee \end{itemize}
 
 \section{Git workflow plan} 
 
@@ -73,10 +84,30 @@ intact.
 
 \section{Proof of Concept Demonstration Plan}
 
-\noindent 
+\noindent Throughout the software development process there are risks that our
+team will face. Some of the risks that we may face are difficulty testing the
+application, the software product's dependence on the user having Python
+installed on the host system, and also adapting the product to use automated
+build and testing tools.\\The software product implements a graphical user
+interface which makes it difficult to test its functionality. It will not be
+practical or even feasible to use automated testing on the user interface. As
+such, we will be forced to use behavioural testing ie. running the application
+and validating its response to various inputs from the user. \\Another risk we
+may encounter is difficulty in packaging the product as a portable and
+standalone application. The existing implementation relies on the user having
+Python installed on the host system - to overcome this we will need to perform
+research as to if and how the Python environment can be bundled with the
+application, and if it is legal to do so.\\The next risk that we have to address
+is the desire for an automated building and testing environment. If different
+users or developers attempt to build and deploy the source in an unintended
+manner it may lead to unexpected behaviour or errors. To address this need we
+will look into using a build tool or writing a custom build script (ie.
+makefile). Having a defined build script and/or using a build tool makes the
+build and also deployment process consistent and also convenient for both users
+and developers.
 
-\section{Technology} 
-\noindent The software product shall be redeveloped in the
+
+\section{Technology} \noindent The software product shall be redeveloped in the
 same programming language as the existing implementation, Python 2.7.x . The IDE
 of choice will be the simplistic IDLE editor though any execution of the
 implementation shall be done using the command-line (shell). The pydoc
@@ -89,12 +120,14 @@ pybuilder will tentatively be used both as a build tool and for testing.
 type, only the value(s) stored in it is. Python also poorly implements the
 principle of least privilege. As such, it is especially important to follow a
 consistent coding style in order to reduce the likelihood of making simple but
-easy-to-miss errors such as type errors.
+easy-to-miss errors such as type errors. We plan on adhering to the
+\href{https://google.github.io/styleguide/pyguide.html}
+{Google Python Style Guide} and will run the tool pylint over our code to help
+enforce it. Pylint is a tool that finds bugs and style issues in Python source.
 
 \section{Project Schedule} 
 
-\noindent
-
-point to Gantt Project chart
+\noindent The Gantt Project schedule for this project can be found in the
+Project Schedule folder.
 
 \end{document}

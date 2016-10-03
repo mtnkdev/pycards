@@ -1,11 +1,28 @@
 \documentclass{article}
 
+\usepackage[letterpaper, margin=1.5in]{geometry}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
 \begin{document}
 	\begin{center}
 		\section*{PyCards : Problem Statement}
 		Group 2 : Aravi Premachandran, Michael Lee, Nikhil Patel
 	\end{center}
 	
+	\begin{table}[hp]
+		\caption{Revision History} \label{TblRevisionHistory}
+		\begin{tabularx}{\textwidth}{llX}
+		\toprule
+		\textbf{Date} & \textbf{Developer(s)}& \textbf{Change}\\
+		\midrule
+		Sep 23, 2016 & Aravi Premachandran, Michael Lee, Nikhil Patel
+		& Initial Revision\\ 
+		Sep 30, 2016 & Nikhil Patel & Added revision table\\ 
+		\bottomrule
+		\end{tabularx}
+	\end{table}
+
 	\section{Introduction}
 	A common problem that plagues many people is the need to pass time, 
 	especially when lacking internet access. Card and puzzle games such as 
