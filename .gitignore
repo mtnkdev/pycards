@@ -1,0 +1,18 @@
+#Compiled and generated classes
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+#PyCharm project files
+.idea/
+
+#Distribution/build directory
+build/
+
+#LaTex generated & temp files
+*.aux
+*synctex.gz
+*.synctex(busy)
+
+
