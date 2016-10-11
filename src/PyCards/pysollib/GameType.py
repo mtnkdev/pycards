@@ -1,0 +1,51 @@
+
+
+# game types
+ONE_DECK_TYPE   = 0
+TWO_DECK_TYPE   = 1
+THREE_DECK_TYPE   = 2
+FOUR_DECK_TYPE   = 3
+BAKERS_DOZEN = 4
+BELEAGUERED_CASTLE = 5
+CANFIELD     = 6
+DASHAVATARA_GANJIFA = 7
+FAN_TYPE     = 8
+FORTY_THIEVES = 9
+FREECELL     = 10
+GOLF         = 11
+GYPSY        = 12
+HANAFUDA     = 13
+HEXADECK     = 14
+KLONDIKE     = 15
+MAHJONGG     = 16
+MATRIX       = 17
+MEMORY       = 18
+MONTANA      = 19
+MUGHAL_GANJIFA = 20
+NAPOLEON     = 21
+NAVAGRAHA_GANJIFA = 22
+NUMERICA     = 23
+PAIRING_TYPE = 24
+POKER_TYPE   = 25
+PUZZLE_TYPE  = 26
+RAGLAN       = 27
+ROW_TYPE     = 28
+SIMPLE_TYPE  = 29
+SPIDER       = 30
+TAROCK       = 31
+TERRACE      = 32
+YUKON        = 33
+SHISEN_SHO   = 34
+CUSTOM       = 40
+# extra flags
+BETA          = 1 << 12      # beta version of game driver
+CHILDREN      = 1 << 13      # *not used*
+CONTRIB       = 1 << 14      # contributed games under the GNU GPL
+HIDDEN        = 1 << 15      # not visible in menus, but games can be loaded
+OPEN          = 1 << 16
+ORIGINAL      = 1 << 17
+POPULAR       = 1 << 18      # *not used*
+RELAXED       = 1 << 19
+SCORE         = 1 << 20      # game has some type of scoring
+SEPARATE_DECKS = 1 << 21
+XORIGINAL     = 1 << 22      # original games by other people, not playable
