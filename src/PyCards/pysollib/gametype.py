@@ -1,6 +1,8 @@
 # game types
-from pysollib.resource import CSI
+from pysollib.cardsets import CSI
 
+def n_(msg):
+    return msg
 
 # ************************************************************************
 # * constants
