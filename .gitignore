@@ -9,6 +9,7 @@ __pycache__/
 
 #Distribution/build directory
 build/
+dist/
 
 #LaTex generated & temp files
 *.aux
