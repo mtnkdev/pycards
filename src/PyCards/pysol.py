@@ -1,8 +1,8 @@
 from Tkinter import *
 from ttk import *
 
-from pysollib.widgets import ProgressBar, TaskMenu, window
-
+from pysollib.widgets import ProgressBar, TaskMenu
+from pysollib import dataloader
 
 class App:
 
