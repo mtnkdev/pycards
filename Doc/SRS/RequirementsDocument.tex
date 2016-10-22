@@ -1,9 +1,39 @@
 \documentclass{article}
 \usepackage{setspace}
 \usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{nameref}
+
+\title{SE 3XA3: Software Requirements Specification\\PyCards}
+\author{Team 2,
+		\\ Aravi Premachandran  premaa
+		\\ Michael Lee  leemr2
+		\\ Nikhil Patel  patelna2
+}
+\date{October 11, 2016}
+
+\newcommand {\PYVER}{2.7.xx }
+
 
 \begin{document}
+	\maketitle
+
+	\newpage
 	\tableofcontents
+	\listoftables
+	\listoffigures
+
+	\begin{table}[tp]
+		\caption{\bf Revision History}
+		\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+			\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+			\midrule
+			October 11, 2016 & 1.0 & Initial Revision\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+
 	\newpage
 	\section{Project Drivers}
 		\subsection{The Purpose of the Project}
@@ -18,9 +48,9 @@
 		The Customers\\
 		Other Stakeholders
 	\subsection{Mandated Restraints}
-		\textbf{Constraint 1}\\
+		\subsubsection*{Constraint 1}  \label {constraint1}
 		\indent The source code of the application shall be implemented 
-		using the Python programming language, version 2.7.xx.\\
+		using the Python programming language, version \PYVER\\
 		\textbf{Rationale 1}\\
 		\indent The product should preserve compatibility for existing users of 
 		the original implementation. The client should not be required to 
@@ -32,9 +62,9 @@
 		is ported to another language or if the necessary runtimes and 
 		dependencies can be bundled with the product.\\\\
 		
-		\noindent \textbf{Constraint 2}\\
+		\subsubsection*{Constraint 2} \label {constraint2}
 		\indent The product shall be compatible with Windows operating systems 
-		(Windows 10), Mac OSX, and Ubuntu provided that Python version 2.7.xx 
+		(Windows 10), Mac OSX, and Ubuntu provided that Python version \PYVER
 		is compatible with the target system.\\
 		\textbf{Rationale 2}\\
 		\indent The client should not be required to migrate to newer (or 
@@ -44,7 +74,7 @@
 		the developers to ensure that it operates as expected and is fully 
 		functional.\\\\
 		
-		\noindent \textbf {Constraint 3}\\
+		\subsubsection*{Constraint 3} \label {constraint3}
 		\indent The product shall be made available under the GNU GPLv3 or 
 		later, along with any non-permissive terms added in accord with section 
 		7 of the GNU GPLv3.\\
@@ -57,7 +87,7 @@
 		\indent The product must adhere to the conditions of the GNU GPLv3 
 		license.\\\\
 		
-		\noindent \textbf {Constraint 4}\\
+		\subsubsection*{Constraint 4} \label {constraint4}
 		\indent The source code for the product shall be publicly available but 
 		the end product must also be deliverable as an standalone executable or 
 		application for both Windows operating systems and Mac OSX operating 
@@ -73,10 +103,15 @@
 		should be available in a publicly accessible repository.\\
 		
 		\subsection{Naming Conventions and Terminology}
-		\textbf {Source code:}\\
-		\textbf {Compatibility:}\\
-		\textbf {Implementation:}\\
-		\textbf {Product:}\\
+		\textbf {Source code:} The form of the product that is preferred to be used
+		for the making of modifications\\
+		\textbf {Compatibility:} The ability of the product to operate on a given
+		system. Full functionality is expected, unless otherwise specified, but
+		performance, appearance, and other characteristics may vary\\
+		\textbf {Implementation:} The object code, binaries, and/or executable form
+		of the product, along with the source code used to create it\\
+		\textbf {Product:} The entirety of the project, including but not limited to
+		its source code, binaries, and documentation\\
 		
 		\subsection{Relevant Facts and Assumptions}
 		
@@ -116,25 +151,25 @@
 		\subsection{Work Partitioning}
 		\subsection{Individual Product Use Cases}
 		\subsection{Functional Requirements}
-		\indent \indent \textbf {Functional Requirement 1}\\
+		\indent \indent \textbf {Functional Requirement 1} \label{freq1}\\
 		\indent \indent The program will be executed on a computer compatible with
-		Python version 2.7.xx\\
+		Python version \PYVER\\
 		\indent \textbf {Fit Criterion}\\
 		\indent \indent The functionality of the program on the major operating
 		systems - Windows 10, Ubuntu, Mac OSX - will be tested before release\\\\
-		\indent \textbf {Functional Requirement 2}\\
+		\indent \textbf {Functional Requirement 2} \label{freq2}\\
 		\indent \indent The program will execute in its own graphical window\\
 		\indent \textbf {Fit Criterion}\\
 		\indent \indent Check that the graphical user interface is successfully
 		created and fully functional on the target system(s).\\\\
-		\indent \textbf {Functional Requirement 3}\\
+		\indent \textbf {Functional Requirement 3} \label{freq3}\\
 		\indent \indent The user’s game statistics will persist even after the 
 		application is	terminated\\
 		\indent \textbf {Fit Criterion}\\
 		\indent \indent Upon re-launching the application the player statistics will
 		correspond to the statistics present when the application was most recently
 		terminated.\\\\
-		\indent \textbf {Functional Requirement 4}\\
+		\indent \textbf {Functional Requirement 4} \label{freq4}\\
 		\indent \indent The program shall provide the user with the option to start a 
 		new game\\
 		\indent \textbf {Fit Criterion}\\
@@ -143,32 +178,175 @@
 	
 	\section{Non-functional Requirements}
 		\subsection{Look and Feel Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item The product shall represent cards with images of playing 
+			cards and additional areas that can be interacted with (ex. where 
+			cards can be placed) shall be outlined for the user to see.
+		\end{itemize}
 		\subsection{Usability and Humanity Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item The product shall be easy for a child with basic reading and 
+			computer abilities to use
+		\end{itemize}
 		\subsection{Performance Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item Normal interaction actions with the game shall take no longer 
+			than if an average user were playing the same game with a physical 
+			deck of cards.
+		\end{itemize}
 		\subsection{Operational and Environmental Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item Users will interact with the product using a mouse and 
+			keyboard connected to their computer
+		\end{itemize}
+		\subsection{Installability Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item The game will not need to be installed to the user's device; instead
+			it will be packaged and self-contained, runnable as a portable application.
+		\end{itemize}
 		\subsection{Maintainability and Support Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item The product is expected to run on Windows 10, Mac OSX, and 
+			Ubuntu systems that have Python version \PYVER installed.
+		\end{itemize}
 		\subsection{Security Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item The source code for the product is publicly available and as such
+			anyone can download, modify, and produce modified version of the project.
+			However, only the developer team is allowed to directly make changes to the 
+			repository
+			\item When the product is made ready for distribution, the packaged product
+			shall have a checksum (ie. MD5 checksum) for verifying authenticity
+		\end{itemize}
 		\subsection{Cultural Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item The product will not contain images or text that would be 
+			considered offensive to residents of North America.
+		\end{itemize}
 		\subsection{Legal Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item The product is licensed under the GNU GPLv3 license and must 
+			conform to the license and any non-permissive terms added in 
+			accordance to section 7 of the GNU GPLv3 license.
+		\end{itemize}
+		\subsection{Health and Safety Requirements}
+		\begin{itemize}
+			\itemsep0em
+			\item This product requires the use of a pointing device and that the user
+			views and interacts with a graphical user interface. Excessive use of this
+			product may cause strain or injury including but not limited to eye strain
+			and injury to arms, wrists, and/or hands including carpal tunnel syndrome.
+		\end{itemize}
 		
 	\section{Project Issues}
 		\subsection{Open Issues}
-		\subsection{Off-the-Shelf Solutions}
+		\begin{itemize}
+		\itemsep0em	
+			\item The main open issue is the possibility of the graphics extension
+			provided by the open source project being incompatible. Seeing as the team
+			has permission to use and modify the existing implementation, many of the
+			issues a new project would face have been accounted for
+			\item Python includes a lot of built-in libraries that will be used in the
+			 implementation. One such library is Tkinter, used for the graphical portion
+			of the product
+			\item The existing implementation PySolFC is an off-the-shelf solution,
+			and so is the project that PySolFC was based upon, the original PySol
+		\end{itemize}
 		\subsection{New Problems}
+		\begin{itemize}
+		\itemsep0em	
+			\item Any changes to the original Tkinter graphics library or the 
+			custom interfaces that PySolFC provides to the library could make it
+			incompatible with our reimplementation and would thusly affect the work of
+			our developer team. It would require the adaptation of our code to the new
+			API which could introduce problems
+			\item The program should not require a lot of RAM when it’s running or
+			have high disk usage or requirements of the user’s system. Overall the
+			project should not have overly high resource consumption on the target system\\
+		\end{itemize}
 		\subsection{Tasks}
+			\indent The team plan on completing this project by completing the problem
+			statement and requirements documents before beginning programming. With these
+			documents the team will have a strong understanding of what needs to done.
+			From then onwards developers will work on implementing the program using
+			the Model View Controller software architecture and referring to the existing
+			project if and when needed. To manage the project we’ll be using version
+			control via git.\\
+
+
 		\subsection{Migration to the New Product}
+			\indent There are no major requirements for migration as we intend to
+			distribute the program as a standalone executable (while making the source
+			available to interested parties). As such the product will be able to coexist
+			with the existing products PySol and PySolFC. Furthermore, packaging
+			or bundling as an executable (or application) allows the product to be
+			self-contained with minimal external dependencies.\\
+			\indent The existing implementation however, if installed, adds its modules
+			to the python directory for 3rd party packages. Facilitating its removal
+			would require us to reverse that modification and by removing or updating
+			the specified files\\
+
 		\subsection{Risks}
+		\begin{itemize}
+			\itemsep0em
+			\item Excessive pressure due to time constraints for deliverables
+			\item Inaccurate quantification of objectives
+			\item Inadequate testing of graphical user interface
+		\end{itemize}
+
 		\subsection{Costs}
+			\indent The product being developed is open-source as is the implementation
+			it is based upon. To follow and propagate the concept of open-source
+			software, only freely available software shall be used in the development
+			process.\\
+			\indent The primary and only significant cost of the project to date is the
+			time and effort spent by its developers. The cost is anticipated to be around
+			5 hours or more of time spent per person per week for the duration of
+			September-December 2016.\\
+
 		\subsection{User Documentation and Training}
-		\subsection{Waiting Room}
+			\indent In-person training will not be required and therefore will not be
+			provided for this product. However, user documentation will be included with
+			the packaged product. A specifications document including APIs, modular
+			decomposition, and also build and modification instructions shall accompany
+			the source for the product.\\
+	 		\indent The user documentation shall provide enough guidance that a user
+			with no previous exposure to the product shall after reading be able to
+			achieve basic objectives. These objectives include but are not limited to
+			navigating the interface, starting a new game, and accessing the demo
+			feature.\\
+	 		\indent The user documentation shall include a section (or multiple
+			sections) that display the rules of the available games.
+
+		\subsection{Waiting Room}		
+		\indent Some possible requirements we could address if time permits:\\
+		\begin{itemize}
+			\itemsep0em
+			\item Create more games (version 1.1)\\
+			By creating more games users will have more options and be less likely to
+			become bored or disinterested
+			\item Improve the graphics (version 1.1) \\
+			By improving the graphics, the program will avoid the risk of seeming
+			outdated or becoming obsolete
+			\item Create a leaderboard (version 1.2)\\
+			By creating a leaderboard, it will keep people more engaged and bring out
+			their competitiveness which will motivate them to use the product more
+		\end{itemize}		
 		\subsection{Ideas for Solutions}
 		
 	\newpage
-	\section*{Appendix}
-	\subsection*{Symbolic Parameters}
-	
-	\newpage
-	\section*{List of Figures}		
+	\section{Appendix}
+	\subsection{Symbolic Parameters}
 		
+
 \end{document}
 

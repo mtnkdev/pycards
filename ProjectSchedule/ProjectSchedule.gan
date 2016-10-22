@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="PyCards" company="" webLink="http://" view-date="2016-09-18" view-index="1" gantt-divider-location="354" resource-divider-location="300" version="2.8.1" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="PyCards" company="" webLink="http://" view-date="2016-09-18" view-index="0" gantt-divider-location="354" resource-divider-location="300" version="2.8.1" locale="en_US">
     <description/>
     <view zooming-state="default:4" id="gantt-chart">
         <field id="tpd3" name="Name" width="191" order="0"/>
         <field id="tpd4" name="Begin date" width="72" order="1"/>
         <field id="tpd5" name="End date" width="72" order="2"/>
+        <option id="taskLabelUp" value="name"/>
     </view>
     <view id="resource-table">
         <field id="0" name="Name" width="210" order="0"/>
@@ -35,17 +36,16 @@
         </taskproperties>
         <task id="0" name="Problem Statement" color="#8cb6ce" meeting="false" start="2016-09-19" duration="5" complete="0" expand="true"/>
         <task id="2" name="Development Plan" color="#8cb6ce" meeting="false" start="2016-09-23" duration="6" complete="0" expand="true"/>
-        <task id="4" name="Requirements Document Rev0" color="#8cb6ce" meeting="false" start="2016-09-30" duration="6" complete="0" expand="true">
-            <task id="43" name="Requirements Definition" meeting="false" start="2016-09-30" duration="3" complete="0" expand="true"/>
-            <task id="44" name="Use Cases" color="#8cb6ce" meeting="false" start="2016-10-04" duration="4" complete="0" expand="true"/>
-            <task id="45" name="Recommendations" meeting="false" start="2016-10-04" duration="4" complete="0" expand="true"/>
-            <task id="62" name="Due Date" meeting="false" start="2016-10-07" duration="1" complete="0" expand="true"/>
+        <task id="4" name="Requirements Document Rev0" color="#8cb6ce" meeting="false" start="2016-09-30" duration="8" complete="0" expand="true">
+            <task id="43" name="Requirements Definition" color="#8cb6ce" meeting="false" start="2016-09-30" duration="3" complete="0" expand="true"/>
+            <task id="45" name="Document Revisions" color="#8cb6ce" meeting="false" start="2016-10-03" duration="7" complete="0" expand="true"/>
+            <task id="62" name="Due Date" color="#8cb6ce" meeting="false" start="2016-10-11" duration="1" complete="0" expand="true"/>
         </task>
-        <task id="5" name="Proof of Concept Demonstration" color="#8cb6ce" meeting="false" start="2016-09-30" duration="12" complete="0" expand="true">
-            <task id="31" name="Implementation" meeting="false" start="2016-09-30" duration="11" complete="0" expand="true"/>
+        <task id="5" name="Proof of Concept Demonstration" color="#8cb6ce" meeting="false" start="2016-10-04" duration="11" complete="0" expand="true">
+            <task id="31" name="Implementation" color="#8cb6ce" meeting="false" start="2016-10-04" duration="11" complete="0" expand="true"/>
             <task id="30" name="Risk Assessment" color="#8cb6ce" meeting="false" start="2016-10-14" duration="1" complete="0" expand="true"/>
-            <task id="32" name="Presentation" meeting="false" start="2016-10-14" duration="2" complete="0" expand="true"/>
-            <task id="61" name="Demonstration" meeting="false" start="2016-10-17" duration="1" complete="0" expand="true"/>
+            <task id="32" name="Presentation" color="#8cb6ce" meeting="false" start="2016-10-14" duration="2" complete="0" expand="true"/>
+            <task id="61" name="Demonstration" color="#8cb6ce" meeting="false" start="2016-10-17" duration="1" complete="0" expand="true"/>
         </task>
         <task id="6" name="Test Plan Revision 0" color="#8cb6ce" meeting="false" start="2016-10-18" duration="9" complete="0" expand="true">
             <task id="27" name="Unit Testing" color="#8cb6ce" meeting="false" start="2016-10-18" duration="4" complete="0" expand="true"/>
@@ -85,12 +85,29 @@
         <resource id="5" name="Aravi Premachandran" function="Default:0" contacts="" phone=""/>
     </resources>
     <allocations>
-        <allocation task-id="0" resource-id="3" function="Default:0" responsible="true" load="34.0"/>
-        <allocation task-id="2" resource-id="3" function="Default:0" responsible="true" load="34.0"/>
-        <allocation task-id="0" resource-id="4" function="Default:0" responsible="false" load="33.0"/>
-        <allocation task-id="2" resource-id="4" function="Default:0" responsible="false" load="33.0"/>
-        <allocation task-id="0" resource-id="5" function="Default:0" responsible="false" load="33.0"/>
-        <allocation task-id="2" resource-id="5" function="Default:0" responsible="false" load="33.0"/>
+        <allocation task-id="0" resource-id="3" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="2" resource-id="3" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="43" resource-id="3" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="31" resource-id="3" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="30" resource-id="3" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="32" resource-id="3" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="61" resource-id="3" function="Default:0" responsible="true" load="25.0"/>
+        <allocation task-id="0" resource-id="4" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="2" resource-id="4" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="43" resource-id="4" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="45" resource-id="4" function="Default:0" responsible="true" load="25.0"/>
+        <allocation task-id="31" resource-id="4" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="30" resource-id="4" function="Default:0" responsible="true" load="25.0"/>
+        <allocation task-id="32" resource-id="4" function="Default:0" responsible="true" load="25.0"/>
+        <allocation task-id="61" resource-id="4" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="0" resource-id="5" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="2" resource-id="5" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="43" resource-id="5" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="45" resource-id="5" function="Default:0" responsible="true" load="25.0"/>
+        <allocation task-id="31" resource-id="5" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="30" resource-id="5" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="32" resource-id="5" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="61" resource-id="5" function="Default:0" responsible="false" load="50.0"/>
     </allocations>
     <vacations/>
     <previous/>
