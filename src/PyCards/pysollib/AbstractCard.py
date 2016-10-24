@@ -13,11 +13,16 @@ class AbstractCard:
 		self.game = game
 		self.x = x
 		self.y = y
+		self.item = None
 		self.faceUp = False;
+		self.hide_stack = None
 		
 	#To Sting method for debugging
 	def __str__ (self):
 		return "Card (%d, %d, %d, %d)" % (self.id, self.deck, self.suit, self.rank)
+		
+	def isHidden (self):
+		return self.hide_stack is not None
 		
 	#change x and y position of card to new x and y
 	def moveTo(self, x, y):
@@ -28,8 +33,12 @@ class AbstractCard:
 	def moveBy(self, x, y):
 		self.x = x+dx
 		self.y = y+dy
+		self.item.move(dx,dy)
 		
-		
+	def tkraise(self, unhide=1):
+		if unhide:
+			self.unhide()
+		self.item.tkraise()
 		
 	def hide (self, stack):
 		pass

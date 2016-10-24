@@ -181,4 +181,19 @@ class Game:
 		if self.canvas:
 			self.cancas.config(sursor=cursor)
 			
-	
+	def newGame (self, random = None, restart = 0, autoplay=1):
+		self.finished = False
+		old_busy, self.busy = self.busy, 1
+		self.setCursor (cursor = CURSOR_WATCH)
+		self.stopWinAnimation()
+		self.disableMenus()
+		self.redealAnimation()
+		self.restart(restart=restart)
+		self.resetGame()
+		self.createRandom(random)
+		self.shuffle()
+		assert len(self.s.talon.cards) == self.gameInfo.numcards
+		for stack in self.stacks:
+			stack.updateText()
+		self.updateText()
+		self.updateStatus
