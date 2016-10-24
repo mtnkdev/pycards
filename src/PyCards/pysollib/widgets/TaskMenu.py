@@ -145,18 +145,39 @@ def _createGameMenu(menubar):
     gameMenu.add_command(label="Deal Cards", command=None)
     gameMenu.add_command(label="Auto Drop", command=None)
     gameMenu.add_command(label="Pause", command=None)
+    gameMenu.add_command(label="Status", command=None)
+    gameMenu.add_command(label="Comments", command=None)
+    gameMenu.add_command(label="Statistics", command=None)
+    gameMenu.add_command(label="Log", command=None)
     pass
 
 
 def _createAssistMenu(menubar):
     assistMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Assist", menu=assistMenu)
+    assistMenu.add_command(label="Hint", command=None)
+    assistMenu.add_command(label="Highlight piles", command=None)
+    assistMenu.add_command(label="Find Card", command=None)
     pass
 
 
 def _createOptionMenu(menubar):
     optionMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Options", menu=optionMenu)
+    optionMenu.add_command(label="Sound", command=None)
+    optionMenu.add_command(label="Cardset", command=None)
+    optionMenu.add_command(label="Table Tile", command=None)
+    optionMenu.add_cascade(label="Card Background", command=None)
+    optionMenu.add_cascade(label="Card View", command=None)
+    optionMenu.add_cascade(label="Animations", command=None)
+    optionMenu.add_cascade(label="Mouse", command=None)
+    optionMenu.add_command(label="Fonts", command=None)
+    optionMenu.add_command(label="Colors", command=None)
+    optionMenu.add_cascade(label="Set Theme", command=None)
+    optionMenu.add_cascade(label="Toolbar", command=None)
+    optionMenu.add_cascade(label="Save Game Geometry", command=None)
+    
+    
     pass
 
 
