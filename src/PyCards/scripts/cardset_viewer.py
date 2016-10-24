@@ -260,8 +260,12 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         data_dir = sys.argv[1]
     else:
-        data_dir = os.path.normpath(os.path.join(sys.path[0], os.pardir, 'data'))
+        data_dir = os.path.normpath(os.path.join(sys.path[0], os.pardir, 'cardsets'))
+    print data_dir
     ls = glob(os.path.join(data_dir, '*', 'config.txt'))
     cardsets_dict = create_cs_list(ls)
+    for attr in cardsets_dict.get(cardsets_dict.keys()[2]).__dict__:
+        val = getattr(cardsets_dict.get(cardsets_dict.keys()[2]),attr)
+        print attr, type(val), val
     root = create_widgets()
     root.mainloop()
