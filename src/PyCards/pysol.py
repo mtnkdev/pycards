@@ -2,7 +2,7 @@ from Tkinter import *
 from ttk import *
 
 from pysollib.widgets import ProgressBar, TaskMenu
-from pysollib import dataloader
+#from pysollib import dataloader
 
 class App:
 
@@ -16,6 +16,7 @@ class App:
         # Starts mainloop
         # hides main window
         # renders loading progress bar then makes main window visible
+
         root.after(0, root.withdraw)
         root.after(0, ProgressBar.createProgressbar(root, 0.5))
         root.mainloop()
