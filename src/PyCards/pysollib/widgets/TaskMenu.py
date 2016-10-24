@@ -132,12 +132,19 @@ def _createSelectMenu(menubar):
 def _createEditMenu(menubar):
     editMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Edit", menu=editMenu)
+    editMenu.add_command(label="Undo", command=None)
+    editMenu.add_command(label="Redo", command=None)
+    editMenu.add_command(label="Redo All", command=None)
+    editMenu.add_command(label="Restart", command=None)
     pass
 
 
 def _createGameMenu(menubar):
     gameMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Game", menu=gameMenu)
+    gameMenu.add_command(label="Deal Cards", command=None)
+    gameMenu.add_command(label="Auto Drop", command=None)
+    gameMenu.add_command(label="Pause", command=None)
     pass
 
 
