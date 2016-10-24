@@ -89,4 +89,96 @@ class Game:
 			self.cards = self.createCards(progress = app.intro.progress)
 		self.initBindings()
 		
+	def __createCommon(self,app):
+		self.busy = 1
+		self.app = app
+		self.filename = ""
 		
+		self.drag_event = None
+		self.drag_timer = None
+		self.drag_startX = 0
+		self.drag_startY = 0
+		self.drag_stack = None
+		self.drag_cards = []
+		self.drag_index = -1
+		self.drag_shados = []
+		self.drag_shadeStack = None
+		self.drag_shadeIMG = None
+		self.drag_canShadeStack = []
+		self.drag_noShadeStack = []
+		if self.gstats_startPlayer is None:
+			self.gstats_startPlayer = self.app.opt.player
+		
+	def destruct (self):
+		for obj in self.cards:
+			destruct(obj)
+		for obj in self.stacks:
+			obj.destruct()
+			destruct(obj)
+			
+	
+		
+	def reset (self,restart = 0):
+		self.filename=""
+		self.demo=None
+		self.solver = None
+		self.hints_list = None
+		self.hint_index = -1
+		self.hint_level = -1
+		self.saveinfo = []
+		self.loadinfo_stacks = None
+		self.loadinfo_talonRound = 1
+		self.loadinfo_ncards = 0
+		self.snapshots = []
+		self.failed_snapshots = []
+		self.stats_hints = 0
+		self.stats_highlightPiles = 0
+		self.stats_highlightCards = 0
+		self.stats_highlightsamerank = 0
+		self.stats_undoMoves = 0
+		self.stats_redoMoves = 0
+		self.stats_totalMoves = 0
+		self.stats_playerMoves = 0
+		self.stats_demoMoves = 0
+		self.stats_autoplayMoves = 0
+		self.stats_quickplayMoves = 0
+		self.stats_gotoBookmarkMoves = 0
+		self.stats_shuffleMoves = 0
+		self.stats_demoUpdated = 0
+		self.stats_updateTime = time.time()
+		self.stats_elapsedTime = 0
+		self.stats_pauseStartTime = 0
+		
+		self.startMoves()
+		if restart:
+			return
+			
+		#global stats survive game restart
+		self.gstats_bookmarks = {}
+		self.gstats_comment = ""
+		
+		self.winAnimation_timer = None
+		self.winAnimation_images = []
+		self.winAnimation_tkImages = []
+		self.winAnimation_savedImages = {}
+		self.winAnimation_canvasImages = []
+		self.winAnimation_frameNum = 0
+		self.winAnimation_width = 0
+		self.winAnimation_height = 0
+		
+	def getTitleName(self):
+		return self.app.getGameTitleName(self.id)
+		
+	def getGameNumber(self,format):
+		s = str(self.random)
+		if format: return "#" + s
+		return s
+		
+	def setSize(self,w,h):
+		self.width, self.height = int(round(w)),int(round(h))
+		
+	def setCursor(self,cursor):
+		if self.canvas:
+			self.cancas.config(sursor=cursor)
+			
+	
