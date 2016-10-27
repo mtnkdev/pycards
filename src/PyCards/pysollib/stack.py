@@ -76,7 +76,7 @@ class Stack:
 		if card is None:
 			card=cards[-1]
 			del self.cards[-1]
-		else
+		else:
 			self.cards.remove(card)
 		isFilled = False
 		return card
@@ -199,4 +199,4 @@ class Stack:
 	def playMoveMove (self, ncards, toStack, frames=-1, shadow=-1, sound=True):
 		if sound:
 			if to_stack in self.game.s.foundations:
-				
+				pass
