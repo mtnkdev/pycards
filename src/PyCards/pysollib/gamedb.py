@@ -24,9 +24,14 @@
 
 # imports
 import imp
+
 import gametype
-import settings
+from pysollib import settings
 from pysollib.gametype import *
+
+
+def _(msg):
+    return msg
 
 # * core games database
 # ************************************************************************
