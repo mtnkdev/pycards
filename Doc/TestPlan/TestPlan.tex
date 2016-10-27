@@ -1,0 +1,260 @@
+\documentclass[12pt, titlepage]{article}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=blue
+}
+\usepackage[round]{natbib}
+\title{SE 3XA3: Test Plan\\PyCards}
+\author{Team 2
+	\\ Aravi Premachandran  premaa
+	\\ Michael Lee  leemr2
+	\\ Nikhil Patel  patelna2
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\pagenumbering{roman}
+	\tableofcontents
+	\listoftables
+	\listoffigures
+	\begin{table}[bp]
+		\caption{\bf Revision History}
+		\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+			\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+			\midrule
+			October 27 & 0.1 & Rough Draft\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	\newpage
+	\pagenumbering{arabic}
+	\section{General Information}
+	\subsection{Purpose}
+	\indent \indent The purpose of conducting testing is twofold. While testing 
+	cannot prove correctness or the absence of bugs, it can be useful for 
+	finding instances of incorrect behaviour. By ensuring that testing is done 
+	in a traceable and repeatable manner (namely through automation), defects 
+	that are uncovered can be traced, isolated, and addressed. With automation, 
+	testing can be performed throughout the life cycle of the product with very 
+	little overhead.\par
+	The other reason for conducting testing is to demonstrate to the 
+	client	that our product is reliable, robust and meets the requirements 
+	that were set forth (using fit criterion or some other measure of degree
+	of fulfilment).
+	\subsection{Scope}
+	\indent\indent PyCards is a collection of card games implemented as a 
+	desktop application. As with any software program, it is important that it 
+	undergoes various iterations of testing throughout its product lifecyle.
+	Our development team is using a number of different test types, including 
+	functional, structural, and unit tests, static and dynamic, manual as well 
+	as automated.
+	While automated testing is largely preferred for reasons such as greater 
+	traceability, reproducibility, and efficiency, testing will also need to be 
+	done manually, especially for validating non-functional requirements.
+	Thus, the scope of testing for this product includes functional, 
+	structural, and unit tests, static and dynamic testing, and manual and 
+	automated testing.
+	
+	\subsection{Acronyms, Abbreviations, and Symbols}
+	
+	\begin{table}[hbp]
+		\caption{\textbf{Table of Abbreviations}} \label{Table}
+		\begin{tabularx}{\textwidth}{p{3cm}X}
+			\toprule
+			\textbf{Abbreviation} & \textbf{Definition} \\
+			\midrule
+			Abbreviation1 & Definition1\\
+			Abbreviation2 & Definition2\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	\begin{table}[!htbp]
+		\caption{\textbf{Table of Definitions}} \label{Table}
+		\begin{tabularx}{\textwidth}{p{3cm}X}
+			\toprule
+			\textbf{Term} & \textbf{Definition}\\
+			\midrule
+			Term1 & Definition1\\
+			Term2 & Definition2\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}	
+	\subsection{Overview of Document}
+	\indent \indent This document provides a detailed description of the 
+	testing our development team has deemed necessary for the software product. 
+	The tests are categorized and subdivided based on the type of testing, the 
+	scope of said categories, and the purpose and application of the tests (ie. 
+	validating the fulfillment functional or non-functional requirements).\par
+	This document is subject to revision throughout the expected life of the 
+	product. It is not expected that many deletions or shrinking of the test 
+	sets will occur; however, additional testing will likely be prescribed and 
+	document as the product is developed and matures.
+	
+	\section{Plan}
+	This section details the testing process prescribed for the software 
+	product, including but not limited to the testing team, schedule, 
+	techniques, and technologies.
+	\subsection{Software Description}
+
+	\subsection{Test Team}
+	\begin{itemize}
+		\itemsep0em
+		\item Aravi Premachandran
+		\item Michael Lee
+		\item Nikhil Patel
+	\end{itemize}
+	\subsection{Automated Testing Approach}
+	\indent \indent The testing team will be applying automated testing for a 
+	subset of the structural and static tests. In particular, unit tests will 
+	primarily be automated to increase reproducibility and efficiency, among 
+	other factors. It should be noted that in automated testing, only the 
+	execution and evaluation (of pre-defined criteria) is automated - in the 
+	event of failures or unexpected behaviour a member of the testing team will 
+	still be required to analyze the requirements, the code, and the test 
+	itself to determine where the inconsistency, if any, is located.
+	
+	\subsection{Testing Tools}
+	\begin{itemize}
+		\itemsep0em
+		\item IDE - PyCharm
+		\vspace{-3mm}
+		\begin{itemize}
+			\item static, structural: syntax checking, reachability, adherence 
+			to coding conventions
+		\end{itemize}
+		\item pylint / pyCheckers
+		\vspace{-3mm}
+		\begin{itemize}
+			\item static, stuctural: syntax checking, reachability, adherence 
+			to coding conventions
+		\end{itemize}
+		\item unittest.py - built-in module for testing
+		\vspace{-3mm}
+		\begin{itemize}
+			\item dynamic, unit test
+			\vspace{-2mm}
+			\begin{itemize}
+				\item mock module - can be used for stubs and drivers, to 
+				isolate code
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+		
+	\subsection{Testing Schedule}
+	
+	See Gantt Chart at the following url ...
+	\section{System Test Description}
+	
+	\subsection{Tests for Functional Requirements}
+	\subsubsection{Area of Testing1}
+	
+	\paragraph{Title for Test}
+	\begin{enumerate}
+		\item{test-id1\\}
+		Type: Functional, Dynamic, Manual, Static etc.
+		
+		Initial State: 
+		
+		Input: 
+		
+		Output: 
+		
+		How test will be performed: 
+		
+		\item{test-id2\\}
+		Type: Functional, Dynamic, Manual, Static etc.
+		
+		Initial State: 
+		
+		Input: 
+		
+		Output: 
+		
+		How test will be performed: 
+	\end{enumerate}
+	\subsubsection{Area of Testing2}
+	...
+	\subsection{Tests for Nonfunctional Requirements}
+	\subsubsection{Area of Testing1}
+	
+	\paragraph{Title for Test}
+	\begin{enumerate}
+		\item{test-id1\\}
+		Type: 
+		
+		Initial State: 
+		
+		Input/Condition: 
+		
+		Output/Result: 
+		
+		How test will be performed: 
+		
+		\item{test-id2\\}
+		Type: Functional, Dynamic, Manual, Static etc.
+		
+		Initial State: 
+		
+		Input: 
+		
+		Output: 
+		
+		How test will be performed: 
+	\end{enumerate}
+	\subsubsection{Area of Testing2}
+	...
+	\section{Tests for Proof of Concept}
+	\subsection{Area of Testing1}
+	
+	\paragraph{Title for Test}
+	\begin{enumerate}
+		\item{test-id1\\}
+		Type: Functional, Dynamic, Manual, Static etc.
+		
+		Initial State: 
+		
+		Input: 
+		
+		Output: 
+		
+		How test will be performed: 
+		
+		\item{test-id2\\}
+		Type: Functional, Dynamic, Manual, Static etc.
+		
+		Initial State: 
+		
+		Input: 
+		
+		Output: 
+		
+		How test will be performed: 
+	\end{enumerate}
+	\subsection{Area of Testing2}
+	...
+	
+	\section{Comparison to Existing Implementation}	
+	
+	\section{Unit Testing Plan}
+	
+	\subsection{Unit testing of internal functions}
+	
+	\subsection{Unit testing of output files}		
+	\bibliographystyle{plainnat}
+	\bibliography{SRS}
+	\newpage
+	\section{Appendix}
+	This is where you can place additional information.
+	\subsection{Symbolic Parameters}
+	The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
+	Their values are defined in this section for easy maintenance.
+	\subsection{Usability Survey Questions?}
+	This is a section that would be appropriate for some teams.
+\end{document}
