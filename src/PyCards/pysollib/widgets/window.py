@@ -8,7 +8,7 @@ def setBackground(root):
     root.canvas = Tkinter.Canvas(root, height=height, width=width)
 
     tile = Tkinter.PhotoImage(file=os.path.join(os.getcwd(), "tiles/Nostalgy.gif"))
-    root.image = tile
+    root.back = tile
 
     for x in range(0, width, tile.width()):
         for y in range(0, height, tile.height()):

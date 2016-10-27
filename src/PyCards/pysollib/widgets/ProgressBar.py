@@ -2,10 +2,8 @@ import Tkinter
 import time
 import ttk
 
-import window
-
-
 def createProgressbar(root, delay):
+    root.wm_withdraw()
     style = ttk.Style()
     style.theme_use("alt")#PySolFC uses classic
     style.configure("green.Horizontal.TProgressbar", foreground="#08C715", background="#08C715", orient='horizontal')
@@ -26,8 +24,4 @@ def createProgressbar(root, delay):
             loader.update()
         loader.wm_withdraw()
         loader.destroy()
-        root.deiconify()
-#        game.newGame()
-        window.setBackground(root)
-
     action()

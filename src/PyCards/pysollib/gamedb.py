@@ -278,7 +278,7 @@ class GameManager:
     def getGame(self, name):
         game = self.__public_gamenames.get(name)
         if game is not None:
-            return game.ID
+            return game #.ID
         return None
 
     def getGamesForSolver(self):
