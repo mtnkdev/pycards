@@ -149,14 +149,14 @@ class PysolMenubarTk:
             ('automaticplay',  None, ltk2gtk('&Automatic play')),
             ('animations',     None, ltk2gtk('A&nimations')),
             ('mouse',          None, ltk2gtk('&Mouse')),
-            ('cardview',       None, ltk2gtk('Card &view')),
+            ('cardview',       None, ltk2gtk('Card &control')),
             ('toolbar',        None, ltk2gtk('&Toolbar')),
             ('statusbar',      None, ltk2gtk('Stat&usbar')),
             ('help',           None, ltk2gtk('&Help')),
 
             ### menuitems
             ('playablepreview', None,
-             ltk2gtk('Playable pre&view...'), 'V',
+             ltk2gtk('Playable pre&control...'), 'V',
              None, self.mSelectGameDialogWithPreview),
             ('selectgamebynumber', None,
              ltk2gtk('Select game by nu&mber...'), None,

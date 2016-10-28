@@ -1,15 +1,20 @@
 import os
 from cardsets import CSI
-
 import Tkinter
+
+
 class Card:
 
-    TEST = None
-
     def __init__(self, cardset, rank, suit):
-        self.rank = rank
+        self.rank = rank + 1
         self.suit = suit
         self.cardset = cardset
+
+        if self.suit in "hd":
+            self.color = "red"
+        else:
+            self.color = "black"
+
 
     def setImage(self):
         self.image_path = os.path.join(os.getcwd(),"cardsets")
@@ -23,6 +28,14 @@ class Card:
         if len(string) == 1:
             string = "0" + string
         return string +self.suit+".gif"
+
+    # FIXME not implemented yet
+    def hide(self):
+        pass
+        # self.image_path = os.path.join(os.getcwd(), "cardsets")
+        # self.image_path = os.path.join(self.image_path, self.cardset.path)
+        # self.image_path = os.path.join(self.image_path, self._rankstr())
+        # self.image = Tkinter.PhotoImage(file=self.image_path)
 
 def setRanksandSuits(cardset):
     card_type = cardset.ctype
@@ -127,15 +140,11 @@ class Cardset:
 
         self.cards = []
 
-#print os.getcwd()
-
 path = os.getcwd()
 path = os.path.join(path, "cardsets")
 
 
-#cardsets = tuple(os.walk(path, topdown=True))
 cardsets = os.listdir(path)
-#print len(cardsets)
 
 import re
 _digit = re.compile('\d')
@@ -144,7 +153,6 @@ for folder in cardsets:
     config = os.path.join(path, folder)
     config = os.path.join(config, "config.txt")
     f = open(config, "r")
-    #print folder
     text = f.readlines()
     assert len(text) >= 6
     info = text[0].split(';')
@@ -155,43 +163,6 @@ for folder in cardsets:
         extension = ".gif"
 
     ID = text[1]
-
-    # import re
-    # m = re.search(r"^(\d+)$", info[6])
-    # year = int(m.group(1))
-    # print year
-    #
-    # styles = info[5].split(",")
-    # for s in styles:
-    #     m = re.search(r"^\s*(\d+)\s*$", s)
-    #     if not m:
-    #         break
-    #     print int(m.group(1))
-    #
-    # keys = cardset.styles[:]
-    # cardset.si.styles = tuple([s for s in keys if s in CSI.STYLE])
-    # for s in cardset.si.styles:
-    #     self.registered_styles[s] = self.registered_styles.get(s, 0) + 1
-    # cardset.si.nationalities = tuple([s for s in keys if s in CSI.NATIONALITY])
-    # for s in cardset.si.nationalities:
-    #     self.registered_nationalities[s] = self.registered_nationalities.get(s, 0) + 1
-    # keys = (cardset.year / 100,)
-    # cardset.si.dates = tuple([s for s in keys if s in CSI.DATE])
-    # for s in cardset.si.dates:
-    #     self.registered_dates[s] = self.registered_dates.get(s, 0) + 1
-
-
-    # import re
-    # fields = [f.strip() for f in text[0].split(';')]
-    # if len(fields) >= 2:
-    #     match = re.search(r"^(\d+)$", fields[1])
-    #     if match:
-    #         version = int(match.group(1))
-    #         print "Version", version
-    #     else:
-    #         version = 1
-
-        ##app.py _parseCardsetConfig
     class ConfigError:
         pass
 

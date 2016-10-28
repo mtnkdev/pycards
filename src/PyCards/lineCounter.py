@@ -15,7 +15,7 @@ for dirname, dirnames, filenames in os.walk('.'):
             f = open(os.path.join(dirname,filename), "r")
             text = f.readlines()
             for line in text:
-                if line.count('create('):
+                if line.count('bind'):
                     print filename
                     print line
                 count += 1

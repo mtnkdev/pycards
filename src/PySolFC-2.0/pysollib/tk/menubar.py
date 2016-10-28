@@ -459,7 +459,7 @@ class PysolMenubarTk:
         menu.add_command(label=n_("Table t&ile..."), command=self.mSelectTileDialog)
         # this submenu will get set by updateBackgroundImagesMenu()
         submenu = MfxMenu(menu, label=n_("Card &background"))
-        submenu = MfxMenu(menu, label=n_("Card &view"))
+        submenu = MfxMenu(menu, label=n_("Card &control"))
         submenu.add_checkbutton(label=n_("Card shado&w"), variable=self.tkopt.shadow, command=self.mOptShadow)
         submenu.add_checkbutton(label=n_("Shade &legal moves"), variable=self.tkopt.shade, command=self.mOptShade)
         submenu.add_checkbutton(label=n_("&Negative cards bottom"), variable=self.tkopt.negative_bottom, command=self.mOptNegativeBottom)
@@ -628,7 +628,7 @@ class PysolMenubarTk:
         if sys.platform == "darwin": m = "Cmd-"
         menu.add_command(label=n_("All &games..."), accelerator=m+"W",
                          command=self.mSelectGameDialog)
-        menu.add_command(label=n_("Playable pre&view..."), accelerator=m+"V",
+        menu.add_command(label=n_("Playable pre&control..."), accelerator=m+"V",
                          command=self.mSelectGameDialogWithPreview)
         if not SELECT_GAME_MENU:
             return

@@ -168,7 +168,7 @@ class Game:
         self.sg.dropstacks = tuple(self.sg.dropstacks)
         self.sg.reservestacks = tuple(self.sg.reservestacks)
         self.sg.hp_stacks = tuple(self.sg.hp_stacks)
-        # init the stack view
+        # init the stack control
         for stack in self.allstacks:
             stack.prepareStack()
             stack.assertStack()
@@ -307,7 +307,7 @@ class Game:
                               if s.cap.max_accept >= s.cap.min_accept]
         self.sg.hp_stacks = [s for s in self.sg.dropstacks
                              if s.cap.max_move >= 2]
-        # init the stack view
+        # init the stack control
         for stack in self.allstacks:
             stack.prepareStack()
             stack.assertStack()
@@ -525,7 +525,7 @@ class Game:
             self.allstacks[stack_id].cap.update(cap.__dict__)
         # 5) subclass settings
         self._restoreGameHook(game)
-        # 6) update view
+        # 6) update control
         for stack in self.allstacks:
             stack.updateText()
         self.updateText()
@@ -2745,7 +2745,7 @@ Congratulations, you did it !
 
         moves.current = []
         self.updateSnapshots()
-        # update view
+        # update control
         self.updateText()
         self.updateStatus(moves=(moves.index, self.stats.total_moves))
         self.updateMenus()

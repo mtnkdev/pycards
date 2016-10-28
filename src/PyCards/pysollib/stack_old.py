@@ -279,7 +279,7 @@ class Stack:
         assert isinstance(model.cap.base_color, int)
         assert isinstance(model.cap.base_rank, int)
         #
-        # view
+        # control
         #
         view.x = x
         view.y = y
@@ -289,7 +289,7 @@ class Stack:
         view.INIT_CARD_YOFFSET = 0      # for reallocateCards
         view.group = MfxCanvasGroup(view.canvas)
         view.shrink_face_down = 1
-        ##view.group.move(view.x, view.y)
+        ##control.group.move(control.x, control.y)
         # image items
         view.images = Struct(
             bottom = None,              # canvas item
@@ -332,7 +332,7 @@ class Stack:
             self.initBindings()
 
 
-    # bindings {view widgets bind to controller}
+    # bindings {control widgets bind to controller}
     def initBindings(self):
         group = self.group
         bind(group, "<1>", self.__clickEventHandler)
@@ -430,10 +430,10 @@ class Stack:
 
 
     #
-    # Core access methods {model -> view}
+    # Core access methods {model -> control}
     #
 
-    # Add a card add the top of a stack. Also update display. {model -> view}
+    # Add a card add the top of a stack. Also update display. {model -> control}
     def addCard(self, card, unhide=1, update=1):
         model, view = self, self
         model.cards.append(card)
@@ -464,7 +464,7 @@ class Stack:
         self.closeStack()
         return card
 
-    # Remove a card from the stack. Also update display. {model -> view}
+    # Remove a card from the stack. Also update display. {model -> control}
     def removeCard(self, card=None, unhide=1, update=1, update_positions=0):
         model, view = self, self
         assert len(model.cards) > 0
@@ -514,7 +514,7 @@ class Stack:
                 del cards[0]
         return None
 
-    # Position the card on the canvas {view}
+    # Position the card on the canvas {control}
     def _position(self, card):
         x, y = self.getPositionFor(card)
         card.moveTo(x, y)
@@ -673,7 +673,7 @@ class Stack:
 
 
     #
-    # Atomic move actions {model -> view}
+    # Atomic move actions {model -> control}
     #
 
     def flipMove(self, animation=False):
@@ -721,7 +721,7 @@ class Stack:
 
 
     #
-    # Appearance {view}
+    # Appearance {control}
     #
 
     def _getBlankBottomImage(self):
@@ -788,7 +788,7 @@ class Stack:
         i = list(model.cards).index(card)
         return view.CARD_XOFFSET[i%lx], view.CARD_YOFFSET[i%ly]
 
-    # Fully update the view of a stack - updates
+    # Fully update the control of a stack - updates
     # hiding, card positions and stacking order.
     # Avoid calling this as it is rather slow.
     def refreshView(self):
@@ -983,7 +983,7 @@ class Stack:
 
 
     #
-    # Subclass overridable handlers {contoller -> model -> view}
+    # Subclass overridable handlers {contoller -> model -> control}
     #
 
     def clickHandler(self, event):
@@ -1219,7 +1219,7 @@ class Stack:
 
 
     #
-    # Drag internals {controller -> model -> view}
+    # Drag internals {controller -> model -> control}
     #
 
     def getDragCards(self, index):
