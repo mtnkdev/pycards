@@ -42,7 +42,10 @@ def drawGame(root):
         destID = findClosest(x,y)
 
         if destID == -1:
-            event.widget.place(x=k.stacks[ID].x, y=k.stacks[ID].y + (event.widget.cardNum) * k.stacks[ID].offset)
+            cardID = event.widget.cardNum
+            for cardImg in k.stacks[ID].cardWidgets[cardID:]:
+                cardImg.place(x=k.stacks[ID].x, y=k.stacks[ID].y + cardImg.cardNum * k.stacks[ID].offset)
+           #  event.widget.place(x=k.stacks[ID].x, y=k.stacks[ID].y + (event.widget.cardNum) * k.stacks[ID].offset)
             return
         #print "destID=", destID
 
@@ -51,11 +54,17 @@ def drawGame(root):
         drop = validDrop(event, destID)
         #print "drop", drop
         if select and drop:
-            #print "Valid"
-            destID = ID
-            event.widget.place(x=k.stacks[destID].x, y=k.stacks[destID].y + (event.widget.cardNum) * k.stacks[destID].offset)
+            print "dest", destID
+            cardID = event.widget.cardNum
+            for cardImg in k.stacks[ID].cardWidgets[cardID:]:
+                cardImg.place(x=k.stacks[destID].x, y=k.stacks[destID].y + cardImg.cardNum * k.stacks[destID].offset)
+            # event.widget.place(x=k.stacks[destID].x, y=k.stacks[destID].y + (event.widget.cardNum) * k.stacks[destID].offset)
         else:
-            event.widget.place(x=k.stacks[ID].x,y=k.stacks[ID].y + (event.widget.cardNum)*k.stacks[ID].offset)
+            print "back", ID
+            cardID = event.widget.cardNum
+            for cardImg in k.stacks[ID].cardWidgets[cardID:]:
+                cardImg.place(x=k.stacks[ID].x,y=k.stacks[ID].y + cardImg.cardNum * k.stacks[ID].offset)
+            # event.widget.place(x=k.stacks[ID].x,y=k.stacks[ID].y + (event.widget.cardNum)*k.stacks[ID].offset)
 
     def validSelection(event):
         stackID = event.widget.stackID
@@ -67,9 +76,14 @@ def drawGame(root):
 
         prev = stack.cards[cardNum]
         for i in range(cardNum + 1, len(stack.cards)):
+            # print prev.rank
+            # print stack.cards[i].rank
+            # print stack.cards[i].color
+            # print prev.color
             if stack.cards[i].rank >= prev.rank \
                     or stack.cards[i].color == prev.color:
                 return False
+        return True
 
     def validDrop(event, destID):
         color = event.widget.color

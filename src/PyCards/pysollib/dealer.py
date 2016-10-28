@@ -21,7 +21,9 @@ class Dealer:
         self.shuffle(self.deck)
 
     def shuffle(self, cards):
-        random.shuffle(cards)
+        cards.reverse()
+        pass
+        #random.shuffle(cards)
 
     def dealCards(self):
         stacks = self.game.stacks
