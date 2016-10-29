@@ -1,37 +1,37 @@
-from Tkinter import *
-from ttk import *
+import Tkinter
+import ttk
 
-from pysollib.widgets import ProgressBar, TaskMenu, window
-from pysollib.control import gameManager as mgr
+from pysollib.widgets import progressbar as loader
+from pysollib.widgets import taskmenu, window
+from pysollib.control import gamemanager as mgr
+
+from utilities import util
 
 
 class App:
 
     def __init__(self, master):
-        self.frame = Frame(master)
+        """Organize Tk instance into Frame then create progress bar"""
+        self.frame = ttk.Frame(master)
         self.frame.pack()
-        ProgressBar.createProgressbar(root, 0.5)
+        loader.createProgressbar(root, 0.5)
 
-    def mainloop(self):
-        # Starts mainloop
-        # hides main window
-        # renders loading progress bar then makes main window visible
 
-        root.deiconify()
-        window.setBackground(root)
-        mgr.drawGame(root)
+def mainloop():
+    """Render root window and draw first game. Then enter Tk mainloop"""
+    root.deiconify()
+    window.setBackground(root)
+    mgr.dealgame(root)
+    mgr.drawgame()
+    root.canvas.update_idletasks()
+    root.mainloop()
 
-        root.canvas.update_idletasks()
-
-        root.mainloop()
-
-from utilities import util
 util.localize()
-
-root = Tk()
+root = Tkinter.Tk()
 root.geometry("800x600")
 root.title("PyCards")
-TaskMenu.createMenu(root)
+
+taskmenu.createMenu(root)
 app = App(root)
-app.mainloop()
+mainloop()
 

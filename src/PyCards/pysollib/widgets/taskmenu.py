@@ -2,7 +2,7 @@ from Tkinter import Menu
 
 from pysollib import gamedb
 from pysollib.gametype import FILTER, STYLE
-from pysollib.widgets import MenuActions as Action
+from pysollib.widgets import menuactions as Action
 
 
 def createMenu(root):

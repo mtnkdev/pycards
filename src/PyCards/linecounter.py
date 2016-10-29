@@ -11,7 +11,7 @@ for dirname, dirnames, filenames in os.walk('.'):
     for filename in filenames:
         #print(os.path.join(dirname, filename))
         #count = 0        
-        if filename[len(filename)-1] == 'y' and filename != "lineCounter.py":
+        if filename[len(filename)-1] == 'y' and filename != "linecounter.py":
             f = open(os.path.join(dirname,filename), "r")
             text = f.readlines()
             for line in text:

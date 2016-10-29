@@ -1,21 +1,9 @@
 from cardsets import CSI
-
-#Klondike layout
+from stack import Stack
 
 class CardGame:
-    pass
-    #type
-    #name
-    #numcards
-    #
-
-    #numRows
-    #row: position  base    alternate   direction
-
-    #
-
-from pile import Pile
-from stack import Stack
+    def __init__(self):
+        pass
 
 
 class Klondike(CardGame):
@@ -29,16 +17,6 @@ class Klondike(CardGame):
         self.numrows = 7
         self.numcards = 52
         self.foundations = 4
-
-    # Pile(pos, base, alternate, direction, size)
-    def createPiles(self):
-        self.piles = []
-        self.piles.append(Pile((50, 50), -1, [], None, 24))
-        self.piles.append(Pile((100 + 50, 50), -1, [], None, 0))
-        for p in range(self.foundations):
-            self.piles.append(Pile(((self.numrows-p+1) * 80 + 10, 50), 1, 1, False, 0)) # create foundation piles
-        for p in range(self.numrows):
-            self.piles.append(Pile((p*100+50,250), 13, -1, True, p)) # create normal piles
 
     # Stack(id, x, y, base, alternate, direction, pos, accept = True)
     def createStacks(self):
@@ -68,25 +46,20 @@ class Klondike(CardGame):
             stackCount += 1
 
     def deal(self):
-        print len (k.stacks[self.deckID].cards)
+        deck = self.stacks[self.deckID]
+        waste = self.stacks[self.wasteID]
         for i in range(1, 4):
-            card = k.stacks[self.deckID].cards[-i]
-            cardImg = k.stacks[self.deckID].cardWidgets[-i]
-            k.stacks[self.deckID].cards.pop()
-            k.stacks[self.wasteID].cards.append(card)
-            k.stacks[self.deckID].cardWidgets.pop()
-            k.stacks[self.wasteID].cardWidgets.append(cardImg)
-        for cardImg in k.stacks[self.wasteID].cardWidgets:
-            cardImg.place(x=k.stacks[self.wasteID].x,
-                y=k.stacks[self.wasteID].y + \
-                    cardImg.cardNum * k.stacks[self.wasteID].offset)
-        card = k.stacks[self.deckID].cardWidgets[-1]
-        card.place(
-            x=k.stacks[self.deckID].x,
-            y=k.stacks[self.deckID].y + \
-              card.cardNum * k.stacks[self.deckID].offset)
+            card = deck.cards[-i]
+            cardImg = deck.cardWidgets[-i]
+            deck.cards.pop()
+            waste.cards.append(card)
+            deck.cardWidgets.pop()
+            waste.cardWidgets.append(cardImg)
+        for cardImg in waste.cardWidgets:
+            cardImg.place(x=waste.x,
+                y=waste.y + cardImg.cardNum * waste.offset)
+        card = deck.cardWidgets[-1]
+        card.place(x=deck.x,
+            y=deck.y + card.cardNum * deck.offset)
+        print len(deck.cards)
         print card.rank, card.suit
-
-k = Klondike()
-k.createPiles()
-k.createStacks()
