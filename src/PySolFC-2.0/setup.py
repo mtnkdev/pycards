@@ -74,7 +74,7 @@ kw = {
     'packages'     : ['pysollib',
                       'pysollib.configobj',
                       'pysollib.macosx',
-                      'pysollib.winsystems',
+                      'pysollib.__extra__winsystems',
                       'pysollib.tk',
                       'pysollib.tile',
                       'pysollib.pysolgtk',
