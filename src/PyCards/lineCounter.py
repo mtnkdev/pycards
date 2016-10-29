@@ -15,7 +15,7 @@ for dirname, dirnames, filenames in os.walk('.'):
             f = open(os.path.join(dirname,filename), "r")
             text = f.readlines()
             for line in text:
-                if line.count('bind'):
+                if line.count('import tile'):
                     print filename
                     print line
                 count += 1

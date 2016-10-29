@@ -22,18 +22,18 @@ class Dealer:
 
     def shuffle(self, cards):
         cards.reverse()
-        pass
+        #pass
         #random.shuffle(cards)
 
     def dealCards(self):
         stacks = self.game.stacks
-        print len(self.deck)
+        # print len(self.deck)
 
         index = 0
         for i in range(len(stacks)):
             pos = stacks[i].positions
-            print len(pos)
-            print len(stacks[i].cards)
+            # print len(pos)
+            # print len(stacks[i].cards)
             for c in range(len(pos)):
                 stacks[i].cards[c] = self.deck[index]
                 index += 1

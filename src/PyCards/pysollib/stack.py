@@ -7,7 +7,7 @@ class Stack:
 
     # initialization method.  x and y are upper left position of stack, game is the game
     # game that the stack belongs to
-    def __init__(self, _id, x, y, base, alternate, direction, pos, accept=True, offset=0):
+    def __init__(self, _id, x, y, base, alternate, direction, pos, accept=True, offset=0, deck=False, sameSuit=False):
         ###id = len(game.stacks)     # stack's id what "number" stack it is in the game  #not really needed
         ###game.stacks.append(self)  # add stack to game's array of stacks #FIXME do this in layout
         self.ID = _id
@@ -20,10 +20,13 @@ class Stack:
 
         ###     How to build stack     ###
         self.offset = offset
-        self.baseSuit = base
-        self.alternating = alternate
+        self.base = base
+        self.alternates = alternate
+        self.sameSuit = sameSuit
         self.acceptCards = accept
         self.direction = direction
+
+        self.isdeck = deck
 
 
         ###mapkey = (x,y)
@@ -81,7 +84,7 @@ class Stack:
     #     restrictions.append(self.minMove)
     #     restrictions.append(self.minAccept)
     #     restrictions.append(self.minCards)
-    
+
     def addCard(self, card):
         self.cards.append(card)
 
@@ -218,3 +221,16 @@ class Stack:
         if sound:
             if to_stack in self.game.s.foundations:
                 pass
+
+
+def moveCards(game, stackID, destID, cardID):
+    for cardImg in game.stacks[stackID].cardWidgets[cardID:]:
+        cardImg.stackID = destID
+        game.stacks[stackID].cardWidgets.remove(cardImg)
+        game.stacks[destID].cardWidgets.append(cardImg)
+        cardImg.place(x=game.stacks[destID].x,
+                      y=game.stacks[destID].y + cardImg.cardNum * game.stacks[destID].offset)
+
+    for card in game.stacks[stackID].cards[cardID:]:
+        game.stacks[destID].cards.append(card)
+        game.stacks[stackID].cards.remove(card)
