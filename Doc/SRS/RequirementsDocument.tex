@@ -1,9 +1,10 @@
-\documentclass{article}
+\documentclass[12pt, titlepage]{article}
 \usepackage{setspace}
 \usepackage[letterpaper, margin=1in]{geometry}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{nameref}
+\usepackage{hyperref}
 
 \title{SE 3XA3: Software Requirements Specification\\PyCards}
 \author{Team 2,
@@ -11,30 +12,29 @@
 		\\ Michael Lee  leemr2
 		\\ Nikhil Patel  patelna2
 }
-\date{October 11, 2016}
+\date{\today}
 
 \newcommand {\PYVER}{2.7.xx }
 
 
 \begin{document}
 	\maketitle
-
-	\newpage
+	\pagenumbering{roman}
 	\tableofcontents
 	\listoftables
 	\listoffigures
-
-	\begin{table}[tp]
+	\begin{table}[bp]
 		\caption{\bf Revision History}
 		\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 			\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 			\midrule
-			October 11, 2016 & 1.0 & Initial Revision\\
+			\mbox{October 11, 2016} & 1.0 & Initial Revision\\
+			\mbox{October 30, 2016} & 1.1 & Revision 1\\
 			\bottomrule
 		\end{tabularx}
 	\end{table}
-
 	\newpage
+	\pagenumbering{arabic}
 	\section{Project Drivers}
 		\subsection{The Purpose of the Project}
 		\indent \indent PyCards is a collection of solitaire 
@@ -43,10 +43,18 @@
 		user(s). The main objective for the product is to PyCards to be a 
 		user-friendly application that our users can use to pass the time, have 
 		fun, relax, and also challenge themselves.
-	\subsection{The Stakeholders}
-		The Client\\
-		The Customers\\
-		Other Stakeholders
+		\subsection{The Stakeholders}
+		\subsubsection{The Client}
+		\indent \indent Our client is Dr. Smith, a professor at McMaster 
+		University
+		\subsubsection{The Customers}
+		Our customer is any user who downloads and runs our program.
+		\subsubsection{Other Stakeholders}
+		Other stakeholders include the original developer of PySol, Markus 
+		F.X.J. Oberhumer, as well as the many developers and contributors 
+		PySolFC, the fork which we have based our program on.  In addition to 
+		these, as the project is open source, the last group of stakeholders 
+		are future contributors and developers to this software project.
 	\subsection{Mandated Restraints}
 		\subsubsection*{Constraint 1}  \label {constraint1}
 		\indent The source code of the application shall be implemented 
@@ -103,9 +111,26 @@
 		should be available in a publicly accessible repository.\\
 		
 		\subsection{Naming Conventions and Terminology}
-		\textbf {Source code:} The form of the product that is preferred to be used
-		for the making of modifications\\
-		\textbf {Compatibility:} The ability of the product to operate on a given
+		\textbf {API (Application Program Interface):} A set of routines, 
+		protocols, and tools for interacting with a program\\
+		\textbf {GNU GPLv3:} The GNU GPL (GNU General Public License)is a 
+		software license, focused on freedom and free software.  Our software 
+		project is licensed under version 3 of this license.  More information 
+		on the terms and conditions of this license can be found at its 
+		website: 
+		\url{https://en.wikipedia.org/wiki/GNU_General_Public_License}\\
+		\textbf {Free Software:} Software distributed under terms that allow 
+		users to run the software for any purpose, as well as to study, change, 
+		and distribute the software and any adapted versions.\\
+		\textbf {PySolFC (PySol Fan Club Edition):} The program which our 
+		project is based off of.\\
+		\textbf {PySol:} The original program which PySolFC is based off of\\
+		\textbf {Compatibility:} The ability of the product to operate on a 
+		given
+		\textbf{Klondike:} The most common solitaire game.  Most people think 
+		of this variation when they think of solitaire, and it is the variation 
+		included in the solitaire program found in older versions of Windows 
+		(pre-windows 8).
 		system. Full functionality is expected, unless otherwise specified, but
 		performance, appearance, and other characteristics may vary\\
 		\textbf {Implementation:} The object code, binaries, and/or executable form
@@ -139,17 +164,18 @@
 		\end{itemize}
 		
 	\section{Functional Requirements}
-		\subsection*{The Scope of the Work and the Product}
-		\subsection{The Current Situation}
-		\indent There already exists an implementation that has a similar purpose as
-		that of our product, namely PySol Fan Club Edition. This implementation was
-		coded entirely in Python and is an open-source software product.\\
-		\subsection{The Context of the Work}
+		\subsection{The Scope of the Work and the Product}
+		%\subsection{The Current Situation}
+		%\indent There already exists an implementation that has a similar 
+		%purpose as that of our product, namely PySol Fan Club Edition. This 
+		%implementation was coded entirely in Python and is an open-source 
+		%software product.\\
+		\subsubsection{The Context of the Work}
 		\indent Our product shall be based upon the implementation PySol Fan Club
 		Edition however it shall be redeveloped in order to satisfy the constraints
 		and requirements defined in this document.\\
-		\subsection{Work Partitioning}
-		\subsection{Individual Product Use Cases}
+		\subsubsection{Work Partitioning}
+		\subsubsection{Individual Product Use Cases}
 		\subsection{Functional Requirements}
 		\indent \indent \textbf {Functional Requirement 1} \label{freq1}\\
 		\indent \indent The program will be executed on a computer compatible with
@@ -174,7 +200,54 @@
 		new game\\
 		\indent \textbf {Fit Criterion}\\
 		\indent \indent The user interface should contain a button that when pressed 
-		will trigger the start of a new game.
+		will trigger the start of a new game.\\\\
+		\indent \textbf{Game Aspect Specific Requirements:} \label{GASR}
+		\vspace{-2mm}
+		\begin{itemize}
+			\itemsep0em
+			\item The program shall provide users with the ability to start new 
+			games, save games, and load already saved games.
+			\item The program shall provide users with an interface to 
+			customize the game window, namely the background and cardset to be 
+			used.
+			\item The program shall adhere to the rules of the game in progress
+			\item Upon completion of a game, the user shall be prompted to 
+			start a new game
+		\end{itemize}
+		\indent \textbf{Klondike Requirements:} \label{Kreq}
+		\vspace{-2mm}
+		\begin{itemize}
+			\itemsep0em
+			\item The playing cards are organized into NUM\_DECKS deck stack, 
+			NUM\_WASTES waste stack, NUM\_FOUNDATIONS foundation stacks and 
+			NUM\_NORMAL\_STACKS alternating-colour stacks
+			\item Cards cannot be added to the deck or waste stack(s) by the 
+			player
+			\item The waste stack(s) can be recycled to the deck stack 
+			NUM\_REDEAL times
+			\item If the player clicks on the deck stack, the top BURN\_NUM 
+			cards from the deck stack will be moved to the waste stack
+			\item The player can only select and move the current top card from 
+			the waste stack
+			\item The foundation stacks are initially empty.
+			\item The player can build the foundation stacks by placing on it 
+			cards of the same suit in order of increasing rank 
+			(FOUNDATION\_BASE – King). These cards must be placed one at a time.
+			\item If the player successfully builds all four foundation stacks 
+			(to King) then (s)he wins the game and a dialogue is shown 
+			confirming the successful completion of the game.
+			\item The player can build the alternating-suit stacks by forming 
+			stacks of cards of opposite colours and decreasing (by 1) rank
+			\item Multiple cards in the same stack can be moved at the same 
+			time provided that sequence of cards to be moved is alternating in 
+			colour and the rank of each subsequent card is one lower than that 
+			of the previous card (with the exception of the first card at the 
+			bottom of the stack of selected cards which has no previous)
+			\item If an alternating-suit stack is empty, only sequences 
+			starting with STACK\_BASE can be moved to it
+			\item If as a result of moving cards, the top card of a stack is 
+			face-down, that card is then flipped over to become face-up
+		\end{itemize}
 	
 	\section{Non-functional Requirements}
 		\subsection{Look and Feel Requirements}
@@ -229,12 +302,12 @@
 		\begin{itemize}
 			\itemsep0em
 			\item The product will not contain images or text that would be 
-			considered offensive to residents of North America.
+			considered offensive.
 		\end{itemize}
 		\subsection{Legal Requirements}
 		\begin{itemize}
 			\itemsep0em
-			\item The product is licensed under the GNU GPLv3 license and must 
+			\item The product is licensed under the  GPLv3 license and must 
 			conform to the license and any non-permissive terms added in 
 			accordance to section 7 of the GNU GPLv3 license.
 		\end{itemize}
@@ -346,7 +419,16 @@
 	\newpage
 	\section{Appendix}
 	\subsection{Symbolic Parameters}
-		
+		\begin{itemize}
+			\itemsep0em
+			\item NUM\_REDEALS = Unlimited
+			\item FOUNDATION\_BASE = Ace
+			\item STACK\_BASE = King
+			\item NUM\_DECKS = 1
+			\item NUM\_WASTES = 1
+			\item NUM\_FOUNDATIONS = NUM\_SUITS = 4
+			\item NUM\_NORMAL\_STACKS = 7
+		\end{itemize}
 
 \end{document}
 
