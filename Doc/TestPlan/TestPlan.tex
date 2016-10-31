@@ -71,7 +71,8 @@
 			\toprule
 			\textbf{Abbreviation} & \textbf{Definition} \\
 			\midrule
-			Abbreviation1 & Definition1\\
+			VC++ 2008 \newline binaries & Required dlls included in the \newline
+			Microsoft Visual C++ 2008 redistributable package\\
 			Abbreviation2 & Definition2\\
 			\bottomrule
 		\end{tabularx}
@@ -295,7 +296,7 @@
 		Input/Condition: User launches program executable from a removable USB drive
 		
 		Output/Result: The program launches exactly as if it had been launched on
-		the same system from the internal hard drive.
+		the same system from the internal hard drive
 		
 		How test will be performed: User inserts removable drive into a machine running a
 		supported OS then executes the executable either via double-clicking or using
@@ -307,78 +308,105 @@
 	\paragraph{Navigation}
 	\begin{enumerate}
 		\item{UN1\\}
-		Type: 
+		Type: Structural, Dynamic, Manual
 		
-		Initial State: 
+		Initial State: Application is running and idle, waiting for user interaction
 		
-		Input/Condition: 
+		Input/Condition: A group of users are asked to perform each of the actions
+		defined in BOUND\_ACTIONS
 		
-		Output/Result: 
+		Output/Result: The majority of users successfully perform the different
+		actions, completing each within in a period of under MAX\_FIND\_TIME
 		
-		How test will be performed: 
+		How test will be performed: A group of randomly chosen people, of different
+		ages and unspecificied level of technical expertise will be asked to perform
+		the actions defined in BOUND\_ACTIONS. The amount of time it takes them
+		to perform each task will be measured. The test will be considered successfull
+		if the majority of users are able to complete each of the individual actions
+		in under MAX\_FIND\_TIME
 		
 		\item{UN2\\}
-		Type: Functional, Dynamic, Manual, Static etc.
+		Type: Structural, Dynamic, Manual
 		
-		Initial State: 
+		Initial State: The VC++ 2008 binaries required for execution of the program
+		are not found on the host system
 		
-		Input: 
+		Input: The program fails to launch on a Windows-based machine that does not
+		have the VC++ 2008 redistributable package installed
 		
-		Output: 
-		
-		How test will be performed: 
+		Output: All of the users are able to successfully follow the provided
+		instructions to install the VC++ 2008 redistributable package
+
+		How test will be performed: A group of randomly selected users are given 
+		this issue and will be prompted by our application with instructions for
+		resolving it. The criteria for success of this test is that all users are able
+		to follow the instructions, install the required package, and after doing
+		so successfully launch the application \newline
+		Tolerance and Limitations: This test is limited to being performed on
+		machines running a Windows installation with minimum WIN\_VERSION.
+		If the success criteria is not met because of unforeseen errors users will
+		be advised to download and run the application from source
 	\end{enumerate}
 
 	\subsubsection{Product Integrity}
 	\paragraph{Resource Loading}
 	\begin{enumerate}
 		\item{RL1\\}
-		Type: 
+		Type: Structural, Dynamic, Manual
 		
-		Initial State: 
+		Initial State: The 'cardsets' directory is missing or corrupt
 		
-		Input/Condition: 
+		Input/Condition: When loading the application prompts users to either
+		re-download the application or download specifically the cardsets directory
 		
-		Output/Result: 
+		Output/Result: The majority of users are able to find the repository for the
+		program and re-download the executable or the cardset directory
 		
-		How test will be performed: 
+		How test will be performed: A group of users selected and willing to
+		participate in this test scenario will be provided with a modified executable
+		or the program's source excluding the cardsets directory. Upon launching the
+		application will attempt to load the directory and find it missing. The
+		application must not crash but instead prompt the user to redownload it
 		
 		\item{RL2\\}
-		Type: Functional, Dynamic, Manual, Static etc.
+		Type: Structural, Dynamic, Manual
 		
-		Initial State: 
+		Initial State: The 'tiles' directory is missing or corrupt
 		
-		Input: 
+		Input/Condition: Application attempts to load images from the 'tiles' directory
 		
-		Output: 
+		Output/Result: An exception is thrown and handled by using a solid color tile
+		as the window background.
 		
-		How test will be performed: 
+		How test will be performed: Before launching the application the 'tiles'
+		directory will be removed from the host system. Success for this test is
+		defined by the application drawing a solid color background and continuing
+		to function normally in all other regards
 	\end{enumerate}
 	
 	\subsubsection{Security}
 	\paragraph{System Permissions}
 	\begin{enumerate}
 		\item{SP1\\}
-		Type: 
+		Type: Structural, Dynamic, Manual
 		
-		Initial State: 
+		Initial State: Application is located on the host machine's file system
 		
-		Input/Condition: 
+		Input/Condition: User launches the application
 		
-		Output/Result: 
+		Output/Result: The application should launch without asking for administrative
+		(root) privileges.
 		
-		How test will be performed: 
-		
-		\item{SP2\\}
-		Type: Functional, Dynamic, Manual, Static etc.
-		
-		Initial State: 
-		
-		Input: 
-		
-		Output: 
-		
-		How test will be performed: 
+		How test will be performed: On Ubuntu, the application will be launched via
+		terminal. It must launch without asking for superuser (root) permissions
+		\newline On Windows, the application should launch successfully when double-
+		clicked, not requiring the user to right-click and select 'Run as 
+		administrator'
+		\newline Tolerance: OS X implements a functionality called Gatekeeper that
+		restricts the user from opening applications from unidentified developers. 
+		This is a security protocol and our app will not attempt to circumvent it.
+		Instead, the user should be able to control-click the app to launch it, after
+		confirming their intention to bypass Gatekeeper
 	\end{enumerate}
 
 	\section{Tests for Proof of Concept}
@@ -427,8 +455,9 @@
 	\begin{itemize}
 			\itemsep0em
 			\item COMMAND\_KEYS = \{'N', 'P', 'U', 'R', 'D', 'H', \newline 'F1', 'F2', CTRL+N,
-			CTRL+P, CTRL+'\}
+			CTRL+P, CTRL+Q\}
 			\item BOUND\_ACTIONS = \{newgame, pause, undo, redo, deal, help, quit\}
+			\item MAX\_FIND\_TIME = 90 seconds
 			\item NUM\_REDEALS = Unlimited
 			\item FOUNDATION\_BASE = Ace
 			\item STACK\_BASE = King
