@@ -22,7 +22,7 @@ def mainloop():
     root.deiconify()
     window.setBackground(root)
     mgr.dealgame(root)
-    mgr.drawgame()
+    mgr.drawgame(root)
     root.canvas.update_idletasks()
     root.mainloop()
 

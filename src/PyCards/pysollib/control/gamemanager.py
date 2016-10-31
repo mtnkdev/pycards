@@ -11,7 +11,7 @@ __all__ = ['dealgame', 'drawgame']
 _game = None
 
 def dealgame(root, game=None):
-
+    global _game
     if game is None:
         _game = Klondike()
     else:
@@ -25,6 +25,7 @@ def dealgame(root, game=None):
 
 
 def drawgame(root):
+    global _game
     stackID = 0
     for stack in _game.stacks:
         for num in range(len(stack.cards)):
@@ -43,6 +44,7 @@ def drawgame(root):
     return None
 
 def _dragCard(event):
+    global _game
     if not _valid_selection(event):
         return
     ID = event.widget.stackID
@@ -127,6 +129,9 @@ def _valid_drop(event, destID):
 
     if len(stack.cards) == 0 and event.widget.rank == stack.base:
         return True
+
+    if len(stack.cards) == 0 and event.widget.rank != stack.base:
+        return False
 
     bottom = stack.cards[-1]
 
