@@ -2,6 +2,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+
 \hypersetup{
 	colorlinks,
 	citecolor=black,
@@ -65,7 +66,7 @@
 	\subsection{Acronyms, Abbreviations, and Symbols}
 	
 	\begin{table}[hbp]
-		\caption{\textbf{Table of Abbreviations}} \label{Table}
+		\caption{\textbf{Table of Abbreviations}} \label{AbbrTable}
 		\begin{tabularx}{\textwidth}{p{3cm}X}
 			\toprule
 			\textbf{Abbreviation} & \textbf{Definition} \\
@@ -76,13 +77,15 @@
 		\end{tabularx}
 	\end{table}
 	\begin{table}[!htbp]
-		\caption{\textbf{Table of Definitions}} \label{Table}
+		\caption{\textbf{Table of Definitions}} \label{DefTable}
 		\begin{tabularx}{\textwidth}{p{3cm}X}
 			\toprule
 			\textbf{Term} & \textbf{Definition}\\
 			\midrule
-			Term1 & Definition1\\
-			Term2 & Definition2\\
+			Widget & A functional component of a graphical user interface.\newline Usually
+			consists of a visual component and a callback\\
+			Callback & A method to be executed upon interaction with a widget\\
+			Bijection & A one-to-one mapping of elements in one set to another\\
 			\bottomrule
 		\end{tabularx}
 	\end{table}	
@@ -153,40 +156,157 @@
 	\section{System Test Description}
 	
 	\subsection{Tests for Functional Requirements}
-	\subsubsection{Area of Testing1}
+	\subsubsection{Event Handling}
 	
-	\paragraph{Title for Test}
+	\paragraph{Key Bindings}
 	\begin{enumerate}
-		\item{test-id1\\}
-		Type: Functional, Dynamic, Manual, Static etc.
+		\item{KB1\\}
+		Type: Functional, Dynamic, Manual
 		
-		Initial State: 
+		Initial State: Application instance that is capturing user input
 		
-		Input: 
+		Input: Keyboard press of one of COMMAND\_KEYS by user
 		
-		Output: 
+		Output: Application perform the associated action from BOUND\_ACTIONS. 
+		Please refer to \textbf{\autoref{keymap}} \nameref{keymap} for mapping of keys
+		to actions
 		
-		How test will be performed: 
+		How test will be performed: The application will be launched and once loaded,
+		each bound key in COMMAND\_KEYS will be pressed and we will observe whether
+		the correct action from BOUND\_ACTIONS executes
 		
-		\item{test-id2\\}
-		Type: Functional, Dynamic, Manual, Static etc.
-		
-		Initial State: 
-		
-		Input: 
-		
-		Output: 
-		
-		How test will be performed: 
 	\end{enumerate}
-	\subsubsection{Area of Testing2}
-	...
-	\subsection{Tests for Nonfunctional Requirements}
-	\subsubsection{Area of Testing1}
-	
-	\paragraph{Title for Test}
+	\subsubsection{Widget Callbacks}
 	\begin{enumerate}
-		\item{test-id1\\}
+		\item{WC1\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Menubar widget waiting for user interaction
+		
+		Input: User clicks on a label in the menu bar
+		
+		Output: If the user clicks or hovers on a cascading menu it will expand
+		to show all contained submenu labels. If the user clicks on a menu label
+		it will perform its associated callback function
+		
+		How test will be performed: With full knowledge of what behaviour should
+		result from clicking any of the menu labels, the user will choose a random
+		subset of labels to click, and compare the expected and actual behaviour of
+		the application
+
+		\item{WC2\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Toolbar widget waiting for user interaction
+		
+		Input: User clicks on a toolbar button
+		
+		Output: The application will execute the appropriate function based upon
+		the toolbar button clicked. There is a bijection between the actions in
+		BOUND\_ACTIONS and toolbar buttons
+		
+		How test will be performed: The application will be launched and once loaded,
+		each bound key in COMMAND\_KEYS will be pressed and we will observe whether
+		the correct action from BOUND\_ACTIONS executes
+
+		\item{WC3\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Card widgets waiting for user click
+		
+		Input: Primary button click on card widget
+		
+		Output: If the card selection is valid (see Functional Klondike Requirements in 
+		\href{https://gitlab.cas.mcmaster.ca/premaa/pysol/tree/master/Doc/SRS}
+		{PyCards SRS} for selection constraints) the card is highlighted while the
+		mouse button remains pressed and is redrawn to follow the cursor. If the card
+		selection is invalid no visible changes are made to the window.
+		
+		How test will be performed: With a game in progress two cards will be clicked
+		one 'valid' and the other an 'invalid' selection and we will observe to make
+		sure only the 'valid' selection results in a card being highlighted	
+	\end{enumerate}
+
+
+	\subsection{Tests for Nonfunctional Requirements}
+	\subsubsection{Interoperability}
+	
+	\paragraph{Operating System Compatibility}
+	\begin{enumerate}
+		\item{OSX\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of OS X OSX\_VERSION.
+		
+		Input/Condition: User locates executable and launches program
+		
+		Output/Result: Either a successful launch or a message from Gatekeeper
+		alerting user that program was created by an unidentified developer
+		
+		How test will be performed: Executable is launched via double clicking to
+		test whether or not Gatekeeper feature will block normal launch. User will
+		observe whether basic functionality such as input/output and rendering of
+		application window are successful
+		
+		\item{OS2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of Ubuntu UBUNTU\_VERSION.
+		
+		Input/Condition: User locates executable and launches program
+		
+		Output/Result: Either a successful launch or a failure caused by incompatible
+		packaging, dependencies, or other causes
+		
+		How test will be performed: Executable is located and then launched via
+		terminal on the target system. User will observe whether basic
+		functionality such as input/output and rendering of application window are
+		successful
+
+		\item{OSWIN\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of Windows WIN\_VERSION.
+		
+		Input/Condition: User locates executable and launches program via double-click
+		
+		Output/Result: Depending on the system, either a successful launch or
+		application crash due to missing VC++2008 binaries (required even after 
+		building executable)
+		
+		How test will be performed: Executable is located and then launched via
+		double-click on the target system. User will observe whether basic
+		functionality such as input/output and rendering of application window are
+		successful
+
+
+	\end{enumerate}
+
+	\paragraph{Portability}
+	\begin{enumerate}
+		\item{PR1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for application is located on a removable USB drive
+		
+		Input/Condition: User launches program executable from a removable USB drive
+		
+		Output/Result: The program launches exactly as if it had been launched on
+		the same system from the internal hard drive.
+		
+		How test will be performed: User inserts removable drive into a machine running a
+		supported OS then executes the executable either via double-clicking or using
+		a shell (ie. bash, command-line). User will observe whether or not the program
+		successfuly launches and operates
+	\end{enumerate}
+
+	\subsubsection{Usability}
+	\paragraph{Navigation}
+	\begin{enumerate}
+		\item{UN1\\}
 		Type: 
 		
 		Initial State: 
@@ -197,7 +317,7 @@
 		
 		How test will be performed: 
 		
-		\item{test-id2\\}
+		\item{UN2\\}
 		Type: Functional, Dynamic, Manual, Static etc.
 		
 		Initial State: 
@@ -208,14 +328,65 @@
 		
 		How test will be performed: 
 	\end{enumerate}
-	\subsubsection{Area of Testing2}
-	...
+
+	\subsubsection{Product Integrity}
+	\paragraph{Resource Loading}
+	\begin{enumerate}
+		\item{RL1\\}
+		Type: 
+		
+		Initial State: 
+		
+		Input/Condition: 
+		
+		Output/Result: 
+		
+		How test will be performed: 
+		
+		\item{RL2\\}
+		Type: Functional, Dynamic, Manual, Static etc.
+		
+		Initial State: 
+		
+		Input: 
+		
+		Output: 
+		
+		How test will be performed: 
+	\end{enumerate}
+	
+	\subsubsection{Security}
+	\paragraph{System Permissions}
+	\begin{enumerate}
+		\item{SP1\\}
+		Type: 
+		
+		Initial State: 
+		
+		Input/Condition: 
+		
+		Output/Result: 
+		
+		How test will be performed: 
+		
+		\item{SP2\\}
+		Type: Functional, Dynamic, Manual, Static etc.
+		
+		Initial State: 
+		
+		Input: 
+		
+		Output: 
+		
+		How test will be performed: 
+	\end{enumerate}
+
 	\section{Tests for Proof of Concept}
 	\subsection{Area of Testing1}
 	
 	\paragraph{Title for Test}
 	\begin{enumerate}
-		\item{test-id1\\}
+		\item{PC1\\}
 		Type: Functional, Dynamic, Manual, Static etc.
 		
 		Initial State: 
@@ -226,7 +397,7 @@
 		
 		How test will be performed: 
 		
-		\item{test-id2\\}
+		\item{PC2\\}
 		Type: Functional, Dynamic, Manual, Static etc.
 		
 		Initial State: 
@@ -248,13 +419,46 @@
 	
 	\subsection{Unit testing of output files}		
 	\bibliographystyle{plainnat}
-	\bibliography{SRS}
+	\bibliography{TestPlan}
 	\newpage
 	\section{Appendix}
-	This is where you can place additional information.
+
 	\subsection{Symbolic Parameters}
-	The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
-	Their values are defined in this section for easy maintenance.
+	\begin{itemize}
+			\itemsep0em
+			\item COMMAND\_KEYS = \{'N', 'P', 'U', 'R', 'D', 'H', \newline 'F1', 'F2', CTRL+N,
+			CTRL+P, CTRL+'\}
+			\item BOUND\_ACTIONS = \{newgame, pause, undo, redo, deal, help, quit\}
+			\item NUM\_REDEALS = Unlimited
+			\item FOUNDATION\_BASE = Ace
+			\item STACK\_BASE = King
+			\item NUM\_DECKS = 1
+			\item NUM\_WASTES = 1
+			\item NUM\_FOUNDATIONS = NUM\_SUITS = 4
+			\item NUM\_NORMAL\_STACKS = 7
+			\item OSX_VERSION = EL CAPITAN
+			\item UBUNTU_VERSION = 16.04.1
+			\item WIN_VERSION = 10
+	\end{itemize}
+
+	\subsection{Reference Tables}
+	\begin{table}[hbp]
+		\caption{\textbf{Keymapping Configurations}} \label{keymap}
+		\begin{tabularx}{\textwidth}{p{6cm}X}
+			\toprule
+			\textbf{COMMAND\_KEYS} & \textbf{BOUND\_ACTIONS} \\
+			\midrule
+			'CTRL+N', 'N', 'F2' & new\_game\\
+			'CTRL+P', 'P' & pause\_game\\
+			'CTRL+Q', 'Q' & quit\\
+			'CTRL+H', 'H', 'F1' & show\_help\\
+			'U' & undo\_move\\
+			'R' & redo\_move\\
+			'D' & deal\_card\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+
 	\subsection{Usability Survey Questions?}
 	This is a section that would be appropriate for some teams.
 \end{document}
