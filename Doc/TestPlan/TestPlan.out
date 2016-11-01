@@ -19,13 +19,12 @@
 \BOOKMARK [3][-]{subsubsection.3.2.3}{Product Integrity}{subsection.3.2}% 19
 \BOOKMARK [3][-]{subsubsection.3.2.4}{Security}{subsection.3.2}% 20
 \BOOKMARK [1][-]{section.4}{Tests for Proof of Concept}{}% 21
-\BOOKMARK [2][-]{subsection.4.1}{Area of Testing1}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.2}{Area of Testing2}{section.4}% 23
-\BOOKMARK [1][-]{section.5}{Comparison to Existing Implementation}{}% 24
-\BOOKMARK [1][-]{section.6}{Unit Testing Plan}{}% 25
-\BOOKMARK [2][-]{subsection.6.1}{Unit testing of internal functions}{section.6}% 26
-\BOOKMARK [2][-]{subsection.6.2}{Unit testing of output files}{section.6}% 27
-\BOOKMARK [1][-]{section.7}{Appendix}{}% 28
-\BOOKMARK [2][-]{subsection.7.1}{Symbolic Parameters}{section.7}% 29
-\BOOKMARK [2][-]{subsection.7.2}{Reference Tables}{section.7}% 30
-\BOOKMARK [2][-]{subsection.7.3}{Usability Survey Questions?}{section.7}% 31
+\BOOKMARK [2][-]{subsection.4.1}{Game Logic}{section.4}% 22
+\BOOKMARK [1][-]{section.5}{Comparison to Existing Implementation}{}% 23
+\BOOKMARK [1][-]{section.6}{Unit Testing Plan}{}% 24
+\BOOKMARK [2][-]{subsection.6.1}{Unit testing of internal functions}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.2}{Unit testing of output files}{section.6}% 26
+\BOOKMARK [1][-]{section.7}{Appendix}{}% 27
+\BOOKMARK [2][-]{subsection.7.1}{Symbolic Parameters}{section.7}% 28
+\BOOKMARK [2][-]{subsection.7.2}{Reference Tables}{section.7}% 29
+\BOOKMARK [2][-]{subsection.7.3}{Usability Survey Questions}{section.7}% 30
