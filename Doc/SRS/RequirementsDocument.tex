@@ -175,6 +175,29 @@
 		Edition however it shall be redeveloped in order to satisfy the constraints
 		and requirements defined in this document.\\
 		\subsubsection{Work Partitioning}
+		\begin{table}[!htp]
+		\caption{\bf Work Partitioning}
+			\begin{tabularx}{\textwidth}{|l|X|X|}
+			\toprule {\bf Event Name} & {\bf Input/Output} & {\bf Summary}\\
+			\midrule			
+			\mbox{User changes game} & Game ID(IN) & The user selects a different game.
+			The system prompts for confirmation to discard the current game. The system
+			destroys the current game and creates the new game\\
+			\hline
+			\mbox{User changes background} & File Path(IN) \newline or Color(IN) & 
+			The user selects a new background image from the file system or chooses
+			a solid color to use. The system redraws the window with the new color\\
+			\hline
+			\mbox{User changes cardset} & File Path(IN) & The user selects the new
+			cardset to use. The system attempts to load the cardset and then redraws the
+			game using the new cardset images\\
+			\hline
+			\mbox{User selects a card} & ButtonPress(IN) & The user clicks on a card. The
+			system checks if the selection is valid and then highlights and tracks the
+			cursor with the selected card(s)\\
+			\bottomrule
+			\end{tabularx}
+		\end{table}
 		\subsubsection{Individual Product Use Cases}
 		\subsection{Functional Requirements}
 		\indent \indent \textbf {Functional Requirement 1} \label{freq1}\\
@@ -232,7 +255,7 @@
 			\item The foundation stacks are initially empty.
 			\item The player can build the foundation stacks by placing on it 
 			cards of the same suit in order of increasing rank 
-			(FOUNDATION\_BASE – King). These cards must be placed one at a time.
+			(FOUNDATION\_BASE to King). These cards must be placed one at a time.
 			\item If the player successfully builds all four foundation stacks 
 			(to King) then (s)he wins the game and a dialogue is shown 
 			confirming the successful completion of the game.
