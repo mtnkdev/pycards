@@ -17,5 +17,9 @@ dist/
 *.synctex(busy)
 *.toc
 *.log
+*.lot
+*.out
 
-
+*.blg
+*.bbl
+*.lof
