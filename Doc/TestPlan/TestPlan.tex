@@ -105,7 +105,9 @@
 	product, including but not limited to the testing team, schedule, 
 	techniques, and technologies.
 	\subsection{Software Description}
-
+	PyCards is a collection of card games implemented as a desktop application.
+	The implementation is written in pure Python. The application is to be made
+	available both as a standalone executable and in a source version.
 	\subsection{Test Team}
 	\begin{itemize}
 		\itemsep0em
@@ -330,10 +332,11 @@
 	\subsubsection{Usability}
 	\paragraph{Navigation}
 	\begin{enumerate}
-		\item{UN1\\}
+	\item{UN1\\}
 		Type: Structural, Dynamic, Manual
 		
-		Initial State: Application is running and idle, waiting for user interaction
+		Initial State: The existing implementation is running and idle on the user's
+		machine, and is waiting for user interaction
 		
 		Input/Condition: A group of users are asked to perform each of the actions
 		defined in BOUND\_ACTIONS
@@ -346,20 +349,61 @@
 		the actions defined in BOUND\_ACTIONS. The amount of time it takes them
 		to perform each task will be measured. The test will be considered successfull
 		if the majority of users are able to complete each of the individual actions
-		in under MAX\_FIND\_TIME		
+		in under MAX\_FIND\_TIME	
+
+		\item{UN2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Users have completed and taken note of the results of the
+		previous test. Our application, PyCards, is now running and idle, waiting for
+		user interaction
+		
+		Input/Condition: The group of users are asked to perform each of the actions
+		defined in BOUND\_ACTIONS
+		
+		Output/Result: The majority of users successfully perform the different
+		actions, completing each within in a period of under MAX\_FIND\_TIME and in
+		time less than or equal to what was required to perform the same action using
+		the existing implementation
+		
+		How test will be performed: A group of randomly chosen people, of different
+		ages and unspecificied level of technical expertise will be asked to perform
+		the actions defined in BOUND\_ACTIONS. The amount of time it takes them
+		to perform each task will be measured. The test will be considered successfull
+		if the majority of users are able to complete each of the individual actions
+		in under MAX\_FIND\_TIME and in time less than or equal to time taken using
+		the existing implementation	
 	\end{enumerate}
 
 	\paragraph{Playability}
 	\begin{enumerate}
-		\item{UN2\\}
+		\item{UP1\\}
 		Type: Structural, Dynamic, Manual
 		
-		Initial State: Game in progress
+		Initial State: Existing implementation is running, with a game in progress
 		
 		Input/Condition: A group of users are asked to play a game and rate it based
 		ease of use using a scale from 1-5 where 5 is very user friendly
 		
 		Output/Result: The majority of users give the game an average rating above 3
+		
+		How test will be performed: A group of randomly chosen people, of different
+		ages and unspecificied level of technical expertise will be asked the
+		questions defined in the Appendix and to give answers
+		from a scale from 1-5. The scale maps as: 1 - Very hard to use, 2 - Hard to
+		use, 3 - Some effort to use, 4 - Easy to use, 5 - Very easy to use	
+
+		\item{UP2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Users have completed the previous test. PyCards is now running,
+		with a game in progress
+		
+		Input/Condition: A group of users are asked to play the game and rate it based
+		ease of use using a scale from 1-5 where 5 is very user friendly
+		
+		Output/Result: The majority of users give the game an average rating above 3
+		and greater than or equal to the rating given in the previous test
 		
 		How test will be performed: A group of randomly chosen people, of different
 		ages and unspecificied level of technical expertise will be asked the
@@ -468,14 +512,18 @@
 
 	\section{Comparison to Existing Implementation}
 		A subset of our tests compares the functionality of our program to that of the
-		existing implementation. These tests include: 
+		existing implementation. These tests include : 
 	\begin{itemize}
 		\itemsep0em
 		\item test PC1 in Tests for Proof of Concept
 		\item test PC2 in Tests for Proof of Concept
-		\item test WC3 in Functional Requirements - Widget Callbacks
-		\item test UN1 in Nonfunctional Requirements - Usability
+		\item test UN2 in Nonfunctional Requirements - Usability
+		\item test UP2 in Nonfunctional Requirements - Usability
 	\end{itemize}
+	Tests PC1 and PC2 assert that the functionality of PyCards is analogous to the
+	functionality of the existing implementation in terms of enforcing game rules
+	\newline Tests UN2 and UP2 asserts that the design of PyCards is just as, if
+	not more, user-friendly than that of the existing implementation
 		
 	
 	\section{Unit Testing Plan}
