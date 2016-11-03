@@ -1,0 +1,602 @@
+\documentclass[12pt, titlepage]{article}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=blue
+}
+\usepackage[round]{natbib}
+\title{SE 3XA3: Test Plan\\PyCards}
+\author{Team 2
+	\\ Aravi Premachandran  premaa
+	\\ Michael Lee  leemr2
+	\\ Nikhil Patel  patelna2
+}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\pagenumbering{roman}
+	\tableofcontents
+	\listoftables
+	\listoffigures
+	\begin{table}[bp]
+		\caption{\bf Revision History}
+		\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+			\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+			\midrule
+			October 27 & 0.1 & Rough Draft\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	\newpage
+	\pagenumbering{arabic}
+	\section{General Information}
+	\subsection{Purpose}
+	\indent \indent The purpose of conducting testing is twofold. While testing 
+	cannot prove correctness or the absence of bugs, it can be useful for 
+	finding instances of incorrect behaviour. By ensuring that testing is done 
+	in a traceable and repeatable manner (namely through automation), defects 
+	that are uncovered can be traced, isolated, and addressed. With automation, 
+	testing can be performed throughout the life cycle of the product with very 
+	little overhead.\par
+	The other reason for conducting testing is to demonstrate to the 
+	client	that our product is reliable, robust and meets the requirements 
+	that were set forth (using fit criterion or some other measure of degree
+	of fulfilment).
+	\subsection{Scope}
+	\indent\indent PyCards is a collection of card games implemented as a 
+	desktop application. As with any software program, it is important that it 
+	undergoes various iterations of testing throughout its product lifecyle.
+	Our development team is using a number of different test types, including 
+	functional, structural, and unit tests, static and dynamic, manual as well 
+	as automated.
+	While automated testing is largely preferred for reasons such as greater 
+	traceability, reproducibility, and efficiency, testing will also need to be 
+	done manually, especially for validating non-functional requirements.
+	Thus, the scope of testing for this product includes functional, 
+	structural, and unit tests, static and dynamic testing, and manual and 
+	automated testing.
+	
+	\subsection{Acronyms, Abbreviations, and Symbols}
+	
+	\begin{table}[hbp]
+		\caption{\textbf{Table of Abbreviations}} \label{AbbrTable}
+		\begin{tabularx}{\textwidth}{p{3cm}X}
+			\toprule
+			\textbf{Abbreviation} & \textbf{Definition} \\
+			\midrule
+			VC++ 2008 \newline binaries & Required dlls included in the
+			Microsoft Visual C++ 2008 redistributable package\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	\begin{table}[!htbp]
+		\caption{\textbf{Table of Definitions}} \label{DefTable}
+		\begin{tabularx}{\textwidth}{p{3cm}X}
+			\toprule
+			\textbf{Term} & \textbf{Definition}\\
+			\midrule
+			Widget & A functional component of a graphical user interface. 
+			Usually	consists of a visual component and a callback\\
+			Callback & A method to be executed upon interaction with a widget\\
+			Bijection & A one-to-one mapping of elements in one set to another\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}	
+	\subsection{Overview of Document}
+	\indent \indent This document provides a detailed description of the 
+	testing our development team has deemed necessary for the software product. 
+	The tests are categorized and subdivided based on the type of testing, the 
+	scope of said categories, and the purpose and application of the tests (ie. 
+	validating the fulfillment functional or non-functional requirements).\par
+	This document is subject to revision throughout the expected life of the 
+	product. It is not expected that many deletions or shrinking of the test 
+	sets will occur; however, additional testing will likely be prescribed and 
+	document as the product is developed and matures.
+	
+	\section{Plan}
+	This section details the testing process prescribed for the software 
+	product, including but not limited to the testing team, schedule, 
+	techniques, and technologies.
+	\subsection{Software Description}
+	PyCards is a collection of card games implemented as a desktop application.
+	The implementation is written in pure Python. The application is to be made
+	available both as a standalone executable and in a source version.
+	\subsection{Test Team}
+	\begin{itemize}
+		\itemsep0em
+		\item Aravi Premachandran
+		\item Michael Lee
+		\item Nikhil Patel
+	\end{itemize}
+	\subsection{Automated Testing Approach}
+	\indent \indent The testing team will be applying automated testing for a 
+	subset of the structural and static tests. In particular, unit tests will 
+	primarily be automated to increase reproducibility and efficiency, among 
+	other factors. It should be noted that in automated testing, only the 
+	execution and evaluation (of pre-defined criteria) is automated - in the 
+	event of failures or unexpected behaviour a member of the testing team will 
+	still be required to analyze the requirements, the code, and the test 
+	itself to determine where the inconsistency, if any, is located.
+	
+	\subsection{Testing Tools}
+	\begin{itemize}
+		\itemsep0em
+		\item IDE - PyCharm
+		\vspace{-3mm}
+		\begin{itemize}
+			\item static, structural: syntax checking, reachability, adherence 
+			to coding conventions
+		\end{itemize}
+		\item pylint / pyCheckers
+		\vspace{-3mm}
+		\begin{itemize}
+			\item static, stuctural: syntax checking, reachability, adherence 
+			to coding conventions
+		\end{itemize}
+		\item coverage.py
+		\vspace{-3mm}
+		\begin{itemize}
+			\item dynamic, stuctural: code coverage of the program
+		\end{itemize}
+		\item unittest.py - built-in module for testing
+		\vspace{-3mm}
+		\begin{itemize}
+			\item dynamic, unit test
+			\vspace{-2mm}
+			\begin{itemize}
+				\item mock module - can be used for stubs and drivers, to 
+				isolate code
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+		
+	\subsection{Testing Schedule}
+	
+	See Gantt Chart at the following url ...
+	\section{System Test Description}
+	
+	\subsection{Tests for Functional Requirements}
+	\subsubsection{Event Handling}
+	
+	\paragraph{Key Bindings}
+	\begin{enumerate}
+		\item{KB1\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Application instance that is capturing user input
+		
+		Input: Keyboard press of one of COMMAND\_KEYS by user
+		
+		Output: Application perform the associated action from BOUND\_ACTIONS. 
+		Please refer to \textbf{\autoref{keymap}} \nameref{keymap} for mapping of keys
+		to actions
+		
+		How test will be performed: The application will be launched and once loaded,
+		each bound key in COMMAND\_KEYS will be pressed and we will observe whether
+		the correct action from BOUND\_ACTIONS executes
+		
+	\end{enumerate}
+	\subsubsection{Widget Callbacks}
+	\begin{enumerate}
+		\item{WC1\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Menubar widget waiting for user interaction
+		
+		Input: User clicks on a label in the menu bar
+		
+		Output: If the user clicks or hovers on a cascading menu it will expand
+		to show all contained submenu labels. If the user clicks on a menu label
+		it will perform its associated callback function
+		
+		How test will be performed: With full knowledge of what behaviour should
+		result from clicking any of the menu labels, the user will choose a random
+		subset of labels to click, and compare the expected and actual behaviour of
+		the application
+
+		\item{WC2\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Toolbar widget waiting for user interaction
+		
+		Input: User clicks on a toolbar button
+		
+		Output: The application will execute the appropriate function based upon
+		the toolbar button clicked. There is a bijection between the actions in
+		BOUND\_ACTIONS and toolbar buttons
+		
+		How test will be performed: The application will be launched and once loaded,
+		each bound key in COMMAND\_KEYS will be pressed and we will observe whether
+		the correct action from BOUND\_ACTIONS executes
+
+		\item{WC3\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Card widgets waiting for user click
+		
+		Input: Primary button click on card widget
+		
+		Output: If the card selection is valid (see Functional Klondike Requirements in 
+		\href{https://gitlab.cas.mcmaster.ca/premaa/pysol/tree/master/Doc/SRS}
+		{PyCards SRS} for selection constraints) the card is highlighted while the
+		mouse button remains pressed and is redrawn to follow the cursor. If the card
+		selection is invalid no visible changes are made to the window.
+		
+		How test will be performed: With a game in progress two cards will be clicked
+		one 'valid' and the other an 'invalid' selection and we will observe to make
+		sure only the 'valid' selection results in a card being highlighted	
+	\end{enumerate}
+
+	\subsection{Tests for Nonfunctional Requirements}
+	\subsubsection{Interoperability}
+	
+	\paragraph{Operating System Compatibility}
+	\begin{enumerate}
+		\item{OSX\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of OS X OSX\_VERSION.
+		
+		Input/Condition: User locates executable and launches program
+		
+		Output/Result: Either a successful launch or a message from Gatekeeper
+		alerting user that program was created by an unidentified developer
+		
+		How test will be performed: Executable is launched via double clicking to
+		test whether or not Gatekeeper feature will block normal launch. User will
+		observe whether basic functionality such as input/output and rendering of
+		application window are successful
+		
+		\item{OS2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of Ubuntu UBUNTU\_VERSION.
+		
+		Input/Condition: User locates executable and launches program
+		
+		Output/Result: Either a successful launch or a failure caused by incompatible
+		packaging, dependencies, or other causes
+		
+		How test will be performed: Executable is located and then launched via
+		terminal on the target system. User will observe whether basic
+		functionality such as input/output and rendering of application window are
+		successful
+
+		\item{OSWIN\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of Windows WIN\_VERSION.
+		
+		Input/Condition: User locates executable and launches program via double-click
+		
+		Output/Result: Depending on the system, either a successful launch or
+		application crash due to missing VC++2008 binaries (required even after 
+		building executable)
+		
+		How test will be performed: Executable is located and then launched via
+		double-click on the target system. User will observe whether basic
+		functionality such as input/output and rendering of application window are
+		successful
+	\end{enumerate}
+
+	\paragraph{Portability}
+	\begin{enumerate}
+		\item{PR1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for application is located on a removable USB drive
+		
+		Input/Condition: User launches program executable from a removable USB drive
+		
+		Output/Result: The program launches exactly as if it had been launched on
+		the same system from the internal hard drive
+		
+		How test will be performed: User inserts removable drive into a machine running a
+		supported OS then executes the executable either via double-clicking or using
+		a shell (ie. bash, command-line). User will observe whether or not the program
+		successfuly launches and operates
+
+		\item{PR2\\}
+		Type: Structural, Static, Manual
+		
+		Initial State: The VC++ 2008 binaries required for execution of the program
+		are not found on the host system
+		
+		Input: The program fails to launch on a Windows-based machine that does not
+		have the VC++ 2008 redistributable package installed
+		
+		Output: All of the users are able to successfully follow the provided
+		instructions to install the VC++ 2008 redistributable package
+
+		How test will be performed: A group of randomly selected users are given 
+		this issue and will be prompted by our application with instructions for
+		resolving it. The criteria for success of this test is that all users are able
+		to follow the instructions, install the required package, and after doing
+		so successfully launch the application \newline
+		Tolerance and Limitations: This test is limited to being performed on
+		machines running a Windows installation with minimum WIN\_VERSION.
+		If the success criteria is not met because of unforeseen errors users will
+		be advised to download and run the application from source
+	\end{enumerate}
+
+	\subsubsection{Usability}
+	\paragraph{Navigation}
+	\begin{enumerate}
+	\item{UN1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: The existing implementation is running and idle on the user's
+		machine, and is waiting for user interaction
+		
+		Input/Condition: A group of users are asked to perform each of the actions
+		defined in BOUND\_ACTIONS
+		
+		Output/Result: The majority of users successfully perform the different
+		actions, completing each within in a period of under MAX\_FIND\_TIME
+		
+		How test will be performed: A group of randomly chosen people, of different
+		ages and unspecificied level of technical expertise will be asked to perform
+		the actions defined in BOUND\_ACTIONS. The amount of time it takes them
+		to perform each task will be measured. The test will be considered successfull
+		if the majority of users are able to complete each of the individual actions
+		in under MAX\_FIND\_TIME	
+
+		\item{UN2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Users have completed and taken note of the results of the
+		previous test. Our application, PyCards, is now running and idle, waiting for
+		user interaction
+		
+		Input/Condition: The group of users are asked to perform each of the actions
+		defined in BOUND\_ACTIONS
+		
+		Output/Result: The majority of users successfully perform the different
+		actions, completing each within in a period of under MAX\_FIND\_TIME and in
+		time less than or equal to what was required to perform the same action using
+		the existing implementation
+		
+		How test will be performed: A group of randomly chosen people, of different
+		ages and unspecificied level of technical expertise will be asked to perform
+		the actions defined in BOUND\_ACTIONS. The amount of time it takes them
+		to perform each task will be measured. The test will be considered successfull
+		if the majority of users are able to complete each of the individual actions
+		in under MAX\_FIND\_TIME and in time less than or equal to time taken using
+		the existing implementation	
+	\end{enumerate}
+
+	\paragraph{Playability}
+	\begin{enumerate}
+		\item{UP1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Existing implementation is running, with a game in progress
+		
+		Input/Condition: A group of users are asked to play a game and rate it based
+		ease of use using a scale from 1-5 where 5 is very user friendly
+		
+		Output/Result: The majority of users give the game an average rating above 3
+		
+		How test will be performed: A group of randomly chosen people, of different
+		ages and unspecificied level of technical expertise will be asked the
+		questions defined in the Appendix and to give answers
+		from a scale from 1-5. The scale maps as: 1 - Very hard to use, 2 - Hard to
+		use, 3 - Some effort to use, 4 - Easy to use, 5 - Very easy to use	
+
+		\item{UP2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Users have completed the previous test. PyCards is now running,
+		with a game in progress
+		
+		Input/Condition: A group of users are asked to play the game and rate it based
+		ease of use using a scale from 1-5 where 5 is very user friendly
+		
+		Output/Result: The majority of users give the game an average rating above 3
+		and greater than or equal to the rating given in the previous test
+		
+		How test will be performed: A group of randomly chosen people, of different
+		ages and unspecificied level of technical expertise will be asked the
+		questions defined in the Appendix and to give answers
+		from a scale from 1-5. The scale maps as: 1 - Very hard to use, 2 - Hard to
+		use, 3 - Some effort to use, 4 - Easy to use, 5 - Very easy to use		
+	\end{enumerate}
+
+	\subsubsection{Product Integrity}
+	\paragraph{Resource Loading}
+	\begin{enumerate}
+		\item{RL1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: The 'cardsets' directory is missing or corrupt
+		
+		Input/Condition: When loading the application prompts users to either
+		re-download the application or download specifically the cardsets directory
+		
+		Output/Result: The majority of users are able to find the repository for the
+		program and re-download the executable or the cardset directory
+		
+		How test will be performed: A group of users selected and willing to
+		participate in this test scenario will be provided with a modified executable
+		or the program's source excluding the cardsets directory. Upon launching the
+		application will attempt to load the directory and find it missing. The
+		application must not crash but instead prompt the user to redownload it
+		
+		\item{RL2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: The 'tiles' directory is missing or corrupt
+		
+		Input/Condition: Application attempts to load images from the 'tiles' directory
+		
+		Output/Result: An exception is thrown and handled by using a solid color tile
+		as the window background.
+		
+		How test will be performed: Before launching the application the 'tiles'
+		directory will be removed from the host system. Success for this test is
+		defined by the application drawing a solid color background and continuing
+		to function normally in all other regards
+	\end{enumerate}
+	
+	\subsubsection{Security}
+	\paragraph{System Permissions}
+	\begin{enumerate}
+		\item{SP1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Application is located on the host machine's file system
+		
+		Input/Condition: User launches the application
+		
+		Output/Result: The application should launch without asking for administrative
+		(root) privileges.
+		
+		How test will be performed: On Ubuntu, the application will be launched via
+		terminal. It must launch without asking for superuser (root) permissions
+		\newline On Windows, the application should launch successfully when double-
+		clicked, not requiring the user to right-click and select 'Run as 
+		administrator'
+		\newline Tolerance: OS X implements a functionality called Gatekeeper that
+		restricts the user from opening applications from unidentified developers. 
+		This is a security protocol and our app will not attempt to circumvent it.
+		Instead, the user should be able to control-click the app to launch it, after
+		confirming their intention to bypass Gatekeeper
+	\end{enumerate}
+
+	\section{Tests for Proof of Concept}
+	\subsection{Game Logic}
+	
+	\paragraph{Card Selection}
+	\begin{enumerate}
+		\item{PC1\\}
+		Type: Structural, Dynamic, Automated
+		
+		Initial State: Klondike game is loaded
+		
+		Input: User selects card with mouse click
+		
+		Output: Clicked card is highlighted and tracks mouse cursor if valid 
+		selection. If invalid selection the click is ignored. Criteria for valid 
+		selection is defined in the SRS 
+		
+		How test will be performed: A random sequence of cards will be
+		programmatically clicked to simulate user clicks. The criteria for valid 
+		selection will be evaluated and the invocation of the correct method will be
+		the success criteria for this test
+
+		\item{PC2\\}
+		Type: Structural, Static, Manual
+		
+		Initial State: The rules of the game written using first-order logic
+		
+		Input: A sequence of possible executions that covers the different conditions
+		
+		Output: Truth value whether the result of the execution conforms to the rules
+		of the game
+		
+		How test will be performed: The logic of the game will be mapped as a set of
+		states and transitions, in a control flow diagram. Each possible execution
+		inputted represents a different path. The truth value of the execution is
+		whether or not the rules of the game accept the trace
+	\end{enumerate} 
+
+	\section{Comparison to Existing Implementation}
+		A subset of our tests compares the functionality of our program to that of the
+		existing implementation. These tests include : 
+	\begin{itemize}
+		\itemsep0em
+		\item test PC1 in Tests for Proof of Concept
+		\item test PC2 in Tests for Proof of Concept
+		\item test UN2 in Nonfunctional Requirements - Usability
+		\item test UP2 in Nonfunctional Requirements - Usability
+	\end{itemize}
+	Tests PC1 and PC2 assert that the functionality of PyCards is analogous to the
+	functionality of the existing implementation in terms of enforcing game rules
+	\newline Tests UN2 and UP2 asserts that the design of PyCards is just as, if
+	not more, user-friendly than that of the existing implementation
+		
+	
+	\section{Unit Testing Plan}
+	The unittest.py module will be used for automated unit testing for this
+	project and the coverage.py module will be used to analyze code coverage
+
+	\subsection{Unit testing of internal functions}
+	Unit tests are used to validate the intermal components such as modules, 
+	methods, and functions. In order to do this we model the compent as a series of
+	actions and transitions or by using first order logic depending on the nature of
+	the statements being executed. This behaviour can then be formalized by
+	modelling it as a control flow graph or truth table to assert that the
+	behaviour of the component conforms to the requirements placed upon it.
+	For example, in the data-related logic these requirements can also be
+	specified in some circumstances as preconditions and postconditions \newline
+	Automating the testing using unittest.py enables us to make the tests
+	repeatable and therefore provide a large series of inputs and outputs that
+	model normal behaviour, edge cases and boundary conditions. The testing is also
+	dynamic and as such we can also write helper methods to validate the state of
+	objects at the beginning and end of tests
+	
+	\subsection{Unit testing of output files}	
+	Our application is a game, and as such the output is visual in the form of the
+	graphical user interface. This will be tested through our nonfunctional
+	requirements such as usability and playability.
+
+	\bibliographystyle{plainnat}
+	\bibliography{TestPlan}
+	\newpage
+	\section{Appendix}
+
+	\subsection{Symbolic Parameters}
+	\begin{itemize}
+			\itemsep0em
+			\item COMMAND\_KEYS = \{'N', 'P', 'U', 'R', 'D', 'H', \newline 'F1', 'F2', CTRL+N,
+			CTRL+P, CTRL+Q\}
+			\item BOUND\_ACTIONS = \{newgame, pause, undo, redo, deal, help, quit\}
+			\item MAX\_FIND\_TIME = 90 seconds
+			\item NUM\_REDEALS = Unlimited
+			\item FOUNDATION\_BASE = Ace
+			\item STACK\_BASE = King
+			\item NUM\_DECKS = 1
+			\item NUM\_WASTES = 1
+			\item NUM\_FOUNDATIONS = NUM\_SUITS = 4
+			\item NUM\_NORMAL\_STACKS = 7
+			\item OSX\_VERSION = EL\_CAPITAN
+			\item UBUNTU\_VERSION = 16.04.1
+			\item WIN\_VERSION = 10
+	\end{itemize}
+
+	\subsection{Reference Tables}
+	\begin{table}[hbp]
+		\caption{\textbf{Keymapping Configurations}} \label{keymap}
+		\begin{tabularx}{\textwidth}{p{6cm}X}
+			\toprule
+			\textbf{COMMAND\_KEYS} & \textbf{BOUND\_ACTIONS} \\
+			\midrule
+			'CTRL+N', 'N', 'F2' & new\_game\\
+			'CTRL+P', 'P' & pause\_game\\
+			'CTRL+Q', 'Q' & quit\\
+			'CTRL+H', 'H', 'F1' & show\_help\\
+			'U' & undo\_move\\
+			'R' & redo\_move\\
+			'D' & deal\_card\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+
+	\subsection{Usability Survey Questions}
+	\begin{itemize}
+		\itemsep0em
+		\item How would you rate the user interface?
+		\item How user-friendly were the in-game dialogs?
+		\item How would you rate the overall game experience?
+	\end{itemize}
+\end{document}
