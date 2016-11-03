@@ -3,12 +3,12 @@
 
 import os
 from distutils.core import setup
-from pysollib.settings import VERSION
-from pysollib.settings import PACKAGE_URL
-import py2exe
+
+from src.PyCards.source.settings import PACKAGE_URL
+from src.PyCards.source.settings import VERSION
 
 if os.name == 'nt':
-    import py2exe
+    pass
 
 if os.name == 'posix':
     data_dir = 'share/PySolFC'
@@ -73,24 +73,24 @@ kw = {
     'long_description' : long_description,
     'license'      : 'GPL',
     'scripts'      : ['pysol.py'],
-    'packages'     : ['pysollib',
-                      'pysollib.configobj',
-                      'pysollib.macosx',
-                      'pysollib.__extra__winsystems',
-                      'pysollib.tk',
-                      'pysollib.tile',
-                      'pysollib.pysolgtk',
-                      'pysollib.games',
-                      'pysollib.games.special',
-                      'pysollib.games.ultra',
-                      'pysollib.games.mahjongg'],
+    'packages'     : ['source',
+                      'source.configobj',
+                      'source.macosx',
+                      'source.__extra__winsystems',
+                      'source.tk',
+                      'source.tile',
+                      'source.pysolgtk',
+                      'source.games',
+                      'source.games.special',
+                      'source.games.ultra',
+                      'source.games.mahjongg'],
     #'data_files'   : data_files,
     }
     
 if os.name == 'nt':
     kw['windows'] = [{'script': 'pysol.py',
                       'icon_resources': [(1, 'data/pysol.ico')], }]
-    kw['packages'].remove('pysollib.pysolgtk')
+    kw['packages'].remove('source.pysolgtk')
 
 setup(**kw)
 

@@ -1,5 +1,5 @@
-from pysollib.gamedb import GameInfo, GAME_DB, registerGame
-from pysollib.gametype import STYLE, CATEGORY, SKILL
+from source.gamedb import GameInfo, GAME_DB, registerGame
+from source.gametype import STYLE, CATEGORY, SKILL
 
 
 class Game:

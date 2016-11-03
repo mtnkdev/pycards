@@ -1,3 +1,3 @@
 if __name__ == '__main__':
-    from pysollib import init
+    from source import init
     init.init()

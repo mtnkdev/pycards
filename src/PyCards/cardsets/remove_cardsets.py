@@ -1,0 +1,56 @@
+files = """cardset-1880-delarue
+cardset-1880-tarot
+cardset-amber-mahjongg
+cardset-ashta-dikapala
+cardset-bavarian-half-hex
+cardset-chitrashala-dashavatara
+cardset-crystal-mahjongg
+cardset-dashavatara-ganjifa
+cardset-eight-legions
+cardset-fine-art-tarot
+cardset-flowers
+cardset-flowers-small
+cardset-genjuro
+cardset-gnome-mahjongg-1
+cardset-gnome-mahjongg-2
+cardset-gnome-mahjongg-3
+cardset-half-tarokk-s
+cardset-hanafuda
+cardset-hanafuda-200-small
+cardset-hanafuda-200-tiny
+cardset-hanafuda-200-years
+cardset-hanafuda-tiny
+cardset-hanafuda-visions
+cardset-hannover-hex
+cardset-hexadeck
+cardset-hungarian-tarokk
+cardset-hwato
+cardset-ivory-mahjongg
+cardset-ivory-mahjongg-small
+cardset-kintengu
+cardset-kintengu-small
+cardset-kmahjongg
+cardset-kmahjongg-3d
+cardset-kmahjongg-small
+cardset-logomachy
+cardset-mini-hanafuda
+cardset-mughal-ganjifa
+cardset-oonsoo
+cardset-oonsoo-small
+cardset-russian-court
+cardset-slack-gnome-mahjongg
+cardset-stone-mahjongg
+cardset-ten-avatars
+cardset-ukiyoe-fuji
+cardset-ukiyoe-fuji-tarock
+cardset-vienna-2k
+cardset-vienna-2k-small
+cardset-vienna-tarok
+cardset-xmahjongg-dorothys
+cardset-xmahjongg-small
+cardset-xmahjongg-thick
+""".splitlines()
+
+import shutil
+for directory in files:
+    shutil.rmtree(directory)

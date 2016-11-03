@@ -19,17 +19,17 @@ pysollib_path = os.path.join(sys.path[0], pysollib_dir)
 sys.path[0] = os.path.normpath(pysollib_path)
 #print sys.path
 
-from pysollib.init import fix_gettext
+from source.init import fix_gettext
 fix_gettext()
 
-import pysollib.games
-import pysollib.games.special
-import pysollib.games.ultra
-import pysollib.games.mahjongg
+import source.games
+import source.games.special
+import source.games.ultra
+import source.games.mahjongg
 
-from pysollib.gamedb import GAME_DB
-from pysollib.gametype import GI
-from pysollib.mfxutil import latin1_to_ascii
+from source.gamedb import GAME_DB
+from source.gametype import GI
+from source.mfxutil import latin1_to_ascii
 
 
 files = [

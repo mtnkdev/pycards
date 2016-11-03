@@ -1,9 +1,9 @@
 import unittest
 
-from pysollib import init
+from source import init
 init.init()
 
-from pysollib.gamedb import GAME_DB
+from source.gamedb import GAME_DB
 from tests import gameStub
 
 class TestGameDb(unittest.TestCase):

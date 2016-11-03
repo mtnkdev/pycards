@@ -3,11 +3,14 @@ Usage:
     python setup.py py2app
 """
 
-import os, sys
+import os
 import shutil
+import sys
 from subprocess import call
+
 from setuptools import setup
-from pysollib.settings import PACKAGE, VERSION
+
+from src.PyCards.source.settings import PACKAGE, VERSION
 
 # build the rule pages
 if not os.path.exists('data/html'):
@@ -72,7 +75,7 @@ OPTIONS = dict(argv_emulation=True,
                iconfile=ICON_FILE,
                resources=RESOURCES,
                frameworks=FRAMEWORKS,
-               excludes=['pysollib.pysolgtk']
+               excludes=['source.pysolgtk']
                )
 
 setup(

@@ -1,7 +1,7 @@
-from pysollib.gamedb import registerGame, GameInfo
-from pysollib.stack import *
-from pysollib.hint import *
-from pysollib.gametype import STYLE, SKILL, CATEGORY
+from source.gamedb import registerGame, GameInfo
+from source.stack import *
+from source.hint import *
+from source.gametype import STYLE, SKILL, CATEGORY
 
 class Game:
     def __init__(self):
