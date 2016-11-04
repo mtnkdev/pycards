@@ -4,7 +4,7 @@
 
 class Stack:
 
-    def __init__(self, _id, x, y, base, alternate, direction, pos, accept=True, offset=0, deck=False, sameSuit=False):
+    def __init__(self, _id, x, y, base, alternate, direction, pos, accept=True, offset=0, deck=False, sameSuit=False, remove=True, capacity=-1):
         """Initialize a stack - the placeholder for cards in a game
 
         :param _id: index of the stack relative to the game layout
@@ -20,6 +20,8 @@ class Stack:
         :param offset: amount of visual staggering of drawn cards (default 0)
         :param deck: whether the stack is a deck (default False)
         :param sameSuit: if stack only allows same suit cards (default False)
+		:param remove: whether cards can be removed from the stack (default True)
+		:param capacity: how many cards the stack can hold (default -1)
         """
 
         self.ID = _id
@@ -37,8 +39,9 @@ class Stack:
         self.sameSuit = sameSuit
         self.acceptCards = accept
         self.direction = direction
-
+		self.removeCards = remove
         self.isdeck = deck
+		self.capacity = capacity
         
     def clone (self, clone):
         clone.id = self.id
