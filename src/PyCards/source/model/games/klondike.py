@@ -2,6 +2,7 @@ from ..gamelayout import CardGame
 from ..cardsets import TYPE
 from ..stack import Stack
 
+
 class Klondike(CardGame):
 
     def __init__(self):
