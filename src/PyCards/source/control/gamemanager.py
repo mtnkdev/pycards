@@ -10,20 +10,29 @@ from ..model.games.klondike import *
 from ..model.games.hanoi import *
 from ..model.games.spider import *
 
-
 __all__ = ['dealgame', 'drawgame']
 
 _game = None
+_root = None
 
-
-def dealgame(root, game=None):
+def dealgame(root=None, game=None):
     global _game
+    global _root
+
+    if root is None:
+        assert _root is not None
+    else:
+        _root = root
+        
     if game is None:
 #        _game = Klondike()
 #        _game = Hanoi(4)
         _game = Spider()
     else:
-        _game = game
+        _game = None
+        _root.canvas.update()
+        _game = game()
+        _root.canvas.update()
 
     cardset = cardsets.Cardset.cardsets["Standard"]
     _game.cardset = cardset

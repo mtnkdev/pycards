@@ -1,45 +1,30 @@
 import Tkinter
+import tkMessageBox
+
+from ..control.gamemanager import dealgame
 
 #####   File menu commands #####
 
-def startNew():
-    pass
-
-
-def listRecent():
-    pass
-
-
-def listGames():
-    pass
-
-
-def listFavorite():
-    pass
-
-
-def addFavorite():
-    pass
-
-
-def delFavorite():
-    pass
-
+def startGame(gameclass):
+    if tkMessageBox.askyesno("", "Do you want to start a new game?", default="yes"):
+        dealgame(game=gameclass)
 
 def saveGame():
     pass
 
-
 def loadGame():
     pass
-
 
 def quitGame():
     pass
 
-
 def showGames():
     pass
+    
+    
+def cardset():
+    import tkFileDialog
+    tkFileDialog.askdirectory(initiadir="./cardsets",title="Choose a cardset", mustexist=True)
 
 #####   End file commands   #####
 

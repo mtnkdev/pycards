@@ -2,9 +2,12 @@ from ..gamelayout import CardGame
 from ..card import StandardCard
 from ..cardsets import TYPE
 from ..stack import Stack
+from ..database import DB
 
 
 class Hanoi(CardGame):
+
+    name = "Hanoi"
 
     def __init__(self, num_cards):
         """Initialize standard properties of a 4-card Hanoi game

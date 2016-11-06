@@ -1,6 +1,7 @@
 from Tkinter import Menu
 
 import menuactions as Action
+from ..model.database import DB
 
 
 def createMenu(root):
@@ -20,7 +21,8 @@ def createMenu(root):
 
 def _addMenuGames(menu, games, command=None):
     for game in sorted(games, key=lambda game : game.name):
-        menu.add_command(label=game.name, command=command)
+        cmd = lambda args=game: Action.startGame(game)
+        menu.add_command(label=game.name, command=cmd)
 
 def _addMenuGameType(menu, label, gameSet=None):
 
@@ -43,15 +45,13 @@ def _createFileMenu(menubar):
 
     # Adds selectable dropdown items
     # @command is a pointer to function
-    fileMenu.add_command(label="New", command=Action.startNew)
-    fileMenu.add_command(label="Recents", command=Action.listRecent)
+    fileMenu.add_command(label="New", command=lambda: Action.startGame())
     fileMenu.add_command(label="Load...", command=Action.loadGame)
     fileMenu.add_command(label="Save...", command=Action.saveGame)
     fileMenu.add_command(label="Exit", command=Action.quitGame)
 
 
 def _createSelectMenu(menubar):
-    return None
     # Creates a submenu (another Menu instance)
     # tearoff stops menu floating
     selectMenu = Menu(menubar, tearoff=0)
@@ -59,62 +59,49 @@ def _createSelectMenu(menubar):
 
     selectMenu.add_command(label="All Games...", command=Action.showGames)
 
-    def addPopular(parent):
-        popStyle = Menu(parent, tearoff=0)
-        selectMenu.add_cascade(label="Popular games", menu=popStyle)
-        select_func = lambda gi: gi.game_flags & STYLE.POPULAR
-        popularGames = filter(select_func, gamedb.GAME_DB.getAllGames())
-        _addMenuGames(popStyle, popularGames)
-
-    def addFrenchGames(parent):
-        frenchStyle = _addMenuGameType(parent, "French games")
-        for name, gameT in FILTER.FRENCH:
-            gameList = []
-            for game in gamedb.GAME_DB.getAllGames():
-                if gameT(game):
-                    gameList.append(game)
-            _addMenuGameType(frenchStyle, name, gameList)
-
-    def addOrientalGames(parent):
-        orientalStyle = _addMenuGameType(parent, "Oriental games")
-        for name, gameT in FILTER.ORIENTAL:
-            gameList = []
-            for game in gamedb.GAME_DB.getAllGames():
-                if gameT(game):
-                    gameList.append(game)
-            _addMenuGameType(orientalStyle, name, gameList)
-
-    def addSpecialGames(parent):
-        specialStyle = _addMenuGameType(parent, "Special games")
-        for name, gameT in FILTER.SPECIAL:
-            gameList = []
-            for game in gamedb.GAME_DB.getAllGames():
-                if gameT(game):
-                    gameList.append(game)
-            _addMenuGameType(specialStyle, name, gameList)
+    _addMenuGameType(selectMenu, "Freecell", get_games("Freecell"))
+    _addMenuGameType(selectMenu, "Hanoi", get_games("Hanoi"))
+    _addMenuGameType(selectMenu, "Klondike", get_games("Klondike"))
+    _addMenuGameType(selectMenu, "Memory", get_games("Memory"))
+    _addMenuGameType(selectMenu, "Spider", get_games("Spider"))
+##    freecell = Menu(selectMenu, tearoff=0)
+##    selectMenu.add_cascade(label="Freecell", menu=freecell)
+##    for game in get_games("Freecell"):
+##        freecell.add_command(label=game.name, command=lambda args=game: Action.startGame(game))
+##    
+##    
+##    hanoi = Menu(selectMenu, tearoff=0)
+##    selectMenu.add_cascade(label="Hanoi", menu=hanoi)
+##    for game in get_games("Hanoi"):
+##        hanoi.add_command(label=game, command=lambda args=game: Action.startGame(game))
+##    
+##    klondike = Menu(selectMenu, tearoff=0)
+##    selectMenu.add_cascade(label="Klondike", menu=klondike)
+##    for game in get_games("Klondike"):
+##        klondike.add_command(label=game, command=lambda args=game: Action.startGame(game))
+##    
+##    memory = Menu(selectMenu, tearoff=0)
+##    selectMenu.add_cascade(label="Memory", menu=memory)
+##    for game in get_games("Memory"):
+##        memory.add_command(label=game, command=lambda args=game: Action.startGame(game))
+##    
+##    spider = Menu(selectMenu, tearoff=0)
+##    selectMenu.add_cascade(label="Spider", menu=spider)
+##    for game in get_games("Spider"):
+##        spider.add_command(label=game, command=lambda args=game: Action.startGame(game))
 
 
-    addPopular(selectMenu)
-    addFrenchGames(selectMenu)
-    addOrientalGames(selectMenu)
-    addSpecialGames(selectMenu)
+def get_games(gametype):
+    return [game for game in DB.get_games() if game.name.count(gametype) > 0]
 
-    # for name, gameSelector in gamedb.GI.SELECT_GAME_BY_TYPE:
-    #     subMenu = Menu(gameStyle, tearoff=0)
-    #     gameStyle.add_cascade(label=name,menu=subMenu)
+##    def addPopular(parent):
+##        popStyle = Menu(parent, tearoff=0)
+##        selectMenu.add_cascade(label="Popular games", menu=popStyle)
+##        select_func = lambda gi: gi.game_flags & STYLE.POPULAR
+##        popularGames = filter(select_func, gamedb.GAME_DB.getAllGames())
+##        _addMenuGames(popStyle, popularGames)
 
 
-
-    #for name in os.listdir(path):
-    #    if name.endswith(".py") and not name.startswith("_"):
-    #        gameStyle.add_command(label=name[:-3], command=None)
-
-    # gameType = []
-    # gameType.append(Menu(Menu, tearoff=0))
-    # for gtype in gameType:
-    #     ##gameStyle.add_cascade(gtype) fix type error
-    #     for game in getGames(gtype):
-    #         ##gtype.add(label="game.name", command=startGame(game.name)
 
 
 def _createEditMenu(menubar):

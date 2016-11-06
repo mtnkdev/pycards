@@ -1,9 +1,12 @@
 from ..gamelayout import CardGame
 from ..cardsets import TYPE
 from ..stack import Stack
+from ..database import DB
 
 
 class Spider(CardGame):
+
+    name = "Spider"
 
     def __init__(self):
         """Initialize standard properties of a Spider Solitaire game"""
