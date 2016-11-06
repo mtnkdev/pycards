@@ -6,6 +6,7 @@ source directory
 """
 
 import os
+import Tkinter
 
 from cardsets import TYPE
 from card import StandardCard as Card
@@ -37,6 +38,8 @@ def load_cardsets():
 
     for folder in cardsets:
         config = os.path.join(path, folder)
+        if not os.path.isdir(config):
+            continue
         config = os.path.join(config, "config.txt")
         f = open(config, "r")
         text = f.readlines()
@@ -45,6 +48,8 @@ def load_cardsets():
 
         try:
             extension = info[2]
+            if extension == ".png":
+                continue
         except IndexError:
             extension = ".gif"
 
@@ -87,6 +92,8 @@ def load_cardsets():
             version = info[1]
 
             currCardset = Cardset(folder, name, ctype, width, height, style, nationality, year, extension)
+            imgpath = os.path.join(path, folder)
+            currCardset.backimage = Tkinter.PhotoImage(file=os.path.join(imgpath, "bottom01" + extension))
             Cardset.cardsets[name] = currCardset
             set_rank_and_suit(currCardset)
 
@@ -96,3 +103,5 @@ def load_cardsets():
 
         except IndexError:
             print "Invalid cardset configuration for " + folder
+
+    print len(Cardset.cardsets.keys())

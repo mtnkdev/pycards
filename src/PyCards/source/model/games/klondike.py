@@ -7,7 +7,7 @@ class Klondike(CardGame):
 
     def __init__(self):
         """Initialize standard properties of a Klondike game"""
-        self.type = TYPE.FRENCH
+        self.type = TYPE.STANDARD
         self.name = Klondike
         self.deckID = -1
         self.wasteID = -1

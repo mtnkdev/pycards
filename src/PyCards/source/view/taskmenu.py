@@ -1,8 +1,6 @@
 from Tkinter import Menu
 
 import menuactions as Action
-from src.PyCards.source.obsolete import gamedb
-from src.PyCards.source.obsolete.gametype import FILTER, STYLE
 
 
 def createMenu(root):
@@ -53,6 +51,7 @@ def _createFileMenu(menubar):
 
 
 def _createSelectMenu(menubar):
+    return None
     # Creates a submenu (another Menu instance)
     # tearoff stops menu floating
     selectMenu = Menu(menubar, tearoff=0)

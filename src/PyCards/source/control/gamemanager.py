@@ -7,6 +7,8 @@ from ..model.stack import move_cards
 # FIXME to be removed once game creation is done properly
 # Game imports
 from ..model.games.klondike import *
+from ..model.games.hanoi import *
+
 
 __all__ = ['dealgame', 'drawgame']
 
@@ -17,12 +19,18 @@ def dealgame(root, game=None):
     global _game
     if game is None:
         _game = Klondike()
+    #_game = Hanoi()
     else:
         _game = game
 
-    cardset = dataloader.Cardset.cardsets["Standard"]
+    cardset = cardsets.Cardset.cardsets["Standard"]
+    _game.cardset = cardset
     dealer = Dealer(_game, cardset)
     _game.create()
+    if hasattr(_game, 'startDeal'):
+        _game.startDeal(cardset)
+        return None
+
     dealer.cardgen()
     dealer.dealCards()
 
@@ -31,8 +39,10 @@ def drawgame(root):
     global _game
     stackID = 0
     for stack in _game.stacks:
+        label = ttk.Label(root.canvas, image=_game.cardset.backimage, borderwidth=0)
+        label.place(x=stack.x,y=stack.y)
         for num in range(len(stack.cards)):
-            label = ttk.Label(root.canvas, image=stack.cards[num].setImage(), borderwidth=0)
+            label = ttk.Label(root.canvas, image=stack.cards[num].get_image(), borderwidth=0)
             setattr(label, "rank", stack.cards[num].rank)
             setattr(label, "suit", stack.cards[num].suit)
             setattr(label, "color", stack.cards[num].color)

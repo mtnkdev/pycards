@@ -5,6 +5,7 @@ from ..view import progressbar as loader
 from ..view import taskmenu as menu
 from ..view import window
 from ..control import gamemanager as mgr
+from ..model import assets
 
 
 class App:
@@ -14,6 +15,7 @@ class App:
         self.frame = ttk.Frame(master)
         self.frame.pack()
         loader.create(root, 0.5)
+        assets.load_cardsets()
 
 
 def mainloop():
