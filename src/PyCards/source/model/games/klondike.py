@@ -8,7 +8,7 @@ class Klondike(CardGame):
     def __init__(self):
         """Initialize standard properties of a Klondike game"""
         self.type = TYPE.STANDARD
-        self.name = Klondike
+        self.name = "Klondike"
         self.deckID = -1
         self.wasteID = -1
         self.stacks = []
@@ -18,7 +18,7 @@ class Klondike(CardGame):
 
     # Stack(id, x, y, base, alternate, direction, pos, accept = True)
     def create(self):
-        """Docstring"""
+        """Create the stacks for the Klondike game"""
 
         # Create deck and waste stacks
         self.deckID = 0
@@ -49,10 +49,13 @@ class Klondike(CardGame):
             stackCount += 1
 
     def deal(self):
-        """Docstring"""
+        """Perform an in-game deal"""
 
         deck = self.stacks[self.deckID]
         waste = self.stacks[self.wasteID]
+        if len(deck.cards == 0):
+            raise NotImplementedError("Recycling deck hasn't been implemented yet.")
+        
         for i in range(1, 4):
             card = deck.cards[-i]
             cardImg = deck.cardWidgets[-i]

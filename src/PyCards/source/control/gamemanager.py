@@ -8,6 +8,7 @@ from ..model.stack import move_cards
 # Game imports
 from ..model.games.klondike import *
 from ..model.games.hanoi import *
+from ..model.games.spider import *
 
 
 __all__ = ['dealgame', 'drawgame']
@@ -18,8 +19,9 @@ _game = None
 def dealgame(root, game=None):
     global _game
     if game is None:
-        _game = Klondike()
-    #_game = Hanoi()
+#        _game = Klondike()
+#        _game = Hanoi(4)
+        _game = Spider()
     else:
         _game = game
 
@@ -62,12 +64,10 @@ def _dragCard(event):
         return
     ID = event.widget.stackID
     if event.widget.cardNum == len(_game.stacks[ID].cards) - 1:
-        # print "drag1"
         x = event.widget.winfo_x() + event.x - event.widget.winfo_width()/2
         y = event.widget.winfo_y() + event.y - event.widget.winfo_height()/2
         event.widget.place(x=x, y=y)
     else:
-        # print "drag1+"
         cardID = event.widget.cardNum
         for cardImg in _game.stacks[ID].cardWidgets[cardID:]:
             x = cardImg.winfo_x() + event.x - cardImg.winfo_width() / 2
@@ -140,22 +140,28 @@ def _valid_drop(event, destID):
     if not stack.acceptCards:
         return False
 
-    if len(stack.cards) == 0 and event.widget.rank == stack.base:
+    if stack.base > -1:
+        if len(stack.cards) == 0 and event.widget.rank == stack.base:
+            return True
+
+        if len(stack.cards) == 0 and event.widget.rank != stack.base:
+            return False
+        
+    if len(stack.cards) == 0:
         return True
-
-    if len(stack.cards) == 0 and event.widget.rank != stack.base:
-        return False
-
+    
     bottom = stack.cards[-1]
 
     if stack.alternates and bottom.color == event.widget.color:
         return False
-    elif not stack.alternates and bottom.color != event.widget.color:
-        return False
+    #elif not stack.alternates and bottom.color != event.widget.color:
+#        return False
 
     if stack.sameSuit and bottom.suit != event.widget.suit:
         return False
 
+    # FIXME this only allows builing +1/-1 directions
+    # Hanoi allows you to skip rank
     if event.widget.rank - bottom.rank != stack.direction:
         return False
 

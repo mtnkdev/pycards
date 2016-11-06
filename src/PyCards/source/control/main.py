@@ -32,7 +32,7 @@ def start():
     """Start the main execution loop"""
     global root
     root = Tkinter.Tk()
-    root.geometry("800x600")
+    root.geometry("900x600")
     root.title("PyCards")
 
     menu.createMenu(root)
