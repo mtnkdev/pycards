@@ -93,7 +93,12 @@ def load_cardsets():
 
             currCardset = Cardset(folder, name, ctype, width, height, style, nationality, year, extension)
             imgpath = os.path.join(path, folder)
-            currCardset.backimage = Tkinter.PhotoImage(file=os.path.join(imgpath, "bottom01" + extension))
+
+            # bottom02 looks better so try that first
+            bottom_img = os.path.join(imgpath, "bottom02" + extension)
+            if not os.path.isfile(bottom_img):                    
+                bottom_img = os.path.join(imgpath, "bottom01" + extension)                
+            currCardset.backimage = Tkinter.PhotoImage(file=bottom_img)
             Cardset.cardsets[name] = currCardset
             set_rank_and_suit(currCardset)
 
@@ -104,4 +109,3 @@ def load_cardsets():
         except IndexError:
             print "Invalid cardset configuration for " + folder
 
-    print len(Cardset.cardsets.keys())
