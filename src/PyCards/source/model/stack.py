@@ -181,10 +181,12 @@ class Stack:
 
 def move_cards(game, stackID, destID, cardID):
     """Move cards and their associated label image to the destination stack"""
+    
     for cardImg in game.stacks[stackID].cardWidgets[cardID:]:
         cardImg.stackID = destID
         game.stacks[stackID].cardWidgets.remove(cardImg)
         game.stacks[destID].cardWidgets.append(cardImg)
+        cardImg.cardNum = len(game.stacks[destID].cardWidgets)-1
         cardImg.place(x=game.stacks[destID].x,
             y=game.stacks[destID].y + cardImg.cardNum * game.stacks[destID].offset)
 

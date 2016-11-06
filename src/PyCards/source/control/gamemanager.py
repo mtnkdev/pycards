@@ -103,7 +103,6 @@ def _legalmove(event):
     # print "drop", drop
     if select and drop:
         move_cards(_game, ID, destID, event.widget.cardNum)
-        # print "moved"
     else:
         cardID = event.widget.cardNum
         for cardImg in _game.stacks[ID].cardWidgets[cardID:]:
