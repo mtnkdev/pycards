@@ -1,5 +1,6 @@
 import Tkinter
 import tkMessageBox
+import tkFileDialog
 
 from ..control.gamemanager import dealgame
 
@@ -21,12 +22,13 @@ def quitGame():
 def showGames():
     pass
     
-    
-def cardset():
-    import tkFileDialog
-    tkFileDialog.askdirectory(initiadir="./cardsets",title="Choose a cardset", mustexist=True)
-
 #####   End file commands   #####
+
+def select_cardset():
+    tkFileDialog.askdirectory(initialdir="./cardsets",title="Choose a cardset", mustexist=True)
+
+def select_tiles():
+   tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a background", multiple=False)
 
 
 #####   Help commands   #####

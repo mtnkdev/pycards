@@ -94,19 +94,10 @@ def _createSelectMenu(menubar):
 def get_games(gametype):
     return [game for game in DB.get_games() if game.name.count(gametype) > 0]
 
-##    def addPopular(parent):
-##        popStyle = Menu(parent, tearoff=0)
-##        selectMenu.add_cascade(label="Popular games", menu=popStyle)
-##        select_func = lambda gi: gi.game_flags & STYLE.POPULAR
-##        popularGames = filter(select_func, gamedb.GAME_DB.getAllGames())
-##        _addMenuGames(popStyle, popularGames)
-
-
 
 
 def _createEditMenu(menubar):
     editMenu = Menu(menubar, tearoff=0)
-    menubar.add_cascade(label="Edit", menu=editMenu)
     editMenu.add_command(label="Undo", command=None)
     editMenu.add_command(label="Redo", command=None)
     editMenu.add_command(label="Redo All", command=None)
@@ -121,9 +112,7 @@ def _createGameMenu(menubar):
     gameMenu.add_command(label="Auto Drop", command=None)
     gameMenu.add_command(label="Pause", command=None)
     gameMenu.add_command(label="Status", command=None)
-    gameMenu.add_command(label="Comments", command=None)
     gameMenu.add_command(label="Statistics", command=None)
-    gameMenu.add_command(label="Log", command=None)
     pass
 
 
@@ -140,7 +129,7 @@ def _createOptionMenu(menubar):
     optionMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Options", menu=optionMenu)
     optionMenu.add_command(label="Sound", command=None)
-    optionMenu.add_command(label="Cardset", command=None)
+    optionMenu.add_command(label="Cardset", command=Action.select_cardset)
     optionMenu.add_command(label="Table Tile", command=None)
     optionMenu.add_cascade(label="Card Background", command=None)
     optionMenu.add_cascade(label="Card View", command=None)
@@ -150,7 +139,6 @@ def _createOptionMenu(menubar):
     optionMenu.add_command(label="Colors", command=None)
     optionMenu.add_cascade(label="Set Theme", command=None)
     optionMenu.add_cascade(label="Toolbar", command=None)
-    optionMenu.add_cascade(label="Save Game Geometry", command=None)
     
     
     pass
