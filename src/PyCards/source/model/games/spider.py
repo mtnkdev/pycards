@@ -59,16 +59,16 @@ class Spider(CardGame):
             if len(self.stacks[i].cards) == 0:
                 pass # all stacks must have at least one card before dealing
 
-        for i in range(self.foundations, self.foundations+self.numrows):
+        for i in range(self.foundations + 1, self.foundations+self.numrows + 1):
+            if len(deck.cards) == 0:
+                return None # break because we can't deal anymore cards
             card = deck.cards[-1]
             cardImg = deck.cardWidgets[-1]
             deck.cards.pop()
             self.stacks[i].cards.append(card)
             deck.cardWidgets.pop()
             self.stacks[i].cardWidgets.append(cardImg)
-        for cardImg in self.stacks[i].cardWidgets:
+            cardImg.cardNum = len(self.stacks[i].cardWidgets) - 1
             cardImg.place(x=self.stacks[i].x,
                 y=self.stacks[i].y + cardImg.cardNum * self.stacks[i].offset)
-        card = deck.cardWidgets[-1]
-        card.place(x=deck.x,
-            y=deck.y + card.cardNum * deck.offset)
+            
