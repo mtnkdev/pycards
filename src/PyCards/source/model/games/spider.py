@@ -71,4 +71,6 @@ class Spider(CardGame):
             cardImg.cardNum = len(self.stacks[i].cardWidgets) - 1
             cardImg.place(x=self.stacks[i].x,
                 y=self.stacks[i].y + cardImg.cardNum * self.stacks[i].offset)
-            
+
+
+DB.add_game("Spider", Spider)

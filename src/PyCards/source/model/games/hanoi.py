@@ -40,3 +40,5 @@ class Hanoi(CardGame):
     def deal(self):
         """No in-game deals present in Hanoi games"""
         pass
+
+DB.add_game("Hanoi", Hanoi) 

@@ -69,3 +69,5 @@ class Klondike(CardGame):
         card = deck.cardWidgets[-1]
         card.place(x=deck.x,
             y=deck.y + card.cardNum * deck.offset)
+
+DB.add_game("Klondike", Klondike)
