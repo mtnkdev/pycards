@@ -11,22 +11,21 @@ class FreeCell(CardGame):
         self.stacks = []
         self.numrows = 8
         self.numcards = 52
+		self.cells = 4
         self.foundations = 4
 
 	# Stack(id, x, y, base, alternate, direction, pos, accept = True)
     def create(self):
-        """Docstring"""
+        """Create game board"""
 
 		stackCount = 0
 		
         # Initialize 
-		for num in range(self.foundations):
+		for num in range(self.cells):
             _x = stackCount * 80 + 10
             _y = 50
             self.stacks.append(Stack(stackCount, _x, _y, -1, False, 0, [], capacity=1)) # create foundation stacks
             stackCount += 1
-        # self.stacks.append(Stack(0, 50, 50, -1, False, 0, [-1]*24, False, deck=True)) # Deck
-        # self.stacks.append(Stack(1, 100 + 50, 50, -1, False, 0, [], False))  # Waste
 
         # Create foundation stacks
         for num in range(self.foundations):
@@ -48,3 +47,12 @@ class FreeCell(CardGame):
 
             self.stacks.append(Stack(stackCount, _x, _y, -1, True, -1, cards(), offset=15))  # create normal stacks
             stackCount += 1
+			
+	# Moving cards.
+	def check_move (self, cards):
+		"""Check if cards can be moved"""
+		free_cells = 1
+		for num in range(len(self.stacks)):
+			if (!((self.cells<=num and num < self.cells+self.foundations)) and stack[num].cards==0):
+				free_cells += 1
+		return (len(cards) > free_cells)
