@@ -6,18 +6,23 @@ from ..control.gamemanager import dealgame
 
 #####   File menu commands #####
 
+
 def startGame(gameclass):
     if tkMessageBox.askyesno("", "Do you want to start a new game?", default="yes"):
         dealgame(game=gameclass)
 
+
 def saveGame():
     pass
+
 
 def loadGame():
     pass
 
+
 def quitGame():
     pass
+
 
 def showGames():
     pass
@@ -27,20 +32,25 @@ def showGames():
 def select_cardset():
     tkFileDialog.askdirectory(initialdir="./cardsets",title="Choose a cardset", mustexist=True)
 
-def select_tiles():
+
+def select_tile():
    tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a background", multiple=False)
 
 
 #####   Help commands   #####
 
+
 def showContents():
     pass
+
 
 def showGuide():
     pass
 
+
 def showRules():
     pass
+
 
 def showLicense():
     window = Tkinter.Toplevel(width=400, height=500, padx=10, pady=30, background="darkblue")
@@ -62,6 +72,7 @@ def showLicense():
     scroll.config(command=window.msg.yview)
     window.msg.config(yscrollcommand=scroll.set)
     window.update()
+
 
 def showInfo():
     window = Tkinter.Toplevel(width=400, height=400)

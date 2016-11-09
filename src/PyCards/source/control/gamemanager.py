@@ -2,7 +2,6 @@ import ttk
 
 from ..control.dealer import Dealer
 from ..model import cardsets
-from ..model.stack import move_cards
 
 # FIXME to be removed once game creation is done properly
 # Game imports
@@ -15,6 +14,7 @@ __all__ = ['dealgame', 'drawgame']
 _game = None
 _root = None
 
+
 def dealgame(root=None, game=None):
     global _game
     global _root
@@ -25,9 +25,9 @@ def dealgame(root=None, game=None):
         _root = root
         
     if game is None:
-#        _game = Klondike()
+        _game = Klondike()
 #        _game = Hanoi(4)
-        _game = Spider()
+#        _game = Spider()
     else:
         _game = None
         _root.canvas.update()
@@ -67,21 +67,25 @@ def drawgame(root):
         stackID += 1
     return None
 
+
 def _dragCard(event):
     global _game
     if not _valid_selection(event):
-        return
+        return None
+
     ID = event.widget.stackID
     if event.widget.cardNum == len(_game.stacks[ID].cards) - 1:
         x = event.widget.winfo_x() + event.x - event.widget.winfo_width()/2
         y = event.widget.winfo_y() + event.y - event.widget.winfo_height()/2
         event.widget.place(x=x, y=y)
+        event.widget.lift()
     else:
         cardID = event.widget.cardNum
         for cardImg in _game.stacks[ID].cardWidgets[cardID:]:
             x = cardImg.winfo_x() + event.x - cardImg.winfo_width() / 2
             y = cardImg.winfo_y() + event.y - cardImg.winfo_height() / 2
             cardImg.place(x=x, y=y)
+            cardImg.lift()
     return None
 
 
@@ -122,10 +126,17 @@ def _legalmove(event):
 def _valid_selection(event):
     stackID = event.widget.stackID
     cardNum = event.widget.cardNum
-    stack = _game.stacks[stackID]
+    try:
+        return _game.valid_selection(stackID, cardNum)
+    except AttributeError:
+        pass
 
+    stack = _game.stacks[stackID]
     if stack.isdeck:
         _game.deal()
+        for stack in _game.stacks:
+            for card in stack.cardWidgets:
+                card.lift()
         return False
 
     if cardNum == len(stack.cards) - 1:
@@ -137,13 +148,18 @@ def _valid_selection(event):
             if stack.cards[i].rank >= prev.rank or \
                 stack.cards[i].color == prev.color:
                 return False
+            prev = stack.cards[i]
         return True
-    # print "Invalid selection"
     return False
 
 
 def _valid_drop(event, destID):
     stack = _game.stacks[destID]
+
+    try:
+        return _game.valid_drop(event.widget.stackID, destID, event.widget.cardNum)
+    except AttributeError:
+        pass
 
     if not stack.acceptCards:
         return False
@@ -162,14 +178,10 @@ def _valid_drop(event, destID):
 
     if stack.alternates and bottom.color == event.widget.color:
         return False
-    #elif not stack.alternates and bottom.color != event.widget.color:
-#        return False
 
     if stack.sameSuit and bottom.suit != event.widget.suit:
         return False
 
-    # FIXME this only allows builing +1/-1 directions
-    # Hanoi allows you to skip rank
     if event.widget.rank - bottom.rank != stack.direction:
         return False
 

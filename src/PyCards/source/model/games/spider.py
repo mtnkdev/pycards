@@ -1,6 +1,6 @@
 from ..gamelayout import CardGame
 from ..cardsets import TYPE
-from ..stack import Stack
+from ..stack import Stack, move_cards
 from ..database import DB
 
 
@@ -71,9 +71,50 @@ class Spider(CardGame):
             self.stacks[i].cards.append(card)
             deck.cardWidgets.pop()
             self.stacks[i].cardWidgets.append(cardImg)
+            cardImg.stackID = self.stacks[i].ID
             cardImg.cardNum = len(self.stacks[i].cardWidgets) - 1
             cardImg.place(x=self.stacks[i].x,
                 y=self.stacks[i].y + cardImg.cardNum * self.stacks[i].offset)
 
+    def update(self):
+        straight = True
+        for i in range(self.foundations+1, len(self.stacks)):
+            stack = self.stacks[i]
+            if stack.cards[0].rank == 1 and stack.cards[-1].rank == 13:
+                straight = True
+                for card in stack.cards:
+                    if card.suit != stack.cards[0].suit:
+                        straight = False
+                if straight:
+                    stackID = -1
+                    for j in range(1, self.foundations+1):
+                        if len(self.stacks[j].cards) == 0:
+                            stackID = j
+                            break
+                    if stackID != -1:
+                        move_cards(self, i, stackID, 0)
+                    else:
+                        raise ValueError, "Invalid card positions"
+
+    def valid_selection(self, stackID, cardNum):
+        stack = self.stacks[stackID]
+
+        if stack.isdeck:
+            self.deal()
+            for stack in self.stacks:
+                for card in stack.cardWidgets:
+                    card.lift()
+            return False
+
+        if cardNum == len(stack.cards) - 1:
+            return True
+
+        prev = stack.cards[cardNum]
+        for i in range(cardNum+1, len(stack.cards)):
+            if stack.cards[i].rank >= prev.rank or \
+                            stack.cards[i].suit != prev.suit:
+                return False
+            prev = stack.cards[i]
+        return True
 
 DB.add_game("Spider", Spider)

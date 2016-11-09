@@ -1,6 +1,7 @@
 import random
 from ..model.card import StandardCard
 
+
 class Dealer:
 
     def __init__(self, game, cardset):
@@ -20,9 +21,9 @@ class Dealer:
         self.shuffle(self.deck)
 
     def shuffle(self, cards):
-        cards.reverse()
+        #cards.reverse()
         #pass
-        #random.shuffle(cards)
+        random.shuffle(cards)
 
     def dealCards(self):
         stacks = self.game.stacks

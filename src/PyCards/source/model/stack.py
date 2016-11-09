@@ -190,6 +190,9 @@ def move_cards(game, stackID, destID, cardID):
         cardImg.place(x=game.stacks[destID].x,
             y=game.stacks[destID].y + cardImg.cardNum * game.stacks[destID].offset)
 
+    for card in game.stacks[destID].cardWidgets:
+        card.lift()
+
     for card in game.stacks[stackID].cards[cardID:]:
         game.stacks[destID].cards.append(card)
         game.stacks[stackID].cards.remove(card)

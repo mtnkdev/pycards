@@ -37,8 +37,14 @@ class Hanoi(CardGame):
         for rank in range(0,self.numcards):
             self.stacks[0].cards[rank] = (StandardCard(cardset, rank, "h"))
 
-                          
+    def valid_drop(self, stackID, destID, cardNum):
 
+        if len(self.stacks[destID].cards) == 0:
+            return True
+        card = self.stacks[stackID].cards[cardNum]
+        if self.stacks[destID].cards[-1].rank < card.rank:
+            return False
+        return True
 
     def deal(self):
         """No in-game deals present in Hanoi games"""

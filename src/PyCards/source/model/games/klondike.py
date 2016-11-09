@@ -56,8 +56,8 @@ class Klondike(CardGame):
 
         deck = self.stacks[self.deckID]
         waste = self.stacks[self.wasteID]
-        if len(deck.cards == 0):
-            raise NotImplementedError("Recycling deck hasn't been implemented yet.")
+        if len(deck.cards) == 0:
+            return # raise NotImplementedError("Recycling deck hasn't been implemented yet.")
         
         for i in range(1, 4):
             card = deck.cards[-i]
@@ -66,6 +66,8 @@ class Klondike(CardGame):
             waste.cards.append(card)
             deck.cardWidgets.pop()
             waste.cardWidgets.append(cardImg)
+            cardImg.cardNum = len(waste.cardWidgets) - 1
+            cardImg.stackID = waste.ID
         for cardImg in waste.cardWidgets:
             cardImg.place(x=waste.x,
                 y=waste.y + cardImg.cardNum * waste.offset)

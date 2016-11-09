@@ -130,7 +130,7 @@ def _createOptionMenu(menubar):
     menubar.add_cascade(label="Options", menu=optionMenu)
     optionMenu.add_command(label="Sound", command=None)
     optionMenu.add_command(label="Cardset", command=Action.select_cardset)
-    optionMenu.add_command(label="Background", command=select_tile)
+    optionMenu.add_command(label="Background", command=Action.select_tile)
     optionMenu.add_cascade(label="Card Background", command=None)
     optionMenu.add_cascade(label="Animations", command=None)
     optionMenu.add_cascade(label="Mouse", command=None)
@@ -138,9 +138,6 @@ def _createOptionMenu(menubar):
     optionMenu.add_command(label="Colors", command=None)
     optionMenu.add_cascade(label="Set Theme", command=None)
     optionMenu.add_cascade(label="Toolbar", command=None)
-    
-    
-    pass
 
 
 def _createHelpMenu(menubar):
