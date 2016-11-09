@@ -3,10 +3,13 @@ import math
 from ..gamelayout import CardGame
 from ..cardsets import TYPE
 from ..stack import Stack
+from ..database import DB
 
 
 class FreeCell(CardGame):
-    
+
+    name = "FreeCell"
+
     def __init__(self):
         """Initialize standard properties of a FreeCell game"""
         self.type = TYPE.STANDARD
@@ -17,7 +20,6 @@ class FreeCell(CardGame):
         self.cells = 4
         self.foundations = 4
 
-    # Stack(id, x, y, base, alternate, direction, pos, accept = True)
     def create(self):
         """Create game board"""
 
@@ -43,7 +45,7 @@ class FreeCell(CardGame):
             _y = 250
 
             def cards():
-                if 0 <= num and num <= 3:
+                if 0 <= num <= 3:
                     return [1]*7
                 else:
                     return [1]*6
@@ -52,7 +54,7 @@ class FreeCell(CardGame):
             stackCount += 1
             
     # Moving cards.
-    def check_move (self, cards):
+    def valid_selection (self, stackID, cardNum):
         """Check if cards can be moved"""
         empty_cells = 0
         for i in range(self.cells):
@@ -64,10 +66,17 @@ class FreeCell(CardGame):
             if len(self.stacks[i].cards) == 0:
                 empty_stacks += 1
 
-        return len(cards) < (1 + empty_cells * math.pow(empty_stacks, 2))
+        num_cards = len(self.stacks[stackID].cards) - cardNum
+        return num_cards <= ((1 + empty_cells) * math.pow(2, empty_stacks))
 
         # free_move = 1
         # for num in range(len(self.stacks)):
         #     if !((self.cells <= num and num < self.cells + self.foundations)) and stack[num].cards == 0:
         #         free_cells += 1
         # return len(cards) > free_cells
+
+    def deal(self):
+        """No in-game deals for FreeCell games"""
+        pass
+
+DB.add_game("FreeCell", FreeCell)

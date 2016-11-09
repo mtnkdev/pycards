@@ -44,8 +44,7 @@ class Stack:
         self.capacity = capacity
         
     def clone (self, clone):
-        clone.id = self.id
-        clone.game = self.game
+        clone.ID = self.ID
         # clone.setRestrictions(self.getRestrictions)
 
         #

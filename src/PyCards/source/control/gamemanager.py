@@ -8,6 +8,7 @@ from ..model import cardsets
 from ..model.games.klondike import *
 from ..model.games.hanoi import *
 from ..model.games.spider import *
+from ..model.games.freecell import *
 
 __all__ = ['dealgame', 'drawgame']
 
@@ -25,9 +26,10 @@ def dealgame(root=None, game=None):
         _root = root
         
     if game is None:
-        _game = Klondike()
+#        _game = Klondike()
 #        _game = Hanoi(4)
 #        _game = Spider()
+        _game = FreeCell()
     else:
         _game = None
         _root.canvas.update()
