@@ -2,7 +2,7 @@ import Tkinter
 import tkMessageBox
 import tkFileDialog
 
-from ..control.gamemanager import dealgame
+from gamemanager import dealgame
 
 #####   File menu commands #####
 

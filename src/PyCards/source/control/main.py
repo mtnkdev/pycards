@@ -1,11 +1,11 @@
 import Tkinter
 import ttk
 
-from ..view import progressbar as loader
-from ..view import taskmenu as menu
-from ..view import window
+from src.PyCards.source.control import taskmenu as menu
 from ..control import gamemanager as mgr
 from ..model import assets
+from ..view import progressbar as loader
+from ..view import window
 
 
 class App:

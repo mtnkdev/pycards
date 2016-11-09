@@ -1,33 +1,33 @@
 from Tkinter import Menu
 
-import menuactions as Action
+import menuactions as action
 from ..model.database import DB
 
 
-def createMenu(root):
+def create_menu(root):
     """Create the application's menubar widget"""
     menubar = Menu(root)
 
     # Add menubar to root window
     root.config(menu=menubar)
 
-    _createFileMenu(menubar)
-    _createSelectMenu(menubar)  ##Look at _addSelectGameMenu in menubar.py
-    _createEditMenu(menubar)
-    _createGameMenu(menubar)
-    _createAssistMenu(menubar)
-    _createOptionMenu(menubar)
-    _createHelpMenu(menubar)
+    _create_filemenu(menubar)
+    _create_selectmenu(menubar)  ##Look at _addSelectGameMenu in menubar.py
+    _create_editmenu(menubar)
+    _create_gamemenu(menubar)
+    _create_assistmenu(menubar)
+    _create_optionmenu(menubar)
+    _create_helpmenu(menubar)
 
 
-def _addMenuGames(menu, games, command=None):
+def _add_games(menu, games, command=None):
     """Add games by type to the cascading game type menu"""
     for game in sorted(games, key=lambda game : game.name):
-        cmd = lambda args=game: Action.startGame(game)
+        cmd = lambda args=game: action.startGame(game)
         menu.add_command(label=game.name, command=cmd)
 
 
-def _addMenuGameType(menu, label, gameSet=None):
+def _add_game_type(menu, label, gameSet=None):
     """Add game types to the Menu"""
     if (gameSet == None) or (gameSet != None and len(gameSet) > 0):
         submenu = Menu(menu, tearoff=0)
@@ -36,10 +36,10 @@ def _addMenuGameType(menu, label, gameSet=None):
         if gameSet == None:
             return submenu      # Child is another cascading menu
         elif len(gameSet) > 0:
-            _addMenuGames(submenu, gameSet) # Adds games belonging to type
+            _add_games(submenu, gameSet) # Adds games belonging to type
 
 
-def _createFileMenu(menubar):
+def _create_filemenu(menubar):
     """Create the cascading File menu"""
     fileMenu = Menu(menubar, tearoff=0)
 
@@ -48,24 +48,24 @@ def _createFileMenu(menubar):
 
     # Adds selectable dropdown items
     # @command is a pointer to function
-    fileMenu.add_command(label="New", command=lambda: Action.startGame())
-    fileMenu.add_command(label="Load...", command=Action.loadGame)
-    fileMenu.add_command(label="Save...", command=Action.saveGame)
-    fileMenu.add_command(label="Exit", command=Action.quitGame)
+    fileMenu.add_command(label="New", command=lambda: action.startGame())
+    fileMenu.add_command(label="Load...", command=action.loadGame)
+    fileMenu.add_command(label="Save...", command=action.saveGame)
+    fileMenu.add_command(label="Exit", command=action.quitGame)
 
 
-def _createSelectMenu(menubar):
+def _create_selectmenu(menubar):
     """Create the cascading Select menu"""
     selectMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Select", menu=selectMenu)
 
-    selectMenu.add_command(label="All Games...", command=Action.showGames)
+    selectMenu.add_command(label="All Games...", command=action.showGames)
 
-    _addMenuGameType(selectMenu, "Freecell", get_games("Freecell"))
-    _addMenuGameType(selectMenu, "Hanoi", get_games("Hanoi"))
-    _addMenuGameType(selectMenu, "Klondike", get_games("Klondike"))
-    _addMenuGameType(selectMenu, "Memory", get_games("Memory"))
-    _addMenuGameType(selectMenu, "Spider", get_games("Spider"))
+    _add_game_type(selectMenu, "Freecell", get_games("Freecell"))
+    _add_game_type(selectMenu, "Hanoi", get_games("Hanoi"))
+    _add_game_type(selectMenu, "Klondike", get_games("Klondike"))
+    _add_game_type(selectMenu, "Memory", get_games("Memory"))
+    _add_game_type(selectMenu, "Spider", get_games("Spider"))
 
 ##    freecell = Menu(selectMenu, tearoff=0)
 ##    selectMenu.add_cascade(label="Freecell", menu=freecell)
@@ -99,18 +99,16 @@ def get_games(gametype):
     return [game for game in DB.get_games() if game.name.count(gametype) > 0]
 
 
-
-def _createEditMenu(menubar):
+def _create_editmenu(menubar):
     """Create the cascading Edit menu"""
     editMenu = Menu(menubar, tearoff=0)
     editMenu.add_command(label="Undo", command=None)
     editMenu.add_command(label="Redo", command=None)
     editMenu.add_command(label="Redo All", command=None)
     editMenu.add_command(label="Restart", command=None)
-    pass
 
 
-def _createGameMenu(menubar):
+def _create_gamemenu(menubar):
     """Create the cascading Game menu"""
     gameMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Game", menu=gameMenu)
@@ -119,10 +117,9 @@ def _createGameMenu(menubar):
     gameMenu.add_command(label="Pause", command=None)
     gameMenu.add_command(label="Status", command=None)
     gameMenu.add_command(label="Statistics", command=None)
-    pass
 
 
-def _createAssistMenu(menubar):
+def _create_assistmenu(menubar):
     """Create the cascading Assist menu"""
     assistMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Assist", menu=assistMenu)
@@ -131,13 +128,13 @@ def _createAssistMenu(menubar):
     assistMenu.add_command(label="Find Card", command=None)
 
 
-def _createOptionMenu(menubar):
+def _create_optionmenu(menubar):
     """Create the cascading Option menu"""
     optionMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Options", menu=optionMenu)
     optionMenu.add_command(label="Sound", command=None)
-    optionMenu.add_command(label="Cardset", command=Action.select_cardset)
-    optionMenu.add_command(label="Background", command=Action.select_tile)
+    optionMenu.add_command(label="Cardset", command=action.select_cardset)
+    optionMenu.add_command(label="Background", command=action.select_tile)
     optionMenu.add_cascade(label="Card Background", command=None)
     optionMenu.add_cascade(label="Animations", command=None)
     optionMenu.add_cascade(label="Mouse", command=None)
@@ -147,13 +144,13 @@ def _createOptionMenu(menubar):
     optionMenu.add_cascade(label="Toolbar", command=None)
 
 
-def _createHelpMenu(menubar):
+def _create_helpmenu(menubar):
     """Create the cascading Help menu"""
     helpMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Help",menu=helpMenu)
 
-    helpMenu.add_command(label="Contents",command=Action.showContents)
-    helpMenu.add_command(label="How this works",command=Action.showGuide)
-    helpMenu.add_command(label="Gameplay rules",command=Action.showRules)
-    helpMenu.add_command(label="License",command=Action.showLicense)
-    helpMenu.add_command(label="About",command=Action.showInfo)
+    helpMenu.add_command(label="Contents", command=action.showContents)
+    helpMenu.add_command(label="How this works", command=action.showGuide)
+    helpMenu.add_command(label="Gameplay rules", command=action.showRules)
+    helpMenu.add_command(label="License", command=action.showLicense)
+    helpMenu.add_command(label="About", command=action.showInfo)
