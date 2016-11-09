@@ -20,8 +20,8 @@ class Stack:
         :param offset: amount of visual staggering of drawn cards (default 0)
         :param deck: whether the stack is a deck (default False)
         :param sameSuit: if stack only allows same suit cards (default False)
-		:param remove: whether cards can be removed from the stack (default True)
-		:param capacity: how many cards the stack can hold (default -1)
+        :param remove: whether cards can be removed from the stack (default True)
+        :param capacity: how many cards the stack can hold (default -1)
         """
 
         self.ID = _id
@@ -39,9 +39,9 @@ class Stack:
         self.sameSuit = sameSuit
         self.acceptCards = accept
         self.direction = direction
-		self.removeCards = remove
+        self.removeCards = remove
         self.isdeck = deck
-		self.capacity = capacity
+        self.capacity = capacity
         
     def clone (self, clone):
         clone.id = self.id
