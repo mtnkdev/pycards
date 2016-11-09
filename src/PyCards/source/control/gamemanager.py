@@ -20,7 +20,7 @@ def dealgame(root, game=None):
     else:
         _game = game
 
-    cardset = dataloader.Cardset.cardsets["Standard"]
+    cardset = cardsets["Standard"]
     dealer = Dealer(_game, cardset)
     _game.create()
     dealer.cardgen()
