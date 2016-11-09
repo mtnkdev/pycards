@@ -1,13 +1,15 @@
 
 
 class Enum:
-    """Docstring"""
+    """Implementation of an enumerated object type"""
 
     def __init__(self, name=None, value=None):
+        """Initialize Enum object with starting attributes"""
         if name is not None:
             self.add(name, value)
 
     def add(self, name, value):
+        """Adds attribute-value combinations to the object"""
         try:
             if not hasattr(name, '__iter__'):
                 raise ValueError
@@ -21,5 +23,6 @@ class Enum:
                 setattr(self, name, value)
 
     def addAll(self, fields):
+        """Adds a sequence of attribute-value pairs to the object"""
         for i in range(0, len(fields), 2):
             setattr(self, fields[i], fields[i+1])

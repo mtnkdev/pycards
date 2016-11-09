@@ -6,11 +6,6 @@ cardset: A set of locally-stored images to be used when rendering the cards
 
 from enum import Enum
 
-### Ignore localization-enabling string definitions
-##if __name__ == '__main__':
-##    def _(msg):
-##        return msg
-##    global _
 
 class Cardset:
     """This class contains the identifying properties of a cardset
@@ -26,7 +21,6 @@ class Cardset:
         self.path = folder
         self.name = name
 
-        # FIXME make this generic
         self.backimage = None
 
         self.ranks = ()

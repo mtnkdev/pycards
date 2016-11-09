@@ -1,6 +1,6 @@
 from ..gamelayout import CardGame
-from ..card import StandardCard
 from ..cardsets import TYPE
+from ..card import StandardCard
 from ..stack import Stack
 from ..database import DB
 
@@ -31,14 +31,13 @@ class Hanoi(CardGame):
         self.stacks.append(Stack(0, 350, 250, -1, False, -1, [], True, offset=15))
         self.stacks.append(Stack(0, 550, 250, -1, False, -1, [], True, offset=15))
 
-
     def startDeal(self, cardset):
-        """Initial dealing of cards"""
+        """Perform initial deal of cards"""
         for rank in range(0,self.numcards):
             self.stacks[0].cards[rank] = (StandardCard(cardset, rank, "h"))
 
     def valid_drop(self, stackID, destID, cardNum):
-
+        """Indicate whether the selected cards can be moved to the destination stack"""
         if len(self.stacks[destID].cards) == 0:
             return True
         card = self.stacks[stackID].cards[cardNum]

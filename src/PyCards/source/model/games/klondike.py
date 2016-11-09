@@ -9,7 +9,10 @@ class Klondike(CardGame):
     name = "Klondike"
 
     def __init__(self):
-        """Initialize standard properties of a Klondike game"""
+        """Initialize standard properties of a Klondike game
+
+        Klondike solitaire is your typical single-player solitaire card game
+        """
         self.type = TYPE.STANDARD
         self.name = "Klondike"
         self.deckID = -1
@@ -19,7 +22,6 @@ class Klondike(CardGame):
         self.numcards = 52
         self.foundations = 4
 
-    # Stack(id, x, y, base, alternate, direction, pos, accept = True)
     def create(self):
         """Create the stacks for the Klondike game"""
 

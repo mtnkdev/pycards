@@ -19,7 +19,6 @@ class Spider(CardGame):
         self.numcards = 104
         self.foundations = 8
 
-    # Stack(id, x, y, base, alternate, direction, pos, accept = True)
     def create(self):
         """Create the stacks for the spider solitaire game"""
 
@@ -27,9 +26,6 @@ class Spider(CardGame):
         self.deckID = 0
         self.stacks.append(Stack(0, 50, 50, -1, False, 0, [-1]*50, False, deck=True)) # Deck
 
-        # FIXME make conditional acceptance so that the stacks have
-        # a minimum size that they accept
-        # 
         # Create foundation stacks
         stackCount = 1
         for num in range(self.foundations):
@@ -77,6 +73,7 @@ class Spider(CardGame):
                 y=self.stacks[i].y + cardImg.cardNum * self.stacks[i].offset)
 
     def update(self):
+        """Perform post-move automatic updates to the game"""
         straight = True
         for i in range(self.foundations+1, len(self.stacks)):
             stack = self.stacks[i]
@@ -97,6 +94,7 @@ class Spider(CardGame):
                         raise ValueError, "Invalid card positions"
 
     def valid_selection(self, stackID, cardNum):
+        """Indicate whether the selected cards can be moved"""
         stack = self.stacks[stackID]
 
         if stack.isdeck:

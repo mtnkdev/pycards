@@ -1,8 +1,12 @@
+"""This module is responsible for rendering the
+root window and enforcing its associated attributes and items"""
+
 import Tkinter
 import os
 
 
 def setBackground(root):
+    """Draw the window background"""
     height = root.winfo_height()
     width = root.winfo_width()
     root.canvas = Tkinter.Canvas(root, height=height, width=width)

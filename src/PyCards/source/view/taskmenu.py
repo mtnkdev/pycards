@@ -5,7 +5,7 @@ from ..model.database import DB
 
 
 def createMenu(root):
-    # Create menubar widget
+    """Create the application's menubar widget"""
     menubar = Menu(root)
 
     # Add menubar to root window
@@ -19,13 +19,16 @@ def createMenu(root):
     _createOptionMenu(menubar)
     _createHelpMenu(menubar)
 
+
 def _addMenuGames(menu, games, command=None):
+    """Add games by type to the cascading game type menu"""
     for game in sorted(games, key=lambda game : game.name):
         cmd = lambda args=game: Action.startGame(game)
         menu.add_command(label=game.name, command=cmd)
 
-def _addMenuGameType(menu, label, gameSet=None):
 
+def _addMenuGameType(menu, label, gameSet=None):
+    """Add game types to the Menu"""
     if (gameSet == None) or (gameSet != None and len(gameSet) > 0):
         submenu = Menu(menu, tearoff=0)
         menu.add_cascade(label=label, menu=submenu)
@@ -35,9 +38,9 @@ def _addMenuGameType(menu, label, gameSet=None):
         elif len(gameSet) > 0:
             _addMenuGames(submenu, gameSet) # Adds games belonging to type
 
+
 def _createFileMenu(menubar):
-    # Creates a submenu (another Menu instance)
-    # tearoff stops menu floating
+    """Create the cascading File menu"""
     fileMenu = Menu(menubar, tearoff=0)
 
     # Adds dropdown menu
@@ -52,8 +55,7 @@ def _createFileMenu(menubar):
 
 
 def _createSelectMenu(menubar):
-    # Creates a submenu (another Menu instance)
-    # tearoff stops menu floating
+    """Create the cascading Select menu"""
     selectMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Select", menu=selectMenu)
 
@@ -64,6 +66,7 @@ def _createSelectMenu(menubar):
     _addMenuGameType(selectMenu, "Klondike", get_games("Klondike"))
     _addMenuGameType(selectMenu, "Memory", get_games("Memory"))
     _addMenuGameType(selectMenu, "Spider", get_games("Spider"))
+
 ##    freecell = Menu(selectMenu, tearoff=0)
 ##    selectMenu.add_cascade(label="Freecell", menu=freecell)
 ##    for game in get_games("Freecell"):
@@ -92,11 +95,13 @@ def _createSelectMenu(menubar):
 
 
 def get_games(gametype):
+    """Retrieve games belonging to the specified type"""
     return [game for game in DB.get_games() if game.name.count(gametype) > 0]
 
 
 
 def _createEditMenu(menubar):
+    """Create the cascading Edit menu"""
     editMenu = Menu(menubar, tearoff=0)
     editMenu.add_command(label="Undo", command=None)
     editMenu.add_command(label="Redo", command=None)
@@ -106,6 +111,7 @@ def _createEditMenu(menubar):
 
 
 def _createGameMenu(menubar):
+    """Create the cascading Game menu"""
     gameMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Game", menu=gameMenu)
     gameMenu.add_command(label="Deal Cards", command=None)
@@ -117,15 +123,16 @@ def _createGameMenu(menubar):
 
 
 def _createAssistMenu(menubar):
+    """Create the cascading Assist menu"""
     assistMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Assist", menu=assistMenu)
     assistMenu.add_command(label="Hint", command=None)
     assistMenu.add_command(label="Highlight piles", command=None)
     assistMenu.add_command(label="Find Card", command=None)
-    pass
 
 
 def _createOptionMenu(menubar):
+    """Create the cascading Option menu"""
     optionMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Options", menu=optionMenu)
     optionMenu.add_command(label="Sound", command=None)
@@ -141,6 +148,7 @@ def _createOptionMenu(menubar):
 
 
 def _createHelpMenu(menubar):
+    """Create the cascading Help menu"""
     helpMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Help",menu=helpMenu)
 
