@@ -20,6 +20,13 @@ class FreeCell(CardGame):
         self.cells = 4
         self.foundations = 4
 
+    def _init_bindings(self):
+        """Initialize mouse bindings"""
+        from mouse_handler import Bindings
+        self._bindings = Bindings(self)
+        self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
+        self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))
+
     def create(self):
         """Create game board"""
 
@@ -52,6 +59,7 @@ class FreeCell(CardGame):
 
             self.stacks.append(Stack(stackCount, _x, _y, -1, True, -1, cards(), offset=15))  # create normal stacks
             stackCount += 1
+        self._init_bindings()
             
     # Moving cards.
     def valid_selection (self, stackID, cardNum):
@@ -74,6 +82,10 @@ class FreeCell(CardGame):
         #     if !((self.cells <= num and num < self.cells + self.foundations)) and stack[num].cards == 0:
         #         free_cells += 1
         # return len(cards) > free_cells
+
+
+    def bindings(self):
+        return {} # {"<ButtonRelease-1>": _legalmove, "<B1-Motion>": _dragCard}
 
     def deal(self):
         """No in-game deals for FreeCell games"""

@@ -2,6 +2,7 @@
 root window and enforcing its associated attributes and items"""
 
 import Tkinter
+import ttk
 import os
 
 
@@ -20,3 +21,23 @@ def setBackground(root):
             label.place(x=x,y=y)
     root.canvas.pack(fill=Tkinter.BOTH, expand=Tkinter.YES)
     root.canvas.update()
+
+
+def create_card(canvas, stackID, cards, num):
+    label = ttk.Label(canvas, image=cards[num].get_image(), borderwidth=0)
+    setattr(label, "rank", cards[num].rank)
+    setattr(label, "suit", cards[num].suit)
+    setattr(label, "color", cards[num].color)
+    setattr(label, "stackID", stackID)
+    setattr(label, "cardNum", num)
+    return label
+
+
+def draw_card(label, x, y):
+    label.place(x = x, y = y)
+
+
+def bind_card(label, bindings):
+    if bindings is not None:
+        for binding, callback in bindings.iteritems():
+            label.bind(binding, callback)

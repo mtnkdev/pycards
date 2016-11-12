@@ -1,7 +1,7 @@
 import Tkinter
 import ttk
 
-from src.PyCards.source.control import taskmenu as menu
+import taskmenu as menu
 from ..control import gamemanager as mgr
 from ..model import assets
 from ..view import progressbar as loader
@@ -35,6 +35,6 @@ def start():
     root.geometry("900x600")
     root.title("PyCards")
 
-    menu.createMenu(root)
+    menu.create_menu(root)
     app = App(root)
     mainloop()

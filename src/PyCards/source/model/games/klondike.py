@@ -52,6 +52,15 @@ class Klondike(CardGame):
 
             self.stacks.append(Stack(stackCount, _x, _y, 13, True, -1, cards(),offset=15))  # create normal stacks
             stackCount += 1
+        self._init_bindings()
+
+    def _init_bindings(self):
+        """Initialize mouse bindings"""
+        from mouse_handler import Bindings
+        self._bindings = Bindings(self)
+        self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
+        self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))
+
 
     def deal(self):
         """Perform an in-game deal"""
@@ -59,22 +68,33 @@ class Klondike(CardGame):
         deck = self.stacks[self.deckID]
         waste = self.stacks[self.wasteID]
         if len(deck.cards) == 0:
-            return # raise NotImplementedError("Recycling deck hasn't been implemented yet.")
-        
-        for i in range(1, 4):
-            card = deck.cards[-i]
-            cardImg = deck.cardWidgets[-i]
+            return None # raise NotImplementedError("Recycling deck hasn't been implemented yet.")
+
+        if len(deck.cards) > 3:
+            num = 4
+        else:
+            num = len(deck.cards) + 1
+
+        for i in range(1, num):
+            card = deck.cards[-1]
+            cardImg = deck.cardWidgets[-1]
             deck.cards.pop()
             waste.cards.append(card)
             deck.cardWidgets.pop()
             waste.cardWidgets.append(cardImg)
             cardImg.cardNum = len(waste.cardWidgets) - 1
             cardImg.stackID = waste.ID
+
         for cardImg in waste.cardWidgets:
             cardImg.place(x=waste.x,
                 y=waste.y + cardImg.cardNum * waste.offset)
-        card = deck.cardWidgets[-1]
-        card.place(x=deck.x,
-            y=deck.y + card.cardNum * deck.offset)
+
+        if len(deck.cards) > 0:
+            card = deck.cardWidgets[-1]
+            card.place(x=deck.x,
+                y=deck.y + card.cardNum * deck.offset)
+
+    def bindings(self):
+        return self._bindings.value()
 
 DB.add_game("Klondike", Klondike)

@@ -2,6 +2,7 @@ import ttk
 
 from ..control.dealer import Dealer
 from ..model import cardsets
+from ..view.window import bind_card, create_card, draw_card
 
 # FIXME to be removed once game creation is done properly
 # Game imports
@@ -26,10 +27,10 @@ def dealgame(root=None, game=None):
         _root = root
         
     if game is None:
-#        _game = Klondike()
+        _game = Klondike()
 #        _game = Hanoi(4)
 #        _game = Spider()
-        _game = FreeCell()
+#        _game = FreeCell()
     else:
         _game = None
         _root.canvas.update()
@@ -55,17 +56,11 @@ def drawgame(root):
         label = ttk.Label(root.canvas, image=_game.cardset.backimage, borderwidth=0)
         label.place(x=stack.x,y=stack.y)
         for num in range(len(stack.cards)):
-            label = ttk.Label(root.canvas, image=stack.cards[num].get_image(), borderwidth=0)
-            setattr(label, "rank", stack.cards[num].rank)
-            setattr(label, "suit", stack.cards[num].suit)
-            setattr(label, "color", stack.cards[num].color)
-            setattr(label, "stackID", stackID)
-            setattr(label, "cardNum", num)
-
+            label = create_card(root.canvas, stackID, stack.cards, num)
+            draw_card(label, stack.x, stack.y + stack.offset*num)
+            #bindings = {"<ButtonRelease-1>": _legalmove, "<B1-Motion>": _dragCard}
+            bind_card(label, _game.bindings())
             stack.cardWidgets[num] = label
-            label.place(x=stack.x, y=stack.y + stack.offset*num)
-            label.bind("<ButtonRelease-1>", _legalmove)
-            label.bind("<B1-Motion>", _dragCard)
         stackID += 1
     return None
 

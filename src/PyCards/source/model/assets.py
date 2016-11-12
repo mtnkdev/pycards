@@ -8,9 +8,8 @@ source directory
 import os
 import Tkinter
 
-from cardsets import TYPE
+from cardsets import TYPE, Cardset
 from card import StandardCard as Card
-from cardsets import Cardset
 
 
 def set_rank_and_suit(cardset):
