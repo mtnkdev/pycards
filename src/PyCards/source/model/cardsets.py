@@ -21,7 +21,8 @@ class Cardset:
         self.path = folder
         self.name = name
 
-        self.backimage = None
+        self.backimage = []
+        self.holder = None
 
         self.ranks = ()
         self.suits = ()

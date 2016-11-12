@@ -107,20 +107,17 @@ class Bindings:
             cardID = event.widget.cardNum
             for cardImg in obj._game.stacks[ID].cardWidgets[cardID:]:
                 cardImg.place(x=obj._game.stacks[ID].x, y=obj._game.stacks[ID].y + cardImg.cardNum * obj._game.stacks[ID].offset)
-            # print "invalid dest"
             return None
 
         select = cls.default_selection(obj, event)
         drop = cls._valid_drop(obj, event, destID)
-        # print "select", select
-        # print "drop", drop
+
         if select and drop:
             move_cards(obj._game, ID, destID, event.widget.cardNum)
         else:
             cardID = event.widget.cardNum
             for cardImg in obj._game.stacks[ID].cardWidgets[cardID:]:
                 cardImg.place(x=obj._game.stacks[ID].x, y=obj._game.stacks[ID].y + cardImg.cardNum * obj._game.stacks[ID].offset)
-                # print "returned"
 
     def value(self):
         return self.bindings

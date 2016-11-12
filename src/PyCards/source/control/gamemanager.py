@@ -53,133 +53,19 @@ def drawgame(root):
     global _game
     stackID = 0
     for stack in _game.stacks:
-        label = ttk.Label(root.canvas, image=_game.cardset.backimage, borderwidth=0)
+        label = ttk.Label(root.canvas, image=_game.cardset.holder, borderwidth=0)
         label.place(x=stack.x,y=stack.y)
         for num in range(len(stack.cards)):
-            label = create_card(root.canvas, stackID, stack.cards, num)
+            hide = False
+            try:
+                if stack.positions[num] < 0:
+                    hide = True
+            except IndexError:
+                pass
+            label = create_card(root.canvas, stackID, stack.cards, num, hide)
             draw_card(label, stack.x, stack.y + stack.offset*num)
-            #bindings = {"<ButtonRelease-1>": _legalmove, "<B1-Motion>": _dragCard}
+            # bindings = {"<ButtonRelease-1>": _legalmove, "<B1-Motion>": _dragCard}
             bind_card(label, _game.bindings())
             stack.cardWidgets[num] = label
         stackID += 1
     return None
-
-
-def _dragCard(event):
-    global _game
-    if not _valid_selection(event):
-        return None
-
-    ID = event.widget.stackID
-    if event.widget.cardNum == len(_game.stacks[ID].cards) - 1:
-        x = event.widget.winfo_x() + event.x - event.widget.winfo_width()/2
-        y = event.widget.winfo_y() + event.y - event.widget.winfo_height()/2
-        event.widget.place(x=x, y=y)
-        event.widget.lift()
-    else:
-        cardID = event.widget.cardNum
-        for cardImg in _game.stacks[ID].cardWidgets[cardID:]:
-            x = cardImg.winfo_x() + event.x - cardImg.winfo_width() / 2
-            y = cardImg.winfo_y() + event.y - cardImg.winfo_height() / 2
-            cardImg.place(x=x, y=y)
-            cardImg.lift()
-    return None
-
-
-def _nearest(x, y):
-    for i in range(len(_game.stacks)):
-        stack = _game.stacks[i]
-        if abs(stack.x - x) < 20 and abs(stack.y + stack.offset*len(stack.cards) - y) < 20:
-            return i
-    return -1
-
-
-def _legalmove(event):
-    ID = event.widget.stackID
-    x = event.widget.winfo_x() + event.x - event.widget.winfo_width() / 2
-    y = event.widget.winfo_y() + event.y - event.widget.winfo_height() / 2
-    destID = _nearest(x, y)
-
-    if destID == -1:
-        cardID = event.widget.cardNum
-        for cardImg in _game.stacks[ID].cardWidgets[cardID:]:
-            cardImg.place(x=_game.stacks[ID].x, y=_game.stacks[ID].y + cardImg.cardNum * _game.stacks[ID].offset)
-        # print "invalid dest"
-        return None
-
-    select = _valid_selection(event)
-    drop = _valid_drop(event, destID)
-    # print "select", select
-    # print "drop", drop
-    if select and drop:
-        move_cards(_game, ID, destID, event.widget.cardNum)
-    else:
-        cardID = event.widget.cardNum
-        for cardImg in _game.stacks[ID].cardWidgets[cardID:]:
-            cardImg.place(x=_game.stacks[ID].x, y=_game.stacks[ID].y + cardImg.cardNum * _game.stacks[ID].offset)
-        # print "returned"
-
-
-def _valid_selection(event):
-    stackID = event.widget.stackID
-    cardNum = event.widget.cardNum
-    try:
-        return _game.valid_selection(stackID, cardNum)
-    except AttributeError:
-        pass
-
-    stack = _game.stacks[stackID]
-    if stack.isdeck:
-        _game.deal()
-        for stack in _game.stacks:
-            for card in stack.cardWidgets:
-                card.lift()
-        return False
-
-    if cardNum == len(stack.cards) - 1:
-        return True
-
-    if stack.alternates:
-        prev = stack.cards[cardNum]
-        for i in range(cardNum + 1, len(stack.cards)):
-            if stack.cards[i].rank >= prev.rank or \
-                stack.cards[i].color == prev.color:
-                return False
-            prev = stack.cards[i]
-        return True
-    return False
-
-
-def _valid_drop(event, destID):
-    stack = _game.stacks[destID]
-
-    try:
-        return _game.valid_drop(event.widget.stackID, destID, event.widget.cardNum)
-    except AttributeError:
-        pass
-
-    if not stack.acceptCards:
-        return False
-
-    if stack.base > -1:
-        if len(stack.cards) == 0 and event.widget.rank == stack.base:
-            return True
-
-        if len(stack.cards) == 0 and event.widget.rank != stack.base:
-            return False
-        
-    if len(stack.cards) == 0:
-        return True
-    
-    bottom = stack.cards[-1]
-
-    if stack.alternates and bottom.color == event.widget.color:
-        return False
-
-    if stack.sameSuit and bottom.suit != event.widget.suit:
-        return False
-
-    if event.widget.rank - bottom.rank != stack.direction:
-        return False
-
-    return True

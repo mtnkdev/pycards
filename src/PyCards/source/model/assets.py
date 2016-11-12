@@ -96,8 +96,12 @@ def load_cardsets():
             # bottom02 looks better so try that first
             bottom_img = os.path.join(imgpath, "bottom02" + extension)
             if not os.path.isfile(bottom_img):                    
-                bottom_img = os.path.join(imgpath, "bottom01" + extension)                
-            currCardset.backimage = Tkinter.PhotoImage(file=bottom_img)
+                bottom_img = os.path.join(imgpath, "bottom01" + extension)
+
+            for img in os.listdir(imgpath):
+                if img.count("back"):
+                    currCardset.backimage.append(os.path.join(imgpath, img))
+            currCardset.holder = Tkinter.PhotoImage(file=bottom_img)
             Cardset.cardsets[name] = currCardset
             set_rank_and_suit(currCardset)
 

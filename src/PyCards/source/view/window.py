@@ -23,8 +23,14 @@ def setBackground(root):
     root.canvas.update()
 
 
-def create_card(canvas, stackID, cards, num):
-    label = ttk.Label(canvas, image=cards[num].get_image(), borderwidth=0)
+def create_card(canvas, stackID, cards, num, hide):
+    if hide:
+        img = cards[num].back_image()
+    else:
+        img = cards[num].get_image()
+    print hide
+    print stackID
+    label = ttk.Label(canvas, image=img, borderwidth=0)
     setattr(label, "rank", cards[num].rank)
     setattr(label, "suit", cards[num].suit)
     setattr(label, "color", cards[num].color)

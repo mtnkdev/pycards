@@ -89,6 +89,10 @@ class StandardCard(AbstractCard):
         self.image_path = path + self.cardset.extension
         self.image = Tkinter.PhotoImage(file=self.image_path)
 
+
+    def back_image(self):
+        self.back = Tkinter.PhotoImage(file=self.cardset.backimage[0])
+        return self.back
     # FIXME not implemented yet
     def hide(self):
         """Change the active image to the cardset's back image"""
