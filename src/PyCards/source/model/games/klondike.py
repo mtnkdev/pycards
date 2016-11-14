@@ -1,3 +1,13 @@
+"""Defines the rules and properties of the klondike varient of solitaire
+
+	State Variables: none
+
+    Environment Variables: none
+
+    Assumptions: none
+
+"""
+
 from ..gamelayout import CardGame
 from ..cardsets import TYPE
 from ..stack import Stack
@@ -98,6 +108,7 @@ class Klondike(CardGame):
                 y=deck.y + card.cardNum * deck.offset)
 
     def bindings(self):
+		"""defines mouse bindings for game"""
         return self._bindings.value()
 
 DB.add_game("Klondike", Klondike)

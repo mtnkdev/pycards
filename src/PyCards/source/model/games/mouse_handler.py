@@ -1,17 +1,30 @@
+"""This module is responsible for dealing with mouse input
+	
+	State Variables: none
+
+    Environment Variables: none
+
+    Assumptions: none
+
+"""
+
 from ..stack import move_cards
 
 
 class Bindings:
 
     def __init__(self, game):
+		"""initializes mouse handler and binds it to a game"""
         self._game = game
         self.bindings = {}
 
     def add(self, event, callback):
+	"""Adds mouse handler to a game"""
         self.bindings[event] = callback
 
     @classmethod
     def _valid_drop(cls, obj, event, destID):
+		"""checks if card can be dropped"""
         stack = obj._game.stacks[destID]
 
         try:
@@ -47,6 +60,7 @@ class Bindings:
 
     @classmethod
     def default_drag(cls, obj, event):
+		"""Defines how dragging a card in the game works"""
         if not cls.default_selection(obj, event):
             return None
 
@@ -67,6 +81,7 @@ class Bindings:
 
     @classmethod
     def default_selection(cls, obj, event):
+		"""Allows user to select cards"""
         stackID = event.widget.stackID
         cardNum = event.widget.cardNum
 
@@ -98,6 +113,7 @@ class Bindings:
 
     @classmethod
     def default_move(cls, obj, event):
+		"""Moves cards from one stack to another"""
         ID = event.widget.stackID
         x = event.widget.winfo_x() + event.x - event.widget.winfo_width() / 2
         y = event.widget.winfo_y() + event.y - event.widget.winfo_height() / 2
@@ -130,6 +146,7 @@ class Bindings:
 
 
 def _nearest(game, x, y):
+	"""Finds which stack the mouse is overtop of (if any)"""
     for i in range(len(game.stacks)):
         stack = game.stacks[i]
         if abs(stack.x - x) < 20 and abs(stack.y + stack.offset * len(stack.cards) - y) < 20:
@@ -138,4 +155,5 @@ def _nearest(game, x, y):
 
 
 def update(game):
+	"""updates game"""
     pass

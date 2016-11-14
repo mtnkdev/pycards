@@ -1,4 +1,12 @@
+"""This module lets us create and use enumerated types in python
 
+	State Variables: none
+
+    Environment Variables: none
+
+    Assumptions: none
+
+"""
 
 class Enum:
     """Implementation of an enumerated object type"""

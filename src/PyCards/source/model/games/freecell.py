@@ -1,3 +1,13 @@
+"""This module defines the rules and properties of the game freecell
+
+	State Variables: none
+
+    Environment Variables: none
+
+    Assumptions: none
+
+"""
+
 import math
 
 from ..gamelayout import CardGame
@@ -87,6 +97,7 @@ class FreeCell(CardGame):
         # return len(cards) > free_cells
 
     def bindings(self):
+		"""defines mouse bindings for game"""
         return self._bindings.value()
 
     def deal(self):

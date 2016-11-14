@@ -1,6 +1,12 @@
-# !/usr/bin/env python
-# -*- mode: python; coding: utf-8; -*-
+"""This class represents a stack of cards in the game
+	
+	State Variables: none
+	
+    Environment Variables: none
 
+    Assumptions: none
+
+"""
 
 class Stack:
 

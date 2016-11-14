@@ -1,3 +1,13 @@
+"""This module is responsible for the layout of the game in the window
+
+	State Variables: none
+	
+    Environment Variables: none
+
+    Assumptions: none
+
+"""
+
 from abc import ABCMeta, abstractmethod, abstractproperty
 
 
@@ -31,6 +41,9 @@ class CardGame():
     @abstractmethod
     @abstractproperty
     def bindings(self):
+		"""
+		Method for bindings
+		"""
         global _bindings
         if _bindings is None:
             return NotImplementedError("Must define bindings and accessor in game subclass")

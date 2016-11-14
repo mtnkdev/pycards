@@ -1,3 +1,14 @@
+"""Defines the rules and properties of the game spider solitaire 
+
+	State Variables: none
+
+    Environment Variables: none
+
+    Assumptions: none
+
+"""
+
+
 from ..gamelayout import CardGame
 from ..cardsets import TYPE
 from ..stack import Stack, move_cards
@@ -124,6 +135,7 @@ class Spider(CardGame):
         return True
 
     def bindings(self):
+		"""binds mouse to game"""
         return self._bindings.value()
 
 DB.add_game("Spider", Spider)

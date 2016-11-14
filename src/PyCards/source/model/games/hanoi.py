@@ -1,3 +1,13 @@
+"""Defines the rules and properties of the hanoi game
+
+	State Variables: none
+
+    Environment Variables: none
+
+    Assumptions: none
+
+"""
+
 from ..gamelayout import CardGame
 from ..cardsets import TYPE
 from ..card import StandardCard
@@ -54,6 +64,7 @@ class Hanoi(CardGame):
         return True
 
     def bindings(self):
+		"""defines mouse bindings for game"""
         return self._bindings.value()
 
     def deal(self):
