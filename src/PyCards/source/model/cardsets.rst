@@ -1,6 +1,9 @@
-========
+===========
 cardsets.py
-========
+===========
 
-.. automodule:: source.control.cardsets
+.. automodule:: source.model.cardsets
+    :members:
+
+.. autoclass:: source.model.cardsets.Cardset
     :members:

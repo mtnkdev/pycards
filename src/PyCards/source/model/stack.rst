@@ -2,5 +2,8 @@
 stack.py
 ========
 
-.. automodule:: source.control.stack
+.. automodule:: source.model.stack
+    :members:
+
+.. autoclass:: source.model.stack.Stack
     :members:

@@ -2,5 +2,8 @@
 hanoi.py
 ========
 
-.. automodule:: source.control.hanoi
+.. automodule:: source.model.games.hanoi
+    :members:
+
+.. autoclass:: source.model.games.hanoi.Hanoi
     :members:

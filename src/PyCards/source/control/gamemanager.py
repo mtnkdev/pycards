@@ -1,10 +1,43 @@
+"""This module is the main controller and is responsible
+    for the responding to events and dictating the state of the
+    application
+
+    State Variables: |
+    * _root: the main window
+    * _game: the game in progress
+
+    Environment Variables: |
+    system display: array of pixels used for graphical output
+
+    Assumptions: None
+
+    **Exported Access Programs**
+
+    ==================   ============   ============
+    Routine                  In             Out
+    ==================   ============   ============
+    dealgame()            root, game        None
+    drawgame()              root            None
+    ==================   ============   ============
+
+    **Semantics**
+
+    dealgame(root, game) :
+    * transition: |
+    a) creates a new game
+    b) updates the main window
+    c) triggers the dealing of cards
+
+    drawgame(root) :
+    * transition: renders the visual state of the game
+"""
+
 import ttk
 
 from ..control.dealer import Dealer
 from ..model import cardsets
 from ..view.window import bind_card, create_card, draw_card
 
-# FIXME to be removed once game creation is done properly
 # Game imports
 from ..model.games.klondike import *
 from ..model.games.hanoi import *
@@ -18,6 +51,7 @@ _root = None
 
 
 def dealgame(root=None, game=None):
+    """Create and setup a new game"""
     global _game
     global _root
 
@@ -49,6 +83,7 @@ def dealgame(root=None, game=None):
 
 
 def drawgame(root=None):
+    """Render the state of the newly created game to the system display"""
     global _game
     global _root
     if root is None:
@@ -73,10 +108,9 @@ def drawgame(root=None):
 
 
 def destroy():
-    """De-initialize the current game"""
+    """De-allocate widgets and destroy the current game"""
     global _root
     global _game
-    stackID = 0
     for stack in _game.stacks:
         for card in stack.cardWidgets:
             card.destroy()

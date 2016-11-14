@@ -97,7 +97,7 @@ class FreeCell(CardGame):
         # return len(cards) > free_cells
 
     def bindings(self):
-		"""defines mouse bindings for game"""
+        """defines mouse bindings for game"""
         return self._bindings.value()
 
     def deal(self):

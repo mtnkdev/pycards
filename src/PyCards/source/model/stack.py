@@ -8,6 +8,7 @@
 
 """
 
+
 class Stack:
 
     def __init__(self, _id, x, y, base, alternate, direction, pos, accept=True, offset=0, deck=False, sameSuit=False, remove=True, capacity=-1):

@@ -1,6 +1,6 @@
-========
+===========
 database.py
-========
+===========
 
-.. automodule:: source.control.database
+.. automodule:: source.model.database
     :members:

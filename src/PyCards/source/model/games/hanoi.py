@@ -64,7 +64,7 @@ class Hanoi(CardGame):
         return True
 
     def bindings(self):
-		"""defines mouse bindings for game"""
+        """defines mouse bindings for game"""
         return self._bindings.value()
 
     def deal(self):

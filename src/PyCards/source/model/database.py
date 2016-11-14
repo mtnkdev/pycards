@@ -1,11 +1,11 @@
 """This module is responsible for storing the set of registered games
 
-    State Variables:
+    State Variables: |
     DB: collection of games
 
     Environment Variables: none
 
-    Assumptions:
+    Assumptions: |
     The Zen of Python: 'Flat is better than nested',
     hence database.DB is preferred to database.Database.DB
 """
@@ -19,7 +19,7 @@ class Database:
     """
     
     def __init__(self):
-        """Initialize Database with no games"""
+        """Initialize Database with no games to start"""
         self.games = {}
 
     def add_game(self, name, game_class):
@@ -33,7 +33,7 @@ class Database:
     def get_games(self):
         """Return a sequence of game classes
 
-        :return collection of games
+        :rtype collection of games
         """
         return self.games.values()
 

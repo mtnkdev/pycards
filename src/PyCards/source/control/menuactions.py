@@ -1,3 +1,55 @@
+"""This module contains the event-driven logic for the program
+
+    State variables: None
+
+    Environment variables: |
+    system display: array of pixels used for graphical output
+
+    Assumptions: None
+
+    **Exported Access Programs**
+
+    ==================   ============   ============
+    Routine                  In             Out
+    ==================   ============   ============
+    restart
+    start_game             gameclass
+    select_cardset
+    select_tile
+    showLicense
+    showInfo
+    ==================   ============   ============
+
+    **Semantics**
+
+    restart() :
+    * transition: |
+    a) destroys the game in progress
+    b) creates a new instance of the same game type
+    c) updates application window
+
+    start_game(gameclass) :
+    * input: the class of the game to be created
+    * transition: |
+    a) destroys the game in progress
+    b) creates a new instance of the specified game type
+    c) updates application window
+
+    select_cardset():
+    transition: Prompt the user to select a cardset
+
+    select_tile():
+    transition: Prompt the user to select a background image
+
+    showLicense():
+    output: display the license information in a new window
+
+    showInfo():
+    output: display basic information about the program in a new window
+
+"""
+
+
 import Tkinter
 import tkMessageBox
 import tkFileDialog
@@ -6,6 +58,7 @@ from gamemanager import dealgame, drawgame, destroy
 
 
 def restart():
+    """Start a new instance of the same game type"""
     if tkMessageBox.askyesno("", 'Do you want to start a new game?', default="yes"):
         destroy()
         dealgame()
@@ -13,6 +66,7 @@ def restart():
 
 
 def start_game(gameclass):
+    """Start a new instance of the specified game type"""
     if tkMessageBox.askyesno("", "Do you want to start a new %(game)s game?" % \
             {"game":gameclass.name}, default="yes"):
         destroy()
@@ -38,6 +92,7 @@ def showGames():
 #####   End file commands   #####
 
 def select_cardset():
+    """Prompt the user to select the directory containing the desired cardset"""
     if tkFileDialog.askdirectory(initialdir="./cardsets",title="Choose a cardset", mustexist=True):
         if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress"
                                      "in the current game"):
@@ -45,6 +100,7 @@ def select_cardset():
 
 
 def select_tile():
+    """Prompt the user to select the desired background image"""
     tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a background", multiple=False)
 
 
@@ -64,6 +120,7 @@ def showRules():
 
 
 def showLicense():
+    """Display the license information in a new window"""
     window = Tkinter.Toplevel(width=400, height=500, padx=10, pady=30, background="darkblue")
     window.canvas = Tkinter.Canvas(window, background="darkblue")
     window.canvas.pack()
@@ -86,5 +143,6 @@ def showLicense():
 
 
 def showInfo():
+    """Display a window with basic info about the application"""
     window = Tkinter.Toplevel(width=400, height=400)
     window.title("About")

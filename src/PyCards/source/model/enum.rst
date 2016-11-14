@@ -1,6 +1,9 @@
-========
+=======
 enum.py
-========
+=======
 
-.. automodule:: source.control.enum
+.. automodule:: source.model.enum
+    :members:
+
+.. autoclass:: source.model.enum.Enum
     :members:

@@ -1,6 +1,6 @@
-========
+=========
 assets.py
-========
+=========
 
-.. automodule:: source.control.assets
+.. automodule:: source.model.assets
     :members:

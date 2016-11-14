@@ -1,6 +1,6 @@
-============
+=====
 model
-============
+=====
 
 .. toctree::
    :maxdepth: 2
@@ -12,4 +12,4 @@ model
    model/enum.rst
    model/gamelayout.rst
    model/stack.rst
-   games.rst
+   model/games.rst

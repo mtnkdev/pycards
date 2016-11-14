@@ -108,7 +108,7 @@ class Klondike(CardGame):
                 y=deck.y + card.cardNum * deck.offset)
 
     def bindings(self):
-		"""defines mouse bindings for game"""
+        """defines mouse bindings for game"""
         return self._bindings.value()
 
 DB.add_game("Klondike", Klondike)

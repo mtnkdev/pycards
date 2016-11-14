@@ -1,5 +1,15 @@
 """This module is the secondary entry point of the application
 
+    State Variables: |
+    root: the application window
+
+    Environment Variables: |
+    system display: array of pixels used for graphical output
+
+    Assumptions: |
+    The program was launched from pysol.py in the parent directory
+    Only the start method should be called from outside
+
     **Exported Access Programs**
 
     ==================   ============   ============
@@ -12,16 +22,6 @@
 
     start() :
     * transition: creates application window
-
-    State Variables:
-    root: the application window
-
-    Environment Variables:
-    system display: array of pixels used for graphical output
-
-    Assumptions:
-    The program was launched from pysol.py
-    Only the start method should be called from outside
 """
 
 import Tkinter
@@ -39,7 +39,16 @@ __all__ = ["start"]
 class App:
     """This class encapsulates the main program
 
-    Exports:
+    This initializer takes in a Tk instance and binds it
+
+    State variables:
+    master: parent Tk instance
+
+    Environment variables: none
+
+    Assumptions:
+    Only one instance is created per program execution
+
     """
 
     def __init__(self, master):

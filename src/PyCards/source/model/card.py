@@ -1,6 +1,6 @@
 """This module is the model for a card
 
-	State Variables: none
+    State Variables: none
 
     Environment Variables: none
 
@@ -20,7 +20,7 @@ class AbstractCard:
 
     @abstractmethod
     def __init__(self, cardset, rank, suit):
-	"""Defautl initializer for a card"""
+        """Default initializer for a card"""
         self.cardset = cardset
         self.suit = suit
         self.rank = rank
@@ -28,13 +28,13 @@ class AbstractCard:
 
     @classmethod
     def __subclasshook__(cls, subclass):
-		"""hook"""
+        """hook"""
         assert hasattr(subclass, 'cardset')
         assert hasattr(subclass, 'suit')
         assert hasattr(subclass, 'rank')
 
     def __str__ (self):
-		"""Returns a card's values as a string"""
+        """Returns a card's values as a string"""
         return "Card (%d, %d, %d)" % (self.cardset.name, self.suit, self.rank)
 
 
@@ -66,7 +66,7 @@ class StandardCard(AbstractCard):
             return self.back_image()
 
     def _rankstr(self):
-		"""Returns rank and suit as a string"""
+        """Returns rank and suit as a string"""
         string = str(self.rank)
         if len(string) == 1:
             string = "0" + string
@@ -81,15 +81,15 @@ class StandardCard(AbstractCard):
         self.image = Tkinter.PhotoImage(file=self.image_path)
 
     def back_image(self):
-		"""Image on the back of the card"""
+        """Image on the back of the card"""
         if not hasattr(self, 'back'):
             self.back = Tkinter.PhotoImage(file=self.cardset.backimage[0])
         return self.back
 
     def hide(self):
-		"""Hides card"""
+        """Hides card"""
         self.visible = False
 
     def show(self):
-		"""Shows card"""
+        """Shows card"""
         self.visible = True

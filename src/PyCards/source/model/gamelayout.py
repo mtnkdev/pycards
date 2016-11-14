@@ -41,9 +41,7 @@ class CardGame():
     @abstractmethod
     @abstractproperty
     def bindings(self):
-		"""
-		Method for bindings
-		"""
+        """Method for bindings"""
         global _bindings
         if _bindings is None:
             return NotImplementedError("Must define bindings and accessor in game subclass")

@@ -135,7 +135,7 @@ class Spider(CardGame):
         return True
 
     def bindings(self):
-		"""binds mouse to game"""
+        """binds mouse to game"""
         return self._bindings.value()
 
 DB.add_game("Spider", Spider)

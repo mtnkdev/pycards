@@ -1,6 +1,9 @@
-========
+=============
 gamelayout.py
-========
+=============
 
-.. automodule:: source.control.gamelayout
+.. automodule:: source.model.gamelayout
+    :members:
+
+.. autoclass:: source.model.gamelayout.CardGame
     :members:
