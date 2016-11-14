@@ -1,3 +1,5 @@
+"""This module """
+
 import Tkinter
 import ttk
 
@@ -9,6 +11,10 @@ from ..view import window
 
 
 class App:
+    """This class encapsulates the program
+
+    :param master: the Tk instance that defines the
+    """
 
     def __init__(self, master):
         """Organize Tk instance into Frame then create progress bar"""

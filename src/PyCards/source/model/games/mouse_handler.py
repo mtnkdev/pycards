@@ -119,9 +119,14 @@ class Bindings:
             for cardImg in obj._game.stacks[ID].cardWidgets[cardID:]:
                 cardImg.place(x=obj._game.stacks[ID].x, y=obj._game.stacks[ID].y + cardImg.cardNum * obj._game.stacks[ID].offset)
 
+        try:
+            return obj._game.update()
+        except AttributeError:
+            pass
+        update(obj._game)
+
     def value(self):
         return self.bindings
-
 
 
 def _nearest(game, x, y):
@@ -130,3 +135,7 @@ def _nearest(game, x, y):
         if abs(stack.x - x) < 20 and abs(stack.y + stack.offset * len(stack.cards) - y) < 20:
             return i
     return -1
+
+
+def update(game):
+    pass

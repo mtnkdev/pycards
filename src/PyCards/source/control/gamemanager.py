@@ -25,15 +25,14 @@ def dealgame(root=None, game=None):
         assert _root is not None
     else:
         _root = root
-        
+
     if game is None:
-        _game = Klondike()
+#        _game = Klondike()
 #        _game = Hanoi(4)
 #        _game = Spider()
-#        _game = FreeCell()
+        _game = FreeCell()
     else:
         _game = None
-        _root.canvas.update()
         _game = game()
         _root.canvas.update()
 
@@ -49,12 +48,15 @@ def dealgame(root=None, game=None):
     dealer.dealCards()
 
 
-def drawgame(root):
+def drawgame(root=None):
     global _game
+    global _root
+    if root is None:
+        root = _root
     stackID = 0
     for stack in _game.stacks:
-        label = ttk.Label(root.canvas, image=_game.cardset.holder, borderwidth=0)
-        label.place(x=stack.x,y=stack.y)
+        stack.holder = ttk.Label(root.canvas, image=_game.cardset.holder, borderwidth=0)
+        stack.holder.place(x=stack.x,y=stack.y)
         for num in range(len(stack.cards)):
             hide = False
             try:
@@ -64,8 +66,21 @@ def drawgame(root):
                 pass
             label = create_card(root.canvas, stackID, stack.cards, num, hide)
             draw_card(label, stack.x, stack.y + stack.offset*num)
-            # bindings = {"<ButtonRelease-1>": _legalmove, "<B1-Motion>": _dragCard}
             bind_card(label, _game.bindings())
             stack.cardWidgets[num] = label
         stackID += 1
     return None
+
+
+def destroy():
+    """De-initialize the current game"""
+    global _root
+    global _game
+    stackID = 0
+    for stack in _game.stacks:
+        for card in stack.cardWidgets:
+            card.destroy()
+        stack.holder.destroy()
+    _game.stacks = []
+    _game = None
+    _root.update()

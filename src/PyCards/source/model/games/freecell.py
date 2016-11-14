@@ -31,8 +31,6 @@ class FreeCell(CardGame):
         """Create game board"""
 
         stackCount = 0
-        
-        # Initialize 
         for num in range(self.cells):
             _x = stackCount * 80 + 10
             _y = 50
@@ -74,8 +72,13 @@ class FreeCell(CardGame):
             if len(self.stacks[i].cards) == 0:
                 empty_stacks += 1
 
+        # Raising AttributeError allows this to be used in conjunction with
+        # default behaviour
         num_cards = len(self.stacks[stackID].cards) - cardNum
-        return num_cards <= ((1 + empty_cells) * math.pow(2, empty_stacks))
+        if num_cards <= ((1 + empty_cells) * math.pow(2, empty_stacks)):
+            raise AttributeError
+
+        return None
 
         # free_move = 1
         # for num in range(len(self.stacks)):
@@ -83,9 +86,8 @@ class FreeCell(CardGame):
         #         free_cells += 1
         # return len(cards) > free_cells
 
-
     def bindings(self):
-        return {} # {"<ButtonRelease-1>": _legalmove, "<B1-Motion>": _dragCard}
+        return self._bindings.value()
 
     def deal(self):
         """No in-game deals for FreeCell games"""

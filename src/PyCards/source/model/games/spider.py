@@ -48,6 +48,14 @@ class Spider(CardGame):
 
             self.stacks.append(Stack(stackCount, _x, _y, -1, False, -1, cards(),offset=15))  # create normal stacks
             stackCount += 1
+        self._init_bindings()
+
+    def _init_bindings(self):
+        """Initialize mouse bindings"""
+        from mouse_handler import Bindings
+        self._bindings = Bindings(self)
+        self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
+        self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))
 
     def deal(self):
         """Perform an in-game deal for spider solitaire"""
@@ -56,7 +64,7 @@ class Spider(CardGame):
 
         for i in range(self.numrows):
             if len(self.stacks[i].cards) == 0:
-                pass # all stacks must have at least one card before dealing
+                return None # all stacks must have at least one card before dealing
 
         for i in range(self.foundations + 1, self.foundations+self.numrows + 1):
             if len(deck.cards) == 0:
@@ -114,5 +122,8 @@ class Spider(CardGame):
                 return False
             prev = stack.cards[i]
         return True
+
+    def bindings(self):
+        return self._bindings.value()
 
 DB.add_game("Spider", Spider)

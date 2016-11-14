@@ -2,14 +2,22 @@ import Tkinter
 import tkMessageBox
 import tkFileDialog
 
-from gamemanager import dealgame
-
-#####   File menu commands #####
+from gamemanager import dealgame, drawgame, destroy
 
 
-def startGame(gameclass):
-    if tkMessageBox.askyesno("", "Do you want to start a new game?", default="yes"):
+def restart():
+    if tkMessageBox.askyesno("", 'Do you want to start a new game?', default="yes"):
+        destroy()
+        dealgame()
+        drawgame()
+
+
+def start_game(gameclass):
+    if tkMessageBox.askyesno("", "Do you want to start a new %(game)s game?" % \
+            {"game":gameclass.name}, default="yes"):
+        destroy()
         dealgame(game=gameclass)
+        drawgame()
 
 
 def saveGame():
@@ -30,11 +38,14 @@ def showGames():
 #####   End file commands   #####
 
 def select_cardset():
-    tkFileDialog.askdirectory(initialdir="./cardsets",title="Choose a cardset", mustexist=True)
+    if tkFileDialog.askdirectory(initialdir="./cardsets",title="Choose a cardset", mustexist=True):
+        if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress"
+                                     "in the current game"):
+            print "Change"
 
 
 def select_tile():
-   tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a background", multiple=False)
+    tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a background", multiple=False)
 
 
 #####   Help commands   #####

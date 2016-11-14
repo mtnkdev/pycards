@@ -9,7 +9,7 @@ class Hanoi(CardGame):
 
     name = "Hanoi"
 
-    def __init__(self, num_cards):
+    def __init__(self, num_cards=4):
         """Initialize standard properties of a 4-card Hanoi game
 
         Hanoi games are card-based representations of the well-known
@@ -27,9 +27,17 @@ class Hanoi(CardGame):
      # Stack(id, x, y, base, alternate, direction, pos, accept = True)
     def create(self):
         """Create the stacks (left, middle, right) for the Hanoi game"""
-        self.stacks.append(Stack(0, 150, 250, -1, False, -1, [-1]*self.numcards, True, offset=15))
+        self.stacks.append(Stack(0, 150, 250, -1, False, -1, [1]*self.numcards, True, offset=15))
         self.stacks.append(Stack(0, 350, 250, -1, False, -1, [], True, offset=15))
         self.stacks.append(Stack(0, 550, 250, -1, False, -1, [], True, offset=15))
+        self._init_bindings()
+
+    def _init_bindings(self):
+        """Initialize mouse bindings"""
+        from mouse_handler import Bindings
+        self._bindings = Bindings(self)
+        self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
+        self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))
 
     def startDeal(self, cardset):
         """Perform initial deal of cards"""
@@ -44,6 +52,9 @@ class Hanoi(CardGame):
         if self.stacks[destID].cards[-1].rank < card.rank:
             return False
         return True
+
+    def bindings(self):
+        return self._bindings.value()
 
     def deal(self):
         """No in-game deals present in Hanoi games"""

@@ -28,8 +28,7 @@ def create_card(canvas, stackID, cards, num, hide):
         img = cards[num].back_image()
     else:
         img = cards[num].get_image()
-    print hide
-    print stackID
+
     label = ttk.Label(canvas, image=img, borderwidth=0)
     setattr(label, "rank", cards[num].rank)
     setattr(label, "suit", cards[num].suit)

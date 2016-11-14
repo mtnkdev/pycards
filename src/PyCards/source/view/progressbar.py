@@ -4,6 +4,7 @@ import ttk
 
 
 def create(root, delay):
+    """Creates progressbar"""
     root.wm_withdraw()
     style = ttk.Style()
     style.theme_use("alt")#PySolFC uses classic

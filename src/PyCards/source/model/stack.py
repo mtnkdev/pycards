@@ -42,9 +42,6 @@ class Stack:
         self.removeCards = remove
         self.isdeck = deck
         self.capacity = capacity
-        
-    def clone (self, clone):
-        clone.ID = self.ID
 
 
 def move_cards(game, stackID, destID, cardID):

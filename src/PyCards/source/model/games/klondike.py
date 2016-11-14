@@ -48,7 +48,7 @@ class Klondike(CardGame):
                 if num == 0:
                     return [1]
                 else:
-                    return [-1]*(num) + [1]
+                    return [-1]*num + [1]
 
             self.stacks.append(Stack(stackCount, _x, _y, 13, True, -1, cards(),offset=15))  # create normal stacks
             stackCount += 1
@@ -60,7 +60,6 @@ class Klondike(CardGame):
         self._bindings = Bindings(self)
         self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
         self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))
-
 
     def deal(self):
         """Perform an in-game deal"""
@@ -85,9 +84,13 @@ class Klondike(CardGame):
             cardImg.cardNum = len(waste.cardWidgets) - 1
             cardImg.stackID = waste.ID
 
-        for cardImg in waste.cardWidgets:
+        for i in range(len(waste.cardWidgets)):
+            cardImg = waste.cardWidgets[i]
             cardImg.place(x=waste.x,
                 y=waste.y + cardImg.cardNum * waste.offset)
+            card = waste.cards[i]
+            card.show()
+            cardImg.configure(image=card.get_image())
 
         if len(deck.cards) > 0:
             card = deck.cardWidgets[-1]
