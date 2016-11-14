@@ -140,7 +140,11 @@
 	modules listed below, which are leaves in the hierarchy tree, are the 
 	modules that will actually be implemented.
 	\begin{description}
-		\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding 
+		\item [\refstepcounter{mnum} \mthemnum \label{mPH}:] Platform-Hiding 
+		Module
+		\item [\refstepcounter{mnum} \mthemnum \label{mMI}:] Mouse Interface 
+		Module
+		\item [\refstepcounter{mnum} \mthemnum \label{mKB}:] Key Binding 
 		Module
 		\item [\refstepcounter{mnum} \mthemnum \label{mUS}:] User Settings 
 		Module
@@ -160,7 +164,7 @@
 			\toprule
 			\textbf{Level 1} & \textbf{Level 2}\\
 			\midrule
-			{Hardware-Hiding Module} & ~ \\
+			{Hardware-Hiding Module} & Platform Hiding Module \\
 			\midrule
 			\multirow{4}{0.3\textwidth}{Behaviour-Hiding Module}
 			& User Settings Module\\
@@ -194,17 +198,27 @@
 	(\emph{--}) is shown, this means that the module is not a leaf and will not 
 	have to be implemented. Whether or not this module is implemented depends 
 	on the programming language selected.
-	\subsection{Hardware Hiding Modules (\mref{mHH})}
+	\subsection{Hardware Hiding Modules}
 	\begin{description}
-		\item[Secrets:]The data structure and algorithm used to implement the 
+		\item[Secrets:]The data structures and algorithms used to implement the 
 		virtual hardware.
 		\item[Services:]Serves as a virtual hardware used by the rest of the 
 		system. This module provides the interface between the hardware and the 
 		software. So, the system can use it to display outputs or to accept 
 		inputs.
+		\item[Implemented By:] -
+	\end{description}
+	\subsubsection{Platform-Hiding Module (\mref{mPH})}
+	\begin{description}
+		\item[Secret:]The data structure and algorithm used to implement the 
+		virtual hardware.
+		\item[Services:]Serves as the virtual hardware used by the rest of the 
+		system. This module provides the interface between the hardware and the 
+		software. So, the system can use it to display outputs or to accept 
+		inputs.
 		\item[Implemented By:] OS
 	\end{description}
-	\subsubsection{Mouse Interface Module}
+	\subsubsection{Mouse Interface Module (\mref{mMI})}
 	\begin{description}
 		\item[Secrets:]The protocols and responses to the mouse device
 		\item[Service:]Takes the protocols and binds it to a widget as well as 
@@ -213,7 +227,7 @@
 		an event object instead
 		\item[Implemented By:] PyCards
 	\end{description}
-	\subsubsection{Key Binding Module}
+	\subsubsection{Key Binding Module (\mref{mKB})}
 	\begin{description}
 		\item[Secrets:]The structure and format of keyboard inputs
 		\item[Service:]Creates a subjective mapping of keyboard input to 
@@ -304,8 +318,8 @@
 			\toprule
 			\textbf{Req.} & \textbf{Modules}\\
 			\midrule
-			FR1 & \mref{mHH}\\
-			FR1 & \mref{mHH}\\
+			FR1 & \mref{mPH}\\
+			FR1 & \mref{mPH}\\
 			FR3 & \mref{mUS}\\
 			GR1 & \mref{mSL}\\
 			GR2 & \mref{mUS}\\
@@ -321,8 +335,8 @@
 			\toprule
 			\textbf{AC} & \textbf{Modules}\\
 			\midrule
-			\acref{acHardware} & \mref{mHH}\\
-			\acref{acOS} & \mref{mHH}\\
+			\acref{acHardware} & \mref{mPH}\\
+			\acref{acOS} & \mref{mPH}\\
 			\acref{acGUI} & \mref{mUS}\\
 			\acref{acStruct} & \mref{mEnum}, \mref{mStack}\\
 			\acref{acGames} & \mref{mSL}, \mref{mCM}, \mref{mGP}\\
