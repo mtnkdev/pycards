@@ -2,7 +2,7 @@
 
     State variables: None
 
-    Environment variables: |
+    Environment variables:
     system display: array of pixels used for graphical output
 
     Assumptions: None
@@ -23,14 +23,14 @@
     **Semantics**
 
     restart() :
-    * transition: |
+    * transition: 
     a) destroys the game in progress
     b) creates a new instance of the same game type
     c) updates application window
 
     start_game(gameclass) :
     * input: the class of the game to be created
-    * transition: |
+    * transition: 
     a) destroys the game in progress
     b) creates a new instance of the specified game type
     c) updates application window

@@ -1,5 +1,37 @@
 """This module is responsible for rendering the
 root window and enforcing its associated attributes and items
+
+    State Variables:
+    root: the application window
+
+    Environment Variables:
+    system display: array of pixels used for graphical output
+
+    **Exported Access Programs**
+
+    ==================   =====================================  ============
+    Routine                  In                                     Out
+    ==================   =====================================  ============
+    setBackground()         root
+    create_card             canvas, stackID, cards, num, hide
+    draw_card               label, x, y
+    bind_card               label, bindings
+    ==================   =====================================  ============
+
+    **Semantics**
+
+    setBackground(root) :
+    * transition: renders the background for the main window
+
+    create_card(canvas, stackID, cards, num, hide)
+    * transition: creates a card in the proper location and predefined attributes
+
+    draw_card(label, x, y):
+    * transition: renders the card to the main window
+
+    bind_card(label, bindings):
+    * transition: binds the mouse actions to the card
+
 """
 
 import Tkinter
@@ -25,6 +57,7 @@ def setBackground(root):
 
 
 def create_card(canvas, stackID, cards, num, hide):
+    """Creates a card with the desired properties"""
     if hide:
         img = cards[num].back_image()
     else:
@@ -40,6 +73,7 @@ def create_card(canvas, stackID, cards, num, hide):
 
 
 def draw_card(label, x, y):
+    """Renders the card to the main window"""
     label.place(x = x, y = y)
 
 

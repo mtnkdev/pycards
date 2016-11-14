@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>gamelayout.py &#8212; PyCards 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="PyCards 1.0 documentation" href="../index.html" />
+    <link rel="up" title="model" href="../model.html" />
+    <link rel="next" title="stack.py" href="stack.html" />
+    <link rel="prev" title="enum.py" href="enum.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-source.model.gamelayout">
+<span id="gamelayout-py"></span><h1>gamelayout.py<a class="headerlink" href="#module-source.model.gamelayout" title="Permalink to this headline">¶</a></h1>
+<p>This module is responsible for the layout of the game in the window</p>
+<blockquote>
+<div>State Variables: none</div></blockquote>
+<p>Environment Variables: none</p>
+<p>Assumptions: none</p>
+<dl class="class">
+<dt id="source.model.gamelayout.CardGame">
+<em class="property">class </em><code class="descclassname">source.model.gamelayout.</code><code class="descname">CardGame</code><a class="headerlink" href="#source.model.gamelayout.CardGame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract base class to be used as specification for all games</p>
+<dl class="attribute">
+<dt id="source.model.gamelayout.CardGame.bindings">
+<code class="descname">bindings</code><a class="headerlink" href="#source.model.gamelayout.CardGame.bindings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for bindings</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="source.model.gamelayout.CardGame.create">
+<code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.model.gamelayout.CardGame.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define the initial layout of the game including
+the number and positioning of cards</p>
+<p>Also place restriction on the allowed actions based
+on the rules of the game</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="source.model.gamelayout.CardGame.deal">
+<code class="descname">deal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.model.gamelayout.CardGame.deal" title="Permalink to this definition">¶</a></dt>
+<dd><p>If in-game dealing is allowed this performs
+a single deal action</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descclassname">source.model.gamelayout.</code><code class="descname">CardGame</code></dt>
+<dd><p>Abstract base class to be used as specification for all games</p>
+<dl class="attribute">
+<dt>
+<code class="descname">bindings</code></dt>
+<dd><p>Method for bindings</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Define the initial layout of the game including
+the number and positioning of cards</p>
+<p>Also place restriction on the allowed actions based
+on the rules of the game</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">deal</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>If in-game dealing is allowed this performs
+a single deal action</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../model.html">model</a><ul>
+      <li>Previous: <a href="enum.html" title="previous chapter">enum.py</a></li>
+      <li>Next: <a href="stack.html" title="next chapter">stack.py</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/model/gamelayout.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Aravi Premachandran, Michael Lee, Nikhil Patel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/model/gamelayout.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

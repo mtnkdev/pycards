@@ -1,3 +1,27 @@
+"""This module contains the implementation of widgets that
+the user interacts with to trigger events
+
+    State variables:
+    root: the main application window
+
+    Environment variables: None
+
+    Assumptions: None
+
+    **Exported Access Programs**
+
+    ==================   ============   ============
+    Routine                  In             Out
+    ==================   ============   ============
+    create_menu             root
+    ==================   ============   ============
+
+    **Semantics**
+
+    create_menu(root) :
+    * transition: creates the menubar for the application
+"""
+
 from Tkinter import Menu
 
 import menuactions as action

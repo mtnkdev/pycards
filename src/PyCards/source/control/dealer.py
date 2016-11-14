@@ -12,18 +12,16 @@
 import random
 from ..model.card import StandardCard
 
-__all__ = ["cardgen", "dealCards"]
-
 
 class Dealer:
     """Controller for the dealing and automatic movement of cards
 
-    State Variables: |
+    State Variables: 
     deck: a sequence of cards
     cardset: images for the cards
     game: the application state - game in progress
 
-    Assumptions: |
+    Assumptions: 
     A game is in progress and a valid cardset is defined
 
     **Exported Access Programs**
@@ -38,12 +36,12 @@ class Dealer:
     **Semantics**
 
     cardgen():
-    * transition: |
+    * transition: 
     a) creates and instantiates the cards in the game
     b) adds the sequence of the cards to the game deck
 
     dealCards():
-    * transition: |
+    * transition: 
     distributes the cards to the game stacks
     """
 

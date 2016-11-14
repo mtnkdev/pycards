@@ -2,11 +2,11 @@
     for the responding to events and dictating the state of the
     application
 
-    State Variables: |
+    State Variables: 
     * _root: the main window
     * _game: the game in progress
 
-    Environment Variables: |
+    Environment Variables: 
     system display: array of pixels used for graphical output
 
     Assumptions: None
@@ -23,7 +23,7 @@
     **Semantics**
 
     dealgame(root, game) :
-    * transition: |
+    * transition: 
     a) creates a new game
     b) updates the main window
     c) triggers the dealing of cards

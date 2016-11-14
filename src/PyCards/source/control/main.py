@@ -1,12 +1,12 @@
 """This module is the secondary entry point of the application
 
-    State Variables: |
+    State Variables: 
     root: the application window
 
-    Environment Variables: |
+    Environment Variables: 
     system display: array of pixels used for graphical output
 
-    Assumptions: |
+    Assumptions: 
     The program was launched from pysol.py in the parent directory
     Only the start method should be called from outside
 

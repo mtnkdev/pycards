@@ -1,11 +1,11 @@
 """This module is responsible for storing the set of registered games
 
-    State Variables: |
+    State Variables:
     DB: collection of games
 
     Environment Variables: none
 
-    Assumptions: |
+    Assumptions:
     The Zen of Python: 'Flat is better than nested',
     hence database.DB is preferred to database.Database.DB
 """

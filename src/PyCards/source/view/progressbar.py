@@ -1,10 +1,22 @@
+"""This module is responsible for the creation of the progress bar
+when the application is being loaded
+
+    State Variables:
+    root: the application window
+
+    Environment Variables:
+    system display: array of pixels used for graphical output
+
+
+"""
+
 import Tkinter
 import time
 import ttk
 
 
 def create(root, delay):
-    """Creates progressbar"""
+    """Create progressbar"""
     root.wm_withdraw()
     style = ttk.Style()
     style.theme_use("alt")#PySolFC uses classic
@@ -20,6 +32,7 @@ def create(root, delay):
     loader.resizable(0,0)
 
     def action():
+        """Increments progress on the bar"""
         for step in range(0, int(loader.bar['maximum']), loader.bar['maximum'] / 10):
             loader.bar['value'] = step
             time.sleep(delay)
