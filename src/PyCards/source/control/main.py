@@ -1,4 +1,28 @@
-"""This module """
+"""This module is the secondary entry point of the application
+
+    **Exported Access Programs**
+
+    ==================   ============   ============
+    Routine                  In             Out
+    ==================   ============   ============
+    start()
+    ==================   ============   ============
+
+    **Semantics**
+
+    start() :
+    * transition: creates application window
+
+    State Variables:
+    root: the application window
+
+    Environment Variables:
+    system display: array of pixels used for graphical output
+
+    Assumptions:
+    The program was launched from pysol.py
+    Only the start method should be called from outside
+"""
 
 import Tkinter
 import ttk
@@ -9,11 +33,13 @@ from ..model import assets
 from ..view import progressbar as loader
 from ..view import window
 
+__all__ = ["start"]
+
 
 class App:
-    """This class encapsulates the program
+    """This class encapsulates the main program
 
-    :param master: the Tk instance that defines the
+    Exports:
     """
 
     def __init__(self, master):
@@ -44,3 +70,4 @@ def start():
     menu.create_menu(root)
     app = App(root)
     mainloop()
+

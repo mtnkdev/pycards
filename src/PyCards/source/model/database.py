@@ -7,7 +7,8 @@
 
     Assumptions:
     The Zen of Python: 'Flat is better than nested',
-    hence database.DB is preferred to database.Database.DB"""
+    hence database.DB is preferred to database.Database.DB
+"""
 
 
 class Database:

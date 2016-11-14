@@ -1,5 +1,6 @@
 """This module is responsible for rendering the
-root window and enforcing its associated attributes and items"""
+root window and enforcing its associated attributes and items
+"""
 
 import Tkinter
 import ttk
