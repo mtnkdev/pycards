@@ -90,11 +90,14 @@ class FreeCell(CardGame):
 
         return None
 
-        # free_move = 1
-        # for num in range(len(self.stacks)):
-        #     if !((self.cells <= num and num < self.cells + self.foundations)) and stack[num].cards == 0:
-        #         free_cells += 1
-        # return len(cards) > free_cells
+    def update(self):
+        return self.check_win()
+
+    def check_win(self):
+        for i in range(self.cells, self.cells + self.foundations):
+            if len(self.stacks[i].cards) < 13:
+                return False
+        return True
 
     def bindings(self):
         """defines mouse bindings for game"""

@@ -1,6 +1,6 @@
 """Defines the rules and properties of the klondike varient of solitaire
 
-	State Variables: none
+    State Variables: none
 
     Environment Variables: none
 
@@ -71,13 +71,27 @@ class Klondike(CardGame):
         self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
         self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))
 
+    # FIXME extract card moving functionality from this method
     def deal(self):
         """Perform an in-game deal"""
 
         deck = self.stacks[self.deckID]
         waste = self.stacks[self.wasteID]
+
         if len(deck.cards) == 0:
-            return None # raise NotImplementedError("Recycling deck hasn't been implemented yet.")
+            if len(waste.cards) != 0:
+                for i in range(len(waste.cards)):
+                    card = waste.cards.pop()
+                    cardImg = waste.cardWidgets.pop()
+                    deck.cards.append(card)
+                    deck.cards[i].hide()
+                    cardImg.configure(image=card.get_image())
+                    cardImg.place(x=deck.x,
+                                  y=deck.y + cardImg.cardNum * deck.offset)
+                    deck.cardWidgets.append(cardImg)
+                    cardImg.stackID = deck.ID
+                    cardImg.cardNum = len(deck.cards) - 1
+                return None
 
         if len(deck.cards) > 3:
             num = 4
@@ -106,6 +120,23 @@ class Klondike(CardGame):
             card = deck.cardWidgets[-1]
             card.place(x=deck.x,
                 y=deck.y + card.cardNum * deck.offset)
+
+    def update(self):
+        for i in range(self.foundations + 2, len(self.stacks)):
+            try:
+                card = self.stacks[i].cards[-1]
+                card.show()
+                self.stacks[i].cardWidgets[-1].configure(image=card.get_image())
+            except IndexError:
+                pass
+
+        return self.check_win()
+
+    def check_win(self):
+        for i in range(2, self.foundations + 2):
+            if len(self.stacks[i].cards) < 13:
+                return False
+        return True
 
     def bindings(self):
         """defines mouse bindings for game"""

@@ -39,15 +39,19 @@ import ttk
 import os
 
 
-def setBackground(root):
+def setBackground(root, path=None):
     """Draw the window background"""
     height = root.winfo_height()
     width = root.winfo_width()
+    if hasattr(root, 'canvas'):
+        root.canvas.destroy()
     root.canvas = Tkinter.Canvas(root, height=height, width=width)
 
-    tile = Tkinter.PhotoImage(file=os.path.join(os.getcwd(), "tiles/Nostalgy.gif"))
+    if path is None:
+        tile = Tkinter.PhotoImage(file=os.path.join(os.getcwd(), "tiles/Nostalgy.gif"))
+    else:
+        tile = Tkinter.PhotoImage(file=path)
     root.back = tile
-
     for x in range(0, width, tile.width()):
         for y in range(0, height, tile.height()):
             label = Tkinter.Label(root.canvas, image=tile, borderwidth=0)

@@ -50,7 +50,7 @@ _game = None
 _root = None
 
 
-def dealgame(root=None, game=None):
+def dealgame(root=None, game=None, new_cardset=None):
     """Create and setup a new game"""
     global _game
     global _root
@@ -70,12 +70,14 @@ def dealgame(root=None, game=None):
         _game = game()
         _root.canvas.update()
 
-    cardset = cardsets.Cardset.cardsets["Standard"]
-    _game.cardset = cardset
-    dealer = Dealer(_game, cardset)
+    if new_cardset is None:
+        new_cardset = cardsets.Cardset.cardsets["Standard"]
+    _game.cardset = new_cardset
+    dealer = Dealer(_game, _game.cardset)
+
     _game.create()
     if hasattr(_game, 'startDeal'):
-        _game.startDeal(cardset)
+        _game.startDeal(new_cardset)
         return None
 
     dealer.cardgen()
@@ -91,6 +93,11 @@ def drawgame(root=None):
     stackID = 0
     for stack in _game.stacks:
         stack.holder = ttk.Label(root.canvas, image=_game.cardset.holder, borderwidth=0)
+        if stack.isdeck:
+            setattr(stack.holder, "stackID", stack.ID)
+            setattr(stack.holder, "cardNum", -1)
+            from ..model.games.mouse_handler import Bindings
+            bind_card(stack.holder, {"<ButtonRelease-1>": lambda event: Bindings.default_move(_game._bindings, event)})
         stack.holder.place(x=stack.x,y=stack.y)
         for num in range(len(stack.cards)):
             hide = False

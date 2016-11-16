@@ -79,4 +79,3 @@ def start():
     menu.create_menu(root)
     app = App(root)
     mainloop()
-

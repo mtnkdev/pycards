@@ -85,7 +85,7 @@ def _create_selectmenu(menubar):
 
     selectMenu.add_command(label="All Games...", command=action.showGames)
 
-    _add_game_type(selectMenu, "Freecell", get_games("Freecell"))
+    _add_game_type(selectMenu, "FreeCell", get_games("FreeCell"))
     _add_game_type(selectMenu, "Hanoi", get_games("Hanoi"))
     _add_game_type(selectMenu, "Klondike", get_games("Klondike"))
     _add_game_type(selectMenu, "Memory", get_games("Memory"))
@@ -158,7 +158,7 @@ def _create_optionmenu(menubar):
     menubar.add_cascade(label="Options", menu=optionMenu)
     optionMenu.add_command(label="Sound", command=None)
     optionMenu.add_command(label="Cardset", command=action.select_cardset)
-    optionMenu.add_command(label="Background", command=action.select_tile)
+    optionMenu.add_command(label="Background", command=lambda args=menubar.master: action.select_tile(args))
     optionMenu.add_cascade(label="Card Background", command=None)
     optionMenu.add_cascade(label="Animations", command=None)
     optionMenu.add_cascade(label="Mouse", command=None)

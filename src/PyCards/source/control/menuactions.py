@@ -49,13 +49,14 @@
 
 """
 
-
+import os
 import Tkinter
 import tkMessageBox
 import tkFileDialog
 
 from gamemanager import dealgame, drawgame, destroy
-
+from ..model.cardsets import Cardset
+from ..view.window import setBackground
 
 def restart():
     """Start a new instance of the same game type"""
@@ -93,16 +94,28 @@ def showGames():
 
 def select_cardset():
     """Prompt the user to select the directory containing the desired cardset"""
-    if tkFileDialog.askdirectory(initialdir="./cardsets",title="Choose a cardset", mustexist=True):
-        if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress"
+    cardset = tkFileDialog.askdirectory(initialdir="./cardsets",title="Choose a cardset", mustexist=True)
+    if os.path.isdir(cardset):
+        if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress "
                                      "in the current game"):
-            print "Change"
+
+            config = os.path.join(cardset, "config.txt")
+            f = open(config, "r")
+            text = f.readlines()
+            name = (text[1].split(';'))[1].strip()
+            dealgame(new_cardset=Cardset.cardsets[name])
+            drawgame()
 
 
-def select_tile():
+def select_tile(root):
     """Prompt the user to select the desired background image"""
-    tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a background", multiple=False)
-
+    tile = tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a background", multiple=False)
+    if os.path.isfile(tile):
+        if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress "
+                                     "in the current game"):
+            setBackground(root, path=tile)
+            dealgame()
+            drawgame()
 
 #####   Help commands   #####
 

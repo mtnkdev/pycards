@@ -63,6 +63,15 @@ class Hanoi(CardGame):
             return False
         return True
 
+    def update(self):
+        return self.check_win()
+
+    def check_win(self):
+        if len(self.stacks[2].cards) < self.numcards:
+            return False
+        return True
+
+
     def bindings(self):
         """defines mouse bindings for game"""
         return self._bindings.value()

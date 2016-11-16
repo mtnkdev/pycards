@@ -48,7 +48,7 @@ class Spider(CardGame):
         # Create any-suit stacks
         for num in range(self.numrows):
             _x = num * 85 + 20
-            _y = 250
+            _y = 200
 
             def cards():
                 stack = [-1]*4
@@ -73,7 +73,7 @@ class Spider(CardGame):
 
         deck = self.stacks[self.deckID]
 
-        for i in range(self.numrows):
+        for i in range(self.foundations + 1, self.numrows):
             if len(self.stacks[i].cards) == 0:
                 return None # all stacks must have at least one card before dealing
 
@@ -93,13 +93,23 @@ class Spider(CardGame):
 
     def update(self):
         """Perform post-move automatic updates to the game"""
-        straight = True
+        for i in range(self.foundations + 1, len(self.stacks)):
+            try:
+                card = self.stacks[i].cards[-1]
+                card.show()
+                self.stacks[i].cardWidgets[-1].configure(image=card.get_image())
+            except IndexError:
+                pass
+
         for i in range(self.foundations+1, len(self.stacks)):
             stack = self.stacks[i]
+            if len(stack.cards) == 0:
+                continue
             if stack.cards[0].rank == 1 and stack.cards[-1].rank == 13:
+                print "TEST"
                 straight = True
                 for card in stack.cards:
-                    if card.suit != stack.cards[0].suit:
+                    if card.suit != stack.cards[0].suit or card.visible is False:
                         straight = False
                 if straight:
                     stackID = -1
@@ -111,6 +121,13 @@ class Spider(CardGame):
                         move_cards(self, i, stackID, 0)
                     else:
                         raise ValueError, "Invalid card positions"
+        return self.check_win()
+
+    def check_win(self):
+        for i in range(1, self.foundations + 1):
+            if len(self.stacks[i].cards) < 13:
+                return False
+        return True
 
     def valid_selection(self, stackID, cardNum):
         """Indicate whether the selected cards can be moved"""

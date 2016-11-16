@@ -61,7 +61,7 @@ class StandardCard(AbstractCard):
         if self.visible:
             if self.image is None:
                 self._set_image()
-                return self.image
+            return self.image
         else:
             return self.back_image()
 
