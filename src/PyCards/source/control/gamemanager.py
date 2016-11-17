@@ -36,6 +36,7 @@ import ttk
 
 from ..control.dealer import Dealer
 from ..model import cardsets
+from ..model.cardsets import Cardset
 from ..view.window import bind_card, create_card, draw_card
 
 # Game imports
@@ -61,10 +62,10 @@ def dealgame(root=None, game=None, new_cardset=None):
         _root = root
 
     if game is None:
-#        _game = Klondike()
+        _game = Klondike()
 #        _game = Hanoi(4)
 #        _game = Spider()
-        _game = FreeCell()
+#        _game = FreeCell()
     else:
         _game = None
         _game = game()
@@ -125,3 +126,72 @@ def destroy():
     _game.stacks = []
     _game = None
     _root.update()
+
+
+_data = ""
+
+def _write(*args):
+    global _data
+    if args is not None:
+        _data += ''.join(args)
+
+def _flush():
+    global _data
+    print _data
+
+def save_game():
+    global _game
+    self = _game
+    _write(self.name, '_', str(len(self.stacks)), '_', self.cardset.name)
+    for i in range(len(self.stacks)):
+        _write("{:02x}".format(len(self.stacks[i].cards)))
+
+    for i in range(len(self.stacks)):
+        stack = self.stacks[i]
+        for j in range(len(stack.cards)):        
+            card = stack.cards[j]
+            _write("{:02x}".format(card.rank), card.suit, str(int(card.visible)))
+
+def load(data=None):
+    import re
+    if data is None:
+        global _data
+        data = _data
+    
+    data = data.split("_")
+    game_name = data[0]
+    numrows = int(data[1])
+    cardset = re.split("\d+", data[2])[0]
+    offset = len(cardset)
+    stack_data = data[2][offset:]
+
+    size = []
+    for i in range(numrows):
+        size.append(int("0x" + stack_data[2*i:2*i+2], 16))
+    offset += 2*numrows
+
+    stacks = []
+    for i in range(numrows):
+        stacks.append([])
+        for j in range(size[i]):
+            rank = int("0x" + data[2][offset:offset+2], 16) - 1
+            suit = data[2][offset+2]
+            visible = data[2][offset+3]
+            stacks[i].append([rank, suit, visible])
+            offset += 4
+    load_game(game_name, cardset, stacks)
+            
+    
+def load_game(game_name, cardset, stacks):
+    global _game
+    destroy()
+    game = DB.get_game(game_name)
+    _game = game()
+    _game.create()
+    _game.cardset = Cardset.cardsets[cardset]
+    for i in range(len(_game.stacks)):
+        _game.stacks[i].cards = []
+        for j in range(len(stacks[i])):
+            _game.stacks[i].cards.append(StandardCard(_game.cardset, stacks[i][j][0], stacks[i][j][1]))
+            _game.stacks[i].cards[j].visible = stacks[i][j][2]
+    drawgame()

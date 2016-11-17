@@ -56,7 +56,7 @@ import tkFileDialog
 
 from gamemanager import dealgame, drawgame, destroy
 from ..model.cardsets import Cardset
-from ..model.save_load import save_game, load_game
+from gamemanager import save_game, load
 from ..view.window import setBackground
 
 def restart():
@@ -76,12 +76,12 @@ def start_game(gameclass):
         drawgame()
 
 
-def saveGame(game):
-    save_game(game)
+def saveGame():
+    save_game()
 
 
-def loadGame(game):
-    load_game(game)
+def loadGame():
+    load()
 
 
 def quitGame():

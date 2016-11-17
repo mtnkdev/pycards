@@ -73,8 +73,8 @@ def _create_filemenu(menubar):
     # Adds selectable dropdown items
     # @command is a pointer to function
     fileMenu.add_command(label="New", command=action.restart)
-    fileMenu.add_command(label="Load...", command=lambda args=game: action.loadGame(args))
-    fileMenu.add_command(label="Save...", command= lambda args=game: action.saveGame(args))
+    fileMenu.add_command(label="Load...", command=action.loadGame)
+    fileMenu.add_command(label="Save...", command=action.saveGame)
     fileMenu.add_command(label="Exit", command=action.quitGame)
 
 

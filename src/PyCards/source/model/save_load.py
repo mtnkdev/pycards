@@ -66,7 +66,7 @@ def _read(data=_data):
             offset += 4
             print "rank: ", rank, "  suit: ", suit, "  visible: ", visible
         
-_read()
+# _read()
     
 def load_game(game_name, cardset, stacks):
     destroy()

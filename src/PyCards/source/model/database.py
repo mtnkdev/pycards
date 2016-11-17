@@ -37,5 +37,8 @@ class Database:
         """
         return self.games.values()
 
+    def get_game(self, game):
+        return self.games[game]
+
 # System-wide game database
 DB = Database()
