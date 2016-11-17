@@ -32,7 +32,10 @@
     * transition: renders the visual state of the game
 """
 
+import os
 import ttk
+import tkFileDialog
+import tkMessageBox
 
 from ..control.dealer import Dealer
 from ..model import cardsets
@@ -97,7 +100,7 @@ def drawgame(root=None):
         if stack.isdeck:
             setattr(stack.holder, "stackID", stack.ID)
             setattr(stack.holder, "cardNum", -1)
-            from ..model.games.mouse_handler import Bindings
+            from ..model.mouse_handler import Bindings
             bind_card(stack.holder, {"<ButtonRelease-1>": lambda event: Bindings.default_move(_game._bindings, event)})
         stack.holder.place(x=stack.x,y=stack.y)
         for num in range(len(stack.cards)):
@@ -137,7 +140,12 @@ def _write(*args):
 
 def _flush():
     global _data
-    print _data
+    print "test"
+    tile = tkFileDialog.asksaveasfilename(initialdir="./tiles",title="Choose a filename")
+    f = open(tile, 'w')
+    f.write(_data)
+    f.close()
+        
 
 def save_game():
     global _game
@@ -151,12 +159,18 @@ def save_game():
         for j in range(len(stack.cards)):        
             card = stack.cards[j]
             _write("{:02x}".format(card.rank), card.suit, str(int(card.visible)))
+    _flush()
 
-def load(data=None):
+def load():
     import re
-    if data is None:
-        global _data
-        data = _data
+    filename = tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a save file", multiple=False)
+    if not os.path.isfile(filename):
+        return
+    
+
+    f = open(filename, 'r')
+    data = f.read()
+    f.close()
     
     data = data.split("_")
     game_name = data[0]
@@ -179,7 +193,9 @@ def load(data=None):
             visible = data[2][offset+3]
             stacks[i].append([rank, suit, visible])
             offset += 4
-    load_game(game_name, cardset, stacks)
+    if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress "
+                         "in the current game"):
+        load_game(game_name, cardset, stacks)
             
     
 def load_game(game_name, cardset, stacks):

@@ -8,8 +8,9 @@
 
 """
 
-from ..stack import move_cards
-
+from stack import move_cards
+#from ..control.gamemanager import destroy, dealgame
+from ..control.menuactions import restart
 
 class Bindings:
 
@@ -136,13 +137,23 @@ class Bindings:
                 cardImg.place(x=obj._game.stacks[ID].x, y=obj._game.stacks[ID].y + cardImg.cardNum * obj._game.stacks[ID].offset)
 
         try:
-            return obj._game.update()
+            if obj._game.update():
+                restart()
         except AttributeError:
             pass
         update(obj._game)
 
     def value(self):
         return self.bindings
+
+
+#def restart():
+#    """Start a new instance of the same game type"""
+#    import tkMessageBox
+#    if tkMessageBox.askyesno("", 'Do you want to start a new game?', default="yes"):
+#        destroy()
+#        dealgame()
+#        drawgame()
 
 
 def _nearest(game, x, y):

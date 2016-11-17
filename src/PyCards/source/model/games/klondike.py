@@ -66,7 +66,7 @@ class Klondike(CardGame):
 
     def _init_bindings(self):
         """Initialize mouse bindings"""
-        from mouse_handler import Bindings
+        from ..mouse_handler import Bindings
         self._bindings = Bindings(self)
         self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
         self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))

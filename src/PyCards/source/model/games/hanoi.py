@@ -44,7 +44,7 @@ class Hanoi(CardGame):
 
     def _init_bindings(self):
         """Initialize mouse bindings"""
-        from mouse_handler import Bindings
+        from ..mouse_handler import Bindings
         self._bindings = Bindings(self)
         self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
         self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))
@@ -52,7 +52,8 @@ class Hanoi(CardGame):
     def startDeal(self, cardset):
         """Perform initial deal of cards"""
         for rank in range(0,self.numcards):
-            self.stacks[0].cards[rank] = (StandardCard(cardset, rank, "h"))
+            self.stacks[0].cards[rank] = (StandardCard(cardset, 4-rank-1, "h"))
+            self.stacks[0].cards[rank].show()
 
     def valid_drop(self, stackID, destID, cardNum):
         """Indicate whether the selected cards can be moved to the destination stack"""
