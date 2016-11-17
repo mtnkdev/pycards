@@ -73,8 +73,8 @@ def _create_filemenu(menubar):
     # Adds selectable dropdown items
     # @command is a pointer to function
     fileMenu.add_command(label="New", command=action.restart)
-    fileMenu.add_command(label="Load...", command=action.loadGame)
-    fileMenu.add_command(label="Save...", command=action.saveGame)
+    fileMenu.add_command(label="Load...", command=lambda args=game: action.loadGame(args))
+    fileMenu.add_command(label="Save...", command= lambda args=game: action.saveGame(args))
     fileMenu.add_command(label="Exit", command=action.quitGame)
 
 
@@ -90,32 +90,6 @@ def _create_selectmenu(menubar):
     _add_game_type(selectMenu, "Klondike", get_games("Klondike"))
     _add_game_type(selectMenu, "Memory", get_games("Memory"))
     _add_game_type(selectMenu, "Spider", get_games("Spider"))
-
-##    freecell = Menu(selectMenu, tearoff=0)
-##    selectMenu.add_cascade(label="Freecell", menu=freecell)
-##    for game in get_games("Freecell"):
-##        freecell.add_command(label=game.name, command=lambda args=game: Action.start_game(game))
-##    
-##    
-##    hanoi = Menu(selectMenu, tearoff=0)
-##    selectMenu.add_cascade(label="Hanoi", menu=hanoi)
-##    for game in get_games("Hanoi"):
-##        hanoi.add_command(label=game, command=lambda args=game: Action.start_game(game))
-##    
-##    klondike = Menu(selectMenu, tearoff=0)
-##    selectMenu.add_cascade(label="Klondike", menu=klondike)
-##    for game in get_games("Klondike"):
-##        klondike.add_command(label=game, command=lambda args=game: Action.start_game(game))
-##    
-##    memory = Menu(selectMenu, tearoff=0)
-##    selectMenu.add_cascade(label="Memory", menu=memory)
-##    for game in get_games("Memory"):
-##        memory.add_command(label=game, command=lambda args=game: Action.start_game(game))
-##    
-##    spider = Menu(selectMenu, tearoff=0)
-##    selectMenu.add_cascade(label="Spider", menu=spider)
-##    for game in get_games("Spider"):
-##        spider.add_command(label=game, command=lambda args=game: Action.start_game(game))
 
 
 def get_games(gametype):
