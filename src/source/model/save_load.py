@@ -25,6 +25,7 @@ from stacks:
 
 
 def save_game(self):
+    print self
     _write(self.name, '_', str(len(self.stacks)), '_', self.cardset)
     for i in range(len(self.stacks)):
         _write("{:02x}".format(len(self.stacks[i].cards)))

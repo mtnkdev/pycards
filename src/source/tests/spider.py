@@ -26,8 +26,7 @@ class SpiderTest(unittest.TestCase):
             elif 1 <= i <= self.game.foundations:
                 assert not stack.isdeck and not stack.acceptCards and stack.offset == 0
             else:
-                assert not stack.isdeck and stack.acceptCards and stack.alternates \
-                       and stack.sameSuit and stack.direction == 1 and stack.offset == 15
+                assert not stack.isdeck and stack.acceptCards and stack.direction == -1 and stack.offset == 15
 
     def tearDown(self):
         pass

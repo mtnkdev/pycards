@@ -56,7 +56,17 @@ class App:
         self.frame = ttk.Frame(master)
         self.frame.pack()
         loader.create(root, 0.5)
-        assets.load_cardsets()
+
+        try:
+            assets.load_cardsets()
+        except WindowsError:
+            import sys
+            import Tkinter
+            import tkMessageBox
+            if tkMessageBox.showerror("Corrupt or missing files detected",
+                message="The cardsets directory is missing from your installation. "
+                "Please redownload and verify the integrity of your copy of the program"):
+                sys.exit(-1)
 
 
 def mainloop():

@@ -140,8 +140,7 @@ def _write(*args):
 
 def _flush():
     global _data
-    print "test"
-    tile = tkFileDialog.asksaveasfilename(initialdir="./tiles",title="Choose a filename")
+    tile = tkFileDialog.asksaveasfilename(initialdir="./saves",title="Choose a filename")
     f = open(tile, 'w')
     f.write(_data)
     f.close()
@@ -163,10 +162,9 @@ def save_game():
 
 def load():
     import re
-    filename = tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a save file", multiple=False)
+    filename = tkFileDialog.askopenfilename(initialdir="./saves",title="Choose a save file", multiple=False)
     if not os.path.isfile(filename):
         return
-    
 
     f = open(filename, 'r')
     data = f.read()

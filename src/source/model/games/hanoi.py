@@ -81,4 +81,4 @@ class Hanoi(CardGame):
         """No in-game deals present in Hanoi games"""
         pass
 
-DB.add_game("Hanoi", Hanoi) 
+DB.add_game("Hanoi4", Hanoi)

@@ -6,11 +6,12 @@
 \usepackage{booktabs}
 \usepackage{setspace}
 \usepackage{hyperref}
+\usepackage{color}
 
 
 \title{SE 3XA3: Development Plan\\PyCards}
 
-\author{Team 2, Team Name \\ \\ Aravi Premachandran premaa \\ Michael Lee leemr2
+\author{Team 2 \\ \\ Aravi Premachandran premaa \\ Michael Lee leemr2
 \\ Nikhil Patel patelna2 }
 
 \date{}
@@ -27,32 +28,37 @@
 \midrule
 Sep 30, 2016 & Aravi Premachandran, Michael Lee, Nikhil Patel
 & Initial Revision\\ 
+Nov 26, 2016 & Nikhil Patel
+& Added description of how labels will be used as part of Git Workflow\\ 
+Nov 26, 2016 & Nikhil Patel
+& Added to description of how to the Proof of Concept Demonstration
+shall be conducted\newline Added Project Review section heading\\ 
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \section{Team Meeting Plan}
 
-\noindent Team meetings are an essential part of the development process. It is
+\indent Team meetings are an essential part of the development process. It is
 important that the members of this group approach this project in a structured
 fashion and remain organized throughout. Meetings will be held during the latter
 portion of the regularly scheduled lab sections (time permitting) or immediately
 afterwards. In addition to the above listed times (or in lieu of in the case of
 schedule conflicts), informal meetings shall be conducted via e-communication
-using either of the Facebook and Skype platforms.\\Meetings will be scheduled on
-a weekly basis to ensure there is no backlog of issues needing resolving, to
-keep the project progressing on schedule, and as a general debrief on the past
-week and for the coming week(s). Meetings will generally start with a review of
-the past week(s) progress, including but not limited to deliverables completed
-and deadlines met. Then any issues or concerns that have arisen or are ongoing
-shall be raised by members of the group and addressed. Finally, meetings shall
-conclude with a summary of progress, a reiteration of changes made and/or issues
-resolved during the course of the meeting, and an overview of upcoming tasks and
-deliverables.
+using either of the Facebook and Skype platforms.
+\newline \indent Meetings will be scheduled on a weekly basis to ensure there
+is no backlog of issues needing resolving, to keep the project progressing on
+schedule, and as a general debrief on the past week and for the coming week(s).
+Meetings will generally start with a review of the past week(s) progress,
+including but not limited to deliverables completed and deadlines met. Then any
+issues or concerns that have arisen or are ongoing shall be raised by members
+of the group and addressed. Finally, meetings shall conclude with a summary of
+progress, a reiteration of changes made and/or issues resolved during the
+course of the meeting, and an overview of upcoming tasks and deliverables.
 
 \section{Team Communication Plan}
 
-\noindent The primary means of communication for the members of this team shall
+\indent The primary means of communication for the members of this team shall
 be through the instant messaging and conferencing services available using
 Facebook and Skype. These platforms are both convenient and also free to use -
 as such they are ideal for a project of this scale. Impersonal and routine
@@ -69,9 +75,9 @@ necessary for efficient communication and resolution.
 \begin{itemize} \itemsep0em \item Documentation: Aravi Premachandran \item Git:
 Nikhil Patel \item LaTeX: Michael Lee \end{itemize}
 
-\section{Git workflow plan} 
+\section{Git workflow plan}
 
-\noindent Our team will be implementing the Feature Branch Workflow using Git.
+\indent Our team will be implementing the Feature Branch Workflow using Git.
 The reasoning behind using the feature branch workflow is that the master branch
 should always contain stable, correct code. Development or modification of a new
 or old feature will be done within a dedicated branch, and when completed a pull
@@ -79,35 +85,56 @@ request will be filed before merging with master. Using the feature branch
 workflow isolates the development of features from the core codebase making it
 easier for multiple members to work on the same or different features
 simultaneously while keeping the most recent working version of the software
-intact.
+intact.\newline
+\indent \textcolor{red}{Gitlab also has an integrated issue tracking system that we will be
+using throughout the course of the project. Issues are a way to manage and keep
+track of tasks, features, bugs and much more. The main focus of issues is on
+collaboration. We intend to organize the issues we create using labels and
+issue templates.  Labels function similar to keyword tags for the issue, and
+can be used to identify and also filter issues for better organization. Issue
+templates will used to provide a general format when presenting an issue to
+help ensure that issues contain enough relevant information to understand and
+address them effectively.}
 
 
 \section{Proof of Concept Demonstration Plan}
 
-\noindent Throughout the software development process there are risks that our
+\indent Throughout the software development process there are risks that our
 team will face. Some of the risks that we may face are difficulty testing the
 application, the software product's dependence on the user having Python
 installed on the host system, and also adapting the product to use automated
-build and testing tools.\\The software product implements a graphical user
+build and testing tools.
+\newline \indent The software product implements a graphical user
 interface which makes it difficult to test its functionality. It will not be
 practical or even feasible to use automated testing on the user interface. As
 such, we will be forced to use behavioural testing ie. running the application
-and validating its response to various inputs from the user. \\Another risk we
-may encounter is difficulty in packaging the product as a portable and
-standalone application. The existing implementation relies on the user having
-Python installed on the host system - to overcome this we will need to perform
-research as to if and how the Python environment can be bundled with the
-application, and if it is legal to do so.\\The next risk that we have to address
-is the desire for an automated building and testing environment. If different
-users or developers attempt to build and deploy the source in an unintended
-manner it may lead to unexpected behaviour or errors. To address this need we
-will look into using a build tool or writing a custom build script (ie.
-makefile). Having a defined build script and/or using a build tool makes the
-build and also deployment process consistent and also convenient for both users
-and developers.
+and validating its response to various inputs from the user.
+\newline \indent Another risk we may encounter is difficulty in packaging the
+product as a portable and standalone application. The existing implementation
+relies on the user having Python installed on the host system - to overcome
+this we will need to perform research as to if and how the Python environment
+can be bundled with the application, and if it is legal to do so.
+\newline \indent The next risk that we have to address is the desire for an
+automated building and testing environment. If different users or developers
+attempt to build and deploy the source in an unintended manner it may lead to
+unexpected behaviour or errors. To address this need we will look into using a
+build tool or writing a custom build script (ie. makefile). Having a defined
+build script and/or using a build tool makes the build and also deployment
+process consistent and also convenient for both users and developers. \newline
+\indent \textcolor{red}{The proof of concept demonstration will be a
+demonstration of a minimal user interface implemented in Python and using 
+the Tkinter and ttk packages, as the design and implementation of the graphical
+portion of the system is anticipated to be one of the primary challenges. In
+addition to the implementation described above, the team will demonstrate their
+ability to compile, package and launch the program as a single executable file.
+Finally, the team shall create and show the successful execution of a subset of
+automated tests (to demonstrate domain knowledge, competence and feasibility)
+of conducting automated testing using the unittest.py module that comes with a
+default Python installation.}
 
+\section{Technology}
 
-\section{Technology} \noindent The software product shall be redeveloped in the
+\indent The software product shall be redeveloped in the
 same programming language as the existing implementation, Python 2.7.x . The IDE
 of choice will be the simplistic IDLE editor though any execution of the
 implementation shall be done using the command-line (shell). The pydoc
@@ -116,18 +143,24 @@ pybuilder will tentatively be used both as a build tool and for testing.
 
 \section{Coding Style} 
 
-\noindent Python is a dynamic language in that variables are not bound to a
+\indent Python is a dynamic language in that variables are not bound to a
 type, only the value(s) stored in it is. Python also poorly implements the
 principle of least privilege. As such, it is especially important to follow a
 consistent coding style in order to reduce the likelihood of making simple but
-easy-to-miss errors such as type errors. We plan on adhering to the
-\href{https://google.github.io/styleguide/pyguide.html}
-{Google Python Style Guide} and will run the tool pylint over our code to help
+easy-to-miss errors such as type errors. We plan on adhering to a combination 
+of the\href{https://google.github.io/styleguide/pyguide.html}
+{Google Python Style Guide} and the Python style guide defined in the 
+\href{https://www.python.org/dev/peps/pep-0008/} {Python Developer's Guide}.
+When reviewing our code, we will run the tool pylint over our code to help
 enforce it. Pylint is a tool that finds bugs and style issues in Python source.
 
 \section{Project Schedule} 
 
 \noindent The Gantt Project schedule for this project can be found in the
 Project Schedule folder.
+
+\section{Project Review} 
+
+
 
 \end{document}
