@@ -1,6 +1,6 @@
 """Defines the rules and properties of the game spider solitaire 
 
-	State Variables: none
+    State Variables: none
 
     Environment Variables: none
 

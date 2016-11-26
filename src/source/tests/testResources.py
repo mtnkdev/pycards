@@ -1,6 +1,7 @@
 import unittest
 
-class Test_resources(unittest.TestCase):
+
+class AssetTests(unittest.TestCase):
 
     def setUp(self):
         pass
