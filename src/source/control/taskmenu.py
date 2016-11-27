@@ -122,8 +122,7 @@ def _create_assistmenu(menubar):
     assistMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Assist", menu=assistMenu)
     assistMenu.add_command(label="Hint", command=None)
-    assistMenu.add_command(label="Highlight piles", command=None)
-    assistMenu.add_command(label="Find Card", command=None)
+    assistMenu.add_command(label="Solve", command=action.solve_game)
 
 
 def _create_optionmenu(menubar):

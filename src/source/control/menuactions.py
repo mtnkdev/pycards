@@ -54,7 +54,7 @@ import Tkinter
 import tkMessageBox
 import tkFileDialog
 
-from gamemanager import dealgame, drawgame, destroy
+from gamemanager import dealgame, drawgame, destroy, solve
 from ..model.cardsets import Cardset
 from gamemanager import save_game, load
 from ..view.window import setBackground
@@ -117,6 +117,9 @@ def select_tile(root):
             setBackground(root, path=tile)
             dealgame()
             drawgame()
+
+def solve_game():
+    solve()
 
 #####   Help commands   #####
 

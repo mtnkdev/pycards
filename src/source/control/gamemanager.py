@@ -54,6 +54,17 @@ _game = None
 _root = None
 
 
+def solve():
+    global _game
+    global _root
+
+    try:
+        _game.solve()
+    except AttributeError:
+        pass
+    _root.canvas.update()
+    return None
+
 def dealgame(root=None, game=None, new_cardset=None):
     """Create and setup a new game"""
     global _game
@@ -65,8 +76,8 @@ def dealgame(root=None, game=None, new_cardset=None):
         _root = root
 
     if game is None:
-        _game = Klondike()
-#        _game = Hanoi(4)
+#        _game = Klondike()
+        _game = Hanoi(4)
 #        _game = Spider()
 #        _game = FreeCell()
     else:
@@ -191,7 +202,7 @@ def load():
             visible = data[2][offset+3]
             stacks[i].append([rank, suit, visible])
             offset += 4
-    if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress "
+    if tkMessageBox.askyesno("Continue", "Are you sure? This will cause you to lose all progress "
                          "in the current game"):
         load_game(game_name, cardset, stacks)
             
@@ -208,4 +219,6 @@ def load_game(game_name, cardset, stacks):
         for j in range(len(stacks[i])):
             _game.stacks[i].cards.append(StandardCard(_game.cardset, stacks[i][j][0], stacks[i][j][1]))
             _game.stacks[i].cards[j].visible = stacks[i][j][2]
+        _game.stacks[i].cardWidgets = [0] * j
+    _game.update()
     drawgame()

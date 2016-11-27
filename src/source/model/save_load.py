@@ -1,9 +1,11 @@
 _data = ""
 
+
 def _write(*args):
     global _data
     if args is not None:
         _data += ''.join(args)
+
 
 def _flush():
     global _data
