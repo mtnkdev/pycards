@@ -51,8 +51,10 @@ class Bindings:
         if stack.alternates and bottom.color == event.widget.color:
             return False
 
-        if stack.sameSuit and bottom.suit != event.widget.suit:
-            return False
+        if stack.sameSuit:
+            for card in obj._game.stacks[event.widget.stackID].cards[event.widget.cardNum:]:
+                if card.suit != bottom.suit:
+                    return False
 
         if event.widget.rank - bottom.rank != stack.direction:
             return False
