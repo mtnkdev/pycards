@@ -65,6 +65,7 @@ def solve():
     _root.canvas.update()
     return None
 
+
 def dealgame(root=None, game=None, new_cardset=None):
     """Create and setup a new game"""
     global _game
@@ -78,7 +79,7 @@ def dealgame(root=None, game=None, new_cardset=None):
     if game is None:
 #        _game = Klondike()
 #        _game = Hanoi(4)
-        _game = Spider()
+         _game = Spider()
 #        _game = FreeCell()
     else:
         _game = None
@@ -117,7 +118,7 @@ def drawgame(root=None):
         for num in range(len(stack.cards)):
             hide = False
             try:
-                if stack.positions[num] < 0:
+                if not stack.cards[num].visible or (stack.positions[num] < 0 and not stack.cards[num].visible):
                     hide = True
             except IndexError:
                 pass
@@ -149,12 +150,17 @@ def _write(*args):
     if args is not None:
         _data += ''.join(args)
 
+
 def _flush():
     global _data
     tile = tkFileDialog.asksaveasfilename(initialdir="./saves",title="Choose a filename")
-    f = open(tile, 'w')
-    f.write(_data)
-    f.close()
+    try:
+        f = open(tile,'w')
+        f.write(_data)
+        f.close()
+    except:
+        f.close()
+    _data = ""
         
 
 def save_game():
@@ -219,7 +225,7 @@ def load_game(game_name, cardset, stacks):
         _game.stacks[i].cards = []
         for j in range(len(stacks[i])):
             _game.stacks[i].cards.append(StandardCard(_game.cardset, stacks[i][j][0], stacks[i][j][1]))
-            _game.stacks[i].cards[j].visible = stacks[i][j][2]
+            _game.stacks[i].cards[j].visible = int(stacks[i][j][2])
         _game.stacks[i].cardWidgets = [0] * len(stacks[i])
     drawgame()
     _game.update()

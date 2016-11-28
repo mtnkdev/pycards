@@ -81,10 +81,16 @@ def saveGame():
 
 
 def loadGame():
-    load()
+    try:
+        load()
+    except:
+        tkMessageBox.showwarning(message="Invalid save file")
 
 
 def quitGame():
+    import sys
+    destroy()
+    sys.exit(0)
     pass
 
 

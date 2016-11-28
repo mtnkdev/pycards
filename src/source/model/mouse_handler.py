@@ -9,8 +9,7 @@
 """
 
 from stack import move_cards
-#from ..control.gamemanager import destroy, dealgame
-from ..control.menuactions import restart
+from ..control.gamemanager import destroy, dealgame, drawgame
 
 class Bindings:
 
@@ -140,7 +139,7 @@ class Bindings:
 
         try:
             if obj._game.update():
-                restart()
+                restart(obj._game)
         except AttributeError:
             pass
         update(obj._game)
@@ -149,13 +148,13 @@ class Bindings:
         return self.bindings
 
 
-#def restart():
-#    """Start a new instance of the same game type"""
-#    import tkMessageBox
-#    if tkMessageBox.askyesno("", 'Do you want to start a new game?', default="yes"):
-#        destroy()
-#        dealgame()
-#        drawgame()
+def restart(obj):
+    """Start a new instance of the same game type"""
+    import tkMessageBox
+    if tkMessageBox.askyesno("", 'Congratulations you win!!! Do you want to start a new game?', default="yes"):
+       destroy()
+       dealgame(game=obj.__class__)
+       drawgame()
 
 
 def _nearest(game, x, y):

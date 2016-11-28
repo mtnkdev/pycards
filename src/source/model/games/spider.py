@@ -42,7 +42,7 @@ class Spider(CardGame):
         for num in range(self.foundations):
             _x = (self.numrows - num - 1) * 85 + 20
             _y = 50
-            self.stacks.append(Stack(stackCount, _x, _y, 1, False, 1, [], accept=False, sameSuit=True)) # create foundation stacks
+            self.stacks.append(Stack(stackCount, _x, _y, 1, False, 1, [], accept=False, remove=False, sameSuit=True)) # create foundation stacks
             stackCount += 1
 
         # Create any-suit stacks
@@ -105,21 +105,27 @@ class Spider(CardGame):
             stack = self.stacks[i]
             if len(stack.cards) == 0:
                 continue
-            if stack.cards[0].rank == 1 and stack.cards[-1].rank == 13:
-                straight = True
-                for card in stack.cards:
-                    if card.suit != stack.cards[0].suit or card.visible is False:
-                        straight = False
-                if straight:
-                    stackID = -1
-                    for j in range(1, self.foundations+1):
-                        if len(self.stacks[j].cards) == 0:
-                            stackID = j
-                            break
-                    if stackID != -1:
-                        move_cards(self, i, stackID, 0)
-                    else:
-                        raise ValueError, "Invalid card positions"
+            num = 0
+            while num + 13 <= len(stack.cards):
+                if stack.cards[num].rank == 13 and stack.cards[num+12].rank == 1:
+                    straight = True
+                    for card in stack.cards[num:num+13]:
+                        if card.suit != stack.cards[0].suit or card.visible is False:
+                            straight = False
+                    for c in range(num, num+12):
+                        if stack.cards[c].rank < stack.cards[c+1].rank:
+                            straight = False
+                    if straight:
+                        stackID = -1
+                        for j in range(1, self.foundations+1):
+                            if len(self.stacks[j].cards) == 0:
+                                stackID = j
+                                break
+                        if stackID != -1:
+                            move_cards(self, i, stackID, 0)
+                        else:
+                            raise ValueError, "Invalid card positions"
+                num += 1
         return self.check_win()
 
     def check_win(self):
@@ -139,8 +145,12 @@ class Spider(CardGame):
                     card.lift()
             return False
 
+        if not stack.removeCards:
+            return False
+
         if cardNum == len(stack.cards) - 1:
             return True
+
 
         prev = stack.cards[cardNum]
         for i in range(cardNum+1, len(stack.cards)):

@@ -61,7 +61,6 @@ class Dealer:
         assert self.game.numcards % len(self.cardset.cards) == 0
 
         for i in range(self.game.numcards / len(self.cardset.cards)):
-            print i
             for rank in self.cardset.ranks:
                 for suit in self.cardset.suits:
                     self.deck.append(StandardCard(self.cardset, rank, suit))
@@ -78,7 +77,6 @@ class Dealer:
             for c in range(len(pos)):
                 stacks[i].cards[c] = self.deck[index]# % len(self.cardset.cards)
                 index += 1
-                print index
                 if pos[c] == 1:
                     stacks[i].cards[c].show()
 
