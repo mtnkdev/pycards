@@ -47,7 +47,8 @@ def create_menu(root):
 def _add_games(menu, games, command=None):
     """Add games by type to the cascading game type menu"""
     for game in sorted(games, key=lambda game : game.name):
-        cmd = lambda args=game: action.start_game(game)
+        print game
+        cmd = lambda args=game: action.start_game(args)
         menu.add_command(label=game.name, command=cmd)
 
 

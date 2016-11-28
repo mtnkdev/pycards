@@ -113,7 +113,6 @@ class Hanoi(CardGame):
                     start = ""
                     for tower in [_start, _spare, _dest]:
                         for t in tower[1]:
-                            print t.rank
                             if i == t.rank:
                                 start = tower
                                 break
@@ -181,19 +180,15 @@ class Hanoi(CardGame):
 
 
 class Hanoi3(Hanoi):
-
     name = "Hanoi3"
-
     def __init__(self, num_cards=3):
-        super(Hanoi5, self).__init__(num_cards=3)
+        super(Hanoi3, self).__init__(num_cards=num_cards)
 
 
 class Hanoi5(Hanoi):
-
     name = "Hanoi5"
-
     def __init__(self, num_cards=5):
-        super(Hanoi5, self).__init__(num_cards=5)
+        super(Hanoi5, self).__init__(num_cards=num_cards)
 
 DB.add_game("Hanoi3", Hanoi3)
 DB.add_game("Hanoi4", Hanoi)
