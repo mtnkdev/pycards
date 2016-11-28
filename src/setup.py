@@ -4,14 +4,14 @@
 import os
 from distutils.core import setup
 
-from src.PyCards.source.settings import PACKAGE_URL
-from src.PyCards.source.settings import VERSION
+PACKAGE_URL = ""
+VERSION = '1.0'
 
 if os.name == 'nt':
-    pass
+    import py2exe
 
 if os.name == 'posix':
-    data_dir = 'share/PySolFC'
+    data_dir = 'share/PyCards'
 elif os.name == 'nt':
     data_dir = 'data'
 else:
@@ -20,15 +20,14 @@ else:
 ddirs = [
     'html',
     'images',
-    'sound',
     'tiles',
     'toolbar',
     'themes',
     'tcl',
     ]
-for s in file('MANIFEST.in'):
-    if s.startswith('graft data/cardset-'):
-        ddirs.append(s[11:].strip())
+##for s in file('MANIFEST.in'):
+##    if s.startswith('graft cardsets/cardset-'):
+##        ddirs.append(s[11:].strip())
 
 data_files = []
 
@@ -56,41 +55,27 @@ if os.name == 'posix':
 #import sys; sys.exit()
 
 long_description = '''\
-PySolFC is a collection of more than 1000 solitaire card games.
+PyCards is a collection of solitaire card games.
 Its features include modern look and feel (uses Tile widget set), multiple
-cardsets and tableau backgrounds, sound, unlimited undo, player statistics,
-a hint system, demo games, a solitaire wizard, support for user written
-plug-ins, an integrated HTML help browser, and lots of documentation.
+cardsets and tableau backgrounds and lots of documentation.
 '''
 
 kw = {
-    'name'         : 'PySolFC',
+    'name'         : 'PyCards',
     'version'      : VERSION,
     'url'          : PACKAGE_URL,
-    'author'       : 'Skomoroh',
-    'author_email' : 'skomoroh@gmail.com',
-    'description'  : 'a Python solitaire game collection',
+    'author'       : 'Aravi, Michael, Nikhil',
+    'description'  : 'Python solitaire game collection',
     'long_description' : long_description,
-    'license'      : 'GPL',
+    'license'      : 'GPLv3',
     'scripts'      : ['pysol.py'],
-    'packages'     : ['source',
-                      'source.configobj',
-                      'source.macosx',
-                      'source.__extra__winsystems',
-                      'source.tk',
-                      'source.tile',
-                      'source.pysolgtk',
-                      'source.games',
-                      'source.games.special',
-                      'source.games.ultra',
-                      'source.games.mahjongg'],
-    #'data_files'   : data_files,
+    'packages'     : ['source'],
+    'data_files'   : data_files,
     }
     
 if os.name == 'nt':
     kw['windows'] = [{'script': 'pysol.py',
-                      'icon_resources': [(1, 'data/pysol.ico')], }]
-    kw['packages'].remove('source.pysolgtk')
+                      'icon_resources': [(1, 'data/pysol.ico')], }]    
 
 setup(**kw)
 
