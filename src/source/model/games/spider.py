@@ -106,7 +106,6 @@ class Spider(CardGame):
             if len(stack.cards) == 0:
                 continue
             if stack.cards[0].rank == 1 and stack.cards[-1].rank == 13:
-                print "TEST"
                 straight = True
                 for card in stack.cards:
                     if card.suit != stack.cards[0].suit or card.visible is False:

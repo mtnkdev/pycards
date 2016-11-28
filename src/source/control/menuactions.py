@@ -97,16 +97,20 @@ def select_cardset():
     """Prompt the user to select the directory containing the desired cardset"""
     cardset = tkFileDialog.askdirectory(initialdir="./cardsets",title="Choose a cardset", mustexist=True)
     if os.path.isdir(cardset):
-        if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress "
+        try:
+            if tkMessageBox.askyesno("", "Are you sure? This will cause you to lose all progress "
                                      "in the current game"):
-
-            config = os.path.join(cardset, "config.txt")
-            f = open(config, "r")
-            text = f.readlines()
-            name = (text[1].split(';'))[1].strip()
-            dealgame(new_cardset=Cardset.cardsets[name])
-            drawgame()
-
+                config = os.path.join(cardset, "config.txt")
+                f = open(config, "r")
+                text = f.readlines()
+                name = (text[1].split(';'))[1].strip()
+                destroy()
+                dealgame(new_cardset=Cardset.cardsets[name])
+                drawgame()
+            else:
+                tkMessageBox.showwarning(message="Invalid cardset directory")
+        except IOError:
+            tkMessageBox.showwarning(message="Invalid cardset directory")
 
 def select_tile(root):
     """Prompt the user to select the desired background image"""

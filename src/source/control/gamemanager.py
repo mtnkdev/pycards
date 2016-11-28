@@ -77,8 +77,8 @@ def dealgame(root=None, game=None, new_cardset=None):
 
     if game is None:
 #        _game = Klondike()
-        _game = Hanoi(4)
-#        _game = Spider()
+#        _game = Hanoi(4)
+        _game = Spider()
 #        _game = FreeCell()
     else:
         _game = None
@@ -214,11 +214,12 @@ def load_game(game_name, cardset, stacks):
     _game = game()
     _game.create()
     _game.cardset = Cardset.cardsets[cardset]
+
     for i in range(len(_game.stacks)):
         _game.stacks[i].cards = []
         for j in range(len(stacks[i])):
             _game.stacks[i].cards.append(StandardCard(_game.cardset, stacks[i][j][0], stacks[i][j][1]))
             _game.stacks[i].cards[j].visible = stacks[i][j][2]
-        _game.stacks[i].cardWidgets = [0] * j
-    _game.update()
+        _game.stacks[i].cardWidgets = [0] * len(stacks[i])
     drawgame()
+    _game.update()

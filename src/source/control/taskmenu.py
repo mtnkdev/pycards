@@ -37,8 +37,8 @@ def create_menu(root):
 
     _create_filemenu(menubar)
     _create_selectmenu(menubar)  ##Look at _addSelectGameMenu in menubar.py
-    _create_editmenu(menubar)
-    _create_gamemenu(menubar)
+    #_create_editmenu(menubar)
+    #_create_gamemenu(menubar)
     _create_assistmenu(menubar)
     _create_optionmenu(menubar)
     _create_helpmenu(menubar)
@@ -83,7 +83,7 @@ def _create_selectmenu(menubar):
     selectMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Select", menu=selectMenu)
 
-    selectMenu.add_command(label="All Games...", command=action.showGames)
+    #selectMenu.add_command(label="All Games...", command=action.showGames)
 
     _add_game_type(selectMenu, "FreeCell", get_games("FreeCell"))
     _add_game_type(selectMenu, "Hanoi", get_games("Hanoi"))
@@ -121,7 +121,7 @@ def _create_assistmenu(menubar):
     """Create the cascading Assist menu"""
     assistMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Assist", menu=assistMenu)
-    assistMenu.add_command(label="Hint", command=None)
+    #assistMenu.add_command(label="Hint", command=None)
     assistMenu.add_command(label="Solve", command=action.solve_game)
 
 
@@ -129,16 +129,16 @@ def _create_optionmenu(menubar):
     """Create the cascading Option menu"""
     optionMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Options", menu=optionMenu)
-    optionMenu.add_command(label="Sound", command=None)
+    #optionMenu.add_command(label="Sound", command=None)
     optionMenu.add_command(label="Cardset", command=action.select_cardset)
     optionMenu.add_command(label="Background", command=lambda args=menubar.master: action.select_tile(args))
-    optionMenu.add_cascade(label="Card Background", command=None)
-    optionMenu.add_cascade(label="Animations", command=None)
-    optionMenu.add_cascade(label="Mouse", command=None)
-    optionMenu.add_command(label="Fonts", command=None)
-    optionMenu.add_command(label="Colors", command=None)
-    optionMenu.add_cascade(label="Set Theme", command=None)
-    optionMenu.add_cascade(label="Toolbar", command=None)
+    #optionMenu.add_cascade(label="Card Background", command=None)
+    #optionMenu.add_cascade(label="Animations", command=None)
+    #optionMenu.add_cascade(label="Mouse", command=None)
+    #optionMenu.add_command(label="Fonts", command=None)
+    #optionMenu.add_command(label="Colors", command=None)
+    #optionMenu.add_cascade(label="Set Theme", command=None)
+    #optionMenu.add_cascade(label="Toolbar", command=None)
 
 
 def _create_helpmenu(menubar):
@@ -146,8 +146,8 @@ def _create_helpmenu(menubar):
     helpMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Help",menu=helpMenu)
 
-    helpMenu.add_command(label="Contents", command=action.showContents)
-    helpMenu.add_command(label="How this works", command=action.showGuide)
-    helpMenu.add_command(label="Gameplay rules", command=action.showRules)
+    #helpMenu.add_command(label="Contents", command=action.showContents)
+    #helpMenu.add_command(label="How this works", command=action.showGuide)
+    #helpMenu.add_command(label="Gameplay rules", command=action.showRules)
     helpMenu.add_command(label="License", command=action.showLicense)
     helpMenu.add_command(label="About", command=action.showInfo)

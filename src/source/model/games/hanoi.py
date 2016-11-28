@@ -65,6 +65,7 @@ class Hanoi(CardGame):
         return True
 
     def solve(self):
+        return None
         from ..stack import move_cards
         _start = ("start", self.stacks[0].cards)
         _spare = ("spare", self.stacks[1].cards)
