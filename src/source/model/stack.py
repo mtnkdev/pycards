@@ -69,3 +69,5 @@ def move_cards(game, stackID, destID, cardID):
     for card in game.stacks[stackID].cards[cardID:]:
         game.stacks[destID].cards.append(card)
         game.stacks[stackID].cards.remove(card)
+    from ..control.gamemanager import update
+    update()

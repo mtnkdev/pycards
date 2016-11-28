@@ -17,7 +17,7 @@ from ..database import DB
 
 class Hanoi(CardGame):
 
-    name = "Hanoi"
+    name = "Hanoi4"
 
     def __init__(self, num_cards=4):
         """Initialize standard properties of a 4-card Hanoi game
@@ -52,7 +52,7 @@ class Hanoi(CardGame):
     def startDeal(self, cardset):
         """Perform initial deal of cards"""
         for rank in range(0,self.numcards):
-            self.stacks[0].cards[rank] = (StandardCard(cardset, 4-rank-1, "h"))
+            self.stacks[0].cards[rank] = (StandardCard(cardset, self.numcards-rank-1, "h"))
             self.stacks[0].cards[rank].show()
 
     def valid_drop(self, stackID, destID, cardNum):
@@ -65,7 +65,7 @@ class Hanoi(CardGame):
         return True
 
     def solve(self):
-        return None
+        #return None
         from ..stack import move_cards
         _start = ("start", self.stacks[0].cards)
         _spare = ("spare", self.stacks[1].cards)
@@ -85,13 +85,15 @@ class Hanoi(CardGame):
             else:
                 endID = 2
             move_cards(self, startID, endID, card)
-            print('Moved disk', card, ' from ', startID, ' to ', endID)  # Move the N disk
+            #print('Moved disk', card, ' from ', startID, ' to ', endID)  # Move the N disk
 
         def h1(disk, start=_start, end=_spare, middle=_dest):
             if disk > 0:
                 h1(disk - 1, start, middle, end)
-                print('Move disk' + str(disk) + ' from ' + start[0] + ' to ' + end[0])  # Move the N disk
-                move(self, start[0], end[0], disk)
+                #print('Move disk' + str(disk) + ' from ' + start[0] + ' to ' + end[0])  # Move the N disk
+                move(self, start[0], end[0], -1)
+                import time
+                time.sleep(1)
                 h1(disk - 1, middle, end, start)
 
         def doH(n=self.numcards, start=_start, dest=_dest, spare=_spare):
@@ -101,7 +103,7 @@ class Hanoi(CardGame):
                     print "done"
                 else:
                     if len(_start[1]) == 1:
-                        h1(1)
+                        h1(1, _start, _dest, _spare)
                     else:
                         h1(1, _spare, _dest, _start)
             elif n > 1:
@@ -177,4 +179,22 @@ class Hanoi(CardGame):
         """No in-game deals present in Hanoi games"""
         pass
 
+
+class Hanoi3(Hanoi):
+
+    name = "Hanoi3"
+
+    def __init__(self, num_cards=3):
+        super(Hanoi5, self).__init__(num_cards=3)
+
+
+class Hanoi5(Hanoi):
+
+    name = "Hanoi5"
+
+    def __init__(self, num_cards=5):
+        super(Hanoi5, self).__init__(num_cards=5)
+
+DB.add_game("Hanoi3", Hanoi3)
 DB.add_game("Hanoi4", Hanoi)
+DB.add_game("Hanoi5", Hanoi5)
