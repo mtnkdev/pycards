@@ -12,12 +12,12 @@
 }
 \usepackage[round]{natbib}
 
-\title{SE 3XA3: Test Report\\Title of Project}
+\title{SE 3XA3: Test Report\\Pysol}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
+\author{Group 2
+		\\ Aravi Premachandran premaa
+		\\ Michael Lee  leemr2
+		\\ Nikhil Patel  patelna2
 }
 
 \date{\today}
@@ -38,8 +38,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+December 4 & 1.0 & Initial Revision\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -48,27 +47,292 @@ Date 2 & 1.1 & Notes\\
 
 \pagenumbering{arabic}
 
-This document ...
 
 \section{Functional Requirements Evaluation}
 
+	\subsection{Event Handling}
+	
+	\paragraph{Key Bindings}
+	\begin{enumerate}
+		\item{KB1\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Application instance that is capturing user input
+		
+		Input: Keyboard press of one of COMMAND\_KEYS by user
+		
+		Expected Results: The corect response from BOUND_ACTIONS executes 
+
+		Success/Failure: Success
+		
+	\end{enumerate}
+	\subsection{Widget Callbacks}
+	\begin{enumerate}
+		\item{WC1\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Menubar widget waiting for user interaction
+		
+		Input: User clicks on a label in the menu bar
+		
+		Expected Results: If the user clicks or hovers on a cascading menu it will expand
+		to show all contained submenu labels. If the user clicks on a menu label
+		it will perform its associated callback function.
+
+		Success/Failure: Success
+
+		\item{WC2\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Toolbar widget waiting for user interaction
+		
+		Input: User clicks on a toolbar button
+		
+		Expected Results: The application will execute the appropriate function based upon
+		the toolbar button clicked. There is a bijection between the actions in
+		BOUND\_ACTIONS and toolbar buttons
+
+		Success/Failure: Success
+
+		\item{WC3\\}
+		Type: Functional, Dynamic, Manual
+		
+		Initial State: Card widgets waiting for user click
+		
+		Input: Primary button click on card widget
+		
+		Expected Results: If the card selection is valid (see Functional Klondike Requirements in 
+		\href{https://gitlab.cas.mcmaster.ca/premaa/pysol/tree/master/Doc/SRS}
+		{PyCards SRS} for selection constraints) the card is highlighted while the
+		mouse button remains pressed and is redrawn to follow the cursor. If the card
+		selection is invalid no visible changes are made to the window.
+
+		Success/Failure: Success
+	\end{enumerate}
+	\subsection{Game Logic}
+	
+	\paragraph{Card Selection}
+	\begin{enumerate}
+		\item{PC1\\}
+		Type: Structural, Dynamic, Automated
+		
+		Initial State: Klondike game is loaded
+		
+		Input: User selects card with mouse click
+		
+		Expected Results: Clicked card is highlighted and tracks mouse cursor if valid 
+		selection. If invalid selection the click is ignored. Criteria for valid 
+		selection is defined in the SRS
+
+		Success/Failure: Success
+
+		\item{PC2\\}
+		Type: Structural, Static, Manual
+		
+		Initial State: The rules of the game written using first-order logic
+		
+		Input: A sequence of possible executions that covers the different conditions
+		
+		Expected Results: Truth value whether the result of the execution conforms to the rules
+		of the game
+
+		Success/Failure: Success
+	\end{enumerate} 
+
+
+
 \section{Nonfunctional Requirements Evaluation}
 
-\subsection{Usability}
-		
-\subsection{Performance}
-
-\subsection{etc.}
+\subsection{Interoperability}
 	
-\section{Comparison to Existing Implementation}	
+	\paragraph{Operating System Compatibility}
+	\begin{enumerate}
+		\item{OSX\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of OS X OSX\_VERSION.
+		
+		Input/Condition: User locates executable and launches program
+		
+		Expected Results: Either a successful launch or a message from Gatekeeper
+		alerting user that program was created by an unidentified developer
 
-This section will not be appropriate for every project.
+		Success/Failure: Success
+		
+		\item{OS2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of Ubuntu UBUNTU\_VERSION.
+		
+		Input/Condition: User locates executable and launches program
+		
+		Expected Results: Either a successful launch or a failure caused by incompatible
+		packaging, dependencies, or other causes
+
+		Success/Failure: Success
+
+		\item{OSWIN\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for program is on target machine running a
+		standard install of Windows WIN\_VERSION.
+		
+		Input/Condition: User locates executable and launches program via double-click
+		
+		Expected Results: Depending on the system, either a successful launch or
+		application crash due to missing VC++2008 binaries (required even after 
+		building executable)
+
+		Success/Failure: Success
+	\end{enumerate}
+
+	\paragraph{Portability}
+	\begin{enumerate}
+		\item{PR1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Executable for application is located on a removable USB drive
+		
+		Input/Condition: User launches program executable from a removable USB drive
+		
+		Expected Results: The program launches exactly as if it had been launched on
+		the same system from the internal hard drive
+
+		Success/Failure: Success
+		\item{PR2\\}
+		Type: Structural, Static, Manual
+		
+		Initial State: The VC++ 2008 binaries required for execution of the program
+		are not found on the host system
+		
+		Input: The program fails to launch on a Windows-based machine that does not
+		have the VC++ 2008 redistributable package installed
+		
+		Expected Results: All of the users are able to successfully follow the provided
+		instructions to install the VC++ 2008 redistributable package
+
+		Success/Failure: Success
+	\end{enumerate}
+
+	\subsection{Usability}
+	\paragraph{Navigation}
+	\begin{enumerate}
+	\item{UN1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: The existing implementation is running and idle on the user's
+		machine, and is waiting for user interaction
+		
+		Input/Condition: A group of users are asked to perform each of the actions
+		defined in BOUND\_ACTIONS
+		
+		Expected Results: The majority of users successfully perform the different
+		actions, completing each within in a period of under MAX\_FIND\_TIME
+
+		Success/Failure: Success
+
+		\item{UN2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Users have completed and taken note of the results of the
+		previous test. Our application, PyCards, is now running and idle, waiting for
+		user interaction
+		
+		Input/Condition: The group of users are asked to perform each of the actions
+		defined in BOUND\_ACTIONS
+		
+		Expected Results: The majority of users successfully perform the different
+		actions, completing each within in a period of under MAX\_FIND\_TIME and in
+		time less than or equal to what was required to perform the same action using
+		the existing implementation
+
+		Success/Failure: Success
+	\end{enumerate}
+
+	\paragraph{Playability}
+	\begin{enumerate}
+		\item{UP1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Existing implementation is running, with a game in progress
+		
+		Input/Condition: A group of users are asked to play a game and rate it based
+		ease of use using a scale from 1-5 where 5 is very user friendly
+		
+		Expected Results: The majority of users give the game an average rating above 3
+
+		Success/Failure: Success
+
+		\item{UP2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Users have completed the previous test. PyCards is now running,
+		with a game in progress
+		
+		Input/Condition: A group of users are asked to play the game and rate it based
+		ease of use using a scale from 1-5 where 5 is very user friendly
+		
+		Expected Results: The majority of users give the game an average rating above 3
+		and greater than or equal to the rating given in the previous test
+
+		Success/Failure: Success
+	\end{enumerate}
+
+	\subsection{Product Integrity}
+	\paragraph{Resource Loading}
+	\begin{enumerate}
+		\item{RL1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: The 'cardsets' directory is missing or corrupt
+		
+		Input/Condition: When loading the application prompts users to either
+		re-download the application or download specifically the cardsets directory
+		
+		Expected Results: The majority of users are able to find the repository for the
+		program and re-download the executable or the cardset directory
+
+		Success/Failure: Success
+		
+		\item{RL2\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: The 'tiles' directory is missing or corrupt
+		
+		Input/Condition: Application attempts to load images from the 'tiles' directory
+		
+		Expected Results: An exception is thrown and handled by using a solid color tile
+		as the window background
+
+		Success/Failure: Success
+	\end{enumerate}
+	
+	\subsection{Security}
+	\paragraph{System Permissions}
+	\begin{enumerate}
+		\item{SP1\\}
+		Type: Structural, Dynamic, Manual
+		
+		Initial State: Application is located on the host machine's file system
+		
+		Input/Condition: User launches the application
+		
+		Expected Results: The application should launch without asking for administrative
+		(root) privileges
+
+		Success/Failure: Success
+	\end{enumerate}
+
 
 \section{Unit Testing}
 
 \section{Changes Due to Testing}
 
 \section{Automated Testing}
+
+
 		
 \section{Trace to Requirements}
 		
