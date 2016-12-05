@@ -52,7 +52,7 @@ December 4 & 1.0 & Initial Revision\\
 
 	\subsection{Event Handling}
 	
-	\paragraph{Key Bindings}
+	\paragraph{Key Bindings (\mref{tKeys})}
 	\begin{enumerate}
 		\item{KB1\\}
 		Type: Functional, Dynamic, Manual
@@ -66,7 +66,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 		
 	\end{enumerate}
-	\subsection{Widget Callbacks}
+	\subsection{Widget Callbacks (\mref{tClick})}
 	\begin{enumerate}
 		\item{WC1\\}
 		Type: Functional, Dynamic, Manual
@@ -111,7 +111,7 @@ December 4 & 1.0 & Initial Revision\\
 	\end{enumerate}
 	\subsection{Game Logic}
 	
-	\paragraph{Card Selection}
+	\paragraph{Card Selection (\mref{tCard})}
 	\begin{enumerate}
 		\item{PC1\\}
 		Type: Structural, Dynamic, Automated
@@ -145,7 +145,7 @@ December 4 & 1.0 & Initial Revision\\
 
 \subsection{Interoperability}
 	
-	\paragraph{Operating System Compatibility}
+	\paragraph{Operating System Compatibility (\mref{tOS})}
 	\begin{enumerate}
 		\item{OSX\\}
 		Type: Structural, Dynamic, Manual
@@ -188,7 +188,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\paragraph{Portability}
+	\paragraph{Portability (\mref{tPort})}
 	\begin{enumerate}
 		\item{PR1\\}
 		Type: Structural, Dynamic, Manual
@@ -216,7 +216,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\subsection{Usability}
+	\subsection{Usability (\mref{tUse})}
 	\paragraph{Navigation}
 	\begin{enumerate}
 	\item{UN1\\}
@@ -251,7 +251,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\paragraph{Playability}
+	\paragraph{Playability (\mref{tPlay})}
 	\begin{enumerate}
 		\item{UP1\\}
 		Type: Structural, Dynamic, Manual
@@ -280,7 +280,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\subsection{Product Integrity}
+	\subsection{Product Integrity (\mref{tInt})}
 	\paragraph{Resource Loading}
 	\begin{enumerate}
 		\item{RL1\\}
@@ -309,7 +309,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 	
-	\subsection{Security}
+	\subsection{Security (\mref{tSec})}
 	\paragraph{System Permissions}
 	\begin{enumerate}
 		\item{SP1\\}
@@ -332,13 +332,33 @@ December 4 & 1.0 & Initial Revision\\
 
 \section{Automated Testing}
 
-
+Automated testing was done using the unittest.py python module. This allowed us to create test suites for the various methods and use assert statements to specify preconditions and postconditions.
 		
 \section{Trace to Requirements}
+
+\begin{table}[H]
+		\centering
+		\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+			\toprule
+			\textbf{Req.} & \textbf{Modules}\\
+			\midrule
+			FR1 & \mref{...}\\
+			FR1 & \mref{...}\\
+			FR3 & \mref{...}\\
+			GR1 & \mref{...}\\
+			GR2 & \mref{...}\\
+			GR3 & \mref{...}, \mref{...}\\
+			\bottomrule
+		\end{tabular}
+		\caption{Trace Between Requirements and Modules}
+		\label{TblRT}
+	\end{table}
 		
 \section{Trace to Modules}		
 
 \section{Code Coverage Metrics}
+
+Code coverage was done using the coverage.py python module and running it against our project.
 
 \bibliographystyle{plainnat}
 
