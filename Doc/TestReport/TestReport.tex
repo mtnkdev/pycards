@@ -85,19 +85,6 @@ December 4 & 1.0 & Initial Revision\\
 		\item{WC2\\}
 		Type: Functional, Dynamic, Manual
 		
-		Initial State: Toolbar widget waiting for user interaction
-		
-		Input: User clicks on a toolbar button
-		
-		Expected Results: The application will execute the appropriate function based upon
-		the toolbar button clicked. There is a bijection between the actions in
-		BOUND\_ACTIONS and toolbar buttons
-
-		Success/Failure: Success
-
-		\item{WC3\\}
-		Type: Functional, Dynamic, Manual
-		
 		Initial State: Card widgets waiting for user click
 		
 		Input: Primary button click on card widget
@@ -200,19 +187,6 @@ December 4 & 1.0 & Initial Revision\\
 		
 		Expected Results: The program launches exactly as if it had been launched on
 		the same system from the internal hard drive
-
-		Success/Failure: Success
-		\item{PR2\\}
-		Type: Structural, Static, Manual
-		
-		Initial State: The VC++ 2008 binaries required for execution of the program
-		are not found on the host system
-		
-		Input: The program fails to launch on a Windows-based machine that does not
-		have the VC++ 2008 redistributable package installed
-		
-		Expected Results: All of the users are able to successfully follow the provided
-		instructions to install the VC++ 2008 redistributable package
 
 		Success/Failure: Success
 	\end{enumerate}
@@ -354,24 +328,63 @@ Automated testing was done using the unittest.py python module. This allowed us 
 		\centering
 		\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
 			\toprule
-			\textbf{Req.} & \textbf{Modules}\\
+			\textbf{Test Scenario} & \textbf{Requirements}\\
 			\midrule
-			FR1 &\\% \tref{...}\\
-			FR1 &\\% \tref{...}\\
-			FR3 &\\% \tref{...}\\
-			GR1 &\\% \tref{...}\\
-			GR2 &\\% \tref{...}\\
-			GR3 &\\% \tref{...}, \tref{...}\\
+			KB1 & FR4, **GR1
+			WC1 & GR1, FR4
+			WC2 & GR1, FR4
+			PC1 & GR3
+			PC2 & GR3
+			OSX & NFR4, NFR6, FR1
+			OS2 & NFR4, NFR6, FR1
+			OSWIN & NFR4, NFR6, FR1
+			PR1 & FR1, NFR5
+			UN1 & GR1, FR4
+			UP1 & NFR1, NFR2, NFR3
+			RL1 & FR2
+			RL2 & FR2
+			SP1 & FR1, FR2, NFR5, NFR6
 			REQS & \tref{tClick}, \tref{tUse}, \tref{tInt}, \tref{tSec}\\
 			REQS & \tref{tKeys}, \tref{tCard}, \tref{tOS}, \tref{tPort}\\
 			REQS & \tref{tUse}\\
 			\bottomrule
 		\end{tabular}
-		\caption{Trace Between Requirements and Modules}
+		\caption{Trace Between Tests and Requirements}
 		\label{TblRT}
 	\end{table}
 		
 \section{Trace to Modules}		
+
+
+\begin{table}[h]
+		\centering
+		\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+			\toprule
+			\textbf{Test Scenario} & \textbf{Modules}\\
+			\midrule
+			KB1 & FR4, **GR1
+			WC1 & GR1, FR4
+			WC2 & GR1, FR4
+			PC1 & GR3
+			PC2 & GR3
+			OSX & NFR4, NFR6, FR1
+			OS2 & NFR4, NFR6, FR1
+			OSWIN & NFR4, NFR6, FR1
+			PR1 & FR1, NFR5
+			UN1 & GR1, FR4
+			UP1 & NFR1, NFR2, NFR3
+			RL1 & FR2
+			RL2 & FR2
+			SP1 & FR1, FR2, NFR5, NFR6
+			REQS & \tref{tClick}, \tref{tUse}, \tref{tInt}, \tref{tSec}\\
+			REQS & \tref{tKeys}, \tref{tCard}, \tref{tOS}, \tref{tPort}\\
+			REQS & \tref{tUse}\\
+			\bottomrule
+		\end{tabular}
+		\caption{Trace Between Tests and Modules}
+		\label{TblTM}
+	\end{table}
+
 
 \section{Code Coverage Metrics}
 

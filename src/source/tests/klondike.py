@@ -25,7 +25,7 @@ class KlondikeTest(unittest.TestCase):
             elif i == 1:
                 assert not stack.isdeck and not stack.acceptCards and stack.offset == 0
             elif 2 <= i < self.game.foundations + 2:
-                assert not stack.isdeck and stack.acceptCards and stack.offset == 0
+                assert not stack.isdeck and stack.acceptCards and stack.offset == 0 and not stack.alternates and stack.sameSuit and stack.direction == 1
             else:
                 assert not stack.isdeck and stack.acceptCards and stack.alternates \
                        and not stack.sameSuit and stack.direction == -1 and stack.offset == 15
