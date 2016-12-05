@@ -11,10 +11,11 @@
     urlcolor=blue
 }
 \usepackage[round]{natbib}
+\newcommand{\tref}[1]{T\ref{#1}}
 
-\title{SE 3XA3: Test Report\\Pysol}
+\title{SE 3XA3: Test Report\\PyCards}
 
-\author{Group 2
+\author{Team 2
 		\\ Aravi Premachandran premaa
 		\\ Michael Lee  leemr2
 		\\ Nikhil Patel  patelna2
@@ -22,7 +23,7 @@
 
 \date{\today}
 
-\input{../Comments}
+%\input{../Comments}
 
 \begin{document}
 
@@ -52,7 +53,7 @@ December 4 & 1.0 & Initial Revision\\
 
 	\subsection{Event Handling}
 	
-	\paragraph{Key Bindings (\mref{tKeys})}
+	\paragraph{Key Bindings (\tref{tKeys})}
 	\begin{enumerate}
 		\item{KB1\\}
 		Type: Functional, Dynamic, Manual
@@ -61,12 +62,12 @@ December 4 & 1.0 & Initial Revision\\
 		
 		Input: Keyboard press of one of COMMAND\_KEYS by user
 		
-		Expected Results: The corect response from BOUND_ACTIONS executes 
+		Expected Results: The corect response from BOUND\_ACTIONS executes 
 
 		Success/Failure: Success
 		
 	\end{enumerate}
-	\subsection{Widget Callbacks (\mref{tClick})}
+	\subsection{Widget Callbacks (\tref{tClick})}
 	\begin{enumerate}
 		\item{WC1\\}
 		Type: Functional, Dynamic, Manual
@@ -111,7 +112,7 @@ December 4 & 1.0 & Initial Revision\\
 	\end{enumerate}
 	\subsection{Game Logic}
 	
-	\paragraph{Card Selection (\mref{tCard})}
+	\paragraph{Card Selection (\tref{tCard})}
 	\begin{enumerate}
 		\item{PC1\\}
 		Type: Structural, Dynamic, Automated
@@ -145,7 +146,7 @@ December 4 & 1.0 & Initial Revision\\
 
 \subsection{Interoperability}
 	
-	\paragraph{Operating System Compatibility (\mref{tOS})}
+	\paragraph{Operating System Compatibility (\tref{tOS})}
 	\begin{enumerate}
 		\item{OSX\\}
 		Type: Structural, Dynamic, Manual
@@ -188,7 +189,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\paragraph{Portability (\mref{tPort})}
+	\paragraph{Portability (\tref{tPort})}
 	\begin{enumerate}
 		\item{PR1\\}
 		Type: Structural, Dynamic, Manual
@@ -216,7 +217,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\subsection{Usability (\mref{tUse})}
+	\subsection{Usability (\tref{tUse})}
 	\paragraph{Navigation}
 	\begin{enumerate}
 	\item{UN1\\}
@@ -251,7 +252,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\paragraph{Playability (\mref{tPlay})}
+	\paragraph{Playability (\tref{tPlay})}
 	\begin{enumerate}
 		\item{UP1\\}
 		Type: Structural, Dynamic, Manual
@@ -280,7 +281,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\subsection{Product Integrity (\mref{tInt})}
+	\subsection{Product Integrity (\tref{tInt})}
 	\paragraph{Resource Loading}
 	\begin{enumerate}
 		\item{RL1\\}
@@ -309,7 +310,7 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 	
-	\subsection{Security (\mref{tSec})}
+	\subsection{Security (\tref{tSec})}
 	\paragraph{System Permissions}
 	\begin{enumerate}
 		\item{SP1\\}
@@ -328,6 +329,19 @@ December 4 & 1.0 & Initial Revision\\
 
 \section{Unit Testing}
 
+Unit testing was conducted using the unittest.py python module. Test suites
+were constructed for the core modules that make up the controller and model
+conceptual modules, as that is where the decision and data logic lies. More
+specifically, unit testing was performed to validate the correct behaviour of
+the dealer, mouse\_handler, assets, and game-containing modules. \newline
+\indnet For each game the key behaviours that needs to be validated include the
+creation of a game, the dealing of a game, the selection and movement of
+cards, and the updates to a game (ie flipping of cards, movement of cards in
+spider solitaire). These behaviours are tested by first asserting the necessary
+preconditions, then executing the action, then asserting the postconditions.
+If both the preconditions and postconditions are met then the test is considered
+to have executed successfuly.
+
 \section{Changes Due to Testing}
 
 \section{Automated Testing}
@@ -336,18 +350,21 @@ Automated testing was done using the unittest.py python module. This allowed us 
 		
 \section{Trace to Requirements}
 
-\begin{table}[H]
+\begin{table}[h]
 		\centering
 		\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
 			\toprule
 			\textbf{Req.} & \textbf{Modules}\\
 			\midrule
-			FR1 & \mref{...}\\
-			FR1 & \mref{...}\\
-			FR3 & \mref{...}\\
-			GR1 & \mref{...}\\
-			GR2 & \mref{...}\\
-			GR3 & \mref{...}, \mref{...}\\
+			FR1 &\\% \tref{...}\\
+			FR1 &\\% \tref{...}\\
+			FR3 &\\% \tref{...}\\
+			GR1 &\\% \tref{...}\\
+			GR2 &\\% \tref{...}\\
+			GR3 &\\% \tref{...}, \tref{...}\\
+			REQS & \tref{tClick}, \tref{tUse}, \tref{tInt}, \tref{tSec}\\
+			REQS & \tref{tKeys}, \tref{tCard}, \tref{tOS}, \tref{tPort}\\
+			REQS & \tref{tUse}\\
 			\bottomrule
 		\end{tabular}
 		\caption{Trace Between Requirements and Modules}
@@ -358,7 +375,11 @@ Automated testing was done using the unittest.py python module. This allowed us 
 
 \section{Code Coverage Metrics}
 
-Code coverage was done using the coverage.py python module and running it against our project.
+Code coverage was done using the coverage.py python module and running it
+against our project. The coverage.py module works in three phases: first it
+executes our code and monitors the statements that were executed, then it
+examines the source to determine which lines could have run, and finally it
+provides a report in the desired format (ie. text, html, annotated source).
 
 \bibliographystyle{plainnat}
 
