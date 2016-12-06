@@ -2,11 +2,10 @@
 
     State Variables: None
 
-    Environment Variables: none
+    Environment Variables: None
 
-    Assumptions:
-    The Zen of Python: 'Flat is better than nested',
-    hence database.DB is preferred to database.Database.DB
+    Assumptions: None
+
 """
 
 import random
@@ -75,7 +74,7 @@ class Dealer:
         for i in range(len(stacks)):
             pos = stacks[i].positions
             for c in range(len(pos)):
-                stacks[i].cards[c] = self.deck[index]# % len(self.cardset.cards)
+                stacks[i].cards[c] = self.deck[index]
                 index += 1
                 if pos[c] == 1:
                     stacks[i].cards[c].show()

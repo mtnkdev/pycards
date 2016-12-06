@@ -1,6 +1,6 @@
 """This class represents a stack of cards in the game
 	
-	State Variables: none
+    State Variables: none
 	
     Environment Variables: none
 
@@ -28,7 +28,7 @@ class Stack:
         :param deck: whether the stack is a deck (default False)
         :param sameSuit: if stack only allows same suit cards (default False)
         :param remove: whether cards can be removed from the stack (default True)
-        :param capacity: how many cards the stack can hold (default -1)
+        :param capacity: how many cards the stack can hold (default -1 -> no restriction)
         """
 
         self.ID = _id
@@ -69,5 +69,9 @@ def move_cards(game, stackID, destID, cardID):
     for card in game.stacks[stackID].cards[cardID:]:
         game.stacks[destID].cards.append(card)
         game.stacks[stackID].cards.remove(card)
+
+    # Any module-level code is run upon first import hence
+    # the need to carefully place import statements to
+    # decrease overhead and prevent side-effects
     from ..control.gamemanager import update
     update()

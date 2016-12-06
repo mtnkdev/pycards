@@ -44,9 +44,6 @@ from ..view.window import bind_card, create_card, draw_card
 
 # Game imports
 from ..model.games.klondike import *
-from ..model.games.hanoi import *
-from ..model.games.spider import *
-from ..model.games.freecell import *
 
 __all__ = ['dealgame', 'drawgame']
 
@@ -77,10 +74,7 @@ def dealgame(root=None, game=None, new_cardset=None):
         _root = root
 
     if game is None:
-#        _game = Klondike()
-        _game = Hanoi(4)
-#         _game = Spider()
-#        _game = FreeCell()
+        _game = Klondike()
     else:
         _game = None
         _game = game()
@@ -106,15 +100,19 @@ def drawgame(root=None):
     global _root
     if root is None:
         root = _root
+
+    # Draw stacks starting with placeholders then cards
     stackID = 0
     for stack in _game.stacks:
         stack.holder = ttk.Label(root.canvas, image=_game.cardset.holder, borderwidth=0)
         if stack.isdeck:
-            setattr(stack.holder, "stackID", stack.ID)
-            setattr(stack.holder, "cardNum", -1)
             from ..model.mouse_handler import Bindings
+            setattr(stack.holder, "stackID", stack.ID)
+            setattr(stack.holder, "cardNum", -1)            
             bind_card(stack.holder, {"<ButtonRelease-1>": lambda event: Bindings.default_move(_game._bindings, event)})
         stack.holder.place(x=stack.x,y=stack.y)
+
+        # Interact with view to draw the cards in each stack
         for num in range(len(stack.cards)):
             hide = False
             try:
@@ -145,13 +143,15 @@ def destroy():
 
 _data = ""
 
-def _write(*args):
+def _format(*args):
+    """Compile save data"""
     global _data
     if args is not None:
         _data += ''.join(args)
 
 
 def _flush():
+    """Write save data to file"""
     global _data
     tile = tkFileDialog.asksaveasfilename(initialdir="./saves",title="Choose a filename")
     try:
@@ -164,29 +164,42 @@ def _flush():
         
 
 def save_game():
+    """Compile and write game state to file"""
     global _game
     self = _game
-    _write(self.name, '_', str(len(self.stacks)), '_', self.cardset.name)
-    for i in range(len(self.stacks)):
-        _write("{:02x}".format(len(self.stacks[i].cards)))
 
+    # Format game information
+    _format(self.name, '_', str(len(self.stacks)), '_', self.cardset.name)
+
+    # Format stack information
+    for i in range(len(self.stacks)):
+        _format("{:02x}".format(len(self.stacks[i].cards)))
+
+    # Format card information
     for i in range(len(self.stacks)):
         stack = self.stacks[i]
         for j in range(len(stack.cards)):        
             card = stack.cards[j]
-            _write("{:02x}".format(card.rank), card.suit, str(int(card.visible)))
+            _format("{:02x}".format(card.rank), card.suit, str(int(card.visible)))
+
+    # Write save data
     _flush()
 
 def load():
+    """Load previously saved game from file"""
     import re
+
+    # Prompt user for save file
     filename = tkFileDialog.askopenfilename(initialdir="./saves",title="Choose a save file", multiple=False)
     if not os.path.isfile(filename):
         return
 
+    # Read save file
     f = open(filename, 'r')
     data = f.read()
     f.close()
-    
+
+    # Parse save data
     data = data.split("_")
     game_name = data[0]
     numrows = int(data[1])
@@ -194,11 +207,13 @@ def load():
     offset = len(cardset)
     stack_data = data[2][offset:]
 
+    # Parse stack information
     size = []
     for i in range(numrows):
         size.append(int("0x" + stack_data[2*i:2*i+2], 16))
     offset += 2*numrows
 
+    # Parse card information
     stacks = []
     for i in range(numrows):
         stacks.append([])
@@ -208,28 +223,39 @@ def load():
             visible = data[2][offset+3]
             stacks[i].append([rank, suit, visible])
             offset += 4
+
+    # Prompt for confirmation before overwriting game state
     if tkMessageBox.askyesno("Continue", "Are you sure? This will cause you to lose all progress "
                          "in the current game"):
         load_game(game_name, cardset, stacks)
             
     
 def load_game(game_name, cardset, stacks):
+    """Restore game state from the save file"""
     global _game
+
+    # End current game
     destroy()
+
+    # Create instance of new game
     game = DB.get_game(game_name)
     _game = game()
     _game.create()
     _game.cardset = Cardset.cardsets[cardset]
 
+    # Modify game state to match saved configuration
     for i in range(len(_game.stacks)):
         _game.stacks[i].cards = []
         for j in range(len(stacks[i])):
             _game.stacks[i].cards.append(StandardCard(_game.cardset, stacks[i][j][0], stacks[i][j][1]))
             _game.stacks[i].cards[j].visible = int(stacks[i][j][2])
         _game.stacks[i].cardWidgets = [0] * len(stacks[i])
+
+    # Render game and update window
     drawgame()
     _game.update()
 
 def update():
+    """Update root window"""
     global _root
     _root.canvas.update()

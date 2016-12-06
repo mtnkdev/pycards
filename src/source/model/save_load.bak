@@ -1,3 +1,21 @@
+"""This module is responsible for saving and restoring
+snapshots of the program's state
+
+
+To represent and recreate the top level of a game one needs:
+* name
+* stacks
+
+To represent and recreate the state of a game one needs:
+from stacks:
+* card.cardset
+* cards
+ * card.rank
+ * card.suit
+ * card.visible
+"""
+
+
 _data = ""
 
 
@@ -10,20 +28,6 @@ def _write(*args):
 def _flush():
     global _data
     print _data
-
-
-"""To represent and recreate the top level of a game I need:
-* name
-* stacks
-
-To represent and recreate the state of a game I need:
-from stacks:
-* card.cardset
-* cards
- * card.rank
- * card.suit
- * card.visible
-"""
 
 
 def save_game(self):

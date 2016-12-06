@@ -1,6 +1,6 @@
-"""This module is responsible for the layout of the game in the window
+"""This module defines the interface for game classes
 
-	State Variables: none
+    State Variables: none
 	
     Environment Variables: none
 

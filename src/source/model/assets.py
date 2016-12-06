@@ -27,14 +27,23 @@ def load_cardsets():
     cardset is in use for a game
     """
     import re
+    _digit = re.compile('\d')
 
+    # Limit scope to avoid propagation and prevent module-level import
+    class ConfigError:
+            pass
+
+    def getTypeInfo(info):
+        raise ConfigError
+
+    # Compile path to cardsets
     path = os.getcwd()
     path = os.path.join(path, "cardsets")
 
-    cardsets = os.listdir(path)
+    # Enumerate available cardsets
+    cardsets = os.listdir(path)    
 
-    _digit = re.compile('\d')
-
+    # Parse, verify then attempt to load cardsets
     for folder in cardsets:
         config = os.path.join(path, folder)
         if not os.path.isdir(config):
@@ -46,18 +55,11 @@ def load_cardsets():
         info = text[0].split(';')
 
         try:
-            extension = info[2]
-            if extension == ".png":
-                continue
+            extension = info[2]            
         except IndexError:
             extension = ".gif"
 
-        ID = text[1]
-        class ConfigError:
-            pass
-
-        def getTypeInfo(info):
-            raise ConfigError
+        ID = text[1]        
 
         try:
             ctype = int(info[3])
@@ -90,14 +92,16 @@ def load_cardsets():
                 alt_backs.insert(0, background)
             version = info[1]
 
-            currCardset = Cardset(folder, name, ctype, width, height, style, nationality, year, extension)
-            imgpath = os.path.join(path, folder)
+            # Create cardset
+            currCardset = Cardset(folder, name, ctype, width, height, style, nationality, year, extension)            
 
             # bottom02 looks better so try that first
+            imgpath = os.path.join(path, folder)
             bottom_img = os.path.join(imgpath, "bottom02" + extension)
             if not os.path.isfile(bottom_img):                    
                 bottom_img = os.path.join(imgpath, "bottom01" + extension)
 
+            # Set placeholder image for cardset
             for img in os.listdir(imgpath):
                 if img.count("back"):
                     currCardset.backimage.append(os.path.join(imgpath, img))
@@ -105,6 +109,7 @@ def load_cardsets():
             Cardset.cardsets[name] = currCardset
             set_rank_and_suit(currCardset)
 
+            # Enumerate and add cards to the cardset
             for rank in currCardset.ranks:
                 for suit in currCardset.suits:
                     currCardset.cards.append(Card(currCardset, rank + 1, suit))

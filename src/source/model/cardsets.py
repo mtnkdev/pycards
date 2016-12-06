@@ -44,14 +44,16 @@ SIZE = Enum()
 SIZE.addAll(("TINY",1, "SMALL",2, "MEDIUM",3, "LARGE",4, "XLARGE",5,))
 
 TYPE = Enum()
-TYPE.addAll(("STANDARD", 1, "MATRIX", 2))
+TYPE.addAll(("STANDARD", 1))
 
 TYPEDEF = {
     1:  _("French type (52 cards)"),
     9:  _("Trumps only type (variable cards)"),
 }
 
-# styles
+# Additional cardset information
+# can be used for filtering in future versions
+
 STYLE = {
     1:  _("Adult"),                #
     2:  _("Animals"),              #

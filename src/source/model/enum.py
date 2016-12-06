@@ -1,6 +1,6 @@
 """This module lets us create and use enumerated types in python
 
-	State Variables: none
+    State Variables: none
 
     Environment Variables: none
 

@@ -68,7 +68,7 @@ def setBackground(root, path=None):
 
 
 def create_card(canvas, stackID, cards, num, hide):
-    """Creates a card with the desired properties"""
+    """Create a card with the desired properties"""
     if hide:
         img = cards[num].back_image()
     else:
@@ -89,6 +89,7 @@ def draw_card(label, x, y):
 
 
 def bind_card(label, bindings):
+    """Add mouse binding(s) to the card widget"""
     if bindings is not None:
         for binding, callback in bindings.iteritems():
             label.bind(binding, callback)

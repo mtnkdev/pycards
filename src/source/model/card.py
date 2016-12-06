@@ -28,7 +28,7 @@ class AbstractCard:
 
     @classmethod
     def __subclasshook__(cls, subclass):
-        """hook"""
+        """Validate subclass implementation"""
         assert hasattr(subclass, 'cardset')
         assert hasattr(subclass, 'suit')
         assert hasattr(subclass, 'rank')
@@ -87,9 +87,9 @@ class StandardCard(AbstractCard):
         return self.back
 
     def hide(self):
-        """Hides card"""
+        """Turn off visibility"""
         self.visible = False
 
     def show(self):
-        """Shows card"""
+        """Turn on visibility"""
         self.visible = True

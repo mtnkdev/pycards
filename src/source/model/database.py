@@ -38,6 +38,7 @@ class Database:
         return self.games.values()
 
     def get_game(self, game):
+        """Return the specified game"""
         return self.games[game]
 
 # System-wide game database

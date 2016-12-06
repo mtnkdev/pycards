@@ -161,7 +161,7 @@ def _nearest(game, x, y):
     """Finds which stack the mouse is overtop of (if any)"""
     for i in range(len(game.stacks)):
         stack = game.stacks[i]
-        if abs(stack.x - x) < 20 and abs(stack.y + stack.offset * len(stack.cards) - y) < 20:
+        if abs(stack.x - x) < 30 and abs(stack.y + stack.offset * len(stack.cards) - y) < 30:
             return i
     return -1
 
