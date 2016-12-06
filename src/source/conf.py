@@ -23,10 +23,7 @@ import __builtin__
 __builtin__._ = lambda x: x
 __builtin__.n_ = lambda x: x
 
-sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('source.view'))
-#sys.path.insert(0, os.path.abspath('.control'))
-#sys.path.insert(0, os.path.abspath('.model'))
+sys.path.insert(0, os.path.abspath('..'))
 
 # -- General configuration ------------------------------------------------
 
