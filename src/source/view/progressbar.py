@@ -19,7 +19,7 @@ def create(root, delay):
     """Create progressbar"""
     root.wm_withdraw()
     style = ttk.Style()
-    style.theme_use("alt")#PySolFC uses classic
+    style.theme_use("alt")
     style.configure("green.Horizontal.TProgressbar", foreground="#08C715", background="#08C715", orient='horizontal')
 
     loader = Tkinter.Toplevel(background="#5c5a58")

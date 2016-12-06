@@ -47,10 +47,17 @@ def setBackground(root, path=None):
         root.canvas.destroy()
     root.canvas = Tkinter.Canvas(root, height=height, width=width)
 
-    if path is None:
-        tile = Tkinter.PhotoImage(file=os.path.join(os.getcwd(), "tiles/Nostalgy.gif"))
-    else:
-        tile = Tkinter.PhotoImage(file=path)
+    try:
+        if path is None:
+            tile = Tkinter.PhotoImage(file=os.path.join(os.getcwd(), "tiles/Nostalgy.gif"))
+        elif os.path.isfile(path):
+            tile = Tkinter.PhotoImage(file=path)
+    except Tkinter.TclError:
+        tile = root.canvas.create_rectangle(0, 0, width, height, fill="darkgreen")
+        root.canvas.pack(fill=Tkinter.BOTH, expand=Tkinter.YES)
+        root.canvas.update()
+        return None
+                
     root.back = tile
     for x in range(0, width, tile.width()):
         for y in range(0, height, tile.height()):
