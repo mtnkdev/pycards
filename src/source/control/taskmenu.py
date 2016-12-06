@@ -37,8 +37,6 @@ def create_menu(root):
 
     _create_filemenu(menubar)
     _create_selectmenu(menubar)  ##Look at _addSelectGameMenu in menubar.py
-    #_create_editmenu(menubar)
-    #_create_gamemenu(menubar)
     _create_assistmenu(menubar)
     _create_optionmenu(menubar)
     _create_helpmenu(menubar)

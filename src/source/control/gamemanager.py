@@ -42,8 +42,11 @@ from ..model import cardsets
 from ..model.cardsets import Cardset
 from ..view.window import bind_card, create_card, draw_card
 
-# Game imports
+# Game imports (registers games with DB)
+from ..model.games.hanoi import *
+from ..model.games.freecell import *
 from ..model.games.klondike import *
+from ..model.games.spider import *
 
 __all__ = ['dealgame', 'drawgame']
 

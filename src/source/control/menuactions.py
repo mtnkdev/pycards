@@ -93,9 +93,6 @@ def quitGame():
     sys.exit(0)
     pass
 
-
-def showGames():
-    pass
     
 #####   End file commands   #####
 
@@ -132,19 +129,6 @@ def solve_game():
     solve()
 
 #####   Help commands   #####
-
-
-def showContents():
-    pass
-
-
-def showGuide():
-    pass
-
-
-def showRules():
-    pass
-
 
 def showLicense():
     """Display the license information in a new window"""
