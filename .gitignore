@@ -8,7 +8,10 @@ __pycache__/
 .idea/
 
 #Distribution/build directory
-build/
+build/bdist.win32
+build/doctrees
+build/lib
+build/scripts-2.7
 dist/
 
 #LaTex generated & temp files
