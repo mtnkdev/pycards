@@ -11,7 +11,9 @@ This software has been tested on Windows 10 and Ubuntu. OS X functionality is
 still needing to be optimized.
 
 Execution Instructions:
-* via command-line (shell) `python pysol.py`
+* via command-line (shell) `python pysol.py` (preferred)
+* executable (POC but works, dependencies included via self-extracting archive)
+ * located in src/dist
 
 Documentation Generation Instructions:
 * documentation in the build/html folder is up-to-date as of Dec 7th

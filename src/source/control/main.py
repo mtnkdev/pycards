@@ -55,7 +55,7 @@ class App:
         """Organize Tk instance into Frame then create progress bar"""
         self.frame = ttk.Frame(master)
         self.frame.pack()
-        loader.create(root, 0)
+        loader.create(root, 0.5)
 
         try:
             assets.load_cardsets()
