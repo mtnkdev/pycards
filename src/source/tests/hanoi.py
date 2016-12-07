@@ -1,11 +1,12 @@
 import unittest
 
-from src.model.games import hanoi
+from src.source.model.games import hanoi
+
 
 class HanoiTest(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.game = hanoi.Hanoi()
 
     def test_create(self):
         # Precondition

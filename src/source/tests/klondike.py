@@ -2,6 +2,7 @@ import unittest
 
 from src.source.model.games import klondike
 
+
 class KlondikeTest(unittest.TestCase):
 
     def setUp(self):

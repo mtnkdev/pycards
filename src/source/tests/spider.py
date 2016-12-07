@@ -1,6 +1,6 @@
 import unittest
 
-from src.model.games import spider
+from src.source.model.games import spider
 
 
 class SpiderTest(unittest.TestCase):
