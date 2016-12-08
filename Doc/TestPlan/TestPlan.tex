@@ -542,25 +542,50 @@
 	Unit tests are used to validate the intermal components such as modules, 
 	methods, and functions. To verify the correct behaviour of methods we
 	define the preconditions and postconditions using predicate logic and map
-	the conditions to boolean expressions in our test cases.
+	the conditions to boolean expressions in our test cases. \newline
+	\indent More specifically, unit tests were conducted (using unittest.py)
+	for the create() method in each of the game classes as follows:
+	\begin{enumerate}
+		\item Initial state: Construct new instance of game class
+		\item Precondition: The game has no previously created stacks \\ 
+		ie. size(stacks) = 0
+		\begin{itemize}
+			\itemsep0em
+			\item This condition is necessary and sufficient to test the initial
+			state
+			\item The `create` method functions analogous to a constructor
+			in that it should only be called using a newly created instance
+			\item The `create` method should correctly define the initial state
+			of a game and upon termination should leave the game instance
+			in a ready to use (not to mention consistent) state
+		\end{itemize}				
+		\item Postcondition: A correctly defined initial state for each and all
+		of the stacks of the game. See unittests for conditions
+	\end{enumerate}
 
-	In order to do this we model the compent as a series of
-	actions and transitions or by using first order logic depending on the nature of
-	the statements being executed. This behaviour can then be formalized by
-	modelling it as a control flow graph or truth table to assert that the
-	behaviour of the component conforms to the requirements placed upon it.
-	For example, in the data-related logic these requirements can also be
-	specified in some circumstances as preconditions and postconditions \newline
-	Automating the testing using unittest.py enables us to make the tests
-	repeatable and therefore provide a large series of inputs and outputs that
-	model normal behaviour, edge cases and boundary conditions. The testing is also
-	dynamic and as such we can also write helper methods to validate the state of
-	objects at the beginning and end of tests
-	
-	\subsection{Unit testing of output files}	
-	Our application is a game, and as such the output is visual in the form of the
-	graphical user interface. This will be tested through our nonfunctional
-	requirements such as usability and playability.
+	\subsection{Code Coverage Metrics}
+	The coverage.py python module can measure and report code coverage
+	in a number of ways. We will be testing coverage dynamically by running the
+	application (and having the coverage.py module analyze statement coverage).
+	Upon termination, the coverage.py module will then be used to provide a
+	quantifiable coverage report in HTML (for convenience) format.
+	\indent Our application is a game, and as such dynamic code coverage will be 
+	measured by running the application and interacting (ie. playing, 
+	clicking menus, etc.) such that the application reaches each of the possible
+	states. This includes:
+	\begin{itemize}
+		\itemsep0em
+		\item creating new games of each type
+		\item saving a game in progress
+		\item loading a previously saved game
+		\item attempting to load a game from an invalid file
+		\item performing a canonical set of legal moves for the game in progress
+		\item attempting to perform a canonical set of moves illegal for the game
+	\end{itemize}
+	Coverage of static exception-handling code such as missing directories upon
+	initial execution, invalid configuration files, and runtime exceptions that
+	accounted for (for safety) but never thrown can be tested separately but
+	mostly fall more broadly under the category of system-testing.
 
 	\bibliographystyle{plainnat}
 	\bibliography{TestPlan}
