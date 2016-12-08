@@ -8,6 +8,13 @@ the user interacts with to trigger events
 
     Assumptions: None
 
+    **Semantics**
+
+    :func:`create_menu`:
+
+    * transition: creates the menubar for the application
+
+
     **Exported Access Programs**
 
     ==================   ============   ============
@@ -16,10 +23,6 @@ the user interacts with to trigger events
     create_menu             root
     ==================   ============   ============
 
-    **Semantics**
-
-    create_menu(root) :
-    * transition: creates the menubar for the application
 """
 
 from Tkinter import Menu
@@ -36,7 +39,7 @@ def create_menu(root):
     root.config(menu=menubar)
 
     _create_filemenu(menubar)
-    _create_selectmenu(menubar)  ##Look at _addSelectGameMenu in menubar.py
+    _create_selectmenu(menubar)
     _create_assistmenu(menubar)
     _create_optionmenu(menubar)
     _create_helpmenu(menubar)
@@ -51,11 +54,11 @@ def _add_games(menu, games, command=None):
 
 def _add_game_type(menu, label, gameSet=None):
     """Add game types to the Menu"""
-    if (gameSet == None) or (gameSet != None and len(gameSet) > 0):
+    if (gameSet is None) or (gameSet is not None and len(gameSet) > 0):
         submenu = Menu(menu, tearoff=0)
         menu.add_cascade(label=label, menu=submenu)
 
-        if gameSet == None:
+        if gameSet is None:
             return submenu      # Child is another cascading menu
         elif len(gameSet) > 0:
             _add_games(submenu, gameSet) # Adds games belonging to type
@@ -69,7 +72,7 @@ def _create_filemenu(menubar):
     menubar.add_cascade(label="File", menu=fileMenu)
 
     # Adds selectable dropdown items
-    # @command is a pointer to function
+    # command is a pointer to function
     fileMenu.add_command(label="New", command=action.restart)
     fileMenu.add_command(label="Load...", command=action.loadGame)
     fileMenu.add_command(label="Save...", command=action.saveGame)
@@ -95,31 +98,10 @@ def get_games(gametype):
     return [game for game in DB.get_games() if game.name.count(gametype) > 0]
 
 
-def _create_editmenu(menubar):
-    """Create the cascading Edit menu"""
-    editMenu = Menu(menubar, tearoff=0)
-    editMenu.add_command(label="Undo", command=None)
-    editMenu.add_command(label="Redo", command=None)
-    editMenu.add_command(label="Redo All", command=None)
-    editMenu.add_command(label="Restart", command=None)
-
-
-def _create_gamemenu(menubar):
-    """Create the cascading Game menu"""
-    gameMenu = Menu(menubar, tearoff=0)
-    menubar.add_cascade(label="Game", menu=gameMenu)
-    gameMenu.add_command(label="Deal Cards", command=None)
-    gameMenu.add_command(label="Auto Drop", command=None)
-    gameMenu.add_command(label="Pause", command=None)
-    gameMenu.add_command(label="Status", command=None)
-    gameMenu.add_command(label="Statistics", command=None)
-
-
 def _create_assistmenu(menubar):
     """Create the cascading Assist menu"""
     assistMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Assist", menu=assistMenu)
-    #assistMenu.add_command(label="Hint", command=None)
     assistMenu.add_command(label="Solve", command=action.solve_game)
 
 
@@ -127,25 +109,13 @@ def _create_optionmenu(menubar):
     """Create the cascading Option menu"""
     optionMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Options", menu=optionMenu)
-    #optionMenu.add_command(label="Sound", command=None)
     optionMenu.add_command(label="Cardset", command=action.select_cardset)
     optionMenu.add_command(label="Background", command=lambda args=menubar.master: action.select_tile(args))
-    #optionMenu.add_cascade(label="Card Background", command=None)
-    #optionMenu.add_cascade(label="Animations", command=None)
-    #optionMenu.add_cascade(label="Mouse", command=None)
-    #optionMenu.add_command(label="Fonts", command=None)
-    #optionMenu.add_command(label="Colors", command=None)
-    #optionMenu.add_cascade(label="Set Theme", command=None)
-    #optionMenu.add_cascade(label="Toolbar", command=None)
+
 
 
 def _create_helpmenu(menubar):
     """Create the cascading Help menu"""
     helpMenu = Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Help",menu=helpMenu)
-
-    #helpMenu.add_command(label="Contents", command=action.showContents)
-    #helpMenu.add_command(label="How this works", command=action.showGuide)
-    #helpMenu.add_command(label="Gameplay rules", command=action.showRules)
     helpMenu.add_command(label="License", command=action.showLicense)
-    helpMenu.add_command(label="About", command=action.showInfo)

@@ -8,6 +8,7 @@
 
 """
 
+
 class Enum:
     """Implementation of an enumerated object type"""
 
@@ -17,7 +18,11 @@ class Enum:
             self.add(name, value)
 
     def add(self, name, value):
-        """Adds attribute-value combinations to the object"""
+        """Adds attribute-value combinations to the object
+
+        expects either a sequence type object, or (optionally sequences of)
+        key-value pairs
+        """
         try:
             if not hasattr(name, '__iter__'):
                 raise ValueError

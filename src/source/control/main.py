@@ -20,8 +20,10 @@
 
     **Semantics**
 
-    start() :
+    :func:`start`:
+
     * transition: creates application window
+
 """
 
 import Tkinter
@@ -33,7 +35,7 @@ from ..model import assets
 from ..view import progressbar as loader
 from ..view import window
 
-__all__ = ["start"]
+__all__ = ["App", "start"]
 
 
 class App:
@@ -49,10 +51,25 @@ class App:
     Assumptions:
     Only one instance is created per program execution
 
+    .. automethod:: __init__
+
     """
 
     def __init__(self, master):
-        """Organize Tk instance into Frame then create progress bar"""
+        """Organize Tk instance into Frame then create progress bar
+
+        Attempt to load cardsets and their respective cards
+
+        Exceptions thrown and caught:
+
+        * WindowsError
+
+         * 'cardsets' directory is missing
+         * user is prompted to verify their installation and re-download
+           the application
+         * application terminates gracefully (instead of corrupted execution)
+
+        """
         self.frame = ttk.Frame(master)
         self.frame.pack()
         loader.create(root, 0.5)
@@ -80,7 +97,7 @@ def mainloop():
 
 
 def start():
-    """Start the main execution loop"""
+    """Create Tk instance and trigger the main execution loop"""
     global root
     root = Tkinter.Tk()
     root.geometry("900x600")

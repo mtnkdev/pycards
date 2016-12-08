@@ -71,9 +71,11 @@ class Klondike(CardGame):
         self._bindings.add("<B1-Motion>", lambda event: Bindings.default_drag(self._bindings, event))
         self._bindings.add("<ButtonRelease-1>", lambda event: Bindings.default_move(self._bindings, event))
 
-    # FIXME extract card moving functionality from this method
     def deal(self):
-        """Perform an in-game deal"""
+        """Perform an in-game deal
+
+        Move and assign cards from the deck to the waste stack
+        """
 
         deck = self.stacks[self.deckID]
         waste = self.stacks[self.wasteID]

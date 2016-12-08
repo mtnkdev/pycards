@@ -1,7 +1,7 @@
 """This class represents a stack of cards in the game
-	
+
     State Variables: none
-	
+
     Environment Variables: none
 
     Assumptions: none

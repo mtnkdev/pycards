@@ -10,12 +10,17 @@ from enum import Enum
 class Cardset:
     """This class contains the identifying properties of a cardset
     At minimum path, name, type, width, and height must be defined
+
+    .. automethod:: __init__
+
     """
     cardsets = {}
 
     def __init__(self, folder, name, _type, width, height, style, nationality, year, extension):
         """Initializer for cardset
         non-None values expected for folder, name, _type, width and height
+
+        See :mod:`source.model.assets` for implementation details
         """
         self.extension = extension
         self.path = folder
@@ -45,6 +50,8 @@ SIZE.addAll(("TINY",1, "SMALL",2, "MEDIUM",3, "LARGE",4, "XLARGE",5,))
 
 TYPE = Enum()
 TYPE.addAll(("STANDARD", 1))
+
+# _(str) is conventionally used to allow localization
 
 TYPEDEF = {
     1:  _("French type (52 cards)"),

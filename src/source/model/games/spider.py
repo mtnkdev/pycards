@@ -151,7 +151,6 @@ class Spider(CardGame):
         if cardNum == len(stack.cards) - 1:
             return True
 
-
         prev = stack.cards[cardNum]
         for i in range(cardNum+1, len(stack.cards)):
             if stack.cards[i].rank >= prev.rank or \

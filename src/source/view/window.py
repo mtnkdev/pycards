@@ -7,30 +7,38 @@ root window and enforcing its associated attributes and items
     Environment Variables:
     system display: array of pixels used for graphical output
 
+    **Semantics**
+
+    :func:`bind_card`:
+
+    * transition: binds the mouse actions to the card
+
+    :func:`create_card`:
+
+    * transition: creates a card in the proper location and predefined attributes
+
+    :func:`draw_card`:
+
+    * transition: renders the card to the main window
+
+    :func:`setBackground`:
+
+    * transition: renders the background for the main window
+
+
     **Exported Access Programs**
 
     ==================   =====================================  ============
     Routine                  In                                     Out
     ==================   =====================================  ============
-    setBackground()         root
+    bind_card               label, bindings
     create_card             canvas, stackID, cards, num, hide
     draw_card               label, x, y
-    bind_card               label, bindings
+    setBackground()         root
     ==================   =====================================  ============
+|
+|
 
-    **Semantics**
-
-    setBackground(root) :
-    * transition: renders the background for the main window
-
-    create_card(canvas, stackID, cards, num, hide)
-    * transition: creates a card in the proper location and predefined attributes
-
-    draw_card(label, x, y):
-    * transition: renders the card to the main window
-
-    bind_card(label, bindings):
-    * transition: binds the mouse actions to the card
 
 """
 
@@ -40,7 +48,16 @@ import os
 
 
 def setBackground(root, path=None):
-    """Draw the window background"""
+    """Draw the window background
+
+    Exceptions thrown and handled
+
+    * TclError
+
+     * Missing tiles directory/files
+     * Adapt by using solid color background
+
+    """
     height = root.winfo_height()
     width = root.winfo_width()
     if hasattr(root, 'canvas'):
@@ -85,7 +102,7 @@ def create_card(canvas, stackID, cards, num, hide):
 
 def draw_card(label, x, y):
     """Renders the card to the main window"""
-    label.place(x = x, y = y)
+    label.place(x=x, y=y)
 
 
 def bind_card(label, bindings):

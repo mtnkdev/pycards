@@ -15,12 +15,24 @@ from abc import ABCMeta, abstractmethod
 
 
 class AbstractCard:
-    """This is your basic template for creating cards"""
+    """This is your basic template for creating cards
+
+    .. automethod:: __init__
+    .. automethod:: __subclasshook__
+
+    """
     __metaclass__ = ABCMeta
 
     @abstractmethod
     def __init__(self, cardset, rank, suit):
-        """Default initializer for a card"""
+        """Default initializer for a card
+
+        :param cardset: a valid :class:`source.model.cardsets.Cardset` instance
+        :param rank: rank of the card - one of [1-13]
+        :param suit: suit of the card - one of 'c', 'h', 's' 'd'
+                     where 'c' is clubs, 'h' is hearts, 's' is spades, and 'd' is diamonds
+
+        """
         self.cardset = cardset
         self.suit = suit
         self.rank = rank
@@ -28,7 +40,15 @@ class AbstractCard:
 
     @classmethod
     def __subclasshook__(cls, subclass):
-        """Validate subclass implementation"""
+        """Validate subclass implementation
+
+        Required attributes:
+
+        * cardset
+        * suit
+        * rank
+
+        """
         assert hasattr(subclass, 'cardset')
         assert hasattr(subclass, 'suit')
         assert hasattr(subclass, 'rank')
@@ -40,11 +60,21 @@ class AbstractCard:
 
 class StandardCard(AbstractCard):
     """This is your standard playing card.
+
     Each card has a cardset it belongs to, a rank and a suit
+
+    .. automethod:: __init__
+
     """
 
     def __init__(self, cardset, rank, suit):
-        """Initialize the core properties of the card"""
+        """Initialize the core properties of the card
+
+        :param cardset: a valid :class:`source.model.cardsets.Cardset` instance
+        :param rank: rank of the card - one of integers [1-13]
+        :param suit: suit of the card - one of 'c', 'h', 's' 'd'
+                     where 'c' is clubs, 'h' is hearts, 's' is spades, and 'd' is diamonds
+        """
         self.rank = rank + 1
         self.suit = suit
         self.cardset = cardset

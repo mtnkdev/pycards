@@ -22,29 +22,37 @@
 
     **Semantics**
 
-    restart() :
-    * transition: 
-    a) destroys the game in progress
-    b) creates a new instance of the same game type
-    c) updates application window
+    :func:`restart`:
 
-    start_game(gameclass) :
+    * transition:
+
+     * destroys the game in progress
+     * creates a new instance of the same game type
+     * updates application window
+
+    :func:`start_game` :
+
     * input: the class of the game to be created
-    * transition: 
-    a) destroys the game in progress
-    b) creates a new instance of the specified game type
-    c) updates application window
+    * transition:
 
-    select_cardset():
+     * destroys the game in progress
+     * creates a new instance of the specified game type
+     * updates application window
+
+    :func:`select_cardset`:
+
     transition: Prompt the user to select a cardset
 
-    select_tile():
+    :func:`select_tile`:
+
     transition: Prompt the user to select a background image
 
-    showLicense():
+    :func:`showLicense`:
+
     output: display the license information in a new window
 
-    showInfo():
+    :func:`showInfo`:
+
     output: display basic information about the program in a new window
 
 """
@@ -58,6 +66,7 @@ from gamemanager import dealgame, drawgame, destroy, solve
 from ..model.cardsets import Cardset
 from gamemanager import save_game, load
 from ..view.window import setBackground
+
 
 def restart():
     """Start a new instance of the same game type"""
@@ -115,6 +124,7 @@ def select_cardset():
         except IOError:
             tkMessageBox.showwarning(message="Invalid cardset directory")
 
+
 def select_tile(root):
     """Prompt the user to select the desired background image"""
     tile = tkFileDialog.askopenfilename(initialdir="./tiles",title="Choose a background", multiple=False)
@@ -125,10 +135,12 @@ def select_tile(root):
             dealgame()
             drawgame()
 
+
 def solve_game():
     solve()
 
 #####   Help commands   #####
+
 
 def showLicense():
     """Display the license information in a new window"""

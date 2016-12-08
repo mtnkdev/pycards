@@ -53,6 +53,23 @@ root window and enforcing its associated attributes and items</p>
 root: the application window</p>
 <p>Environment Variables:
 system display: array of pixels used for graphical output</p>
+<p><strong>Semantics</strong></p>
+<p><a class="reference internal" href="#source.view.window.bind_card" title="source.view.window.bind_card"><code class="xref py py-func docutils literal"><span class="pre">bind_card()</span></code></a>:</p>
+<ul class="simple">
+<li>transition: binds the mouse actions to the card</li>
+</ul>
+<p><a class="reference internal" href="#source.view.window.create_card" title="source.view.window.create_card"><code class="xref py py-func docutils literal"><span class="pre">create_card()</span></code></a>:</p>
+<ul class="simple">
+<li>transition: creates a card in the proper location and predefined attributes</li>
+</ul>
+<p><a class="reference internal" href="#source.view.window.draw_card" title="source.view.window.draw_card"><code class="xref py py-func docutils literal"><span class="pre">draw_card()</span></code></a>:</p>
+<ul class="simple">
+<li>transition: renders the card to the main window</li>
+</ul>
+<p><a class="reference internal" href="#source.view.window.setBackground" title="source.view.window.setBackground"><code class="xref py py-func docutils literal"><span class="pre">setBackground()</span></code></a>:</p>
+<ul class="simple">
+<li>transition: renders the background for the main window</li>
+</ul>
 <p><strong>Exported Access Programs</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -67,8 +84,8 @@ system display: array of pixels used for graphical output</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>setBackground()</td>
-<td>root</td>
+<tr class="row-even"><td>bind_card</td>
+<td>label, bindings</td>
 <td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>create_card</td>
@@ -79,44 +96,49 @@ system display: array of pixels used for graphical output</p>
 <td>label, x, y</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>bind_card</td>
-<td>label, bindings</td>
+<tr class="row-odd"><td>setBackground()</td>
+<td>root</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Semantics</strong></p>
-<p>setBackground(root) :
-* transition: renders the background for the main window</p>
-<p>create_card(canvas, stackID, cards, num, hide)
-* transition: creates a card in the proper location and predefined attributes</p>
-<p>draw_card(label, x, y):
-* transition: renders the card to the main window</p>
-<p>bind_card(label, bindings):
-* transition: binds the mouse actions to the card</p>
 </div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <dl class="function">
 <dt id="source.view.window.bind_card">
-<code class="descclassname">source.view.window.</code><code class="descname">bind_card</code><span class="sig-paren">(</span><em>label</em>, <em>bindings</em><span class="sig-paren">)</span><a class="headerlink" href="#source.view.window.bind_card" title="Permalink to this definition">¶</a></dt>
+<code class="descname">bind_card</code><span class="sig-paren">(</span><em>label</em>, <em>bindings</em><span class="sig-paren">)</span><a class="headerlink" href="#source.view.window.bind_card" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add mouse binding(s) to the card widget</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.view.window.create_card">
-<code class="descclassname">source.view.window.</code><code class="descname">create_card</code><span class="sig-paren">(</span><em>canvas</em>, <em>stackID</em>, <em>cards</em>, <em>num</em>, <em>hide</em><span class="sig-paren">)</span><a class="headerlink" href="#source.view.window.create_card" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_card</code><span class="sig-paren">(</span><em>canvas</em>, <em>stackID</em>, <em>cards</em>, <em>num</em>, <em>hide</em><span class="sig-paren">)</span><a class="headerlink" href="#source.view.window.create_card" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a card with the desired properties</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.view.window.draw_card">
-<code class="descclassname">source.view.window.</code><code class="descname">draw_card</code><span class="sig-paren">(</span><em>label</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#source.view.window.draw_card" title="Permalink to this definition">¶</a></dt>
+<code class="descname">draw_card</code><span class="sig-paren">(</span><em>label</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#source.view.window.draw_card" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders the card to the main window</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.view.window.setBackground">
-<code class="descclassname">source.view.window.</code><code class="descname">setBackground</code><span class="sig-paren">(</span><em>root</em>, <em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#source.view.window.setBackground" title="Permalink to this definition">¶</a></dt>
+<code class="descname">setBackground</code><span class="sig-paren">(</span><em>root</em>, <em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#source.view.window.setBackground" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw the window background</p>
+<p>Exceptions thrown and handled</p>
+<ul class="simple">
+<li>TclError</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Missing tiles directory/files</li>
+<li>Adapt by using solid color background</li>
+</ul>
+</div></blockquote>
 </dd></dl>
 
 </div>

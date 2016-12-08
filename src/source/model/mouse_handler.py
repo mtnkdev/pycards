@@ -11,6 +11,7 @@
 from stack import move_cards
 from ..control.gamemanager import destroy, dealgame, drawgame
 
+
 class Bindings:
 
     def __init__(self, game):

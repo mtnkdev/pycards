@@ -52,7 +52,7 @@
 <p>Assumptions: None</p>
 <dl class="class">
 <dt id="source.control.dealer.Dealer">
-<em class="property">class </em><code class="descclassname">source.control.dealer.</code><code class="descname">Dealer</code><span class="sig-paren">(</span><em>game</em>, <em>cardset</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.dealer.Dealer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Dealer</code><span class="sig-paren">(</span><em>game</em>, <em>cardset</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.dealer.Dealer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Controller for the dealing and automatic movement of cards</p>
 <p>State Variables: 
 deck: a sequence of cards
@@ -60,6 +60,26 @@ cardset: images for the cards
 game: the application state - game in progress</p>
 <p>Assumptions: 
 A game is in progress and a valid cardset is defined</p>
+<p><strong>Semantics</strong></p>
+<p><a class="reference internal" href="#source.control.dealer.Dealer.cardgen" title="source.control.dealer.Dealer.cardgen"><code class="xref py py-func docutils literal"><span class="pre">cardgen()</span></code></a>:</p>
+<ul class="simple">
+<li>transition:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>creates and instantiates the cards in the game</li>
+<li>adds the sequence of the cards to the game deck</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="#source.control.dealer.Dealer.dealCards" title="source.control.dealer.Dealer.dealCards"><code class="xref py py-func docutils literal"><span class="pre">dealCards()</span></code></a>:</p>
+<ul class="simple">
+<li>transition:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>distributes the cards to the game stacks</li>
+</ul>
+</div></blockquote>
 <p><strong>Exported Access Programs</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -84,14 +104,6 @@ A game is in progress and a valid cardset is defined</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Semantics</strong></p>
-<p>cardgen():
-* transition: 
-a) creates and instantiates the cards in the game
-b) adds the sequence of the cards to the game deck</p>
-<p>dealCards():
-* transition: 
-distributes the cards to the game stacks</p>
 <dl class="method">
 <dt id="source.control.dealer.Dealer.cardgen">
 <code class="descname">cardgen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.dealer.Dealer.cardgen" title="Permalink to this definition">¶</a></dt>
@@ -105,6 +117,7 @@ to the stack identified as the deck for the game</p>
 <dt id="source.control.dealer.Dealer.dealCards">
 <code class="descname">dealCards</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.dealer.Dealer.dealCards" title="Permalink to this definition">¶</a></dt>
 <dd><p>Distribute the cards to the stacks as defined by the game logic</p>
+<p>Assign cards from self.deck to the respective stack in self.game.stacks</p>
 </dd></dl>
 
 </dd></dl>

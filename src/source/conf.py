@@ -328,6 +328,9 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+add_module_names = False
+modindex_common_prefix = ['source.']
+
 # Documents to append as an appendix to all manuals.
 #
 # texinfo_appendices = []

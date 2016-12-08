@@ -1,6 +1,6 @@
 """This module defines the rules and properties of the game freecell
 
-	State Variables: none
+    State Variables: none
 
     Environment Variables: none
 

@@ -2,7 +2,8 @@
     for the responding to events and dictating the state of the
     application
 
-    State Variables: 
+    State Variables:
+
     * _root: the main window
     * _game: the game in progress
 
@@ -10,6 +11,21 @@
     system display: array of pixels used for graphical output
 
     Assumptions: None
+
+    **Semantics**
+
+    :func:`dealgame` :
+
+    * transition:
+
+    a) creates a new game
+    b) updates the main window
+    c) triggers the dealing of cards
+
+    :func:`drawgame`:
+
+    * transition: renders the visual state of the game
+
 
     **Exported Access Programs**
 
@@ -20,16 +36,7 @@
     drawgame()              root            None
     ==================   ============   ============
 
-    **Semantics**
 
-    dealgame(root, game) :
-    * transition: 
-    a) creates a new game
-    b) updates the main window
-    c) triggers the dealing of cards
-
-    drawgame(root) :
-    * transition: renders the visual state of the game
 """
 
 import os
@@ -50,8 +57,10 @@ from ..model.games.spider import *
 
 __all__ = ['dealgame', 'drawgame']
 
+# Module-level variables
 _game = None
 _root = None
+_data = ""
 
 
 def solve():
@@ -67,7 +76,23 @@ def solve():
 
 
 def dealgame(root=None, game=None, new_cardset=None):
-    """Create and setup a new game"""
+    """Create and setup a new game
+
+    * If root is None then use the module variable _root
+    * If game is None then assign the module variable _game
+      to a default Klondike game
+    * If game is not None then overwrite module variable _game
+      and update root.canvas
+    * If new_cardset is not None then overwrite the cardset
+      for the game
+
+    1. Perform the above
+    2. Create a :class: `dealer.Dealer` instance
+    3. Create the game instance via _game.create()
+    4. Check if the game has its own initial deal (startDeal method)
+    5. If not, then tell the Dealer to deal the cards
+
+    """
     global _game
     global _root
 
@@ -144,8 +169,6 @@ def destroy():
     _root.update()
 
 
-_data = ""
-
 def _format(*args):
     """Compile save data"""
     global _data
@@ -187,6 +210,7 @@ def save_game():
 
     # Write save data
     _flush()
+
 
 def load():
     """Load previously saved game from file"""
@@ -257,6 +281,7 @@ def load_game(game_name, cardset, stacks):
     # Render game and update window
     drawgame()
     _game.update()
+
 
 def update():
     """Update root window"""

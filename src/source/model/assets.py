@@ -11,23 +11,34 @@ import Tkinter
 from cardsets import TYPE, Cardset
 from card import StandardCard as Card
 
+CARDSET_DIR = "cardsets"
+CONFIG_FILE = "config.txt"
+DEFAULT_EXTENSION = ".gif"
+PLACEHOLDER_PREFIX = "bottom02"
+ALT_PLACEHOLDER_PREFIX = "bottom01"
+REVERSE_IMG_PREFIX = "back"
+DEFAULT_CARD_TYPE = TYPE.STANDARD
+DEFAULT_SUITS = "cshd"
+DEFAULT_RANKS = range(13)
+
 
 def set_rank_and_suit(cardset):
     """Set rank and suit based on cardset type"""
     card_type = cardset.ctype
 
+    # Allows for easier addition of additional types
     if card_type == TYPE.STANDARD:
-        cardset.ranks = range(13)
-        cardset.suits = "cshd"
+        cardset.ranks = DEFAULT_RANKS
+        cardset.suits = DEFAULT_SUITS
 
 
 def load_cardsets():
     """Load and parse the various cardset configurations
+
     Store the cardsets but avoid loading the images until the
     cardset is in use for a game
+
     """
-    import re
-    _digit = re.compile('\d')
 
     # Limit scope to avoid propagation and prevent module-level import
     class ConfigError:
@@ -38,7 +49,7 @@ def load_cardsets():
 
     # Compile path to cardsets
     path = os.getcwd()
-    path = os.path.join(path, "cardsets")
+    path = os.path.join(path, CARDSET_DIR)
 
     # Enumerate available cardsets
     cardsets = os.listdir(path)    
@@ -48,32 +59,31 @@ def load_cardsets():
         config = os.path.join(path, folder)
         if not os.path.isdir(config):
             continue
-        config = os.path.join(config, "config.txt")
+        config = os.path.join(config, CONFIG_FILE)
         f = open(config, "r")
         text = f.readlines()
         assert len(text) >= 6
         info = text[0].split(';')
 
+        # Load image extension type
         try:
             extension = info[2]            
         except IndexError:
-            extension = ".gif"
+            extension = DEFAULT_EXTENSION
 
-        ID = text[1]        
-
+        # Load card type
         try:
             ctype = int(info[3])
         except IndexError:
-            ctype = TYPE.STANDARD
+            ctype = DEFAULT_CARD_TYPE
 
+        # Parse additional properties and create cardset
         try:
             if len(info) < 3:
-                version = 1
                 style = []
                 nationality = []
                 year = []
             else:
-                version = info[3]
                 try:
                     style, nationality, year = getTypeInfo(info)
                 except ConfigError:
@@ -83,33 +93,27 @@ def load_cardsets():
 
             name = (text[1].split(';'))[1].strip()
             width, height, depth = text[2].replace('\n', '').split(" ")
-            CARD_XOFFSET, CARD_YOFFSET, SHADOW_XOFFSET, SHADOW_YOFFSET = [int(x) for x in text[3].replace('\n', '').split(" ")]
-            background = text[4]
-            alt_backs = text[5].replace('\n', '').split(';')
-            if background in alt_backs:
-                back_index = alt_backs.index(background)
-            else:
-                alt_backs.insert(0, background)
-            version = info[1]
 
             # Create cardset
             currCardset = Cardset(folder, name, ctype, width, height, style, nationality, year, extension)            
 
+            # Set stack placeholder img
             # bottom02 looks better so try that first
             imgpath = os.path.join(path, folder)
-            bottom_img = os.path.join(imgpath, "bottom02" + extension)
+            bottom_img = os.path.join(imgpath, PLACEHOLDER_PREFIX + extension)
             if not os.path.isfile(bottom_img):                    
-                bottom_img = os.path.join(imgpath, "bottom01" + extension)
+                bottom_img = os.path.join(imgpath, ALT_PLACEHOLDER_PREFIX + extension)
 
-            # Set placeholder image for cardset
+            # Set card reverse image for cardset
             for img in os.listdir(imgpath):
-                if img.count("back"):
+                if img.count(REVERSE_IMG_PREFIX):
                     currCardset.backimage.append(os.path.join(imgpath, img))
             currCardset.holder = Tkinter.PhotoImage(file=bottom_img)
             Cardset.cardsets[name] = currCardset
             set_rank_and_suit(currCardset)
 
             # Enumerate and add cards to the cardset
+            # Overrule zero-indexing of ranks
             for rank in currCardset.ranks:
                 for suit in currCardset.suits:
                     currCardset.cards.append(Card(currCardset, rank + 1, suit))

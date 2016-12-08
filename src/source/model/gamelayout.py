@@ -1,7 +1,7 @@
 """This module defines the interface for game classes
 
     State Variables: none
-	
+
     Environment Variables: none
 
     Assumptions: none
@@ -29,6 +29,8 @@ class CardGame():
 
         Also place restriction on the allowed actions based
         on the rules of the game
+
+        **Must be implemented by subclass**
         """
 
     @abstractmethod
@@ -36,12 +38,17 @@ class CardGame():
         """
         If in-game dealing is allowed this performs
         a single deal action
+
+        **Must be implemented by subclass**
         """
 
     @abstractmethod
     @abstractproperty
     def bindings(self):
-        """Method for bindings"""
+        """Return the mouse bindings the game needs
+
+        **Must be implemented by subclass**
+        """
         global _bindings
         if _bindings is None:
             return NotImplementedError("Must define bindings and accessor in game subclass")

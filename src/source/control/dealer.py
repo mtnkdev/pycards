@@ -23,6 +23,22 @@ class Dealer:
     Assumptions: 
     A game is in progress and a valid cardset is defined
 
+    **Semantics**
+
+    :func:`cardgen`:
+
+    * transition:
+
+     * creates and instantiates the cards in the game
+     * adds the sequence of the cards to the game deck
+
+
+    :func:`dealCards`:
+
+    * transition:
+
+     * distributes the cards to the game stacks
+
     **Exported Access Programs**
 
     ==================   ============   ============
@@ -32,17 +48,8 @@ class Dealer:
     dealCards()
     ==================   ============   ============
 
-    **Semantics**
 
-    cardgen():
-    * transition: 
-    a) creates and instantiates the cards in the game
-    b) adds the sequence of the cards to the game deck
-
-    dealCards():
-    * transition: 
-    distributes the cards to the game stacks
-    """
+"""
 
     def __init__(self, game, cardset):
         self.deck = []
@@ -67,7 +74,10 @@ class Dealer:
         _shuffle(self.deck)
 
     def dealCards(self):
-        """Distribute the cards to the stacks as defined by the game logic"""
+        """Distribute the cards to the stacks as defined by the game logic
+
+        Assign cards from self.deck to the respective stack in self.game.stacks
+        """
         stacks = self.game.stacks
 
         index = 0

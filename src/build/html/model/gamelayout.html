@@ -52,12 +52,13 @@
 <p>Assumptions: none</p>
 <dl class="class">
 <dt id="source.model.gamelayout.CardGame">
-<em class="property">class </em><code class="descclassname">source.model.gamelayout.</code><code class="descname">CardGame</code><a class="headerlink" href="#source.model.gamelayout.CardGame" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CardGame</code><a class="headerlink" href="#source.model.gamelayout.CardGame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract base class to be used as specification for all games</p>
 <dl class="attribute">
 <dt id="source.model.gamelayout.CardGame.bindings">
 <code class="descname">bindings</code><a class="headerlink" href="#source.model.gamelayout.CardGame.bindings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method for bindings</p>
+<dd><p>Return the mouse bindings the game needs</p>
+<p><strong>Must be implemented by subclass</strong></p>
 </dd></dl>
 
 <dl class="method">
@@ -67,6 +68,7 @@
 the number and positioning of cards</p>
 <p>Also place restriction on the allowed actions based
 on the rules of the game</p>
+<p><strong>Must be implemented by subclass</strong></p>
 </dd></dl>
 
 <dl class="method">
@@ -74,6 +76,7 @@ on the rules of the game</p>
 <code class="descname">deal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.model.gamelayout.CardGame.deal" title="Permalink to this definition">¶</a></dt>
 <dd><p>If in-game dealing is allowed this performs
 a single deal action</p>
+<p><strong>Must be implemented by subclass</strong></p>
 </dd></dl>
 
 </dd></dl>
