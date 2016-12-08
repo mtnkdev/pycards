@@ -3,14 +3,18 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{float}
+\usepackage[round]{natbib}
 \hypersetup{
     colorlinks,
     citecolor=black,
     filecolor=black,
-    linkcolor=red,
+    linkcolor=black,
     urlcolor=blue
 }
 \usepackage[round]{natbib}
+\newcounter{tnum}
+\newcommand{\tthetnum}{T\thetnum}
 \newcommand{\tref}[1]{T\ref{#1}}
 
 \title{SE 3XA3: Test Report\\PyCards}
@@ -32,7 +36,6 @@
 \pagenumbering{roman}
 \tableofcontents
 \listoftables
-\listoffigures
 
 \begin{table}[bp]
 \caption{\bf Revision History}
@@ -45,7 +48,6 @@ December 4 & 1.0 & Initial Revision\\
 \end{table}
 
 \newpage
-
 \pagenumbering{arabic}
 
 
@@ -53,7 +55,11 @@ December 4 & 1.0 & Initial Revision\\
 
 	\subsection{Event Handling}
 	
-	\paragraph{Key Bindings (\tref{tKeys})}
+	\begin{description}
+		\item[Key Bindings\refstepcounter{tnum} (\tthetnum \label{tKeys})]
+	\end{description}
+	
+
 	\begin{enumerate}
 		\item{KB1\\}
 		Type: Functional, Dynamic, Manual
@@ -67,7 +73,10 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 		
 	\end{enumerate}
-	\subsection{Widget Callbacks (\tref{tClick})}
+	
+	\refstepcounter{tnum} \label{tClick}
+	\subsection{Widget Callbacks (\tthetnum)}
+	
 	\begin{enumerate}
 		\item{WC1\\}
 		Type: Functional, Dynamic, Manual
@@ -99,7 +108,10 @@ December 4 & 1.0 & Initial Revision\\
 	\end{enumerate}
 	\subsection{Game Logic}
 	
-	\paragraph{Card Selection (\tref{tCard})}
+	\begin{description}
+		\item[Card Selection\refstepcounter{tnum} (\tthetnum \label{tCard})]
+	\end{description}
+	
 	\begin{enumerate}
 		\item{PC1\\}
 		Type: Structural, Dynamic, Automated
@@ -132,8 +144,12 @@ December 4 & 1.0 & Initial Revision\\
 \section{Nonfunctional Requirements Evaluation}
 
 \subsection{Interoperability}
+
+	\begin{description}
+		\item[Operating System Compatibility\refstepcounter{tnum} (\tthetnum 
+		\label{tOS})]
+	\end{description}
 	
-	\paragraph{Operating System Compatibility (\tref{tOS})}
 	\begin{enumerate}
 		\item{OSX\\}
 		Type: Structural, Dynamic, Manual
@@ -176,7 +192,9 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\paragraph{Portability (\tref{tPort})}
+	\begin{description}
+		\item[Portability\refstepcounter{tnum} (\tthetnum \label{tPort})]
+	\end{description}
 	\begin{enumerate}
 		\item{PR1\\}
 		Type: Structural, Dynamic, Manual
@@ -191,7 +209,9 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\subsection{Usability (\tref{tUse})}
+	\refstepcounter{tnum} \label{tUse}
+	\subsection{Usability (\tthetnum)}
+
 	\paragraph{Navigation}
 	\begin{enumerate}
 	\item{UN1\\}
@@ -226,7 +246,9 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\paragraph{Playability (\tref{tPlay})}
+	\begin{description}
+		\item[Playability\refstepcounter{tnum} (\tthetnum \label{tPlay})]
+	\end{description}
 	\begin{enumerate}
 		\item{UP1\\}
 		Type: Structural, Dynamic, Manual
@@ -255,7 +277,9 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 
-	\subsection{Product Integrity (\tref{tInt})}
+
+	\refstepcounter{tnum} \label{tInt}
+	\subsection{Product Integrity (\tthetnum)}
 	\paragraph{Resource Loading}
 	\begin{enumerate}
 		\item{RL1\\}
@@ -284,7 +308,8 @@ December 4 & 1.0 & Initial Revision\\
 		Success/Failure: Success
 	\end{enumerate}
 	
-	\subsection{Security (\tref{tSec})}
+	\refstepcounter{tnum} \label{tSec}
+	\subsection{Security (\tthetnum)}
 	\paragraph{System Permissions}
 	\begin{enumerate}
 		\item{SP1\\}
@@ -303,12 +328,14 @@ December 4 & 1.0 & Initial Revision\\
 
 \section{Unit Testing}
 
-Unit testing was conducted using the unittest.py python module. Test suites
+\indent \indent Unit testing was conducted using the unittest.py python module. 
+Test 
+suites
 were constructed for the core modules that make up the controller and model
 conceptual modules, as that is where the decision and data logic lies. More
 specifically, unit testing was performed to validate the correct behaviour of
 the dealer, mouse\_handler, assets, and game-containing modules. \newline
-\indnet For each game the key behaviours that needs to be validated include the
+\indent For each game the key behaviours that needs to be validated include the
 creation of a game, the dealing of a game, the selection and movement of
 cards, and the updates to a game (ie flipping of cards, movement of cards in
 spider solitaire). These behaviours are tested by first asserting the necessary
@@ -330,20 +357,20 @@ Automated testing was done using the unittest.py python module. This allowed us 
 			\toprule
 			\textbf{Test Scenario} & \textbf{Requirements}\\
 			\midrule
-			KB1 & FR4, **GR1
-			WC1 & GR1, FR4
-			WC2 & GR1, FR4
-			PC1 & GR3
-			PC2 & GR3
-			OSX & NFR4, NFR6, FR1
-			OS2 & NFR4, NFR6, FR1
-			OSWIN & NFR4, NFR6, FR1
-			PR1 & FR1, NFR5
-			UN1 & GR1, FR4
-			UP1 & NFR1, NFR2, NFR3
-			RL1 & FR2
-			RL2 & FR2
-			SP1 & FR1, FR2, NFR5, NFR6
+			KB1 & freq4, Game Requirement 1 (GR1)\\
+			WC1 & GR1, freq4\\
+			WC2 & GR1, freq4\\
+			PC1 & GR3\\
+			PC2 & GR3\\
+			OSX & NFR4, NFR6, FR1\\
+			OS2 & NFR4, NFR6, FR1\\
+			OSWIN & NFR4, NFR6, FR1\\
+			PR1 & FR1, NFR5\\
+			UN1 & GR1, FR4\\
+			UP1 & NFR1, NFR2, NFR3\\
+			RL1 & FR2\\
+			RL2 & FR2\\
+			SP1 & FR1, FR2, NFR5, NFR6\\
 			REQS & \tref{tClick}, \tref{tUse}, \tref{tInt}, \tref{tSec}\\
 			REQS & \tref{tKeys}, \tref{tCard}, \tref{tOS}, \tref{tPort}\\
 			REQS & \tref{tUse}\\
@@ -362,20 +389,20 @@ Automated testing was done using the unittest.py python module. This allowed us 
 			\toprule
 			\textbf{Test Scenario} & \textbf{Modules}\\
 			\midrule
-			KB1 & mKB
-			WC1 & mMI
-			WC2 & mMI
-			PC1 & mCM, mGP
-			PC2 & mCM, mGP
-			OSX & mPH
-			OS2 & mPH
-			OSWIN & mPH
-			PR1 & mPH
-			UN1 & mGP, mUS
-			UP1 & mGP, mUS
-			RL1 & mGP, mUS
-			RL2 & mGP, mUS
-			SP1 & mUS, mSL
+			KB1 & mKB \\
+			WC1 & mMI \\
+			WC2 & mMI \\
+			PC1 & mCM, mGP \\
+			PC2 & mCM, mGP \\
+			OSX & mPH\\
+			OS2 & mPH\\
+			OSWIN & mPH\\
+			PR1 & mPH\\
+			UN1 & mGP, mUS\\
+			UP1 & mGP, mUS\\
+			RL1 & mGP, mUS\\
+			RL2 & mGP, mUS\\
+			SP1 & mUS, mSL\\
 			%not needed REQS & \tref{tClick}, \tref{tUse}, \tref{tInt}, \tref{tSec}\\
 			%not needed REQS & \tref{tKeys}, \tref{tCard}, \tref{tOS}, \tref{tPort}\\
 			%not needed REQS & \tref{tUse}\\
