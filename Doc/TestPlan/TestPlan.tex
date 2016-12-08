@@ -32,7 +32,8 @@
 			\midrule
 			October 27 & 0.1 & Rough Draft\\
 			October 28 & 1 & Initial Version\\
-			December 7 & 2 & Revision 1\\
+			December 7 & 2 & Revision 1 - 
+			Added Gantt chart link, abbreviations, unit test explanations\\
 			\bottomrule
 		\end{tabularx}
 	\end{table}
@@ -539,7 +540,11 @@
 
 	\subsection{Unit testing of internal functions}
 	Unit tests are used to validate the intermal components such as modules, 
-	methods, and functions. In order to do this we model the compent as a series of
+	methods, and functions. To verify the correct behaviour of methods we
+	define the preconditions and postconditions using predicate logic and map
+	the conditions to boolean expressions in our test cases.
+
+	In order to do this we model the compent as a series of
 	actions and transitions or by using first order logic depending on the nature of
 	the statements being executed. This behaviour can then be formalized by
 	modelling it as a control flow graph or truth table to assert that the
