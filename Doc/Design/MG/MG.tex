@@ -44,6 +44,7 @@
 			\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 			\midrule
 			\mbox{November 10, 2016} & 1.0 & Initial Revision\\
+			\mbox{December 7, 2016} & 2.0 & Revision 1\\
 			\bottomrule
 		\end{tabularx}
 	\end{table}
@@ -88,6 +89,11 @@
 	the system in various ways, such as consistency among modules, feasibility 
 	of the decomposition, and flexibility of the design.
 	\end{itemize}
+	PyCards is designed with all of this in mind.  PyCards, based on PySol, is 
+	a collection of solitaire card games written in Python.  This project 
+	follows the MVC model, as well as Python naming conventions and structure.  
+	Notable is that we have also implemented information hiding, which is not 
+	done by default in Python.\\\\
 	The rest of the document is organized as follows. Section \ref{SecChange} 
 	lists the anticipated and unlikely changes of the software requirements. 
 	Section \ref{SecMH} summarizes the module decomposition that was 
@@ -167,6 +173,8 @@
 			{Hardware-Hiding Module} & Platform Hiding Module \\
 			\midrule
 			\multirow{4}{0.3\textwidth}{Behaviour-Hiding Module}
+			& Mouse Interface Module\\
+			& Key Binding Module\\
 			& User Settings Module\\
 			& Save\_load\_state Module\\
 			& Card Movement Module\\
@@ -198,7 +206,7 @@
 	(\emph{--}) is shown, this means that the module is not a leaf and will not 
 	have to be implemented. Whether or not this module is implemented depends 
 	on the programming language selected.
-	\subsection{Hardware Hiding Modules}
+	\mref{mPH}\subsection{Hardware Hiding Modules}
 	\begin{description}
 		\item[Secrets:]The data structures and algorithms used to implement the 
 		virtual hardware.
@@ -218,6 +226,19 @@
 		inputs.
 		\item[Implemented By:] OS
 	\end{description}
+	
+	\subsection{Behaviour-Hiding Module}
+	
+	\begin{description}
+		\item[Secrets:]The contents of the required behaviours.
+		\item[Services:]Includes programs that provide externally visible 
+		behaviour of the system as specified in the software requirements 
+		specification (SRS) documents. This module serves as a communication 
+		layer between the hardware-hiding module and the software decision 
+		module. The programs in this module will need to change if there are 
+		changes in the SRS.
+		\item[Implemented By:] --
+	\end{description}
 	\subsubsection{Mouse Interface Module (\mref{mMI})}
 	\begin{description}
 		\item[Secrets:]The protocols and responses to the mouse device
@@ -234,17 +255,6 @@
 		software functionality such that the software system relies only on the 
 		abstracted version of the input and outputs
 		\item[Implemented By:] PyCards
-	\end{description}
-	\subsection{Behaviour-Hiding Module}
-	\begin{description}
-		\item[Secrets:]The contents of the required behaviours.
-		\item[Services:]Includes programs that provide externally visible 
-		behaviour of the system as specified in the software requirements 
-		specification (SRS) documents. This module serves as a communication 
-		layer between the hardware-hiding module and the software decision 
-		module. The programs in this module will need to change if there are 
-		changes in the SRS.
-		\item[Implemented By:] --
 	\end{description}
 	\subsubsection{User Settings Module (\mref{mUS})}
 	\begin{description}
@@ -311,19 +321,26 @@
 	This section shows two traceability matrices: between the modules and the
 	requirements and between the modules and the anticipated changes.
 	% the table should use mref, the requirements should be named, use 
-	%something like fref
+	% something like fref
 	\begin{table}[H]
 		\centering
-		\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+		\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
 			\toprule
 			\textbf{Req.} & \textbf{Modules}\\
 			\midrule
-			FR1 & \mref{mPH}\\
-			FR1 & \mref{mPH}\\
-			FR3 & \mref{mUS}\\
-			GR1 & \mref{mSL}\\
-			GR2 & \mref{mUS}\\
-			GR3 & \mref{mCM}, \mref{mGP}\\
+			fref1 & \mref{mPH}\\
+			fref2 & \mref{mPH}\\
+			fref3 & \mref{mUS}\\
+			fref4 & \mref{mPH}\\
+			Game Requirement 1 & \mref{mSL}\\
+			Game Requirement 1 & \mref{mUS}\\
+			Game Requirement 1 & \mref{mCM}, \mref{mGP}\\
+			Look and Feel Requirement & \mref{mPH} \\
+			Usability Requirement & \mref{mMI}, \mref{mGP}\\
+			Performance Requirements & \mref{mPH}, \mref{mMI}, \mref{mCM}, 
+			\mref{mGP}\\
+			Operational and Environment Requirements & \mref{mMI}, \mref{mKB}\\
+			Maintainability and Support Requirements & \mref{mPH}\\
 			\bottomrule
 		\end{tabular}
 		\caption{Trace Between Requirements and Modules}
@@ -339,7 +356,7 @@
 			\acref{acOS} & \mref{mPH}\\
 			\acref{acGUI} & \mref{mUS}\\
 			\acref{acStruct} & \mref{mEnum}, \mref{mStack}\\
-			\acref{acGames} & \mref{mSL}, \mref{mCM}, \mref{mGP}\\
+			\acref{acGames} & \mref{mSL}, \mref{mGP}\\
 			\bottomrule
 		\end{tabular}
 		\caption{Trace Between Anticipated Changes and Modules}
