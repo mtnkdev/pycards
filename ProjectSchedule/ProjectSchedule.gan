@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="PyCards" company="" webLink="http://" view-date="2016-10-23" view-index="0" gantt-divider-location="354" resource-divider-location="300" version="2.8.1" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="PyCards" company="" webLink="http://" view-date="2016-09-26" view-index="0" gantt-divider-location="318" resource-divider-location="300" version="2.8.1" locale="en_US">
     <description/>
-    <view zooming-state="default:0" id="gantt-chart">
-        <field id="tpd3" name="Name" width="190" order="0"/>
-        <field id="tpd4" name="Begin date" width="72" order="1"/>
-        <field id="tpd5" name="End date" width="71" order="2"/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Name" width="174" order="0"/>
+        <field id="tpd4" name="Begin date" width="70" order="1"/>
+        <field id="tpd5" name="End date" width="70" order="2"/>
+        <option id="taskLabelUp" value="name"/>
+        <timeline><![CDATA[77,2,0,6]]></timeline>
+        <option id="color.recent"><![CDATA[#000000]]></option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Name" width="209" order="0"/>
-        <field id="1" name="Default role" width="85" order="1"/>
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -33,57 +36,57 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Problem Statement" color="#8cb6ce" meeting="false" start="2016-09-19" duration="5" complete="0" expand="true"/>
-        <task id="2" name="Development Plan" color="#8cb6ce" meeting="false" start="2016-10-24" duration="1" complete="0" expand="true">
-            <task id="77" name="Review Document" meeting="false" start="2016-10-24" duration="1" complete="0" expand="true"/>
+        <task id="0" name="Problem Statement" color="#8cb6ce" meeting="false" start="2016-09-19" duration="5" complete="100" expand="true"/>
+        <task id="2" name="Development Plan" color="#8cb6ce" meeting="false" start="2016-10-24" duration="1" complete="100" expand="false">
+            <task id="77" name="Review Document" color="#8cb6ce" meeting="false" start="2016-10-24" duration="1" complete="100" expand="true"/>
         </task>
-        <task id="4" name="Requirements Document Rev0" color="#8cb6ce" meeting="false" start="2016-09-30" duration="8" complete="0" expand="true">
-            <task id="43" name="Functional Requirements" color="#8cb6ce" meeting="false" start="2016-09-30" duration="7" complete="0" expand="true"/>
-            <task id="79" name="Non-functional Requirements" color="#8cb6ce" meeting="false" start="2016-09-30" duration="7" complete="0" expand="true"/>
-            <task id="80" name="Project Issues" color="#8cb6ce" meeting="false" start="2016-09-30" duration="7" complete="0" expand="true"/>
-            <task id="45" name="Document Revisions" color="#8cb6ce" meeting="false" start="2016-10-03" duration="7" complete="0" expand="true"/>
-            <task id="62" name="Due Date" color="#8cb6ce" meeting="false" start="2016-10-11" duration="1" complete="0" expand="true"/>
+        <task id="4" name="Requirements Document Rev0" color="#8cb6ce" meeting="false" start="2016-09-30" duration="8" complete="100" expand="false">
+            <task id="43" name="Functional Requirements" color="#8cb6ce" meeting="false" start="2016-09-30" duration="7" complete="100" expand="true"/>
+            <task id="79" name="Non-functional Requirements" color="#8cb6ce" meeting="false" start="2016-09-30" duration="7" complete="100" expand="true"/>
+            <task id="80" name="Project Issues" color="#8cb6ce" meeting="false" start="2016-09-30" duration="7" complete="100" expand="true"/>
+            <task id="45" name="Document Revisions" color="#8cb6ce" meeting="false" start="2016-10-03" duration="7" complete="100" expand="true"/>
+            <task id="62" name="Due Date" color="#8cb6ce" meeting="false" start="2016-10-11" duration="1" complete="100" expand="true"/>
         </task>
-        <task id="5" name="Proof of Concept Demonstration" color="#8cb6ce" meeting="false" start="2016-10-04" duration="11" complete="0" expand="true">
-            <task id="31" name="Implementation" color="#8cb6ce" meeting="false" start="2016-10-04" duration="11" complete="0" expand="true"/>
-            <task id="30" name="Risk Assessment" color="#8cb6ce" meeting="false" start="2016-10-14" duration="1" complete="0" expand="true"/>
-            <task id="32" name="Presentation" color="#8cb6ce" meeting="false" start="2016-10-14" duration="2" complete="0" expand="true"/>
-            <task id="61" name="Demonstration" color="#8cb6ce" meeting="false" start="2016-10-17" duration="1" complete="0" expand="true"/>
+        <task id="5" name="Proof of Concept Demonstration" color="#8cb6ce" meeting="false" start="2016-10-04" duration="11" complete="100" expand="false">
+            <task id="31" name="Implementation" color="#8cb6ce" meeting="false" start="2016-10-04" duration="11" complete="100" expand="true"/>
+            <task id="30" name="Risk Assessment" color="#8cb6ce" meeting="false" start="2016-10-14" duration="1" complete="100" expand="true"/>
+            <task id="32" name="Presentation" color="#8cb6ce" meeting="false" start="2016-10-14" duration="2" complete="100" expand="true"/>
+            <task id="61" name="Demonstration" color="#8cb6ce" meeting="false" start="2016-10-17" duration="1" complete="100" expand="true"/>
         </task>
-        <task id="6" name="Test Plan Revision 0" color="#8cb6ce" meeting="false" start="2016-10-18" duration="9" complete="0" expand="true">
-            <task id="27" name="Unit Testing" color="#8cb6ce" meeting="false" start="2016-10-18" duration="4" complete="0" expand="true"/>
-            <task id="28" name="System Testing" meeting="false" start="2016-10-24" duration="1" complete="0" expand="true">
-                <task id="71" name="Functional Requirements" meeting="false" start="2016-10-24" duration="1" complete="0" expand="true"/>
-                <task id="72" name="Non Functional Requirments" meeting="false" start="2016-10-24" duration="1" complete="0" expand="true"/>
+        <task id="6" name="Test Plan Revision 0" color="#8cb6ce" meeting="false" start="2016-10-18" duration="9" complete="100" expand="false">
+            <task id="27" name="Unit Testing" color="#8cb6ce" meeting="false" start="2016-10-18" duration="4" complete="100" expand="true"/>
+            <task id="28" name="System Testing" meeting="false" start="2016-10-24" duration="1" complete="100" expand="false">
+                <task id="71" name="Functional Requirements" color="#8cb6ce" meeting="false" start="2016-10-24" duration="1" complete="100" expand="true"/>
+                <task id="72" name="Non Functional Requirments" color="#8cb6ce" meeting="false" start="2016-10-24" duration="1" complete="100" expand="true"/>
             </task>
-            <task id="60" name="Test Plan Due Date" meeting="false" start="2016-10-28" duration="1" complete="0" expand="true"/>
-            <task id="73" name="Review Document" color="#8cb6ce" meeting="false" start="2016-10-28" duration="1" complete="0" expand="true"/>
+            <task id="60" name="Test Plan Due Date" color="#8cb6ce" meeting="false" start="2016-10-28" duration="1" complete="100" expand="true"/>
+            <task id="73" name="Review Document" color="#8cb6ce" meeting="false" start="2016-10-28" duration="1" complete="100" expand="true"/>
         </task>
-        <task id="7" name="Design Document Revision 0" color="#8cb6ce" meeting="false" start="2016-10-28" duration="11" complete="0" expand="true">
-            <task id="26" name="Module Guide" meeting="false" start="2016-10-28" duration="2" complete="0" expand="true"/>
-            <task id="24" name="MIS" meeting="false" start="2016-10-31" duration="5" complete="0" expand="true"/>
-            <task id="25" name="MID" meeting="false" start="2016-10-31" duration="5" complete="0" expand="true"/>
-            <task id="46" name="Detailed Design" meeting="false" start="2016-11-04" duration="6" complete="0" expand="true"/>
-            <task id="67" name="Design Document Due Date" meeting="false" start="2016-11-11" duration="1" complete="0" expand="true"/>
+        <task id="7" name="Design Document Revision 0" color="#8cb6ce" meeting="false" start="2016-10-31" duration="10" complete="100" expand="false">
+            <task id="26" name="Module Guide" color="#8cb6ce" meeting="false" start="2016-10-31" duration="2" complete="100" expand="true"/>
+            <task id="24" name="MIS" color="#8cb6ce" meeting="false" start="2016-10-31" duration="5" complete="100" expand="true"/>
+            <task id="25" name="MID" color="#8cb6ce" meeting="false" start="2016-10-31" duration="5" complete="100" expand="true"/>
+            <task id="46" name="Detailed Design" color="#8cb6ce" meeting="false" start="2016-11-04" duration="6" complete="100" expand="true"/>
+            <task id="67" name="Design Document Due Date" color="#8cb6ce" meeting="false" start="2016-11-11" duration="1" complete="100" expand="true"/>
         </task>
-        <task id="8" name="Revision 0 Demonstration" color="#8cb6ce" meeting="false" start="2016-10-24" duration="16" complete="0" expand="true">
-            <task id="33" name="Implementation" meeting="false" start="2016-10-28" duration="12" complete="0" expand="true"/>
-            <task id="34" name="Presentation" meeting="false" start="2016-10-24" duration="1" complete="0" expand="true"/>
+        <task id="8" name="Revision 0 Demonstration" color="#8cb6ce" meeting="false" start="2016-10-31" duration="11" complete="100" expand="false">
+            <task id="33" name="Implementation" color="#8cb6ce" meeting="false" start="2016-10-31" duration="11" complete="100" expand="true"/>
+            <task id="34" name="Presentation" color="#8cb6ce" meeting="false" start="2016-10-31" duration="11" complete="100" expand="true"/>
         </task>
-        <task id="9" name="Final Demonstration (Rev1)" color="#8cb6ce" meeting="false" start="2016-11-14" duration="11" complete="0" expand="true">
-            <task id="47" name="Implementation" meeting="false" start="2016-11-14" duration="11" complete="0" expand="true"/>
-            <task id="48" name="Presentation" meeting="false" start="2016-11-21" duration="6" complete="0" expand="true"/>
+        <task id="9" name="Final Demonstration (Rev1)" color="#8cb6ce" meeting="false" start="2016-11-15" duration="10" complete="100" expand="false">
+            <task id="47" name="Implementation" color="#8cb6ce" meeting="false" start="2016-11-15" duration="10" complete="100" expand="true"/>
+            <task id="48" name="Presentation" color="#8cb6ce" meeting="false" start="2016-11-15" duration="10" complete="100" expand="true"/>
         </task>
-        <task id="10" name="Final Documentation (Rev1)" color="#8cb6ce" meeting="false" start="2016-11-28" duration="8" complete="0" expand="true">
-            <task id="35" name="Problem Statement" meeting="false" start="2016-11-28" duration="3" complete="0" expand="true"/>
-            <task id="36" name="Development Plan" meeting="false" start="2016-11-28" duration="3" complete="0" expand="true"/>
-            <task id="37" name="Requirements Document" meeting="false" start="2016-11-30" duration="3" complete="0" expand="true"/>
-            <task id="38" name="Design Document" meeting="false" start="2016-11-30" duration="3" complete="0" expand="true"/>
-            <task id="39" name="Test Plan" meeting="false" start="2016-11-30" duration="3" complete="0" expand="true"/>
-            <task id="40" name="Test Report" meeting="false" start="2016-11-30" duration="3" complete="0" expand="true"/>
-            <task id="41" name="User Guide" meeting="false" start="2016-12-02" duration="1" complete="0" expand="true"/>
-            <task id="42" name="Implementation" meeting="false" start="2016-11-30" duration="6" complete="0" expand="true"/>
-            <task id="69" name="Final Due Date" meeting="false" start="2016-12-07" duration="1" complete="0" expand="true"/>
+        <task id="10" name="Final Documentation (Rev1)" color="#8cb6ce" meeting="false" start="2016-11-29" duration="8" complete="100" expand="false">
+            <task id="35" name="Problem Statement Rev1" color="#8cb6ce" meeting="false" start="2016-11-29" duration="3" complete="100" expand="true"/>
+            <task id="36" name="Development Plan Rev1" color="#8cb6ce" meeting="false" start="2016-11-29" duration="3" complete="100" expand="true"/>
+            <task id="37" name="Requirements Document Rev1" color="#8cb6ce" meeting="false" start="2016-11-30" duration="3" complete="100" expand="true"/>
+            <task id="38" name="Design Document Rev1" color="#8cb6ce" meeting="false" start="2016-11-30" duration="3" complete="100" expand="true"/>
+            <task id="39" name="Test Plan Rev1" color="#8cb6ce" meeting="false" start="2016-11-30" duration="3" complete="100" expand="true"/>
+            <task id="40" name="Test Report Rev1" color="#8cb6ce" meeting="false" start="2016-11-30" duration="3" complete="100" expand="true"/>
+            <task id="42" name="Implementation" color="#8cb6ce" meeting="false" start="2016-11-30" duration="5" complete="100" expand="true"/>
+            <task id="81" name="Review" color="#8cb6ce" meeting="false" start="2016-12-07" duration="1" complete="100" expand="true"/>
+            <task id="69" name="Final Due Date" color="#8cb6ce" meeting="false" start="2016-12-08" duration="1" complete="100" expand="true"/>
         </task>
     </tasks>
     <resources>
@@ -98,7 +101,25 @@
         <allocation task-id="30" resource-id="3" function="Default:0" responsible="false" load="10.0"/>
         <allocation task-id="32" resource-id="3" function="Default:0" responsible="false" load="25.0"/>
         <allocation task-id="61" resource-id="3" function="Default:0" responsible="true" load="25.0"/>
-        <allocation task-id="43" resource-id="3" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="43" resource-id="3" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="8" resource-id="3" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="81" resource-id="3" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="42" resource-id="3" function="Default:0" responsible="true" load="55.0"/>
+        <allocation task-id="40" resource-id="3" function="Default:0" responsible="false" load="7.5"/>
+        <allocation task-id="38" resource-id="3" function="Default:0" responsible="false" load="7.5"/>
+        <allocation task-id="37" resource-id="3" function="Default:0" responsible="true" load="7.5"/>
+        <allocation task-id="36" resource-id="3" function="Default:0" responsible="false" load="7.5"/>
+        <allocation task-id="35" resource-id="3" function="Default:0" responsible="false" load="7.5"/>
+        <allocation task-id="39" resource-id="3" function="Default:0" responsible="false" load="7.5"/>
+        <allocation task-id="47" resource-id="3" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="48" resource-id="3" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="33" resource-id="3" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="34" resource-id="3" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="26" resource-id="3" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="24" resource-id="3" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="25" resource-id="3" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="46" resource-id="3" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="67" resource-id="3" function="Default:0" responsible="true" load="0.0"/>
         <allocation task-id="0" resource-id="4" function="Default:0" responsible="false" load="50.0"/>
         <allocation task-id="2" resource-id="4" function="Default:0" responsible="false" load="50.0"/>
         <allocation task-id="45" resource-id="4" function="Default:0" responsible="true" load="25.0"/>
@@ -106,16 +127,52 @@
         <allocation task-id="30" resource-id="4" function="Default:0" responsible="true" load="25.0"/>
         <allocation task-id="32" resource-id="4" function="Default:0" responsible="true" load="25.0"/>
         <allocation task-id="61" resource-id="4" function="Default:0" responsible="false" load="50.0"/>
-        <allocation task-id="79" resource-id="4" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="79" resource-id="4" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="8" resource-id="4" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="81" resource-id="4" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="42" resource-id="4" function="Default:0" responsible="false" load="40.0"/>
+        <allocation task-id="40" resource-id="4" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="39" resource-id="4" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="38" resource-id="4" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="37" resource-id="4" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="36" resource-id="4" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="35" resource-id="4" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="47" resource-id="4" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="48" resource-id="4" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="33" resource-id="4" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="34" resource-id="4" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="26" resource-id="4" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="24" resource-id="4" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="25" resource-id="4" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="46" resource-id="4" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="67" resource-id="4" function="Default:0" responsible="true" load="0.0"/>
         <allocation task-id="0" resource-id="5" function="Default:0" responsible="false" load="50.0"/>
         <allocation task-id="2" resource-id="5" function="Default:0" responsible="false" load="50.0"/>
         <allocation task-id="45" resource-id="5" function="Default:0" responsible="true" load="25.0"/>
-        <allocation task-id="31" resource-id="5" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="31" resource-id="5" function="Default:0" responsible="true" load="25.0"/>
         <allocation task-id="30" resource-id="5" function="Default:0" responsible="false" load="25.0"/>
         <allocation task-id="32" resource-id="5" function="Default:0" responsible="false" load="25.0"/>
-        <allocation task-id="61" resource-id="5" function="Default:0" responsible="false" load="50.0"/>
-        <allocation task-id="43" resource-id="5" function="Default:0" responsible="false" load="50.0"/>
-        <allocation task-id="80" resource-id="5" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="61" resource-id="5" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="43" resource-id="5" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="80" resource-id="5" function="Default:0" responsible="true" load="25.0"/>
+        <allocation task-id="8" resource-id="5" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="81" resource-id="5" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="42" resource-id="5" function="Default:0" responsible="false" load="40.0"/>
+        <allocation task-id="40" resource-id="5" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="39" resource-id="5" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="38" resource-id="5" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="37" resource-id="5" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="36" resource-id="5" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="35" resource-id="5" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="47" resource-id="5" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="48" resource-id="5" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="33" resource-id="5" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="34" resource-id="5" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="26" resource-id="5" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="24" resource-id="5" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="25" resource-id="5" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="46" resource-id="5" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="67" resource-id="5" function="Default:0" responsible="true" load="0.0"/>
     </allocations>
     <vacations/>
     <previous/>
