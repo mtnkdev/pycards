@@ -27,7 +27,7 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="PyCards 1.0 documentation" href="../index.html" />
     <link rel="up" title="model" href="../model.html" />
-    <link rel="next" title="stack.py" href="stack.html" />
+    <link rel="next" title="mouse_handler.py" href="mouse_handler.html" />
     <link rel="prev" title="enum.py" href="enum.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -46,19 +46,19 @@
             
   <div class="section" id="module-source.model.gamelayout">
 <span id="gamelayout-py"></span><h1>gamelayout.py<a class="headerlink" href="#module-source.model.gamelayout" title="Permalink to this headline">¶</a></h1>
-<p>This module is responsible for the layout of the game in the window</p>
-<blockquote>
-<div>State Variables: none</div></blockquote>
+<p>This module defines the interface for game classes</p>
+<p>State Variables: none</p>
 <p>Environment Variables: none</p>
 <p>Assumptions: none</p>
 <dl class="class">
 <dt id="source.model.gamelayout.CardGame">
-<em class="property">class </em><code class="descclassname">source.model.gamelayout.</code><code class="descname">CardGame</code><a class="headerlink" href="#source.model.gamelayout.CardGame" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CardGame</code><a class="headerlink" href="#source.model.gamelayout.CardGame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract base class to be used as specification for all games</p>
 <dl class="attribute">
 <dt id="source.model.gamelayout.CardGame.bindings">
 <code class="descname">bindings</code><a class="headerlink" href="#source.model.gamelayout.CardGame.bindings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method for bindings</p>
+<dd><p>Return the mouse bindings the game needs</p>
+<p><strong>Must be implemented by subclass</strong></p>
 </dd></dl>
 
 <dl class="method">
@@ -68,6 +68,7 @@
 the number and positioning of cards</p>
 <p>Also place restriction on the allowed actions based
 on the rules of the game</p>
+<p><strong>Must be implemented by subclass</strong></p>
 </dd></dl>
 
 <dl class="method">
@@ -75,34 +76,7 @@ on the rules of the game</p>
 <code class="descname">deal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.model.gamelayout.CardGame.deal" title="Permalink to this definition">¶</a></dt>
 <dd><p>If in-game dealing is allowed this performs
 a single deal action</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">source.model.gamelayout.</code><code class="descname">CardGame</code></dt>
-<dd><p>Abstract base class to be used as specification for all games</p>
-<dl class="attribute">
-<dt>
-<code class="descname">bindings</code></dt>
-<dd><p>Method for bindings</p>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Define the initial layout of the game including
-the number and positioning of cards</p>
-<p>Also place restriction on the allowed actions based
-on the rules of the game</p>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">deal</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>If in-game dealing is allowed this performs
-a single deal action</p>
+<p><strong>Must be implemented by subclass</strong></p>
 </dd></dl>
 
 </dd></dl>
@@ -120,7 +94,7 @@ a single deal action</p>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="../model.html">model</a><ul>
       <li>Previous: <a href="enum.html" title="previous chapter">enum.py</a></li>
-      <li>Next: <a href="stack.html" title="next chapter">stack.py</a></li>
+      <li>Next: <a href="mouse_handler.html" title="next chapter">mouse_handler.py</a></li>
   </ul></li>
   </ul></li>
 </ul>

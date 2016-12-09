@@ -52,15 +52,67 @@
 <p>Assumptions: none</p>
 <dl class="class">
 <dt id="source.model.card.AbstractCard">
-<em class="property">class </em><code class="descclassname">source.model.card.</code><code class="descname">AbstractCard</code><span class="sig-paren">(</span><em>cardset</em>, <em>rank</em>, <em>suit</em><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.AbstractCard" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">AbstractCard</code><span class="sig-paren">(</span><em>cardset</em>, <em>rank</em>, <em>suit</em><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.AbstractCard" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is your basic template for creating cards</p>
+<dl class="method">
+<dt id="source.model.card.AbstractCard.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>cardset</em>, <em>rank</em>, <em>suit</em><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.AbstractCard.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default initializer for a card</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cardset</strong> &#8211; a valid <a class="reference internal" href="cardsets.html#source.model.cardsets.Cardset" title="source.model.cardsets.Cardset"><code class="xref py py-class docutils literal"><span class="pre">source.model.cardsets.Cardset</span></code></a> instance</li>
+<li><strong>rank</strong> &#8211; rank of the card - one of [1-13]</li>
+<li><strong>suit</strong> &#8211; suit of the card - one of &#8216;c&#8217;, &#8216;h&#8217;, &#8216;s&#8217; &#8216;d&#8217;
+where &#8216;c&#8217; is clubs, &#8216;h&#8217; is hearts, &#8216;s&#8217; is spades, and &#8216;d&#8217; is diamonds</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="source.model.card.AbstractCard.__subclasshook__">
+<em class="property">classmethod </em><code class="descname">__subclasshook__</code><span class="sig-paren">(</span><em>subclass</em><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.AbstractCard.__subclasshook__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate subclass implementation</p>
+<p>Required attributes:</p>
+<ul class="simple">
+<li>cardset</li>
+<li>suit</li>
+<li>rank</li>
+</ul>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="source.model.card.StandardCard">
-<em class="property">class </em><code class="descclassname">source.model.card.</code><code class="descname">StandardCard</code><span class="sig-paren">(</span><em>cardset</em>, <em>rank</em>, <em>suit</em><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.StandardCard" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is your standard playing card.
-Each card has a cardset it belongs to, a rank and a suit</p>
+<em class="property">class </em><code class="descname">StandardCard</code><span class="sig-paren">(</span><em>cardset</em>, <em>rank</em>, <em>suit</em><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.StandardCard" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is your standard playing card.</p>
+<p>Each card has a cardset it belongs to, a rank and a suit</p>
+<dl class="method">
+<dt id="source.model.card.StandardCard.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>cardset</em>, <em>rank</em>, <em>suit</em><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.StandardCard.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the core properties of the card</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cardset</strong> &#8211; a valid <a class="reference internal" href="cardsets.html#source.model.cardsets.Cardset" title="source.model.cardsets.Cardset"><code class="xref py py-class docutils literal"><span class="pre">source.model.cardsets.Cardset</span></code></a> instance</li>
+<li><strong>rank</strong> &#8211; rank of the card - one of integers [1-13]</li>
+<li><strong>suit</strong> &#8211; suit of the card - one of &#8216;c&#8217;, &#8216;h&#8217;, &#8216;s&#8217; &#8216;d&#8217;
+where &#8216;c&#8217; is clubs, &#8216;h&#8217; is hearts, &#8216;s&#8217; is spades, and &#8216;d&#8217; is diamonds</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="source.model.card.StandardCard.back_image">
 <code class="descname">back_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.StandardCard.back_image" title="Permalink to this definition">¶</a></dt>
@@ -76,50 +128,13 @@ Each card has a cardset it belongs to, a rank and a suit</p>
 <dl class="method">
 <dt id="source.model.card.StandardCard.hide">
 <code class="descname">hide</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.StandardCard.hide" title="Permalink to this definition">¶</a></dt>
-<dd><p>Hides card</p>
+<dd><p>Turn off visibility</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="source.model.card.StandardCard.show">
 <code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.model.card.StandardCard.show" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shows card</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">source.model.card.</code><code class="descname">AbstractCard</code><span class="sig-paren">(</span><em>cardset</em>, <em>rank</em>, <em>suit</em><span class="sig-paren">)</span></dt>
-<dd><p>This is your basic template for creating cards</p>
-</dd></dl>
-
-<dl class="class">
-<dt>
-<em class="property">class </em><code class="descclassname">source.model.card.</code><code class="descname">StandardCard</code><span class="sig-paren">(</span><em>cardset</em>, <em>rank</em>, <em>suit</em><span class="sig-paren">)</span></dt>
-<dd><p>This is your standard playing card.
-Each card has a cardset it belongs to, a rank and a suit</p>
-<dl class="method">
-<dt>
-<code class="descname">back_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Image on the back of the card</p>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">get_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Return the (newly instantiated) PhotoImage for the card</p>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">hide</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Hides card</p>
-</dd></dl>
-
-<dl class="method">
-<dt>
-<code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Shows card</p>
+<dd><p>Turn on visibility</p>
 </dd></dl>
 
 </dd></dl>

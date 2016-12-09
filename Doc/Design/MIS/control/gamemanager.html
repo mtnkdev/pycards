@@ -49,12 +49,28 @@
 <p>This module is the main controller and is responsible
 for the responding to events and dictating the state of the
 application</p>
-<p>State Variables: 
-* _root: the main window
-* _game: the game in progress</p>
+<p>State Variables:</p>
+<ul class="simple">
+<li>_root: the main window</li>
+<li>_game: the game in progress</li>
+</ul>
 <p>Environment Variables: 
 system display: array of pixels used for graphical output</p>
 <p>Assumptions: None</p>
+<p><strong>Semantics</strong></p>
+<p><a class="reference internal" href="#source.control.gamemanager.dealgame" title="source.control.gamemanager.dealgame"><code class="xref py py-func docutils literal"><span class="pre">dealgame()</span></code></a> :</p>
+<ul class="simple">
+<li>transition:</li>
+</ul>
+<ol class="loweralpha simple">
+<li>creates a new game</li>
+<li>updates the main window</li>
+<li>triggers the dealing of cards</li>
+</ol>
+<p><a class="reference internal" href="#source.control.gamemanager.drawgame" title="source.control.gamemanager.drawgame"><code class="xref py py-func docutils literal"><span class="pre">drawgame()</span></code></a>:</p>
+<ul class="simple">
+<li>transition: renders the visual state of the game</li>
+</ul>
 <p><strong>Exported Access Programs</strong></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -79,23 +95,31 @@ system display: array of pixels used for graphical output</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Semantics</strong></p>
-<p>dealgame(root, game) :
-* transition: 
-a) creates a new game
-b) updates the main window
-c) triggers the dealing of cards</p>
-<p>drawgame(root) :
-* transition: renders the visual state of the game</p>
 <dl class="function">
 <dt id="source.control.gamemanager.dealgame">
-<code class="descclassname">source.control.gamemanager.</code><code class="descname">dealgame</code><span class="sig-paren">(</span><em>root=None</em>, <em>game=None</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.gamemanager.dealgame" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dealgame</code><span class="sig-paren">(</span><em>root=None</em>, <em>game=None</em>, <em>new_cardset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.gamemanager.dealgame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create and setup a new game</p>
+<ul class="simple">
+<li>If root is None then use the module variable _root</li>
+<li>If game is None then assign the module variable _game
+to a default Klondike game</li>
+<li>If game is not None then overwrite module variable _game
+and update root.canvas</li>
+<li>If new_cardset is not None then overwrite the cardset
+for the game</li>
+</ul>
+<ol class="arabic simple">
+<li>Perform the above</li>
+<li>Create a :class: <cite>dealer.Dealer</cite> instance</li>
+<li>Create the game instance via _game.create()</li>
+<li>Check if the game has its own initial deal (startDeal method)</li>
+<li>If not, then tell the Dealer to deal the cards</li>
+</ol>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.control.gamemanager.drawgame">
-<code class="descclassname">source.control.gamemanager.</code><code class="descname">drawgame</code><span class="sig-paren">(</span><em>root=None</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.gamemanager.drawgame" title="Permalink to this definition">¶</a></dt>
+<code class="descname">drawgame</code><span class="sig-paren">(</span><em>root=None</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.gamemanager.drawgame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Render the state of the newly created game to the system display</p>
 </dd></dl>
 

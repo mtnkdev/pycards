@@ -92,58 +92,70 @@ system display: array of pixels used for graphical output</p>
 </tbody>
 </table>
 <p><strong>Semantics</strong></p>
-<p>restart() :
-* transition: 
-a) destroys the game in progress
-b) creates a new instance of the same game type
-c) updates application window</p>
-<p>start_game(gameclass) :
-* input: the class of the game to be created
-* transition: 
-a) destroys the game in progress
-b) creates a new instance of the specified game type
-c) updates application window</p>
-<p>select_cardset():
-transition: Prompt the user to select a cardset</p>
-<p>select_tile():
-transition: Prompt the user to select a background image</p>
-<p>showLicense():
-output: display the license information in a new window</p>
-<p>showInfo():
-output: display basic information about the program in a new window</p>
+<p><a class="reference internal" href="#source.control.menuactions.restart" title="source.control.menuactions.restart"><code class="xref py py-func docutils literal"><span class="pre">restart()</span></code></a>:</p>
+<ul class="simple">
+<li>transition:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>destroys the game in progress</li>
+<li>creates a new instance of the same game type</li>
+<li>updates application window</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="#source.control.menuactions.start_game" title="source.control.menuactions.start_game"><code class="xref py py-func docutils literal"><span class="pre">start_game()</span></code></a> :</p>
+<ul class="simple">
+<li>input: the class of the game to be created</li>
+<li>transition:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>destroys the game in progress</li>
+<li>creates a new instance of the specified game type</li>
+<li>updates application window</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="#source.control.menuactions.select_cardset" title="source.control.menuactions.select_cardset"><code class="xref py py-func docutils literal"><span class="pre">select_cardset()</span></code></a>:</p>
+<p>transition: Prompt the user to select a cardset</p>
+<p><a class="reference internal" href="#source.control.menuactions.select_tile" title="source.control.menuactions.select_tile"><code class="xref py py-func docutils literal"><span class="pre">select_tile()</span></code></a>:</p>
+<p>transition: Prompt the user to select a background image</p>
+<p><a class="reference internal" href="#source.control.menuactions.showLicense" title="source.control.menuactions.showLicense"><code class="xref py py-func docutils literal"><span class="pre">showLicense()</span></code></a>:</p>
+<p>output: display the license information in a new window</p>
+<p><a class="reference internal" href="#source.control.menuactions.showInfo" title="source.control.menuactions.showInfo"><code class="xref py py-func docutils literal"><span class="pre">showInfo()</span></code></a>:</p>
+<p>output: display basic information about the program in a new window</p>
 <dl class="function">
 <dt id="source.control.menuactions.restart">
-<code class="descclassname">source.control.menuactions.</code><code class="descname">restart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.restart" title="Permalink to this definition">¶</a></dt>
+<code class="descname">restart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.restart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start a new instance of the same game type</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.control.menuactions.select_cardset">
-<code class="descclassname">source.control.menuactions.</code><code class="descname">select_cardset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.select_cardset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">select_cardset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.select_cardset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prompt the user to select the directory containing the desired cardset</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.control.menuactions.select_tile">
-<code class="descclassname">source.control.menuactions.</code><code class="descname">select_tile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.select_tile" title="Permalink to this definition">¶</a></dt>
+<code class="descname">select_tile</code><span class="sig-paren">(</span><em>root</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.select_tile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prompt the user to select the desired background image</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.control.menuactions.showInfo">
-<code class="descclassname">source.control.menuactions.</code><code class="descname">showInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.showInfo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">showInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.showInfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display a window with basic info about the application</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.control.menuactions.showLicense">
-<code class="descclassname">source.control.menuactions.</code><code class="descname">showLicense</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.showLicense" title="Permalink to this definition">¶</a></dt>
+<code class="descname">showLicense</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.showLicense" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display the license information in a new window</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="source.control.menuactions.start_game">
-<code class="descclassname">source.control.menuactions.</code><code class="descname">start_game</code><span class="sig-paren">(</span><em>gameclass</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.start_game" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start_game</code><span class="sig-paren">(</span><em>gameclass</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.menuactions.start_game" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start a new instance of the specified game type</p>
 </dd></dl>
 

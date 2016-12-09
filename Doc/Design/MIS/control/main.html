@@ -75,17 +75,13 @@ Only the start method should be called from outside</p>
 </tbody>
 </table>
 <p><strong>Semantics</strong></p>
-<p>start() :
-* transition: creates application window</p>
-<dl class="function">
-<dt id="source.control.main.start">
-<code class="descclassname">source.control.main.</code><code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.main.start" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start the main execution loop</p>
-</dd></dl>
-
+<p><a class="reference internal" href="#source.control.main.start" title="source.control.main.start"><code class="xref py py-func docutils literal"><span class="pre">start()</span></code></a>:</p>
+<ul class="simple">
+<li>transition: creates application window</li>
+</ul>
 <dl class="class">
 <dt id="source.control.main.App">
-<em class="property">class </em><code class="descclassname">source.control.main.</code><code class="descname">App</code><span class="sig-paren">(</span><em>master</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.main.App" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">App</code><span class="sig-paren">(</span><em>master</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.main.App" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class encapsulates the main program</p>
 <p>This initializer takes in a Tk instance and binds it</p>
 <p>State variables:
@@ -93,6 +89,31 @@ master: parent Tk instance</p>
 <p>Environment variables: none</p>
 <p>Assumptions:
 Only one instance is created per program execution</p>
+<dl class="method">
+<dt id="source.control.main.App.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>master</em><span class="sig-paren">)</span><a class="headerlink" href="#source.control.main.App.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Organize Tk instance into Frame then create progress bar</p>
+<p>Attempt to load cardsets and their respective cards</p>
+<p>Exceptions thrown and caught:</p>
+<ul class="simple">
+<li>WindowsError</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;cardsets&#8217; directory is missing</li>
+<li>user is prompted to verify their installation and re-download
+the application</li>
+<li>application terminates gracefully (instead of corrupted execution)</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="source.control.main.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#source.control.main.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create Tk instance and trigger the main execution loop</p>
 </dd></dl>
 
 </div>
