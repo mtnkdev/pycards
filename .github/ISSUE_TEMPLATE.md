@@ -2,11 +2,11 @@
 
 #### Expected behaviour
 
-### Actual behaviour
+#### Actual behaviour
 
-### Steps to reproduce
+#### Steps to reproduce
 
-### Supsected cause or origin
+#### Supsected cause or origin
 
 
 
@@ -15,15 +15,15 @@
 
 #### Description of Proposed Change/Addition
 
-##### Reason for Change/Addition
+#### Reason for Change/Addition
 
-##### Scope of Change/Addition
+#### Scope of Change/Addition
 
 * Class level
 * Module level
 * System level
 
-##### Ideas for Implementation
+#### Ideas for Implementation
 
 
 <!-- If the topic is a question or miscellaneous use the template below -->
@@ -45,7 +45,7 @@
 
 #### Ask your question here
 
-##### Additional Info and Context
+#### Additional Info and Context
 
 List any assumptions or arbitrary decisions here if they are needed to understand the question.
 Describe your development environment here if the question or problem is environment-specific.
