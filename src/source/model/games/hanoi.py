@@ -101,7 +101,7 @@ class Hanoi(CardGame):
 
             if n == 1:
                 if len(_dest[1]) == 1:
-                    print "done"
+                    pass#print "done"
                 else:
                     if len(_start[1]) == 1:
                         hanoi(1, _start, _dest, _spare)
@@ -149,7 +149,7 @@ class Hanoi(CardGame):
                                     elif start[0] == "spare":
                                         hanoi(j, _spare, _dest, _start)
                                     else:
-                                        print "Tower of Hanoi Complete"
+                                        #print "Tower of Hanoi Complete"
                                         break
                                 j += 1
                     if j == n:
@@ -158,7 +158,7 @@ class Hanoi(CardGame):
                         elif start[0] == "spare":
                             hanoi(j, _spare, _dest, _start)
                         else:
-                            print "Tower of Hanoi Complete"
+                            #print "Tower of Hanoi Complete"
                             break
         solve_hanoi()
 

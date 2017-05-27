@@ -6,10 +6,15 @@ source directory
 """
 
 import os
-import Tkinter
 
-from cardsets import TYPE, Cardset
-from card import StandardCard as Card
+import sys
+if sys.version_info[0] < 3:
+    import Tkinter
+else:
+    import tkinter as Tkinter
+
+from ..model.cardsets import TYPE, Cardset#from cardsets import TYPE, Cardset
+from ..model.card import StandardCard as Card#from card import StandardCard as Card
 
 CARDSET_DIR = "cardsets"
 CONFIG_FILE = "config.txt"
@@ -41,7 +46,7 @@ def load_cardsets():
     """
 
     # Limit scope to avoid propagation and prevent module-level import
-    class ConfigError:
+    class ConfigError(Exception):
             pass
 
     def getTypeInfo(info):
@@ -119,5 +124,6 @@ def load_cardsets():
                     currCardset.cards.append(Card(currCardset, rank + 1, suit))
 
         except IndexError:
-            print "Invalid cardset configuration for " + folder
+            pass
+            #print "Invalid cardset configuration for " + folder
 

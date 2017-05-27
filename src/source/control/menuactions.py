@@ -58,13 +58,20 @@
 """
 
 import os
-import Tkinter
-import tkMessageBox
-import tkFileDialog
+import sys
 
-from gamemanager import dealgame, drawgame, destroy, solve
+if sys.version_info[0] < 3:
+    import Tkinter
+    import tkMessageBox
+    import tkFileDialog
+else:
+    import tkinter
+    import tkinter.messagebox as tkMessageBox
+    import tkinter.filedialog as tkFileDialog
+
+from ..control.gamemanager import dealgame, drawgame, destroy, solve
 from ..model.cardsets import Cardset
-from gamemanager import save_game, load
+from ..control.gamemanager import save_game, load
 from ..view.window import setBackground
 
 
@@ -150,13 +157,13 @@ def showLicense():
 
     window.title("License")
     scroll = Tkinter.Scrollbar(window.canvas, takefocus=1)
-    scroll.pack(side=Tkinter.RIGHT, fill=Tkinter.Y)
+    scroll.pack(side=Tkinter.RIGHT, fill=tkinter.Y)
     file = open("LICENSE","r")
     licenses = file.read()
     file.close()
     window.msg = Tkinter.Text(window.canvas, background="darkgray", relief="raised", pady=10)
     window.msg.insert(Tkinter.END, licenses)
-    window.msg.tag_add("indent", 0.0, Tkinter.END)
+    window.msg.tag_add("indent", 0.0, tkinter.END)
     window.msg.tag_configure("indent", lmargin1=20, lmargin2=20, background="darkgray")
     window.msg.configure(state=Tkinter.DISABLED)
     window.msg.pack()

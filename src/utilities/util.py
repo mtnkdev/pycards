@@ -1,4 +1,9 @@
-import __builtin__
+import sys
+
+if sys.version_info[0] < 3:
+    import __builtin__
+else:
+    import builtins as __builtin__
 import gettext
 
 
@@ -6,8 +11,12 @@ def localize():
 
     def ugettext(message):
         # unicoded gettext
-        if not isinstance(message, unicode):
-            message = unicode(message, 'utf-8')
+        if sys.version_info[0] < 3:
+            if not isinstance(message, unicode):
+                message = unicode(message, 'utf-8')
+        else:
+            if not isinstance(message, str):
+                message = str(message, 'utf-8')
         domain = gettext._current_domain
         try:
             t = gettext.translation(domain,
@@ -17,12 +26,19 @@ def localize():
         return t.ugettext(message)
 
     def ungettext(msgid1, msgid2, n):
-        # unicoded ngettext
-        if not isinstance(msgid1, unicode):
-            msgid1 = unicode(msgid1, 'utf-8')
-        if not isinstance(msgid2, unicode):
-            msgid2 = unicode(msgid2, 'utf-8')
+        # unicoded ngettext        
+        if sys.version_info[0] < 3:
+            if not isinstance(msgid1, unicode):
+                msgid1 = unicode(msgid1, 'utf-8')
+            if not isinstance(msgid2, unicode):
+                msgid2 = unicode(msgid2, 'utf-8')
+        else:
+            if not isinstance(msgid1, str):
+                msgid1 = str(msgid1, 'utf-8')
+            if not isinstance(msgid2, str):
+                msgid2 = str(msgid2, 'utf-8')
         domain = gettext._current_domain
+            
         try:
             t = gettext.translation(domain,
                                     gettext._localedirs.get(domain, None))

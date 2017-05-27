@@ -9,10 +9,15 @@ when the application is being loaded
 
 
 """
-
-import Tkinter
+import sys
+if sys.version_info[0] < 3:
+    import Tkinter
+    import ttk
+else:
+    import tkinter as Tkinter
+    import tkinter.ttk as ttk
 import time
-import ttk
+    
 
 
 def create(root, delay):
@@ -33,7 +38,7 @@ def create(root, delay):
 
     def action():
         """Increments progress on the bar"""
-        for step in range(0, int(loader.bar['maximum']), loader.bar['maximum'] / 10):
+        for step in range(0, int(loader.bar['maximum']), int(loader.bar['maximum'] / 10)):
             loader.bar['value'] = step
             time.sleep(delay)
             loader.update()

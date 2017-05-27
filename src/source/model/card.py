@@ -7,8 +7,11 @@
     Assumptions: none
 
 """
-
-import Tkinter
+import sys
+if sys.version_info[0] < 3:
+    import Tkinter
+else:
+    import tkinter as Tkinter
 import os
 
 from abc import ABCMeta, abstractmethod

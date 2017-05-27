@@ -124,7 +124,7 @@ class Spider(CardGame):
                         if stackID != -1:
                             move_cards(self, i, stackID, 0)
                         else:
-                            raise ValueError, "Invalid card positions"
+                            raise ValueError("Invalid card positions")
                 num += 1
         return self.check_win()
 

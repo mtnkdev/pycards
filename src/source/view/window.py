@@ -41,9 +41,14 @@ root window and enforcing its associated attributes and items
 
 
 """
-
-import Tkinter
-import ttk
+import sys
+if sys.version_info[0] < 3:
+    import Tkinter
+    import ttk
+else:
+    import tkinter as Tkinter
+    import tkinter.ttk as ttk
+    
 import os
 
 
@@ -108,5 +113,5 @@ def draw_card(label, x, y):
 def bind_card(label, bindings):
     """Add mouse binding(s) to the card widget"""
     if bindings is not None:
-        for binding, callback in bindings.iteritems():
+        for binding, callback in bindings.items():
             label.bind(binding, callback)

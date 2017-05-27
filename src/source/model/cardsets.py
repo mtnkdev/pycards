@@ -4,7 +4,7 @@
 cardset: A set of locally-stored images to be used when rendering the cards
 """
 
-from enum import Enum
+from ..model.enum import Enum
 
 
 class Cardset:

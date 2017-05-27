@@ -24,10 +24,13 @@ the user interacts with to trigger events
     ==================   ============   ============
 
 """
+import sys
+if sys.version_info[0] < 3:
+    from Tkinter import Menu
+else:
+    from tkinter import Menu
 
-from Tkinter import Menu
-
-import menuactions as action
+from ..control import menuactions as action
 from ..model.database import DB
 
 

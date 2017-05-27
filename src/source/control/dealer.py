@@ -66,7 +66,7 @@ class Dealer:
         assert self.game.type == self.cardset.ctype
         assert self.game.numcards % len(self.cardset.cards) == 0
 
-        for i in range(self.game.numcards / len(self.cardset.cards)):
+        for i in range(int(self.game.numcards / len(self.cardset.cards))):
             for rank in self.cardset.ranks:
                 for suit in self.cardset.suits:
                     self.deck.append(StandardCard(self.cardset, rank, suit))

@@ -40,9 +40,16 @@
 """
 
 import os
-import ttk
-import tkFileDialog
-import tkMessageBox
+import sys
+
+if sys.version_info[0] < 3:
+    import ttk
+    import tkFileDialog
+    import tkMessageBox
+else:
+    import tkinter.ttk as ttk
+    import tkinter.filedialog as tkFileDialog
+    import tkinter.messagebox as tkMessageBox
 
 from ..control.dealer import Dealer
 from ..model import cardsets

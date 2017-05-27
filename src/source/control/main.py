@@ -26,10 +26,17 @@
 
 """
 
-import Tkinter
-import ttk
+import sys
 
-import taskmenu as menu
+if sys.version_info[0] < 3:
+    import Tkinter
+    import ttk
+else:
+    import tkinter as Tkinter
+    import tkinter.ttk as ttk
+
+
+from ..control import taskmenu as menu
 from ..control import gamemanager as mgr
 from ..model import assets
 from ..view import progressbar as loader
@@ -78,7 +85,7 @@ class App:
             assets.load_cardsets()
         except WindowsError:
             import sys
-            import Tkinter
+            import tkinter
             import tkMessageBox
             if tkMessageBox.showerror("Corrupt or missing files detected",
                 message="The cardsets directory is missing from your installation. "
@@ -106,3 +113,4 @@ def start():
     menu.create_menu(root)
     app = App(root)
     mainloop()
+

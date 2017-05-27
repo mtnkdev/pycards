@@ -8,7 +8,7 @@
 
 """
 
-from stack import move_cards
+from ..model.stack import move_cards
 from ..control.gamemanager import destroy, dealgame, drawgame
 
 
